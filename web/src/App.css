@@ -1,0 +1,287 @@
+/* Renkler ve ölçüler tek yerde. Oyunun havası: sarı uyarı levhası. */
+:root {
+      --ink: #1b1f5e;
+      --paper: #fffbea;
+      --warning: #ffc531;
+      --disaster: #f4614a;
+      --safe: #18b99a;
+      --line: 4px solid var(--ink);
+      --display: "Bricolage Grotesque", system-ui, sans-serif;
+      --body: "Atkinson Hyperlegible", system-ui, sans-serif;
+    }
+    
+    /* Kutu ölçüleri kenarlığı da içersin. */
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Sayfanın temeli. */
+    body {
+      margin: 0;
+      background: var(--warning);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 18px;
+      line-height: 1.45;
+    }
+    
+    /* Ana sütun. Arka plan rengi oyunun durumunu gösterir. */
+    .page {
+      min-height: 100vh;
+      padding: 24px max(16px, calc((100vw - 720px) / 2));
+      background: var(--warning);
+      transition: background-color 250ms;
+    }
+    
+    /* Kaybedince her yer kırmızı olur. */
+    .page[data-mood="lost"] {
+      background: var(--disaster);
+    }
+    
+    /* Kazanınca her yer yeşil olur. */
+    .page[data-mood="won"] {
+      background: var(--safe);
+    }
+    
+    /* Başlık ve sayaç aynı satırda. */
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    
+    /* Küçük oyun adı. */
+    .brand {
+      margin: 0;
+      font-weight: 700;
+    }
+    
+    /* Sahne başlığı. */
+    .title {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(32px, 7vw, 52px);
+      font-weight: 800;
+      line-height: 1;
+    }
+    
+    /* Dev sayaç: ekranın en belirgin öğesi. */
+    .clock {
+      margin: 0;
+      min-width: 1.4em;
+      font-family: var(--display);
+      font-size: clamp(72px, 16vw, 120px);
+      font-weight: 800;
+      line-height: 0.85;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    
+    /* Sahne ızgarası. */
+    .board {
+      display: grid;
+      gap: 6px;
+      padding: 8px;
+      background: var(--paper);
+      border: var(--line);
+      border-radius: 20px;
+      box-shadow: 6px 6px 0 var(--ink);
+    }
+    
+    /* Bir nesne: etiket gibi duran düğme. */
+    .object {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      min-width: 0;
+      min-height: 84px;
+      padding: 6px 2px;
+      background: #fff;
+      color: var(--ink);
+      border: 3px solid var(--ink);
+      border-radius: 14px;
+      font: inherit;
+      cursor: pointer;
+    }
+    
+    /* Fareyle üstüne gelince hafifçe kalkar. */
+    .object:enabled:hover {
+      background: var(--warning);
+      transform: translateY(-2px);
+    }
+    
+    /* Dokunulamazken imleç değişir, ama nesne soluklaşmaz: sahne okunur kalmalı. */
+    .object:disabled {
+      cursor: default;
+    }
+    
+    /* Klavyeyle gezenler için görünür odak. */
+    button:focus-visible {
+      outline: 4px solid var(--ink);
+      outline-offset: 3px;
+    }
+    
+    /* Nesnenin emojisi. Değişince küçük bir zıplama yapar. */
+    .emoji {
+      font-size: clamp(28px, 7vw, 44px);
+      line-height: 1.1;
+      animation: pop 220ms ease-out;
+    }
+    
+    /* Nesnenin adı. */
+    .label {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    
+    /* Durum değişimi animasyonu. */
+    @keyframes pop {
+      from {
+        transform: scale(0.5);
+      }
+      70% {
+        transform: scale(1.2);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    
+    /* Zaman çizgisi: 10 kutu yan yana. */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 4px;
+      margin: 20px 0 16px;
+      padding: 0;
+      list-style: none;
+    }
+    
+    /* Bir saniye kutusu. */
+    .tick {
+      position: relative;
+      padding: 6px 0;
+      background: var(--paper);
+      border: 3px solid var(--ink);
+      border-radius: 8px;
+      font-weight: 700;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+    
+    /* Geçmiş saniyeler. */
+    .tick[data-past="true"] {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    
+    /* Şu anki saniye. */
+    .tick[data-now="true"] {
+      background: var(--disaster);
+      color: var(--ink);
+    }
+    
+    /* Dokunuş yapılan saniyenin altında nokta. */
+    .tick[data-touched="true"]::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -11px;
+      width: 8px;
+      height: 8px;
+      margin-left: -4px;
+      background: var(--ink);
+      border-radius: 50%;
+    }
+    
+    /* Alt panel. */
+    .panel {
+      min-height: 150px;
+    }
+    
+    /* Olan biteni anlatan cümle. */
+    .caption {
+      margin: 0 0 6px;
+      font-family: var(--display);
+      font-size: clamp(22px, 4.5vw, 30px);
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    
+    /* İpucu cümlesi. */
+    .hint {
+      max-width: 60ch;
+      margin: 0 0 12px;
+    }
+    
+    /* Deneme bilgisi. */
+    .meta {
+      margin: 12px 0 0;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    
+    /* Hata ve yükleme yazıları. */
+    .notice {
+      max-width: 60ch;
+      font-size: 20px;
+    }
+    
+    /* Düğme sırası. */
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    
+    /* Ana düğme. */
+    .action {
+      padding: 12px 22px;
+      background: var(--ink);
+      color: var(--paper);
+      border: var(--line);
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    
+    /* Basılınca içeri göçer. */
+    .action:active {
+      transform: translateY(2px);
+    }
+    
+    /* İkincil düğme. */
+    .action.quiet {
+      background: transparent;
+      color: var(--ink);
+    }
+    
+    /* Telefonda hücreler dar: yazılar kırılmasın diye adları gizle ve hücreleri küçült. */
+    @media (max-width: 560px) {
+      .label {
+        display: none;
+      }
+      .object {
+        min-height: 60px;
+      }
+    }
+    
+    /* Hareket istemeyen kullanıcılar için animasyonları kapat. */
+    @media (prefers-reduced-motion: reduce) {
+      .emoji {
+        animation: none;
+      }
+      .page {
+        transition: none;
+      }
+      .object:enabled:hover {
+        transform: none;
+      }
+    }
