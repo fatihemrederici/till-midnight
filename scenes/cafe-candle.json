@@ -1,0 +1,223 @@
+{
+  "formatVersion": 1,
+  "id": "cafe-candle",
+  "title": "The Last Candle",
+  "intro": "Closing time at the cafe. Nothing can go wrong in ten seconds. Right?",
+  "durationSeconds": 10,
+  "maxTouches": 2,
+  "grid": { "columns": 6, "rows": 4 },
+  "objects": [
+    {
+      "id": "cat",
+      "label": "Cat",
+      "position": { "x": 0, "y": 3 },
+      "initialState": "asleep",
+      "states": {
+        "asleep": { "emoji": "😴" },
+        "purring": { "emoji": "😻" },
+        "prowling": { "emoji": "🐈" },
+        "fleeing": { "emoji": "🙀" },
+        "hiding": { "emoji": "😼" }
+      }
+    },
+    {
+      "id": "candle",
+      "label": "Candle",
+      "position": { "x": 2, "y": 2 },
+      "initialState": "lit",
+      "states": {
+        "lit": { "emoji": "🕯️" },
+        "fallen": { "emoji": "🔥" },
+        "out": { "emoji": "💨" }
+      }
+    },
+    {
+      "id": "curtain",
+      "label": "Curtain",
+      "position": { "x": 3, "y": 0 },
+      "initialState": "hanging",
+      "states": {
+        "hanging": { "emoji": "🪟" },
+        "smoking": { "emoji": "🌫️" },
+        "burning": { "emoji": "🔥" },
+        "torn_down": { "emoji": "🧺" }
+      }
+    },
+    {
+      "id": "machine",
+      "label": "Espresso machine",
+      "position": { "x": 5, "y": 1 },
+      "initialState": "idle",
+      "states": {
+        "idle": { "emoji": "☕" },
+        "heating": { "emoji": "♨️" },
+        "pressure": { "emoji": "⚠️" },
+        "venting": { "emoji": "💨" },
+        "safe": { "emoji": "☕" },
+        "exploded": { "emoji": "💥" }
+      }
+    },
+    {
+      "id": "pitcher",
+      "label": "Water pitcher",
+      "position": { "x": 4, "y": 3 },
+      "initialState": "full",
+      "states": {
+        "full": { "emoji": "🫗" },
+        "spilled": { "emoji": "💦" },
+        "empty": { "emoji": "🥛" }
+      }
+    }
+  ],
+  "touches": [
+    {
+      "id": "pet-cat",
+      "object": "cat",
+      "when": [{ "object": "cat", "state": "asleep" }],
+      "then": [{ "object": "cat", "state": "purring" }],
+      "caption": "A gentle scratch. The cat decides to stay put."
+    },
+    {
+      "id": "shoo-cat",
+      "object": "cat",
+      "when": [{ "object": "cat", "state": "prowling" }],
+      "then": [{ "object": "cat", "state": "fleeing" }],
+      "caption": "The cat bolts toward the counter."
+    },
+    {
+      "id": "blow-out-candle",
+      "object": "candle",
+      "when": [{ "object": "candle", "state": "lit" }],
+      "then": [{ "object": "candle", "state": "out" }],
+      "caption": "You blow out the candle."
+    },
+    {
+      "id": "stamp-out-candle",
+      "object": "candle",
+      "when": [{ "object": "candle", "state": "fallen" }],
+      "then": [{ "object": "candle", "state": "out" }],
+      "caption": "You stamp out the flame."
+    },
+    {
+      "id": "tear-down-curtain",
+      "object": "curtain",
+      "when": [{ "object": "curtain", "state": "smoking" }],
+      "then": [{ "object": "curtain", "state": "torn_down" }],
+      "caption": "You rip the smoking curtain off the rail."
+    },
+    {
+      "id": "open-valve",
+      "object": "machine",
+      "when": [{ "object": "machine", "state": "pressure" }],
+      "then": [{ "object": "machine", "state": "venting" }],
+      "caption": "You open the steam valve."
+    },
+    {
+      "id": "tip-pitcher",
+      "object": "pitcher",
+      "when": [{ "object": "pitcher", "state": "full" }],
+      "then": [{ "object": "pitcher", "state": "spilled" }],
+      "caption": "Water runs across the floor."
+    }
+  ],
+  "triggers": [
+    {
+      "id": "machine-heats",
+      "at": 1,
+      "then": [{ "object": "machine", "state": "heating" }],
+      "caption": "The espresso machine starts to hiss."
+    },
+    {
+      "id": "cat-wakes",
+      "at": 2,
+      "when": [{ "object": "cat", "state": "asleep" }],
+      "then": [{ "object": "cat", "state": "prowling" }],
+      "caption": "The cat wakes up and eyes the table."
+    },
+    {
+      "id": "machine-pressure",
+      "at": 3,
+      "then": [{ "object": "machine", "state": "pressure" }],
+      "caption": "The pressure gauge climbs into the red."
+    },
+    {
+      "id": "steam-blows-candle",
+      "after": { "object": "machine", "state": "venting", "delay": 1 },
+      "when": [{ "object": "candle", "state": "lit" }],
+      "then": [{ "object": "candle", "state": "out" }],
+      "caption": "A jet of steam blows the candle out."
+    },
+    {
+      "id": "machine-settles",
+      "after": { "object": "machine", "state": "venting", "delay": 1 },
+      "then": [{ "object": "machine", "state": "safe" }],
+      "caption": "The machine calms down."
+    },
+    {
+      "id": "cat-knocks-candle",
+      "after": { "object": "cat", "state": "prowling", "delay": 2 },
+      "when": [{ "object": "candle", "state": "lit" }],
+      "then": [
+        { "object": "candle", "state": "fallen" },
+        { "object": "cat", "state": "hiding" }
+      ],
+      "caption": "The cat swats the candle off the table."
+    },
+    {
+      "id": "cat-lands-on-machine",
+      "after": { "object": "cat", "state": "fleeing", "delay": 1 },
+      "when": [{ "object": "machine", "state": "pressure" }],
+      "then": [{ "object": "machine", "state": "exploded" }],
+      "caption": "The cat lands square on the pressure gauge."
+    },
+    {
+      "id": "water-douses-candle",
+      "after": { "object": "pitcher", "state": "spilled", "delay": 1 },
+      "when": [{ "object": "candle", "state": "fallen" }],
+      "then": [{ "object": "candle", "state": "out" }],
+      "caption": "The water reaches the flame and puts it out."
+    },
+    {
+      "id": "water-shorts-machine",
+      "after": { "object": "pitcher", "state": "spilled", "delay": 1 },
+      "when": [{ "object": "machine", "state": "pressure" }],
+      "then": [{ "object": "machine", "state": "exploded" }],
+      "caption": "The water reaches the machine's power cable."
+    },
+    {
+      "id": "pitcher-empties",
+      "after": { "object": "pitcher", "state": "spilled", "delay": 1 },
+      "then": [{ "object": "pitcher", "state": "empty" }]
+    },
+    {
+      "id": "flame-reaches-curtain",
+      "after": { "object": "candle", "state": "fallen", "delay": 2 },
+      "then": [{ "object": "curtain", "state": "smoking" }],
+      "caption": "The curtain hem starts to smoke."
+    },
+    {
+      "id": "curtain-ignites",
+      "after": { "object": "curtain", "state": "smoking", "delay": 3 },
+      "then": [{ "object": "curtain", "state": "burning" }],
+      "caption": "The curtain goes up in flames."
+    },
+    {
+      "id": "machine-blows",
+      "after": { "object": "machine", "state": "pressure", "delay": 5 },
+      "then": [{ "object": "machine", "state": "exploded" }],
+      "caption": "The boiler gives up."
+    }
+  ],
+  "disasters": [
+    {
+      "id": "explosion",
+      "when": [{ "object": "machine", "state": "exploded" }],
+      "caption": "The espresso machine explodes. Closing time is cancelled."
+    },
+    {
+      "id": "fire",
+      "when": [{ "object": "curtain", "state": "burning" }],
+      "caption": "The cafe is on fire."
+    }
+  ]
+}
