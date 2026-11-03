@@ -11,7 +11,11 @@ import com.tensec.api.scene.Scene;
 import java.util.ArrayList;
 // Liste arayüzü.
 import java.util.List;
+// Spring'in "bu sınıfı sen yönet" etiketi.
+import org.springframework.stereotype.Component;
 
+// @Component: Spring bu sınıftan bir nesne oluşturur ve Engine'i constructor'ına kendisi verir.
+@Component
 // Bir sahnedeki tüm dokunuş ihtimallerini deneyip çözümleri bulur. Buna brute force (kaba kuvvet) denir.
 public class Solver {
 
