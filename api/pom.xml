@@ -1,49 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Maven'ın ayar dosyası. Swift Package Manager'daki Package.swift gibi. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <!-- Bu dosyanın format sürümü. Hep 4.0.0. -->
   <modelVersion>4.0.0</modelVersion>
 
+  <!-- Spring Boot'un hazır ayarlarını ve kütüphane sürümlerini buradan miras alıyoruz. -->
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
+    <!-- Spring Boot sürümü. -->
     <version>4.1.2</version>
+    <!-- Parent'ı yerelde arama, internetten indir. -->
     <relativePath/>
   </parent>
 
+  <!-- Projenin kimliği: grup, ad, sürüm. -->
   <groupId>com.tensec</groupId>
   <artifactId>api</artifactId>
   <version>0.1.0-SNAPSHOT</version>
+  <!-- Terminalde görünen ad. -->
   <name>10sec API</name>
 
   <properties>
+    <!-- Kullanılan Java sürümü. -->
     <java.version>21</java.version>
   </properties>
 
+  <!-- Projenin kullandığı kütüphaneler. -->
   <dependencies>
+    <!-- Web sunucusu ve REST API desteği. Jackson da bununla gelir. -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-webmvc</artifactId>
     </dependency>
+    <!-- Test kütüphaneleri, JUnit dahil. -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-webmvc-test</artifactId>
+      <!-- Sadece testlerde kullanılır, canlı uygulamaya girmez. -->
       <scope>test</scope>
     </dependency>
   </dependencies>
 
+  <!-- Derleme ayarları. -->
   <build>
+    <!-- Uygulamaya paketlenecek dosya klasörleri. -->
     <resources>
+      <!-- Varsayılan ayar klasörü. -->
       <resource>
         <directory>src/main/resources</directory>
       </resource>
-      <!-- Scenes live at the repo root so the AI worker can read them as well. -->
+      <!-- Sahneler ana klasörde duruyor, çünkü AI worker da okuyacak. Buradan projeye kopyalanır. -->
       <resource>
         <directory>../scenes</directory>
         <targetPath>scenes</targetPath>
       </resource>
     </resources>
     <plugins>
+      <!-- ./mvnw spring-boot:run komutunu ve çalıştırılabilir jar üretimini sağlar. -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>

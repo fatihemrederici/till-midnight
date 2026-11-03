@@ -1,23 +1,24 @@
-# Java
+# Java derleme çıktıları
 target/
 *.class
 
-# Node
+# Node: indirilen paketler ve derleme çıktısı
 node_modules/
 dist/
 
-# Python
+# Python: önbellekler ve sanal ortam
 __pycache__/
 *.pyc
 .venv/
 .pytest_cache/
 
-# Secrets
+# Gizli anahtarlar GitHub'a asla gitmesin
 .env
 .env.*
+# Örnek dosya gidebilir, içinde gerçek anahtar yok
 !.env.example
 
-# Editors and OS
+# Editör ve işletim sistemi dosyaları
 .idea/
 .vscode/
 *.iml
