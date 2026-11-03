@@ -2,14 +2,18 @@ package com.tensec.api.engine;
 
 import com.tensec.api.scene.Scene;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
 /** Runs a scene second by second. Deterministic: the same input always gives the same result. */
 public class Engine {
 
-    public SimulationResult simulate(Scene scene) {
+    public SimulationResult simulate(Scene scene, List<Touch> touches) {
+        validate(scene, touches);
+
         Map<String, String> states = new HashMap<>();
         Map<String, Integer> enteredAt = new HashMap<>();
         List<TimelineEvent> events = new ArrayList<>();
@@ -18,6 +22,10 @@ public class Engine {
             states.put(object.id(), object.initialState());
             enteredAt.put(object.id(), 0);
         }
+
+        // Sorted so the order the player made the touches in cannot change the result.
+        List<Touch> sortedTouches = new ArrayList<>(touches);
+        sortedTouches.sort(Comparator.comparing(Touch::object));
 
         for (int second = 0; second <= scene.durationSeconds(); second++) {
             // Decide what is due before anything changes, so triggers waiting on the same state all fire.
@@ -34,6 +42,12 @@ public class Engine {
                 }
             }
 
+            for (Touch touch : sortedTouches) {
+                if (touch.second() == second) {
+                    applyTouch(scene, touch, states, enteredAt, events);
+                }
+            }
+
             for (Scene.Disaster disaster : scene.disasters()) {
                 if (conditionsHold(disaster.when(), states)) {
                     return new SimulationResult(false, second, disaster.id(), events);
@@ -42,6 +56,40 @@ public class Engine {
         }
 
         return new SimulationResult(true, scene.durationSeconds(), null, events);
+    }
+
+    private void validate(Scene scene, List<Touch> touches) {
+        if (touches.size() > scene.maxTouches()) {
+            throw new IllegalArgumentException("Too many touches: at most " + scene.maxTouches() + " allowed");
+        }
+        if (new HashSet<>(touches).size() != touches.size()) {
+            throw new IllegalArgumentException("Duplicate touch");
+        }
+        for (Touch touch : touches) {
+            if (touch.second() < 0 || touch.second() >= scene.durationSeconds()) {
+                throw new IllegalArgumentException("Touch second out of range: " + touch.second());
+            }
+            boolean objectExists = scene.objects().stream().anyMatch(o -> o.id().equals(touch.object()));
+            if (!objectExists) {
+                throw new IllegalArgumentException("Unknown object: " + touch.object());
+            }
+        }
+    }
+
+    private void applyTouch(
+            Scene scene,
+            Touch touch,
+            Map<String, String> states,
+            Map<String, Integer> enteredAt,
+            List<TimelineEvent> events) {
+        for (Scene.TouchRule rule : scene.touches()) {
+            if (rule.object().equals(touch.object()) && conditionsHold(rule.when(), states)) {
+                applyEffects(rule.then(), rule.id(), rule.caption(), touch.second(), states, enteredAt, events);
+                return;
+            }
+        }
+        String current = states.get(touch.object());
+        events.add(new TimelineEvent(touch.second(), touch.object(), current, current, null, null));
     }
 
     private boolean isDue(
