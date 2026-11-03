@@ -1,4 +1,4 @@
-package com.tensaniye.api.scene;
+package com.tensec.api.scene;
 
 import java.util.List;
 import java.util.Map;

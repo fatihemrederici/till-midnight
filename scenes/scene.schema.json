@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://10-saniye.local/scene.schema.json",
-  "title": "10 Saniye scene",
+  "$id": "https://10sec.local/scene.schema.json",
+  "title": "10sec scene",
   "type": "object",
   "additionalProperties": false,
   "required": ["formatVersion", "id", "title", "intro", "durationSeconds", "maxTouches", "grid", "objects", "touches", "triggers", "disasters"],

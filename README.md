@@ -1,4 +1,4 @@
-# 10 Saniye
+# 10sec
 
 A daily puzzle game. Every day there is a new scene, and in ten seconds something goes badly wrong.
 You get one new touch per loop. Time rewinds, your earlier touches replay, and you work out the chain

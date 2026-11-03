@@ -1,4 +1,4 @@
-package com.tensaniye.api;
+package com.tensec.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

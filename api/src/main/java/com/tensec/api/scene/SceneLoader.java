@@ -1,4 +1,4 @@
-package com.tensaniye.api.scene;
+package com.tensec.api.scene;
 
 import java.io.IOException;
 import java.io.InputStream;

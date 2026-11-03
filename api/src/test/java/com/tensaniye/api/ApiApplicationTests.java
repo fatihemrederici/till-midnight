@@ -1,4 +1,4 @@
-package com.tensaniye.api;
+package com.tensec.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
