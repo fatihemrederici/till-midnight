@@ -16,6 +16,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 // HTTP durum kodunu kontrol eder.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+// Sahne tipi.
+import com.tensec.api.scene.Scene;
 // Test etiketi.
 import org.junit.jupiter.api.Test;
 // Spring'in nesne verme etiketi.
@@ -40,20 +42,29 @@ class GameApiTest {
     @Autowired
     private MockMvc mockMvc;
 
+    // Spring, sahne kataloğunu da buraya verir.
+    @Autowired
+    private SceneCatalog catalog;
+
     // Bu metot bir test.
     @Test
     // Bugünün sahnesi nesneleri ve başlangıç emojilerini döndürmeli.
-    void returnsTodaysScene() throws Exception {
+        void returnsTodaysScene() throws Exception {
+        // Kataloğa göre bugünün sahnesi.
+        Scene today = catalog.today();
+        // Sahnenin ilk nesnesi.
+        Scene.SceneObject first = today.objects().get(0);
+
         // İsteği gönder.
         mockMvc.perform(get("/scene/today"))
                 // 200 OK gelmeli.
                 .andExpect(status().isOk())
                 // Sahne adı doğru olmalı.
-                .andExpect(jsonPath("$.id").value("cafe-candle"))
-                // 5 nesne gelmeli.
-                .andExpect(jsonPath("$.objects.length()").value(5))
-                // İkinci nesne başlangıçta yanan mum olmalı.
-                .andExpect(jsonPath("$.objects[1].emoji").value("🕯️"));
+                .andExpect(jsonPath("$.id").value(today.id()))
+                // Nesne sayısı doğru olmalı.
+                .andExpect(jsonPath("$.objects.length()").value(today.objects().size()))
+                // İlk nesnenin başlangıç emojisi doğru olmalı.
+                .andExpect(jsonPath("$.objects[0].emoji").value(first.states().get(first.initialState()).emoji()));
     }
 
     // Bu metot bir test.
@@ -67,7 +78,7 @@ class GameApiTest {
                 // Felaketler görünmemeli.
                 .andExpect(content().string(not(containsString("disasters"))))
                 // Dokunuş kuralları görünmemeli.
-                .andExpect(content().string(not(containsString("open-valve"))));
+                .andExpect(content().string(not(containsString("\"touches\""))));
     }
 
     // Bu metot bir test.

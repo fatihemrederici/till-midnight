@@ -1,0 +1,207 @@
+{
+      "formatVersion": 1,
+      "id": "dorm-kitchen",
+      "title": "Midnight Noodles",
+      "intro": "It is 2 a.m. in the dorm kitchen. Everyone upstairs has an exam tomorrow.",
+      "durationSeconds": 10,
+      "maxTouches": 3,
+      "grid": { "columns": 6, "rows": 4 },
+      "objects": [
+        {
+          "id": "pot",
+          "label": "Noodle pot",
+          "position": { "x": 2, "y": 2 },
+          "initialState": "simmering",
+          "states": {
+            "simmering": { "emoji": "🍜" },
+            "boiling": { "emoji": "♨️" },
+            "overflowing": { "emoji": "🌊" },
+            "covered": { "emoji": "🍲" }
+          }
+        },
+        {
+          "id": "stove",
+          "label": "Stove",
+          "position": { "x": 2, "y": 3 },
+          "initialState": "on",
+          "states": {
+            "on": { "emoji": "🔥" },
+            "off": { "emoji": "⬛" },
+            "sparking": { "emoji": "⚡" },
+            "flaming": { "emoji": "🧯" }
+          }
+        },
+        {
+          "id": "toaster",
+          "label": "Toaster",
+          "position": { "x": 4, "y": 2 },
+          "initialState": "stuck",
+          "states": {
+            "stuck": { "emoji": "🍞" },
+            "heating": { "emoji": "🥵" },
+            "smoking": { "emoji": "🌫️" },
+            "unplugged": { "emoji": "🔌" }
+          }
+        },
+        {
+          "id": "alarm",
+          "label": "Smoke alarm",
+          "position": { "x": 3, "y": 0 },
+          "initialState": "quiet",
+          "states": {
+            "quiet": { "emoji": "⚪" },
+            "ringing": { "emoji": "🚨" },
+            "disabled": { "emoji": "🔕" }
+          }
+        },
+        {
+          "id": "window",
+          "label": "Window",
+          "position": { "x": 5, "y": 1 },
+          "initialState": "closed",
+          "states": {
+            "closed": { "emoji": "🪟" },
+            "open": { "emoji": "🌬️" }
+          }
+        },
+        {
+          "id": "towel",
+          "label": "Paper towels",
+          "position": { "x": 0, "y": 2 },
+          "initialState": "on_counter",
+          "states": {
+            "on_counter": { "emoji": "🧻" },
+            "blown": { "emoji": "🍃" },
+            "burning": { "emoji": "🔥" }
+          }
+        }
+      ],
+      "touches": [
+        {
+          "id": "cover-pot",
+          "object": "pot",
+          "when": [{ "object": "pot", "state": "boiling" }],
+          "then": [{ "object": "pot", "state": "covered" }],
+          "caption": "You turn the heat down and rest a lid on the pot."
+        },
+        {
+          "id": "turn-off-stove",
+          "object": "stove",
+          "when": [{ "object": "stove", "state": "on" }],
+          "then": [{ "object": "stove", "state": "off" }],
+          "caption": "You turn the stove off."
+        },
+        {
+          "id": "unplug-toaster",
+          "object": "toaster",
+          "when": [{ "object": "toaster", "state": "heating" }],
+          "then": [{ "object": "toaster", "state": "unplugged" }],
+          "caption": "You pull the toaster's plug."
+        },
+        {
+          "id": "pull-alarm-battery",
+          "object": "alarm",
+          "when": [{ "object": "alarm", "state": "quiet" }],
+          "then": [{ "object": "alarm", "state": "disabled" }],
+          "caption": "You pull the battery out of the alarm. What could go wrong?"
+        },
+        {
+          "id": "open-window",
+          "object": "window",
+          "when": [{ "object": "window", "state": "closed" }],
+          "then": [{ "object": "window", "state": "open" }],
+          "caption": "Cold air rushes in."
+        }
+      ],
+      "triggers": [
+        {
+          "id": "toaster-heats",
+          "at": 1,
+          "when": [{ "object": "toaster", "state": "stuck" }],
+          "then": [{ "object": "toaster", "state": "heating" }],
+          "caption": "The toast is stuck and the toaster keeps going."
+        },
+        {
+          "id": "pot-boils",
+          "at": 2,
+          "when": [{ "object": "stove", "state": "on" }],
+          "then": [{ "object": "pot", "state": "boiling" }],
+          "caption": "The noodle water comes to a rolling boil."
+        },
+        {
+          "id": "pot-overflows",
+          "after": { "object": "pot", "state": "boiling", "delay": 3 },
+          "when": [{ "object": "stove", "state": "on" }],
+          "then": [{ "object": "pot", "state": "overflowing" }],
+          "caption": "Foam pours over the side of the pot."
+        },
+        {
+          "id": "toaster-smokes",
+          "after": { "object": "toaster", "state": "heating", "delay": 7 },
+          "then": [{ "object": "toaster", "state": "smoking" }],
+          "caption": "Black smoke curls out of the toaster."
+        },
+        {
+          "id": "stove-sparks",
+          "after": { "object": "pot", "state": "overflowing", "delay": 2 },
+          "when": [{ "object": "stove", "state": "on" }],
+          "then": [{ "object": "stove", "state": "sparking" }],
+          "caption": "Water reaches the igniter and the stove starts to spark."
+        },
+        {
+          "id": "towels-blow-over",
+          "after": { "object": "window", "state": "open", "delay": 1 },
+          "when": [{ "object": "stove", "state": "on" }],
+          "then": [{ "object": "towel", "state": "blown" }],
+          "caption": "The draft lifts the paper towels toward the stove."
+        },
+        {
+          "id": "towels-catch-fire",
+          "after": { "object": "towel", "state": "blown", "delay": 1 },
+          "when": [{ "object": "stove", "state": "on" }],
+          "then": [{ "object": "towel", "state": "burning" }],
+          "caption": "The paper towels land on the burner."
+        },
+        {
+          "id": "toast-sets-off-alarm",
+          "after": { "object": "toaster", "state": "smoking", "delay": 1 },
+          "when": [
+            { "object": "alarm", "state": "quiet" },
+            { "object": "window", "state": "closed" }
+          ],
+          "then": [{ "object": "alarm", "state": "ringing" }],
+          "caption": "The smoke reaches the ceiling."
+        },
+        {
+          "id": "sparks-set-off-alarm",
+          "after": { "object": "stove", "state": "sparking", "delay": 1 },
+          "when": [{ "object": "alarm", "state": "quiet" }],
+          "then": [{ "object": "alarm", "state": "ringing" }],
+          "caption": "The alarm smells something electrical."
+        },
+        {
+          "id": "stove-catches-fire",
+          "after": { "object": "stove", "state": "sparking", "delay": 1 },
+          "when": [{ "object": "alarm", "state": "disabled" }],
+          "then": [{ "object": "stove", "state": "flaming" }],
+          "caption": "With no alarm, nobody notices the stove catching fire."
+        }
+      ],
+      "disasters": [
+        {
+          "id": "evacuation",
+          "when": [{ "object": "alarm", "state": "ringing" }],
+          "caption": "The alarm wakes the whole dorm. Four floors of students are not happy."
+        },
+        {
+          "id": "towel-fire",
+          "when": [{ "object": "towel", "state": "burning" }],
+          "caption": "The paper towels set the kitchen on fire."
+        },
+        {
+          "id": "stove-fire",
+          "when": [{ "object": "stove", "state": "flaming" }],
+          "caption": "The stove is on fire and the alarm is in your pocket."
+        }
+      ]
+    }
