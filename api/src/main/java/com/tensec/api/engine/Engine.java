@@ -15,7 +15,12 @@ import java.util.HashSet;
 import java.util.List;
 // Anahtar-değer arayüzü.
 import java.util.Map;
+// Spring'in "bu sınıfı sen yönet" etiketi.
+import org.springframework.stereotype.Component;
 
+
+// @Component: Spring bu sınıftan bir nesne oluşturup ihtiyacı olana kendisi verir.
+@Component
 // Sahneyi saniye saniye çalıştıran motor.
 // Deterministik: rastgelelik yok, aynı girdi her zaman aynı sonucu verir.
 public class Engine {
