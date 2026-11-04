@@ -130,7 +130,14 @@ export function App() {
           </>
         )}
 
-        {phase === "vision" && <p className="hint strong">You see how it ends.</p>}
+        {phase === "vision" && (
+          <>
+            <p className="hint strong">You see how it ends.</p>
+            <button className="action quiet" onClick={game.skipVision}>
+              Skip
+            </button>
+          </>
+        )}
 
         {phase === "playing" && (
           <p className="hint strong">

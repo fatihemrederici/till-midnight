@@ -8,8 +8,12 @@ import type { Attempt, GameEvent, PublicScene, SceneStats, Touch } from "./types
 // Oyunun aşamaları: yükleniyor, hazır, kehanet, uyanış, oyun, kayıp, zafer, hata.
 export type Phase = "loading" | "ready" | "vision" | "awake" | "playing" | "lost" | "won" | "error";
 
-// Kehanette bir saniyenin süresi. Gerçeğin 1000 ms'sine göre çok hızlı.
-const VISION_TICK_MS = 450;
+// Kehanette olay olmayan bir saniyenin süresi: boş anlar hızlı geçer.
+const VISION_EMPTY_MS = 350;
+// Kehanette cümlesi olan bir saniyenin süresi: oyuncu okuyabilsin.
+const VISION_READ_MS = 2400;
+// Kehanette felaket saniyesinin süresi: en önemli an, biraz daha uzun kalır.
+const VISION_DISASTER_MS = 3000;
 // Kehanet ile gerçek arasındaki bekleme.
 const AWAKE_MS = 1500;
 // Etkisiz dokunuş uyarısının ekranda kalma süresi.
@@ -97,6 +101,14 @@ export function useGame() {
     setPhase("vision");
   }, []);
 
+  // Kehaneti atlar ve gerçeğe geçer.
+  const skipVision = useCallback(() => {
+    // Sayaç başa döner.
+    setSecond(0);
+    // Uyanışa geç.
+    setPhase("awake");
+  }, []);
+
   // Zamanı ilerleten kısım.
   useEffect(() => {
     // Kehanet aşaması.
@@ -108,11 +120,17 @@ export function useGame() {
           setSecond(0);
           // Uyanışa geç.
           setPhase("awake");
-        }, VISION_TICK_MS * 2);
+        }, VISION_READ_MS);
         return () => clearTimeout(timer);
       }
-      // Değilse hızlıca ilerle.
-      const timer = setTimeout(() => setSecond((current) => current + 1), VISION_TICK_MS);
+      // Bu saniyede felaket var mı?
+      const hasDisaster = scene.vision.disasters.some((disaster) => disaster.second === second);
+      // Bu saniyede okunacak bir cümle var mı?
+      const hasCaption = scene.vision.events.some((event) => event.second === second && event.caption);
+      // Saniyenin ekranda kalma süresini seç.
+      const delay = hasDisaster ? VISION_DISASTER_MS : hasCaption ? VISION_READ_MS : VISION_EMPTY_MS;
+      // Süre dolunca ilerle.
+      const timer = setTimeout(() => setSecond((current) => current + 1), delay);
       return () => clearTimeout(timer);
     }
 
@@ -243,6 +261,7 @@ export function useGame() {
     emojis,
     bubble,
     startVision,
+    skipVision,
     startRun,
     touchObject,
   };

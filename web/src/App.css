@@ -59,6 +59,12 @@ body {
   box-shadow: 6px 6px 0 var(--disaster);
 }
 
+/* Kehanette arka plan koyu, ikincil düğme açık renk olmalı. */
+.page[data-mood="vision"] .action.quiet {
+  color: var(--paper);
+  border-color: var(--paper);
+}
+
 /* Uyanışta sahne normale döner ama arka plan bir an beyazlar. */
 .page[data-mood="awake"] {
   background: var(--paper);
