@@ -9,4 +9,9 @@ import java.util.List;
 import java.util.UUID;
 
 // POST /runs isteği. Tarayıcı sonucu değil seçimleri gönderir; sonucu sunucu hesaplar.
-public record RunRequest(String storyId, UUID runId, UUID playerId, List<StoryEngine.Side> choices) {}
+public record RunRequest(
+        String storyId,
+        String storyVersion,
+        UUID runId,
+        UUID playerId,
+        List<StoryEngine.Side> choices) {}

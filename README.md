@@ -40,7 +40,7 @@ Both test suites play all 485 possible paths of the first chapter and must reach
 | Request | Purpose |
 | --- | --- |
 | `GET /story` | The story |
-| `POST /runs` | Saves a finished run: `{ storyId, runId, playerId, choices: ["LEFT", "RIGHT"] }`. Returns the ending and statistics |
-| `POST /internal/validate` | Checks a story file without loading it |
+| `POST /runs` | Saves a finished run: `{ storyId, storyVersion, runId, playerId, choices: ["LEFT", "RIGHT"] }`. Returns the ending and statistics |
+| `POST /internal/validate` | Checks a chapter before it joins the game: `{ rules, texts: { en: {...} } }` |
 
 Writing a new chapter: [docs/story-format.md](docs/story-format.md)

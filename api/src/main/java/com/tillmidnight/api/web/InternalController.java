@@ -1,8 +1,6 @@
 // Bu dosyanın ait olduğu paket.
 package com.tillmidnight.api.web;
 
-// Hikâye tipi.
-import com.tillmidnight.api.story.Story;
 // Hikâye kontrolü.
 import com.tillmidnight.api.story.StoryChecker;
 // Hikâye okuyucu.
@@ -32,20 +30,24 @@ public class InternalController {
         this.checker = checker;
     }
 
-    // Birleşik hikâye JSON'unu alır, kullanılabilir mi diye cevap verir.
+    // {"rules": {...}, "texts": {"en": {...}}} paketini alır, kullanılabilir mi diye cevap verir.
+    // Sadece paketteki diller zorunludur, böylece çeviriden önce taslak denetlenebilir.
     @PostMapping("/internal/validate")
     public ValidationResponse validate(@RequestBody String json) {
-        // Okunan hikâye.
-        Story story;
+        // Okunan paket.
+        StoryLoader.Pack pack;
         try {
             // Metni çevir.
-            story = StoryLoader.parse(json);
+            pack = StoryLoader.parsePack(json);
         } catch (JacksonException exception) {
             // Bozuk JSON ya da bilinmeyen alan.
             return new ValidationResponse(false, List.of("Invalid JSON: " + exception.getOriginalMessage()), null);
+        } catch (IllegalArgumentException exception) {
+            // Eksik paket ya da kullanılmayan metin.
+            return new ValidationResponse(false, List.of(exception.getMessage()), null);
         }
         // Hikâyeyi kontrol et.
-        StoryChecker.Report report = checker.check(story);
+        StoryChecker.Report report = checker.check(pack.story(), pack.languages());
         // Raporu döndür.
         return new ValidationResponse(report.errors().isEmpty(), report.errors(), report.analysis());
     }

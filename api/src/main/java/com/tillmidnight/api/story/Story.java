@@ -13,6 +13,8 @@ public record Story(
         int formatVersion,
         // Hikâyenin adı, örneğin "first-day".
         String id,
+        // Kuralların parmak izi. Dosyalarda yazmaz, yükleyici hesaplar. Sadece çeviri değişirse aynı kalır.
+        String version,
         // Başlık, üç dilde.
         Map<String, String> title,
         // Başlangıçtaki kehanet cümleleri.

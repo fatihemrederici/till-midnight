@@ -62,6 +62,10 @@ public class GameController {
         if (story == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Story not found");
         }
+        // Oyuncu eski sürümü oynadıysa seçimleri yeni kurallarla oynatmak yanlış sonuç verir.
+        if (!story.version().equals(request.storyVersion())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Story has changed");
+        }
         // Kimlikler ve seçimler zorunlu.
         if (request.runId() == null || request.playerId() == null || request.choices() == null) {
             throw new IllegalArgumentException("runId, playerId and choices are required");
@@ -71,7 +75,13 @@ public class GameController {
         StoryEngine.Result result = engine.play(story, request.choices());
         // Koşuyu kaydet.
         runs.save(new SavedRun(
-                request.runId(), request.playerId(), story.id(), result.endingId(), result.won(), result.cardsPlayed()));
+                request.runId(),
+                request.playerId(),
+                story.id(),
+                story.version(),
+                result.endingId(),
+                result.won(),
+                result.cardsPlayed()));
         // Sonucu ve istatistikleri döndür.
         return new RunResponse(result.endingId(), result.won(), runs.stats(story.id(), result.endingId()));
     }

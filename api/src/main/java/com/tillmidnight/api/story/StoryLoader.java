@@ -7,6 +7,12 @@ import java.io.IOException;
 import java.io.InputStream;
 // IOException'ı metot imzasına yazmak zorunda kalmamak için kullandığımız hata tipi.
 import java.io.UncheckedIOException;
+// Özet hesaplama.
+import java.security.MessageDigest;
+// Özet algoritması bulunamazsa çıkan hata.
+import java.security.NoSuchAlgorithmException;
+// Baytları onaltılık metne çevirir.
+import java.util.HexFormat;
 // Sırasını koruyan anahtar-değer.
 import java.util.LinkedHashMap;
 // Liste arayüzü.
@@ -19,6 +25,8 @@ import tools.jackson.databind.DeserializationFeature;
 import tools.jackson.databind.JsonNode;
 // Jackson'ın JSON çeviricisi. Swift'teki JSONDecoder gibi.
 import tools.jackson.databind.json.JsonMapper;
+// JSON nesnesi.
+import tools.jackson.databind.node.ObjectNode;
 
 // Bölüm klasörlerini okuyup Story nesnesine çeviren sınıf.
 // Klasör düzeni için docs/story-format.md dosyasına bak.
@@ -51,14 +59,56 @@ public final class StoryLoader {
         for (String language : StoryValidator.LANGUAGES) {
             texts.put(language, readTree(folder + language + ".json"));
         }
-        // Kurallarla birleştir ve nesneye çevir.
-        return MAPPER.treeToValue(StoryMerger.merge(readTree(folder + "story.json"), texts), Story.class);
+        // Kuralları oku.
+        JsonNode rules = readTree(folder + "story.json");
+        // Kimlik klasörün adıyla aynı olmalı, yoksa kayıtlar yanlış bölüme yazılır.
+        if (!id.equals(rules.path("id").asString())) {
+            throw new IllegalArgumentException("Chapter folder " + id + " has a different id in story.json");
+        }
+        // Birleştir.
+        return build(rules, texts);
     }
 
-    // Birleşik hikâye JSON'unu Story nesnesine çevirir.
-    public static Story parse(String json) {
-        // Metni çevir.
-        return MAPPER.readValue(json, Story.class);
+    // Python'dan gelen {"rules": {...}, "texts": {"en": {...}}} paketini okur.
+    public static Pack parsePack(String json) {
+        // Paketi oku.
+        JsonNode pack = MAPPER.readTree(json);
+        // Dil -> metin ağacı.
+        Map<String, JsonNode> texts = new LinkedHashMap<>();
+        // Paketteki dilleri dön.
+        pack.path("texts").properties().forEach(entry -> texts.put(entry.getKey(), entry.getValue()));
+        // En az bir dil olmalı.
+        if (!pack.path("rules").isObject() || texts.isEmpty()) {
+            throw new IllegalArgumentException("Pack needs rules and at least one language in texts");
+        }
+        // Hikâyeyi ve dilleri döndür.
+        return new Pack(build(pack.get("rules"), texts), List.copyOf(texts.keySet()));
+    }
+
+    // Okunan paket: Hikâye ve içindeki diller.
+    public record Pack(Story story, List<String> languages) {}
+
+    // Kuralları ve dilleri birleştirip Story nesnesine çevirir.
+    private static Story build(JsonNode rules, Map<String, JsonNode> texts) {
+        // Birleştir.
+        ObjectNode merged = StoryMerger.merge(rules, texts);
+        // Sürümü ekle.
+        merged.put("version", versionOf(rules));
+        // Nesneye çevir.
+        return MAPPER.treeToValue(merged, Story.class);
+    }
+
+    // Kuralların SHA-256 özetinin ilk 12 karakteri. Elle yazılan sürüm numarası unutulurdu, bu unutulmaz.
+    private static String versionOf(JsonNode rules) {
+        try {
+            // Özeti hesapla.
+            byte[] digest = MessageDigest.getInstance("SHA-256").digest(MAPPER.writeValueAsBytes(rules));
+            // Onaltılık metne çevirip kısalt.
+            return HexFormat.of().formatHex(digest).substring(0, 12);
+        } catch (NoSuchAlgorithmException exception) {
+            // SHA-256 her Java'da vardır, buraya gelinmez.
+            throw new IllegalStateException(exception);
+        }
     }
 
     // Projeye paketlenmiş bir JSON dosyasını okur.

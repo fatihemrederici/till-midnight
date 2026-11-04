@@ -52,6 +52,8 @@ export type Ending = {
 export type Story = {
   formatVersion: number;
   id: string;
+  // Kuralların parmak izi. Sunucu, koşunun hangi kurallarla oynandığını bundan anlar.
+  version: string;
   title: Text;
   vision: Text[];
   wake: Text;

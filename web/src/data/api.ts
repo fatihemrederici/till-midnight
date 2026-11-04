@@ -40,14 +40,15 @@ export async function fetchStory(): Promise<Story> {
 }
 
 // Biten koşuyu gönderir. Sunucu seçimleri baştan oynatıp sonucu kendisi hesaplar.
-export async function submitRun(storyId: string, choices: Side[]): Promise<RunStats> {
+export async function submitRun(story: Story, choices: Side[]): Promise<RunStats> {
   // POST isteği gönder.
   const response = await fetch("/runs", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     // Java tarafı yönleri büyük harfle bekliyor. Yeni runId aynı oyunun iki kez sayılmasını önler.
     body: JSON.stringify({
-      storyId,
+      storyId: story.id,
+      storyVersion: story.version,
       runId: newId(),
       playerId: playerId(),
       choices: choices.map((side) => side.toUpperCase()),

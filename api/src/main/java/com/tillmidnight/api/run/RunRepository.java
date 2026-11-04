@@ -23,13 +23,14 @@ public class RunRepository {
     public void save(SavedRun run) {
         // :isim parametredir; değerleri SQL'e elle eklemek SQL injection açığı yaratırdı.
         jdbc.sql("""
-                INSERT INTO runs (run_id, player_id, story_id, ending_id, won, cards_played)
-                VALUES (:runId, :playerId, :storyId, :endingId, :won, :cardsPlayed)
+                INSERT INTO runs (run_id, player_id, story_id, story_version, ending_id, won, cards_played)
+                VALUES (:runId, :playerId, :storyId, :storyVersion, :endingId, :won, :cardsPlayed)
                 ON CONFLICT (run_id) DO NOTHING
                 """)
                 .param("runId", run.runId())
                 .param("playerId", run.playerId())
                 .param("storyId", run.storyId())
+                .param("storyVersion", run.storyVersion())
                 .param("endingId", run.endingId())
                 .param("won", run.won())
                 .param("cardsPlayed", run.cardsPlayed())

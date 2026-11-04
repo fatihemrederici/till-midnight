@@ -2,6 +2,8 @@
 package com.tillmidnight.api.web;
 
 // Sahte GET isteği oluşturur.
+// İki değer eşit değilse testi kaldırır.
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 // Sahte POST isteği oluşturur.
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -10,6 +12,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 // HTTP durum kodunu kontrol eder.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+// Hikâye okuyucu.
+import com.tillmidnight.api.story.StoryLoader;
 // Benzersiz kimlik tipi.
 import java.util.UUID;
 // Her testten önce çalışan metodu işaretler.
@@ -137,11 +141,43 @@ class GameApiTest {
                 .andExpect(status().isNotFound());
     }
 
-    // Yardımcı metot: POST /runs isteği gönderir.
+    // Bu metot bir test.
+    @Test
+    // Eski sürümle oynanan koşu yeni kurallarla oynatılmamalı.
+    void rejectsARunFromAnOldVersion() throws Exception {
+        // Yanlış sürümle gönder.
+        send(UUID.randomUUID(), UUID.randomUUID(), STAIRS, "old-version").andExpect(status().isConflict());
+        // Kayıt oluşmamalı.
+        assertEquals(0, jdbc.sql("SELECT COUNT(*) FROM runs").query(Integer.class).single());
+    }
+
+    // Bu metot bir test.
+    @Test
+    // Koşu, oynandığı sürümle kaydedilmeli.
+    void savesTheStoryVersion() throws Exception {
+        // Koşuyu gönder.
+        run(UUID.randomUUID(), UUID.randomUUID(), STAIRS).andExpect(status().isOk());
+        // Sürüm yazılmış olmalı.
+        assertEquals(version(), jdbc.sql("SELECT story_version FROM runs").query(String.class).single());
+    }
+
+    // Yardımcı metot: Hikâyenin güncel sürümüyle POST /runs gönderir.
     private ResultActions run(UUID runId, UUID player, String choices) throws Exception {
+        // Güncel sürümü kullan.
+        return send(runId, player, choices, version());
+    }
+
+    // Yardımcı metot: Hikâyenin güncel sürümü.
+    private String version() {
+        // Klasörden okuyup hesapla.
+        return StoryLoader.loadChapter("first-day").version();
+    }
+
+    // Yardımcı metot: POST /runs isteği gönderir.
+    private ResultActions send(UUID runId, UUID player, String choices, String version) throws Exception {
         // Gövdesi JSON olan isteği gönder.
         return mockMvc.perform(post("/runs").contentType(MediaType.APPLICATION_JSON).content("""
-                {"storyId": "first-day", "runId": "%s", "playerId": "%s", "choices": [%s]}
-                """.formatted(runId, player, choices)));
+                {"storyId": "first-day", "storyVersion": "%s", "runId": "%s", "playerId": "%s", "choices": [%s]}
+                """.formatted(version, runId, player, choices)));
     }
 }

@@ -88,7 +88,7 @@ export function App() {
       // Bulunan sonlara ekle.
       addFound(next.endingId);
       // Sunucuya bildir. Hata olursa oyun yine sürer, sadece istatistik gelmez.
-      submitRun(story.id, next.choices)
+      submitRun(story, next.choices)
         .then(setStats)
         .catch(() => setStats(null));
       // Geri sarmanın başlayacağı saat.

@@ -24,6 +24,16 @@ public class StoryValidator {
     // İzin verilen en fazla kart. Analiz süresini sınırlar.
     private static final int MAX_CARDS = 30;
 
+    // Sadece verilen dilleri zorunlu sayar. Çeviri yapılmadan önce taslak kontrol etmeye yarar.
+    public List<String> validate(Story story, List<String> languages) {
+        // Tüm hatalardan, istenmeyen dillerin eksik uyarılarını çıkar.
+        return validate(story).stream()
+                .filter(error -> LANGUAGES.stream()
+                        .filter(language -> !languages.contains(language))
+                        .noneMatch(language -> error.endsWith(": missing language " + language)))
+                .toList();
+    }
+
     // Hataların listesini döndürür. Liste boşsa hikâye geçerlidir.
     public List<String> validate(Story story) {
         // Bulunan hatalar.

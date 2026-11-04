@@ -29,10 +29,16 @@ public class StoryChecker {
         this.analyzer = analyzer;
     }
 
-    // Hikâyeyi kontrol eder.
+    // Hikâyeyi tüm dillerle kontrol eder.
     public Report check(Story story) {
+        // Oyuna girecek hikâyede her dil zorunlu.
+        return check(story, StoryValidator.LANGUAGES);
+    }
+
+    // Hikâyeyi sadece verilen dillerle kontrol eder.
+    public Report check(Story story, List<String> languages) {
         // Yapı hatalarını bul.
-        List<String> errors = new ArrayList<>(validator.validate(story));
+        List<String> errors = new ArrayList<>(validator.validate(story, languages));
         // Yapı bozuksa yolları denemek güvenli değil.
         if (!errors.isEmpty()) {
             return new Report(errors, null);

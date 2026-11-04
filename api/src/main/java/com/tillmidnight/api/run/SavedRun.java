@@ -6,4 +6,10 @@ import java.util.UUID;
 
 // Kaydedilecek koşu.
 public record SavedRun(
-        UUID runId, UUID playerId, String storyId, String endingId, boolean won, int cardsPlayed) {}
+        UUID runId,
+        UUID playerId,
+        String storyId,
+        String storyVersion,
+        String endingId,
+        boolean won,
+        int cardsPlayed) {}
