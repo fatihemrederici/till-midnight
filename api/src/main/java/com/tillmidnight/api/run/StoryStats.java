@@ -1,5 +1,5 @@
 // Bu dosyanın ait olduğu paket.
-package com.tensec.api.run;
+package com.tillmidnight.api.run;
 
 // Bir hikâyenin ve bir sonun istatistikleri.
 public record StoryStats(

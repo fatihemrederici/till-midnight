@@ -1,16 +1,16 @@
 // Bu dosyanın ait olduğu paket.
-package com.tensec.api.web;
+package com.tillmidnight.api.web;
 
 // Hikâye tipi.
-import com.tensec.api.story.Story;
+import com.tillmidnight.api.story.Story;
 // Analiz raporu.
-import com.tensec.api.story.StoryAnalysis;
+import com.tillmidnight.api.story.StoryAnalysis;
 // Analiz eden sınıf.
-import com.tensec.api.story.StoryAnalyzer;
+import com.tillmidnight.api.story.StoryAnalyzer;
 // Hikâye okuyucu.
-import com.tensec.api.story.StoryLoader;
+import com.tillmidnight.api.story.StoryLoader;
 // Doğrulayıcı.
-import com.tensec.api.story.StoryValidator;
+import com.tillmidnight.api.story.StoryValidator;
 // Değiştirilebilir liste.
 import java.util.ArrayList;
 // Liste arayüzü.

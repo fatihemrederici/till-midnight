@@ -1,6 +1,6 @@
 # web
 
-React + TypeScript client for Until Midnight. The game server must be running on port 8080.
+React + TypeScript client for Till Midnight. The game server must be running on port 8080.
 
 ```sh
 npm install

@@ -1,5 +1,5 @@
 // Bu dosyanın ait olduğu paket.
-package com.tensec.api.story;
+package com.tillmidnight.api.story;
 
 // Liste tipi.
 import java.util.List;

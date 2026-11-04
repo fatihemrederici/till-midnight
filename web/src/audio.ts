@@ -2,7 +2,7 @@
 // Web Audio: ses kaynaklarını (osilatör, gürültü) filtre ve ses seviyesine bağlıyoruz.
 
 // Ses tercihinin saklandığı anahtar.
-const MUTE_KEY = "until-midnight.muted";
+const MUTE_KEY = "till-midnight.muted";
 
 // Ses motoru. Tarayıcı ilk dokunuştan önce başlatmaya izin vermez, bu yüzden boş başlıyor.
 let context: AudioContext | null = null;

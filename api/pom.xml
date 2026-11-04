@@ -17,11 +17,11 @@
   </parent>
 
   <!-- Projenin kimliği: grup, ad, sürüm. -->
-  <groupId>com.tensec</groupId>
+  <groupId>com.tillmidnight</groupId>
   <artifactId>api</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <!-- Terminalde görünen ad. -->
-  <name>10sec API</name>
+  <name>Till Midnight API</name>
 
   <properties>
     <!-- Kullanılan Java sürümü. -->

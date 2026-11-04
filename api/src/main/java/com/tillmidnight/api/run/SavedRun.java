@@ -1,5 +1,5 @@
 // Bu dosyanın ait olduğu paket.
-package com.tensec.api.run;
+package com.tillmidnight.api.run;
 
 // Benzersiz kimlik tipi.
 import java.util.UUID;

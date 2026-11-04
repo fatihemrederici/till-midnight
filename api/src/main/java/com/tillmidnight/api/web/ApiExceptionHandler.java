@@ -1,5 +1,5 @@
 // Bu dosyanın ait olduğu paket.
-package com.tensec.api.web;
+package com.tillmidnight.api.web;
 
 // Anahtar-değer tipi.
 import java.util.Map;

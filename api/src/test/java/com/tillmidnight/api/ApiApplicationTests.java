@@ -1,5 +1,5 @@
 // Bu dosyanın ait olduğu paket.
-package com.tensec.api;
+package com.tillmidnight.api;
 
 // Test etiketini içeri alıyoruz.
 import org.junit.jupiter.api.Test;

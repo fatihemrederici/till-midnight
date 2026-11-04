@@ -15,7 +15,7 @@ import type { GameState, Language, RunStats, Side, Story } from "./types";
 type Screen = "loading" | "error" | "title" | "vision" | "play" | "end" | "rewind" | "deaths";
 
 // Bulunan sonların saklandığı anahtar.
-const FOUND_KEY = "until-midnight.found";
+const FOUND_KEY = "till-midnight.found";
 
 // Saklı sonları okur.
 function readFound(): string[] {

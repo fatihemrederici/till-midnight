@@ -1,4 +1,4 @@
-# Until Midnight
+# Till Midnight
 
 You should have died this morning. A vision showed you the bus falling off the bridge, and you stepped back. Now you have to reach midnight, one swiped card at a time, while death comes back through your own small choices. Skip lunch at noon and you can faint on the stairs at night.
 

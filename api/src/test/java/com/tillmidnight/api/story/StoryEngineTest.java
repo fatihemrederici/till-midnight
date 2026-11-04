@@ -1,5 +1,5 @@
 // Bu dosyanın ait olduğu paket.
-package com.tensec.api.story;
+package com.tillmidnight.api.story;
 
 // İki değer eşit değilse testi kaldırır.
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 // Kaydırma yönü.
-import com.tensec.api.story.StoryEngine.Side;
+import com.tillmidnight.api.story.StoryEngine.Side;
 // Dosya okuma hatası.
 import java.io.IOException;
 // Dosya okuma.

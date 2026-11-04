@@ -1,5 +1,5 @@
 // Bu dosyanın ait olduğu paket.
-package com.tensec.api.story;
+package com.tillmidnight.api.story;
 
 // Değiştirilebilir liste.
 import java.util.ArrayList;

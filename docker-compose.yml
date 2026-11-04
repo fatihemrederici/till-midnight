@@ -8,11 +8,11 @@ services:
     restart: unless-stopped
     environment:
       # Oluşturulacak veritabanı.
-      POSTGRES_DB: tensec
+      POSTGRES_DB: tillmidnight
       # Kullanıcı adı.
-      POSTGRES_USER: tensec
+      POSTGRES_USER: tillmidnight
       # Şifre. Sadece kendi bilgisayarımız için, yayında farklı olacak.
-      POSTGRES_PASSWORD: tensec
+      POSTGRES_PASSWORD: tillmidnight
     ports:
       # Bilgisayarın 5433 portu, konteynerin 5432 portuna bağlanır.
       - "5433:5432"

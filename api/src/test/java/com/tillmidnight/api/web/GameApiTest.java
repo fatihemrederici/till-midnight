@@ -1,5 +1,5 @@
 // Bu dosyanın ait olduğu paket.
-package com.tensec.api.web;
+package com.tillmidnight.api.web;
 
 // Sahte GET isteği oluşturur.
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -65,7 +65,7 @@ class GameApiTest {
                 // 200 OK.
                 .andExpect(status().isOk())
                 // İngilizce başlık.
-                .andExpect(jsonPath("$.title.en").value("Until Midnight"))
+                .andExpect(jsonPath("$.title.en").value("Till Midnight"))
                 // Türkçe başlık.
                 .andExpect(jsonPath("$.title.tr").value("Gece Yarısına Kadar"))
                 // Lehçe başlık.

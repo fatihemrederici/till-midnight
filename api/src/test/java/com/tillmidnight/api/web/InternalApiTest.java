@@ -1,5 +1,5 @@
 // Bu dosyanın ait olduğu paket.
-package com.tensec.api.web;
+package com.tillmidnight.api.web;
 
 // Listede bu eleman olmalı.
 import static org.hamcrest.Matchers.hasItem;

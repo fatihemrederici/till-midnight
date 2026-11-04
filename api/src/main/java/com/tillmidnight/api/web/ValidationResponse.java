@@ -1,8 +1,8 @@
 // Bu dosyanın ait olduğu paket.
-package com.tensec.api.web;
+package com.tillmidnight.api.web;
 
 // Analiz raporu.
-import com.tensec.api.story.StoryAnalysis;
+import com.tillmidnight.api.story.StoryAnalysis;
 // Liste tipi.
 import java.util.List;
 

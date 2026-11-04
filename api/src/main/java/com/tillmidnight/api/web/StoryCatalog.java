@@ -1,10 +1,10 @@
 // Bu dosyanın ait olduğu paket.
-package com.tensec.api.web;
+package com.tillmidnight.api.web;
 
 // Hikâye tipi.
-import com.tensec.api.story.Story;
+import com.tillmidnight.api.story.Story;
 // Hikâye okuyucu.
-import com.tensec.api.story.StoryLoader;
+import com.tillmidnight.api.story.StoryLoader;
 // Spring'in "bu sınıfı sen yönet" etiketi.
 import org.springframework.stereotype.Component;
 

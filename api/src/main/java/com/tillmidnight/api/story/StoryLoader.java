@@ -1,5 +1,5 @@
 // Bu dosyanın ait olduğu paket.
-package com.tensec.api.story;
+package com.tillmidnight.api.story;
 
 // Dosya okurken çıkabilecek hata tipi.
 import java.io.IOException;

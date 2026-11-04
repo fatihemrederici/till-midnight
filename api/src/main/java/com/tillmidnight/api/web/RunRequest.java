@@ -1,8 +1,8 @@
 // Bu dosyanın ait olduğu paket.
-package com.tensec.api.web;
+package com.tillmidnight.api.web;
 
 // Kaydırma yönü.
-import com.tensec.api.story.StoryEngine;
+import com.tillmidnight.api.story.StoryEngine;
 // Liste tipi.
 import java.util.List;
 // Benzersiz kimlik tipi.

@@ -9,7 +9,7 @@ export const LANGUAGES: { id: Language; label: string }[] = [
 ];
 
 // Dilin tarayıcıda saklandığı anahtar.
-const STORE_KEY = "until-midnight.language";
+const STORE_KEY = "till-midnight.language";
 
 // Açılışta kullanılacak dil: Önce seçilmiş dil, sonra telefonun dili, yoksa İngilizce.
 export function initialLanguage(): Language {

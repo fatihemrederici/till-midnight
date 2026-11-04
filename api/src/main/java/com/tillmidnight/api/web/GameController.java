@@ -1,14 +1,14 @@
 // Bu dosyanın ait olduğu paket.
-package com.tensec.api.web;
+package com.tillmidnight.api.web;
 
 // Koşu deposu.
-import com.tensec.api.run.RunRepository;
+import com.tillmidnight.api.run.RunRepository;
 // Kaydedilecek koşu.
-import com.tensec.api.run.SavedRun;
+import com.tillmidnight.api.run.SavedRun;
 // Hikâye tipi.
-import com.tensec.api.story.Story;
+import com.tillmidnight.api.story.Story;
 // Motor.
-import com.tensec.api.story.StoryEngine;
+import com.tillmidnight.api.story.StoryEngine;
 // HTTP durum kodları.
 import org.springframework.http.HttpStatus;
 // GET adresi tanımlama etiketi.

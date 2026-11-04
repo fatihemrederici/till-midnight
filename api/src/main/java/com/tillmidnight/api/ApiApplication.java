@@ -1,5 +1,5 @@
-// Bu dosyanın ait olduğu paket. Klasör yolu (com/tensec/api) ile aynı olmak zorunda.
-package com.tensec.api;
+// Bu dosyanın ait olduğu paket. Klasör yolu (com/tillmidnight/api) ile aynı olmak zorunda.
+package com.tillmidnight.api;
 
 // Uygulamayı başlatan Spring sınıfını içeri alıyoruz.
 import org.springframework.boot.SpringApplication;

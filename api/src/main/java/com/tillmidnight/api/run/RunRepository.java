@@ -1,5 +1,5 @@
 // Bu dosyanın ait olduğu paket.
-package com.tensec.api.run;
+package com.tillmidnight.api.run;
 
 // Spring'in SQL çalıştırma aracı.
 import org.springframework.jdbc.core.simple.JdbcClient;

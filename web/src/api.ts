@@ -2,7 +2,7 @@
 import type { RunStats, Side, Story } from "./types";
 
 // Oyuncunun kimliğini tarayıcıda saklarken kullanılan anahtar.
-const PLAYER_KEY = "until-midnight.playerId";
+const PLAYER_KEY = "till-midnight.playerId";
 
 // Rastgele kimlik üretir. Telefondan http ile açınca crypto.randomUUID olmayabilir, bu yüzden yedeği var.
 export function newId(): string {
