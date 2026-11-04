@@ -1,8 +1,8 @@
 # 10sec
 
 A daily puzzle game. Every day there is a new scene, and in ten seconds something goes badly wrong.
-You get one new touch per loop. Time rewinds, your earlier touches replay, and you work out the chain
-of events until the disaster never happens.
+First you get a vision of everything going wrong. Then it starts for real, and you have ten seconds and a few
+touches to stop it. Time rewinds until you make it.
 
 **Status:** in progress. The game is playable in the browser and saves attempts to PostgreSQL.
 

@@ -38,6 +38,8 @@ import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 // İstek gövdesinin JSON olduğunu belirtmek için.
 import org.springframework.http.MediaType;
+// SQL çalıştırma aracı.
+import org.springframework.jdbc.core.simple.JdbcClient;
 // Gerçek sunucu açmadan HTTP isteği denemeye yarar.
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -59,6 +61,10 @@ class GameApiTest {
     // Spring, deneme deposunu da buraya verir.
     @Autowired
     private AttemptRepository attempts;
+
+    // Kayıtları doğrudan okumak için.
+    @Autowired
+    private JdbcClient jdbc;
 
     // Bu metot bir test.
     @Test
@@ -89,8 +95,8 @@ class GameApiTest {
         mockMvc.perform(get("/scene/today"))
                 // Tetikleyiciler görünmemeli.
                 .andExpect(content().string(not(containsString("triggers"))))
-                // Felaketler görünmemeli.
-                .andExpect(content().string(not(containsString("disasters"))))
+                // Koşullar görünmemeli. Kehanet felaketi gösterir, nasıl önleneceğini göstermez.
+                .andExpect(content().string(not(containsString("\"when\""))))
                 // Dokunuş kuralları görünmemeli.
                 .andExpect(content().string(not(containsString("\"touches\""))));
     }
@@ -155,6 +161,40 @@ class GameApiTest {
                 """)
                 // 404 gelmeli.
                 .andExpect(status().isNotFound());
+    }
+
+    // Bu metot bir test.
+    @Test
+    // Sahne kehaneti de getirmeli. Felaket görünür ama çözüm görünmez.
+    void returnsAVision() throws Exception {
+        // İsteği gönder.
+        mockMvc.perform(get("/scene/today"))
+                // Olaylar gelmeli.
+                .andExpect(jsonPath("$.vision.events").isArray())
+                // En az bir felaket gelmeli.
+                .andExpect(jsonPath("$.vision.disasters[0].caption").isString());
+    }
+
+    // Bu metot bir test.
+    @Test
+    // Etkisiz dokunuş kayıtta dokunuş sayılmamalı.
+    void doesNotCountAWastedTouch() throws Exception {
+        // Oyuncu.
+        UUID player = UUID.randomUUID();
+
+        // 1. saniyede makineye dokunmanın etkisi yok. Sonra 3. saniyede vana açılır.
+        attempt("""
+                {"sceneId": "cafe-candle",
+                 "touches": [{"object": "machine", "second": 1}, {"object": "machine", "second": 3}],
+                 "playerId": "%s", "attemptId": "%s"}
+                """.formatted(player, UUID.randomUUID()))
+                .andExpect(jsonPath("$.won").value(true));
+
+        // Kayıtlı dokunuş sayısı 1 olmalı.
+        assertEquals(1, jdbc.sql("SELECT touch_count FROM attempts WHERE player_id = :player")
+                .param("player", player)
+                .query(Integer.class)
+                .single());
     }
 
     // Bu metot bir test.

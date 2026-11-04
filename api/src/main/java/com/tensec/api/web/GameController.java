@@ -59,8 +59,10 @@ public class GameController {
     // GET /scene/today adresine gelen istekler bu metoda düşer.
     @GetMapping("/scene/today")
     public PublicScene today() {
-        // Sahnenin sadece güvenli kısmını döndür.
-        return PublicScene.from(catalog.today());
+        // Bugünün sahnesi.
+        Scene scene = catalog.today();
+        // Sahnenin sadece güvenli kısmını ve kehaneti döndür.
+        return PublicScene.from(scene, engine.foresee(scene));
     }
 
     // POST /attempt adresine gelen istekler bu metoda düşer.
@@ -80,13 +82,15 @@ public class GameController {
 
         // Kimlikler geldiyse denemeyi kaydet.
         if (request.playerId() != null && request.attemptId() != null) {
+            // Etkisiz dokunuşlar hak yemez, bu yüzden sayılmaz. Motor onları ruleId'siz kaydeder.
+            long wasted = result.events().stream().filter(event -> event.ruleId() == null).count();
             // Sonucu tarayıcının söylediğinden değil, motordan alıyoruz.
             attempts.save(
                     request.attemptId(),
                     request.playerId(),
                     scene.id(),
                     LocalDate.now(ZoneOffset.UTC),
-                    request.touches().size(),
+                    request.touches().size() - (int) wasted,
                     result);
         }
 

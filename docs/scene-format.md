@@ -43,7 +43,7 @@ The second form is what makes chains: interrupt a state and everything hanging o
 { "sceneId": "cafe-candle", "touches": [{ "object": "machine", "second": 4 }, { "object": "curtain", "second": 7 }] }
 ```
 
-- The player adds one touch per loop. Earlier touches replay automatically, and the client can clear them to start over.
+- Each run starts with no touches. The player can make up to `maxTouches` of them during the run, and a touch with no effect does not use one up.
 - The server stays stateless about this: it validates and simulates whatever list it receives.
 - Valid `second` values are 0 to `durationSeconds - 1`. A list may hold at most `maxTouches` touches, with no duplicate
   object and second pair.

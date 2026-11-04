@@ -32,7 +32,7 @@
         },
         {
           "id": "brake",
-          "label": "Emergency brake",
+          "label": "Brake",
           "position": { "x": 4, "y": 2 },
           "initialState": "ready",
           "states": {

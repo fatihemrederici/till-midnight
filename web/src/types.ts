@@ -20,6 +20,14 @@ export type PublicScene = {
   maxTouches: number;
   grid: { columns: number; rows: number };
   objects: PublicObject[];
+  // Oyuncunun başta göreceği kehanet.
+  vision: Vision;
+};
+
+// Kehanet: oyuncu bir şey yapmazsa olacak her şey.
+export type Vision = {
+  events: GameEvent[];
+  disasters: { second: number; caption: string }[];
 };
 
 // Oyuncunun bir dokunuşu.

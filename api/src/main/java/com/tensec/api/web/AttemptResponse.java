@@ -40,7 +40,8 @@ public record AttemptResponse(
     }
 
     // Tek bir olayı çevirir.
-    private static EventView toView(Scene scene, TimelineEvent event) {
+    // private değil: PublicScene de kehanet için kullanıyor.
+    static EventView toView(Scene scene, TimelineEvent event) {
         // Motor, etkisiz dokunuşlarda ruleId'yi null bırakır.
         boolean noEffect = event.ruleId() == null;
         // Yeni durumun emojisini bul.

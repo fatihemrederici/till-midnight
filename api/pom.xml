@@ -35,8 +35,7 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-webmvc</artifactId>
     </dependency>
-
-        <!-- SQL çalıştırmak için JdbcClient. -->
+    <!-- SQL çalıştırmak için JdbcClient. -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-jdbc</artifactId>
@@ -57,7 +56,6 @@
       <artifactId>postgresql</artifactId>
       <scope>runtime</scope>
     </dependency>
-    
     <!-- Test kütüphaneleri, JUnit dahil. -->
     <dependency>
       <groupId>org.springframework.boot</groupId>

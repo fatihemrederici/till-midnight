@@ -148,6 +148,29 @@ class EngineTest {
 
     // Bu metot bir test.
     @Test
+    // Kehanet ilk felakette durmamalı: kafede hem patlama hem yangın görünmeli.
+    void foresightShowsEveryDisaster() {
+        // Kehaneti al.
+        Foresight foresight = engine.foresee(cafe);
+
+        // İki felaket sırayla gelmeli.
+        assertEquals(
+                List.of("8 explosion", "9 fire"),
+                foresight.disasters().stream().map(d -> d.second() + " " + d.id()).toList());
+        // Patlamadan sonraki olay da listede olmalı.
+        assertTrue(foresight.events().stream().anyMatch(e -> e.second() == 9 && e.to().equals("burning")));
+    }
+
+    // Bu metot bir test.
+    @Test
+    // Normal oyun yine ilk felakette bitmeli.
+    void simulationStillStopsAtTheFirstDisaster() {
+        // Son olay patlama olmalı, yangın gelmemeli.
+        assertEquals(8, engine.simulate(cafe, List.of()).events().getLast().second());
+    }
+
+    // Bu metot bir test.
+    @Test
     // Determinizm: aynı girdi aynı sonucu vermeli.
     void sameInputGivesTheSameResult() {
         // Aynı dokunuş listesi.

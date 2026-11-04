@@ -15,6 +15,8 @@ import java.util.HashSet;
 import java.util.List;
 // Anahtar-değer arayüzü.
 import java.util.Map;
+// Küme arayüzü.
+import java.util.Set;
 // Spring'in "bu sınıfı sen yönet" etiketi.
 import org.springframework.stereotype.Component;
 
@@ -25,17 +27,40 @@ import org.springframework.stereotype.Component;
 // Deterministik: rastgelelik yok, aynı girdi her zaman aynı sonucu verir.
 public class Engine {
 
-    // Ana metot: sahneyi ve dokunuşları alır, sonucu döndürür.
+    // Ana metot: sahneyi ve dokunuşları alır, sonucu döndürür. İlk felakette durur.
     public SimulationResult simulate(Scene scene, List<Touch> touches) {
         // Önce gelen dokunuşlar kurallara uyuyor mu diye kontrol et.
         validate(scene, touches);
+        // Sahneyi çalıştır, ilk felakette dur.
+        Foresight run = run(scene, touches, true);
 
+        // Felaket olmadıysa oyuncu kazandı.
+        if (run.disasters().isEmpty()) {
+            return new SimulationResult(true, scene.durationSeconds(), null, run.events());
+        }
+        // Olduysa ilk felaketle kaybetti.
+        Foresight.FiredDisaster disaster = run.disasters().get(0);
+        return new SimulationResult(false, disaster.second(), disaster.id(), run.events());
+    }
+
+    // Kehanet: oyuncu hiçbir şey yapmazsa olacak her şeyi sona kadar çalıştırır.
+    public Foresight foresee(Scene scene) {
+        // Dokunuş yok, felaketlerde durma.
+        return run(scene, List.of(), false);
+    }
+
+    // Asıl simülasyon. stopAtFirstDisaster: true ise ilk felakette biter.
+    private Foresight run(Scene scene, List<Touch> touches, boolean stopAtFirstDisaster) {
         // Her nesnenin şu anki durumu: "cat" -> "asleep".
         Map<String, String> states = new HashMap<>();
         // Her nesnenin o duruma girdiği saniye: "cat" -> 0.
         Map<String, Integer> enteredAt = new HashMap<>();
         // Olan her şeyin sırayla tutulduğu liste.
         List<TimelineEvent> events = new ArrayList<>();
+        // Gerçekleşen felaketler.
+        List<Foresight.FiredDisaster> fired = new ArrayList<>();
+        // Zaten gerçekleşmiş felaketlerin adları. Aynı felaket iki kez sayılmasın.
+        Set<String> firedIds = new HashSet<>();
 
         // Sahnedeki her nesneyi dön.
         for (Scene.SceneObject object : scene.objects()) {
@@ -84,16 +109,20 @@ public class Engine {
 
             // Tüm felaketleri dosyadaki sırayla dön.
             for (Scene.Disaster disaster : scene.disasters()) {
-                // Felaketin koşulları oluştu mu?
-                if (conditionsHold(disaster.when(), states)) {
-                    // Oluştuysa oyuncu kaybetti, döngüyü bitir.
-                    return new SimulationResult(false, second, disaster.id(), events);
+                // Koşulları oluştu mu ve bu felaket daha önce olmadı mı? add, zaten varsa false döner.
+                if (conditionsHold(disaster.when(), states) && firedIds.add(disaster.id())) {
+                    // Felaketi kaydet.
+                    fired.add(new Foresight.FiredDisaster(second, disaster.id(), disaster.caption()));
+                    // İstendiyse burada bitir.
+                    if (stopAtFirstDisaster) {
+                        return new Foresight(events, fired);
+                    }
                 }
             }
         }
 
-        // Süre felaketsiz bittiyse oyuncu kazandı.
-        return new SimulationResult(true, scene.durationSeconds(), null, events);
+        // Süre bitti.
+        return new Foresight(events, fired);
     }
 
     // Dokunuş listesi geçerli mi diye kontrol eder, değilse hata fırlatır.
