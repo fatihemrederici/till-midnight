@@ -1,0 +1,54 @@
+/* Tek ekranlık gerilim oyunu: Üstte saat, başparmağın altında tek bir kâğıt kart. Bilerek tek koyu görünüm. */
+:root {
+  color-scheme: dark;
+  --night: #15100f;
+  --night-2: #2a1e1b;
+  --paper: #ecdfc6;
+  --paper-2: #b9ac95;
+  --paper-ink: #231714;
+  --blood: #c22a1d;
+  --blood-dark: #7d140c;
+  --dust: #a8988a;
+  --dawn: #1f3b33;
+  --display: "Big Shoulders Display", Impact, "Arial Narrow", sans-serif;
+  --body: "Literata", Georgia, serif;
+}
+
+/* Kutu ölçüleri kenarlığı da içersin. */
+* {
+  box-sizing: border-box;
+}
+
+/* Sayfa kaymasın: Oyun tek ekran. */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+/* Temel. */
+body {
+  overflow: hidden;
+  background: var(--night);
+  color: var(--paper);
+  font-family: var(--body);
+  font-size: 17px;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Tüm düğmeler aynı yazı tipini kullansın. */
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* Klavye odağı. */
+button:focus-visible {
+  outline: 3px solid var(--paper);
+  outline-offset: 2px;
+}

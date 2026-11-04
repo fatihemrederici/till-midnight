@@ -1,8 +1,7 @@
 // Tipler.
-import type { RunStats, Side, Story } from "./types";
-
-// Oyuncunun kimliğini tarayıcıda saklarken kullanılan anahtar.
-const PLAYER_KEY = "till-midnight.playerId";
+import type { RunStats, Side, Story } from "../game/types";
+// Tarayıcı deposu.
+import { readValue, writeValue } from "./storage";
 
 // Rastgele kimlik üretir. Telefondan http ile açınca crypto.randomUUID olmayabilir, bu yüzden yedeği var.
 export function newId(): string {
@@ -21,18 +20,13 @@ export function newId(): string {
 
 // Oyuncu kimliği: İlk ziyarette üretilir ve saklanır.
 function playerId(): string {
-  try {
-    // Saklı kimlik varsa onu kullan.
-    const saved = localStorage.getItem(PLAYER_KEY);
-    if (saved) return saved;
-    // Yoksa yeni üret ve sakla.
-    const created = newId();
-    localStorage.setItem(PLAYER_KEY, created);
-    return created;
-  } catch {
-    // Depo kullanılamıyorsa bu sayfa için geçici kimlik.
-    return newId();
-  }
+  // Saklı kimlik.
+  const saved = readValue("playerId");
+  if (saved) return saved;
+  // Yoksa yeni üret ve sakla.
+  const created = newId();
+  writeValue("playerId", created);
+  return created;
 }
 
 // Hikâyeyi sunucudan alır.
@@ -46,13 +40,18 @@ export async function fetchStory(): Promise<Story> {
 }
 
 // Biten koşuyu gönderir. Sunucu seçimleri baştan oynatıp sonucu kendisi hesaplar.
-export async function submitRun(storyId: string, runId: string, choices: Side[]): Promise<RunStats> {
+export async function submitRun(storyId: string, choices: Side[]): Promise<RunStats> {
   // POST isteği gönder.
   const response = await fetch("/runs", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    // Java tarafı yönleri büyük harfle bekliyor.
-    body: JSON.stringify({ storyId, runId, playerId: playerId(), choices: choices.map((side) => side.toUpperCase()) }),
+    // Java tarafı yönleri büyük harfle bekliyor. Yeni runId aynı oyunun iki kez sayılmasını önler.
+    body: JSON.stringify({
+      storyId,
+      runId: newId(),
+      playerId: playerId(),
+      choices: choices.map((side) => side.toUpperCase()),
+    }),
   });
   // Hata kodu geldiyse dur.
   if (!response.ok) throw new Error(`Server returned ${response.status}`);

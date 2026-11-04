@@ -1,0 +1,263 @@
+/* Oyun ekranının içeriği. Gösterge düşünce ekran bir an sarsılır. */
+.play {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
+.play[data-shake="true"] {
+  animation: shake 0.32s;
+}
+@keyframes shake {
+  20% {
+    transform: translate(-6px, 2px);
+  }
+  45% {
+    transform: translate(5px, -2px);
+  }
+  70% {
+    transform: translate(-3px, 1px);
+  }
+}
+/* Düşen gösterge kırmızı yanıp söner. */
+.meter[data-hit="true"] .pips {
+  animation: hit 0.7s;
+}
+@keyframes hit {
+  0%,
+  50% {
+    background: var(--blood);
+    box-shadow: 0 0 0 3px var(--blood);
+  }
+}
+
+/* Üst satır. */
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Saat: Her kartta düşerek gelir. */
+.time {
+  font-family: var(--display);
+  font-size: 58px;
+  font-weight: 900;
+  line-height: 0.85;
+  font-variant-numeric: tabular-nums;
+  animation: clock 0.35s ease-out;
+}
+@keyframes clock {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
+
+/* Günün ilerlemesi. */
+.day {
+  position: relative;
+  height: 20px;
+  background: var(--night-2);
+}
+.day-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--blood-dark);
+  transition: width 0.5s ease-out;
+}
+.day-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 7px;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--paper);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Göstergeler. */
+.meters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.meter {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+.meter-name {
+  font-size: 13px;
+  color: var(--dust);
+  white-space: nowrap;
+  overflow: hidden;
+  transition: color 0.15s;
+}
+.meter[data-hint="true"] .meter-name {
+  color: var(--paper);
+}
+.pips {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+}
+.pip {
+  height: 8px;
+  background: var(--night-2);
+  transition: background-color 0.3s;
+}
+.pip[data-on="true"] {
+  background: var(--paper);
+}
+.meter[data-low="true"] .pip[data-on="true"] {
+  background: var(--blood);
+}
+/* Kaydırırken etkilenecek gösterge parlar. */
+.meter[data-hint="true"] .pips {
+  outline: 2px solid var(--blood);
+  outline-offset: 2px;
+}
+
+/* Önceki seçimin sonucu. */
+.after {
+  display: flex;
+  align-items: flex-end;
+  min-height: 3em;
+  margin: 0;
+  color: var(--dust);
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.3;
+  animation: rise 0.4s ease-out;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+/* Kart masası. */
+.table {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Kart. */
+.card {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 18px;
+  background: var(--paper);
+  color: var(--paper-ink);
+  touch-action: none;
+  cursor: grab;
+  clip-path: polygon(0 0, 100% 0, 100% 97%, 96% 100%, 0 100%);
+}
+/* Arkadaki kart. */
+.card.back {
+  position: absolute;
+  inset: 0;
+  background: var(--paper-2);
+  transform: rotate(-1.4deg) scale(0.985);
+  cursor: default;
+}
+/* Üstteki kart: Bırakınca yumuşakça yerine döner. */
+.card.live {
+  z-index: 1;
+  transition: transform 0.2s ease-out;
+  animation: deal 0.28s ease-out;
+}
+/* Parmak kartayken gecikmesiz takip eder. */
+.card.live[data-moving="true"] {
+  transition: none;
+}
+@keyframes deal {
+  from {
+    opacity: 0.4;
+    translate: 0 14px;
+    scale: 0.965;
+  }
+}
+.who {
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1;
+}
+/* Emoji, kâğıda basılmış gibi görünsün. */
+.face {
+  display: grid;
+  flex: 1;
+  min-height: 0;
+  place-items: center;
+  font-size: clamp(64px, 18vh, 150px);
+  line-height: 1;
+  pointer-events: none;
+  filter: saturate(0.65) contrast(1.1);
+}
+.text {
+  min-height: 5.6em;
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.36;
+  pointer-events: none;
+}
+/* Sürüklerken görünen seçim yazısı. */
+.tag {
+  position: absolute;
+  top: 14px;
+  max-width: 64%;
+  padding: 7px 10px;
+  background: var(--blood);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  pointer-events: none;
+}
+.tag.left {
+  right: 12px;
+  text-align: right;
+}
+.tag.right {
+  left: 12px;
+}
+
+/* Seçim düğmeleri. */
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.pick {
+  min-height: 58px;
+  padding: 8px 10px;
+  background: var(--night-2);
+  border: 0;
+  color: var(--paper);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.pick:active {
+  background: var(--blood);
+}
+.pick.l {
+  text-align: left;
+}
+.pick.r {
+  text-align: right;
+}

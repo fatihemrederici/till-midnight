@@ -1,65 +1,105 @@
 # Story format
 
-A story is one JSON file in `stories/`. The rules and all the writing live here, not in code.
+Each chapter is a folder in `stories/`. Chapters are independent: their own characters, rules and endings.
 
-Every text the player reads has all three languages:
-
-```json
-{ "en": "Lock the door", "tr": "Kapıyı kilitle", "pl": "Zamknij drzwi" }
+```
+stories/
+  chapters.json        The chapters, in play order
+  first-day/
+    story.json         Rules only, no player-facing text
+    en.json            English text
+    tr.json            Turkish text
+    pl.json            Polish text
 ```
 
-## Top level
+## Add a chapter
+
+1. Create the folder with the four files.
+2. Add its id to `chapters.json`.
+3. Generate its expected paths:
+
+   ```sh
+   cd api && ./mvnw test -Dtest=UpdateStoryPaths -DupdateStoryPaths=true
+   ```
+
+4. Run the tests.
+
+The server checks every chapter when it starts and refuses to run with a broken one.
+
+## Rules: `story.json`
 
 | Field | Meaning |
 | --- | --- |
-| `id` | Unique story name |
-| `title` | Shown on the opening screen |
-| `vision` | The short lines of the disaster the player sees first |
-| `wake` | The line after the vision |
+| `id` | Chapter name, the same as its folder |
 | `start` | Starting value of each meter |
 | `maxMeter` | Highest value a meter can reach |
-| `meters` | The meters. A meter that reaches 0 ends the game with its `ending` |
+| `meters` | A meter that reaches 0 ends the game with its `ending` |
 | `cards` | The day, in order |
 | `endings` | Every way the day can end |
 
-## Card
+A card:
 
 ```json
 {
   "id": "elevator",
   "time": "12:30",
   "emoji": "🛗",
-  "who": { "en": "...", "tr": "...", "pl": "..." },
-  "text": { "en": "...", "tr": "...", "pl": "..." },
-  "variants": [{ "when": { "warned": true }, "text": { "en": "...", "tr": "...", "pl": "..." } }],
   "when": { "elif": true },
-  "left": { },
-  "right": { }
+  "variants": [{ "when": { "warned": true } }],
+  "left": { "effects": { "mind": -1 }, "set": { "stairs": true } },
+  "right": { "death": { "when": { "wetShoes": true }, "ending": "stairs" } }
 }
 ```
 
 - `when`: The card only appears if the flags match.
-- `variants`: The first variant whose `when` matches replaces `text`. This is how an earlier choice comes back later.
+- `variants`: The first variant whose `when` matches replaces the card's text. This is how an earlier choice comes back later.
+- `effects`: Meter changes. Values stay between 0 and `maxMeter`.
+- `set`: Flags to remember.
+- `death`: If `when` matches the flags from before this choice, the player dies here.
 
-## Choice (`left` and `right`)
+An ending:
 
-| Field | Meaning |
-| --- | --- |
-| `label` | What the player is choosing |
-| `effects` | Meter changes, such as `{ "mind": -1 }`. Values stay between 0 and `maxMeter` |
-| `set` | Flags to remember, such as `{ "elif": true }` |
-| `death` | `{ "when": {...}, "ending": "stairs" }`. If `when` matches the flags from before this choice, the player dies here |
-| `after` | The line shown above the next card |
+```json
+{ "id": "fuse", "won": false, "chain": [{ "when": { "elif": true } }, {}, {}] }
+```
 
-## Ending
+- `won`: `true` if the player reached midnight.
+- `when`: For wins, which flags this win needs. The first match is used.
+- `chain`: One entry per step that led here. A step with `when` only shows if the flags match.
 
-| Field | Meaning |
-| --- | --- |
-| `won` | `true` if the player reached midnight |
-| `when` | For wins: which flags this win needs. The first match is used |
-| `title`, `text` | Shown on the ending screen |
-| `chain` | The steps that led here. Each step can have its own `when` |
-| `hint` | What to try next time |
+## Text: `en.json`, `tr.json`, `pl.json`
+
+All three files have the same shape. A text belongs to the card or ending with the same id.
+
+```json
+{
+  "title": "Till Midnight",
+  "vision": ["The bus turns onto the bridge."],
+  "wake": "You open your eyes.",
+  "meters": { "mind": "Mind" },
+  "cards": {
+    "elevator": {
+      "who": "The elevator",
+      "text": "The door opens.",
+      "variants": ["The same text, after a warning."],
+      "left": { "label": "Take the stairs", "after": "Twelve floors." },
+      "right": { "label": "Get in" }
+    }
+  },
+  "endings": {
+    "fuse": {
+      "title": "The Bare Wire",
+      "text": "In the dark, you touched the wrong place.",
+      "chain": ["First step", "Second step", "Third step"],
+      "hint": "What to try next time."
+    }
+  }
+}
+```
+
+`variants` and `chain` match the lists in `story.json` by position.
+
+A missing translation or a text that nothing uses, such as a misspelled card id, stops the server with a clear message.
 
 ## Order of one swipe
 
@@ -71,11 +111,3 @@ Every text the player reads has all three languages:
 6. With no card left, the first winning ending whose `when` matches is the result.
 
 A flag that was never set counts as `false`.
-
-## Checks
-
-`POST /internal/validate` takes a story file and reports broken references and missing translations. It also walks every possible path and returns the analysis: how many paths exist and which cards and endings can be reached.
-
-`StoryContentTest` runs the same checks on `first-day.json`, so a broken story fails the build.
-
-`stories/first-day.paths.json` lists every path and its ending. The Java engine and the TypeScript engine are both tested against it, which is what keeps them identical. If you change the story, regenerate that file and the tests will show what moved.

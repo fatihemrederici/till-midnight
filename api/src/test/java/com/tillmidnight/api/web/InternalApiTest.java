@@ -8,8 +8,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 // Cevaptaki JSON alanlarını kontrol eder.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-// Dosyayı UTF-8 okumak için.
-import java.nio.charset.StandardCharsets;
+// Hikâye okuyucu.
+import com.tillmidnight.api.story.StoryLoader;
 // Test etiketi.
 import org.junit.jupiter.api.Test;
 // Spring'in nesne verme etiketi.
@@ -18,14 +18,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 // MockMvc'yi otomatik ayarlayan etiket.
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
-// Projeye paketlenmiş dosyayı okur.
-import org.springframework.core.io.ClassPathResource;
 // İstek gövdesinin JSON olduğunu belirtmek için.
 import org.springframework.http.MediaType;
 // Gerçek sunucu açmadan HTTP isteği denemeye yarar.
 import org.springframework.test.web.servlet.MockMvc;
 // İstek sonucunu kontrol etmeye yarar.
 import org.springframework.test.web.servlet.ResultActions;
+// JSON çevirici.
+import tools.jackson.databind.json.JsonMapper;
 
 // Uygulamayı başlat.
 @SpringBootTest
@@ -63,7 +63,7 @@ class InternalApiTest {
     // Eksik çeviri yakalanmalı.
     void reportsAMissingTranslation() throws Exception {
         // Başlığın Lehçesini sil.
-        validate(json().replace("\"pl\": \"Do północy\"", "\"pl\": \"\""))
+        validate(json().replace("\"pl\":\"Do północy\"", "\"pl\":\"\""))
                 // Hata mesajı gelmeli.
                 .andExpect(jsonPath("$.errors", hasItem("title: missing language pl")));
     }
@@ -73,15 +73,15 @@ class InternalApiTest {
     // Olmayan sona giden seçim yakalanmalı.
     void reportsAnUnknownEnding() throws Exception {
         // Ölüm sonunu boz.
-        validate(json().replace("\"ending\": \"balcony\"", "\"ending\": \"ghost\""))
+        validate(json().replace("\"ending\":\"balcony\"", "\"ending\":\"ghost\""))
                 // Hata mesajı gelmeli.
                 .andExpect(jsonPath("$.errors", hasItem("Card locked left: unknown ending ghost")));
     }
 
-    // Yardımcı metot: hikâye dosyasını okur.
-    private String json() throws Exception {
-        // UTF-8 olarak oku.
-        return new ClassPathResource("stories/first-day.json").getContentAsString(StandardCharsets.UTF_8);
+    // Yardımcı metot: Bölümü birleşik JSON olarak verir.
+    private String json() {
+        // Klasörü oku ve metne çevir.
+        return JsonMapper.builder().build().writeValueAsString(StoryLoader.loadChapter("first-day"));
     }
 
     // Yardımcı metot: POST /internal/validate isteği gönderir.

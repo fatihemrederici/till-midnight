@@ -7,6 +7,8 @@ import com.tillmidnight.api.run.RunRepository;
 import com.tillmidnight.api.run.SavedRun;
 // Hikâye tipi.
 import com.tillmidnight.api.story.Story;
+// Bölüm listesi.
+import com.tillmidnight.api.story.StoryCatalog;
 // Motor.
 import com.tillmidnight.api.story.StoryEngine;
 // HTTP durum kodları.

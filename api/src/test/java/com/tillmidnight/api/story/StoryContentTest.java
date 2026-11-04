@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 class StoryContentTest {
 
     // Testlerin kullandığı hikâye.
-    private final Story story = StoryLoader.fromClasspath("stories/first-day.json");
+    private final Story story = StoryLoader.loadChapter("first-day");
 
     // Bu metot bir test.
     @Test

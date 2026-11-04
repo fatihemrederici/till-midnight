@@ -1,0 +1,25 @@
+/* Dil ve ses düğmeleri. */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.languages {
+  display: flex;
+}
+.language,
+.sound {
+  min-width: 38px;
+  min-height: 38px;
+  padding: 0 6px;
+  background: transparent;
+  border: 0;
+  color: var(--dust);
+  font-size: 14px;
+  font-weight: 600;
+}
+.language[aria-pressed="true"] {
+  background: var(--paper);
+  color: var(--paper-ink);
+}

@@ -1,0 +1,3 @@
+# Otomatik üretilen dosyalar GitHub diff'lerinde kapalı gelsin.
+api/src/test/resources/story-paths/** linguist-generated=true
+web/package-lock.json linguist-generated=true

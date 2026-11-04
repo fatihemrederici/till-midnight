@@ -7,16 +7,14 @@ Playable in English, Turkish and Polish. The language changes instantly at any p
 ## How it works
 
 ```
-stories/first-day.json     The whole game as data: cards, rules, endings, three languages
-        |
-Java server                Loads and checks the story, replays each finished run, stores results
-        |
-PostgreSQL                 The runs table
-        |
-React client               Runs the same rules for instant swipes, plays sounds and animations
+stories/   The chapters as data: rules and three languages
+api/       Java server: checks chapters, replays each finished run, stores results
+web/       React client: runs the same rules for instant swipes, plays sounds and animations
 ```
 
 The client decides nothing that counts. It sends only the list of swipes, and the server replays them to get the real result.
+
+Read more in [docs/architecture.md](docs/architecture.md).
 
 ## Run it
 
@@ -35,7 +33,7 @@ cd api && ./mvnw test   # the database must be running
 cd web && npm test
 ```
 
-Both test suites play all 485 possible paths of the story from `stories/first-day.paths.json` and must reach the same endings.
+Both test suites play all 485 possible paths of the first chapter and must reach the same endings.
 
 ## API
 
@@ -45,4 +43,4 @@ Both test suites play all 485 possible paths of the story from `stories/first-da
 | `POST /runs` | Saves a finished run: `{ storyId, runId, playerId, choices: ["LEFT", "RIGHT"] }`. Returns the ending and statistics |
 | `POST /internal/validate` | Checks a story file without loading it |
 
-Writing a new story: [docs/story-format.md](docs/story-format.md)
+Writing a new chapter: [docs/story-format.md](docs/story-format.md)

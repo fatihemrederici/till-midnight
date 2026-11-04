@@ -1,0 +1,59 @@
+/* Küçük telefonlar. */
+@media (max-height: 640px) {
+  .time {
+    font-size: 44px;
+  }
+  .text {
+    min-height: 5em;
+    font-size: 17px;
+  }
+  .after {
+    min-height: 2.6em;
+    font-size: 14px;
+  }
+  .card {
+    padding: 14px;
+  }
+  .face {
+    font-size: 60px;
+  }
+  /* Son ekranları da tek ekrana sığsın. */
+  .screen {
+    gap: 9px;
+  }
+  .big {
+    font-size: 44px;
+  }
+  .lede {
+    font-size: 16px;
+  }
+  .chain li {
+    font-size: 14px;
+  }
+  .could {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+  .go {
+    min-height: 48px;
+    padding: 6px 12px;
+    font-size: 21px;
+  }
+  .link {
+    min-height: 36px;
+  }
+}
+
+/* Hareket istemeyenler için tüm animasyonları kapat. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .chain li {
+    opacity: 1;
+    transform: none;
+  }
+}

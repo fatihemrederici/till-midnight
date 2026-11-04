@@ -1,0 +1,51 @@
+/* Geri sarma. */
+.rewind {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--night);
+  animation: flicker 0.14s infinite;
+}
+.rewind-clock {
+  font-family: var(--display);
+  font-size: clamp(90px, 30vw, 170px);
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  filter: blur(1px);
+}
+@keyframes flicker {
+  50% {
+    background: var(--night-2);
+  }
+}
+
+/* Ölüm listesi. */
+.list-screen {
+  justify-content: flex-start;
+  padding-top: 8px;
+}
+/* Düğme hep görünsün, sadece liste kayar. */
+.death-list {
+  display: grid;
+  flex: 1;
+  align-content: start;
+  gap: 6px;
+  min-height: 0;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.death-list li {
+  padding: 8px 12px;
+  background: var(--night-2);
+  color: var(--dust);
+}
+.death-list li[data-found="true"] {
+  background: var(--paper);
+  color: var(--paper-ink);
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 800;
+}

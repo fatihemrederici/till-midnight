@@ -1,0 +1,52 @@
+// Tipler.
+import type { Card, Condition, Language } from "../game/types";
+// Motor.
+import { cardText } from "../game/engine";
+// Dil yardımcısı.
+import { say } from "../i18n/languages";
+// Kaydırma davranışının tipi.
+import type { useSwipe } from "../hooks/useSwipe";
+
+// Kartın ihtiyacı olan kaydırma bilgileri.
+type Swipe = Pick<ReturnType<typeof useSwipe>, "dx" | "moving" | "transform" | "handlers">;
+
+// Parmakla kaydırılan kart ve arkasındaki kart.
+export function SwipeCard({
+  card,
+  flags,
+  language,
+  swipe,
+}: {
+  card: Card;
+  flags: Condition;
+  language: Language;
+  swipe: Swipe;
+}) {
+  // Kaydırma miktarı.
+  const { dx } = swipe;
+  return (
+    <div className="table">
+      <div className="card back" aria-hidden="true" />
+      <div
+        className="card live"
+        key={card.id}
+        data-moving={swipe.moving}
+        style={{ transform: swipe.transform }}
+        {...swipe.handlers}
+      >
+        <div className="who">{say(card.who, language)}</div>
+        <div className="face" aria-hidden="true">
+          {card.emoji}
+        </div>
+        <p className="text">{say(cardText(card, flags), language)}</p>
+        {/* Sürüklerken seçimin yazısı. Kart sola kayarken sağ kenarı ekranda kalır, bu yüzden yazı ters kenarda. */}
+        <div className="tag left" style={{ opacity: dx < 0 ? Math.min(1, -dx / 60) : 0 }}>
+          {say(card.left.label, language)}
+        </div>
+        <div className="tag right" style={{ opacity: dx > 0 ? Math.min(1, dx / 60) : 0 }}>
+          {say(card.right.label, language)}
+        </div>
+      </div>
+    </div>
+  );
+}

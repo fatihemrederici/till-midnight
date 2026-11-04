@@ -1,0 +1,303 @@
+{
+  "title": "Till Midnight",
+  "vision": [
+    "The bus turns onto the bridge.",
+    "A cable snaps.",
+    "Glass. Water. Screaming.",
+    "Nobody gets out.",
+    "Including you."
+  ],
+  "wake": "You open your eyes. You are at the bus stop. The bus is just pulling in.",
+  "meters": { "mind": "Mind", "body": "Body", "trust": "Trust" },
+  "cards": {
+    "bus": {
+      "who": "Bus driver",
+      "text": "“Getting on or not?” You just watched this bus fall off the bridge. It hasn't happened yet.",
+      "left": {
+        "label": "Warn everyone",
+        "after": "Most of them laugh. A girl in a yellow coat gets off and walks over: Elif."
+      },
+      "right": {
+        "label": "Walk away quietly",
+        "after": "The doors close. The bus turns the corner."
+      }
+    },
+    "sirens": {
+      "who": "The street",
+      "text": "Sirens from the direction of the bridge. Your hands are shaking.",
+      "left": {
+        "label": "Put your earbuds in",
+        "after": "The sirens fade. Everything feels a little further away."
+      },
+      "right": {
+        "label": "Check the news",
+        "after": "The bridge on your screen. The bus in the water. You pocket your earbuds."
+      }
+    },
+    "cafe": {
+      "who": "Corner café",
+      "text": "Your hand shakes and coffee spills onto your shoe. The waiter wipes the floor.",
+      "left": {
+        "label": "Sit until it dries",
+        "after": "Five minutes in the chair. Your breathing slows."
+      },
+      "right": {
+        "label": "Leave right now",
+        "after": "This place isn't safe either. You walk out."
+      }
+    },
+    "elif-asks": {
+      "who": "Elif",
+      "text": "“How did you know? Is anything else going to happen today?”",
+      "left": {
+        "label": "Tell her what you saw",
+        "after": "She doesn't laugh. She asks for your number."
+      },
+      "right": {
+        "label": "“Just a feeling”",
+        "after": "She doesn't believe you. She takes your number anyway."
+      }
+    },
+    "road": {
+      "who": "Crossing",
+      "text": "The light is red and the road looks empty. Someone is running toward you from behind.",
+      "left": {
+        "label": "Wait and look back",
+        "after": "The man hands you the keys you dropped. You are too scared to laugh."
+      },
+      "right": {
+        "label": "Run across",
+        "after": "A truck misses you by a hand. The horn rings in your ears."
+      }
+    },
+    "elevator": {
+      "who": "Your building",
+      "text": "Twelfth floor. The elevator creaks. The stairs were just mopped.",
+      "left": {
+        "label": "Take the stairs",
+        "after": "Twelve floors. Your legs shake, but you made it."
+      },
+      "right": {
+        "label": "Take the elevator",
+        "after": "The doors close. The light flickers once. Nothing happens."
+      }
+    },
+    "locked": {
+      "who": "Your door",
+      "text": "Your keys are gone. A neighbour opens up: “The balconies touch. You can climb across.”",
+      "left": { "label": "Climb across" },
+      "right": {
+        "label": "Wait for a locksmith",
+        "after": "Two hours on the stairs. Boring, but you are alive."
+      }
+    },
+    "food": {
+      "who": "Kitchen",
+      "text": "You haven't eaten all day.",
+      "left": {
+        "label": "Heat oil, fry an egg",
+        "after": "You light the stove. The oil starts to warm."
+      },
+      "right": {
+        "label": "Just drink water",
+        "after": "Your stomach cramps, but the stove stays off."
+      }
+    },
+    "mom": {
+      "who": "Mum is calling",
+      "text": "She saw the news. “Are you all right? Please pick up!”",
+      "left": {
+        "label": "Answer and calm her",
+        "after": "You talk for twenty minutes. Both of you cry."
+      },
+      "right": {
+        "label": "Turn off the stove first",
+        "after": "Stove off. When you call back, her voice is shaking."
+      }
+    },
+    "pan-fire": {
+      "who": "Kitchen",
+      "text": "A burning smell. The pan is on fire and the flames reach for the hood.",
+      "left": { "label": "Pour water on it" },
+      "right": {
+        "label": "Cover it, turn off the gas",
+        "after": "The flame chokes out. Your hand is burned, but the flat survives."
+      }
+    },
+    "sleep": {
+      "who": "Your bed",
+      "text": "You haven't slept since last night. Your eyes keep closing.",
+      "left": {
+        "label": "Sleep for a while",
+        "after": "You dream about the bridge. It still helps."
+      },
+      "right": { "label": "Stay awake", "after": "You make coffee and watch the ceiling." }
+    },
+    "elif-news": {
+      "who": "Elif",
+      "text": "“The other man who got off the bus is dead. In an elevator. Is that a coincidence? Should I come over?”",
+      "variants": [
+        "“The other man who got off the bus is dead. In an elevator. Are we next? I'm coming over.”"
+      ],
+      "left": { "label": "“Come”", "after": "Half an hour later she is at your door." },
+      "right": { "label": "“Stay away, it's dangerous”", "after": "Read. No reply." }
+    },
+    "witness": {
+      "who": "Unknown number",
+      "text": "“This is the police. Cameras show you leaving the stop. We need your statement.”",
+      "left": {
+        "label": "“I'll come tomorrow”",
+        "after": "The officer takes a note. Your palms are wet when you hang up."
+      },
+      "right": {
+        "label": "Turn your phone off",
+        "after": "The phone goes quiet. The silence is worse."
+      }
+    },
+    "fuse": {
+      "who": "Fuse box",
+      "text": "The power is out. The box is in the hallway and the floor is damp.",
+      "left": {
+        "label": "Flip the switch by hand",
+        "after": "Elif holds up a torch. “Stop, that wire is bare!” You press the right switch."
+      },
+      "right": {
+        "label": "Wait in the dark",
+        "after": "An hour later the lights come back on their own."
+      }
+    },
+    "railing": {
+      "who": "Elif",
+      "text": "She is on the balcony, leaning on the railing. Was that railing always this loose?",
+      "left": {
+        "label": "“Come inside, now!”",
+        "after": "She glares and steps in. A moment later the railing drops into the dark."
+      },
+      "right": { "label": "Go out and hug her" }
+    },
+    "door": {
+      "who": "The door",
+      "text": "Someone knocks. Nobody in the peephole. The heavy wardrobe stands beside you.",
+      "left": {
+        "label": "Open it and look",
+        "after": "Nobody. On the mat lies this morning's bus ticket."
+      },
+      "right": { "label": "Push the wardrobe against it" }
+    }
+  },
+  "endings": {
+    "road": {
+      "title": "The Horn",
+      "text": "You never heard the truck.",
+      "chain": [
+        "You wanted to escape the sirens",
+        "You put your earbuds in",
+        "You thought someone was chasing you",
+        "You crossed on red",
+        "You didn't hear the horn"
+      ],
+      "hint": "Without earbuds, you would have heard the horn."
+    },
+    "stairs": {
+      "title": "The Wet Step",
+      "text": "On the seventh floor your foot slipped. Empty air. That's all.",
+      "chain": [
+        "Your hand shook",
+        "Coffee spilled on your shoe",
+        "You didn't wait for it to dry",
+        "You chose the stairs",
+        "Wet sole, freshly mopped step"
+      ],
+      "hint": "Five minutes in the café would have dried your shoe. The elevator was safe today."
+    },
+    "balcony": {
+      "title": "The Next Balcony",
+      "text": "The gap was wider than it looked.",
+      "chain": [
+        "You ran on red",
+        "You didn't notice your keys were gone",
+        "You were locked out",
+        "You listened to your neighbour",
+        "Twelfth floor"
+      ],
+      "hint": "The man running behind you was bringing your keys."
+    },
+    "kitchen": {
+      "title": "A Glass of Water",
+      "text": "The moment water hit the oil, fire leapt to the ceiling.",
+      "chain": [
+        "You heated oil for an egg",
+        "Your mum called",
+        "You forgot the stove",
+        "The oil caught fire",
+        "You poured water on it"
+      ],
+      "hint": "Water makes an oil fire explode. Covering the pan would have smothered it."
+    },
+    "fuse": {
+      "title": "The Bare Wire",
+      "text": "In the dark, you touched the wrong place.",
+      "chain": [
+        "You didn't ask Elif to come",
+        "You saved nobody, so you were alone",
+        "The power went out",
+        "You didn't want to wait",
+        "Damp floor, bare wire"
+      ],
+      "hint": "Someone holding a torch would have seen that wire."
+    },
+    "railing": {
+      "title": "The Railing",
+      "text": "You hugged her. The railing couldn't hold you both.",
+      "chain": [
+        "You saved Elif",
+        "You asked her to come",
+        "You got through the night together",
+        "You relaxed",
+        "You stepped onto the balcony"
+      ],
+      "hint": "You could have risked her anger and called her inside."
+    },
+    "wardrobe": {
+      "title": "The Wardrobe",
+      "text": "Guarding the door, you pulled the wardrobe down on yourself.",
+      "chain": [
+        "You spent the whole day alone",
+        "Someone knocked",
+        "You panicked",
+        "You pulled a heavy wardrobe alone"
+      ],
+      "hint": "There was nobody at the door. Sometimes death only scares you."
+    },
+    "panic": {
+      "title": "The Cyclist",
+      "text": "You stopped in the middle of a street and couldn't walk on. You never saw the cyclist.",
+      "chain": ["You never calmed down", "You suspected everything", "You couldn't decide anymore"],
+      "hint": "Before 🧠 hits zero, take the chances to breathe: sit, sleep, talk."
+    },
+    "collapse": {
+      "title": "The Counter's Corner",
+      "text": "In the kitchen your head spun, and the counter's corner was very close.",
+      "chain": ["You didn't eat or rest", "You pushed yourself too hard", "Your body gave up"],
+      "hint": "When ❤️ drops, food and sleep will save you."
+    },
+    "alone": {
+      "title": "Nobody Called",
+      "text": "You fell. You shouted for hours. There was nobody left to call you.",
+      "chain": ["You pushed people away", "You ignored their calls", "Nobody came looking"],
+      "hint": "If 👥 hits zero, nobody is left to help you."
+    },
+    "together": {
+      "title": "Midnight",
+      "text": "00:00. You are both alive. Elif says nothing. Neither do you. Death missed two people today.",
+      "chain": [],
+      "hint": "You found the best ending."
+    },
+    "survivor": {
+      "title": "Midnight",
+      "text": "00:00. You are alive. You saved nobody today, but you are here. Death got it wrong.",
+      "chain": [],
+      "hint": "There is a better ending, with someone else alive."
+    }
+  }
+}

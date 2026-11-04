@@ -1,0 +1,265 @@
+{
+  "title": "Gece Yarısına Kadar",
+  "vision": [
+    "Otobüs köprüye dönüyor.",
+    "Bir halat kopuyor.",
+    "Cam. Su. Çığlıklar.",
+    "Kimse çıkamıyor.",
+    "Sen de."
+  ],
+  "wake": "Gözünü açıyorsun. Duraktasın. Otobüs daha yeni geliyor.",
+  "meters": { "mind": "Akıl", "body": "Sağlık", "trust": "Güven" },
+  "cards": {
+    "bus": {
+      "who": "Otobüs şoförü",
+      "text": "“Binmiyor musun?” Az önce bu otobüsün köprüden düştüğünü gördün. Daha düşmedi.",
+      "left": {
+        "label": "Herkesi uyar",
+        "after": "Çoğu sana güldü. Sarı montlu bir kız inip yanına geldi: Elif."
+      },
+      "right": { "label": "Sessizce uzaklaş", "after": "Kapılar kapandı. Otobüs köşeyi döndü." }
+    },
+    "sirens": {
+      "who": "Sokak",
+      "text": "Köprü tarafından siren sesleri geliyor. Elin titriyor.",
+      "left": { "label": "Kulaklığı tak", "after": "Sesler kesildi. Her şey biraz uzaklaştı." },
+      "right": {
+        "label": "Haberlere bak",
+        "after": "Ekranda köprü. Otobüs suda. Kulaklıkları cebine attın."
+      }
+    },
+    "cafe": {
+      "who": "Köşedeki kafe",
+      "text": "Elin titrerken kahve ayakkabına döküldü. Garson yeri siliyor.",
+      "left": { "label": "Otur, biraz kurusun", "after": "Beş dakika oturdun. Nefesin düzeldi." },
+      "right": { "label": "Hemen çık", "after": "Burası da güvenli değil. Dışarı çıktın." }
+    },
+    "elif-asks": {
+      "who": "Elif",
+      "text": "“Bunu nereden bildin? Bugün başka bir şey de olacak mı?”",
+      "left": { "label": "Kehaneti anlat", "after": "Gülmedi. Numaranı istedi." },
+      "right": { "label": "“Önsezi işte”", "after": "İnanmadı. Yine de numaranı aldı." }
+    },
+    "road": {
+      "who": "Karşıdan karşıya",
+      "text": "Işık kırmızı, yol boş. Arkandan biri sana doğru koşuyor.",
+      "left": {
+        "label": "Bekle, ona bak",
+        "after": "Adam düşürdüğün anahtarlığı uzattı. Korkudan gülemedin."
+      },
+      "right": {
+        "label": "Koşarak geç",
+        "after": "Bir kamyon kıl payı geçti. Korna kulağında çınlıyor."
+      }
+    },
+    "elevator": {
+      "who": "Apartman",
+      "text": "On ikinci kat. Asansör gıcırdıyor, merdivenler yeni yıkanmış.",
+      "left": { "label": "Merdiven", "after": "On iki kat. Bacakların titriyor ama yukarıdasın." },
+      "right": {
+        "label": "Asansör",
+        "after": "Kapılar kapandı, ışık bir kez gitti geldi. Hiçbir şey olmadı."
+      }
+    },
+    "locked": {
+      "who": "Dairenin kapısı",
+      "text": "Anahtarın yok. Komşu kapıyı açtı: “Balkonlar bitişik, geçebilirsin.”",
+      "left": { "label": "Balkondan geç" },
+      "right": {
+        "label": "Çilingiri bekle",
+        "after": "İki saat merdivende oturdun. Sıkıcı, ama hayattasın."
+      }
+    },
+    "food": {
+      "who": "Mutfak",
+      "text": "Sabahtan beri bir şey yemedin.",
+      "left": { "label": "Yağı ısıt, yumurta kır", "after": "Ocağı yaktın. Yağ ısınmaya başladı." },
+      "right": { "label": "Sadece su iç", "after": "Midene kramp girdi ama ocak kapalı." }
+    },
+    "mom": {
+      "who": "Annen arıyor",
+      "text": "Haberleri görmüş. “Sen iyi misin? Ne olur aç!”",
+      "left": {
+        "label": "Aç, onu sakinleştir",
+        "after": "Yirmi dakika konuştunuz. İkiniz de ağladınız."
+      },
+      "right": {
+        "label": "Önce ocağı kapat",
+        "after": "Ocağı kapattın. Geri aradığında sesi titriyordu."
+      }
+    },
+    "pan-fire": {
+      "who": "Mutfak",
+      "text": "Yanık kokusu. Tava alev almış, alev davlumbaza uzanıyor.",
+      "left": { "label": "Üstüne su dök" },
+      "right": {
+        "label": "Kapağı kapat, ocağı söndür",
+        "after": "Alev boğuldu. Elin yandı ama ev duruyor."
+      }
+    },
+    "sleep": {
+      "who": "Yatağın",
+      "text": "Dün geceden beri uyumadın. Gözlerin kapanıyor.",
+      "left": { "label": "Biraz uyu", "after": "Rüyanda köprüyü gördün. Yine de iyi geldi." },
+      "right": { "label": "Uyanık kal", "after": "Kahve yaptın. Tavanı izliyorsun." }
+    },
+    "elif-news": {
+      "who": "Elif",
+      "text": "“Otobüsten inen diğer adam öldü. Asansörde. Bu tesadüf mü? Yanına geleyim mi?”",
+      "variants": ["“Otobüsten inen diğer adam öldü. Asansörde. Sıra bizde mi? Yanına geliyorum.”"],
+      "left": { "label": "“Gel”", "after": "Yarım saat sonra kapındaydı." },
+      "right": { "label": "“Gelme, tehlikeli”", "after": "Görüldü. Cevap yok." }
+    },
+    "witness": {
+      "who": "Bilinmeyen numara",
+      "text": "“Polisten arıyoruz. Duraktan uzaklaştığınız görüntülerde var. İfadenize ihtiyacımız var.”",
+      "left": {
+        "label": "“Yarın geleceğim”",
+        "after": "Polis not aldı. Kapatınca ellerin terlemişti."
+      },
+      "right": { "label": "Telefonu kapat", "after": "Telefon sustu. Sessizlik daha kötü." }
+    },
+    "fuse": {
+      "who": "Sigorta kutusu",
+      "text": "Elektrikler gitti. Kutu koridorda, zemin rutubetli.",
+      "left": {
+        "label": "Elle sigortayı kaldır",
+        "after": "Elif fenerle tuttu: “Dur, o kablo çıplak!” Doğru düğmeye bastın."
+      },
+      "right": {
+        "label": "Karanlıkta bekle",
+        "after": "Bir saat sonra ışıklar kendiliğinden geldi."
+      }
+    },
+    "railing": {
+      "who": "Elif",
+      "text": "Balkonda hava alıyor, korkuluğa yaslanmış. O korkuluk sallanıyor muydu?",
+      "left": {
+        "label": "“İçeri gel, hemen!”",
+        "after": "Kızdı, içeri girdi. Tam o an korkuluk boşluğa düştü."
+      },
+      "right": { "label": "Yanına çık, sarıl" }
+    },
+    "door": {
+      "who": "Kapı",
+      "text": "Kapı çalındı. Gözetlikte kimse yok. Yanında ağır gardırop duruyor.",
+      "left": { "label": "Aç ve bak", "after": "Kimse yok. Paspasta sabahki otobüsün bileti var." },
+      "right": { "label": "Gardırobu kapıya daya" }
+    }
+  },
+  "endings": {
+    "road": {
+      "title": "Korna",
+      "text": "Kamyonu duymadın bile.",
+      "chain": [
+        "Sirenlerden kaçmak istedin",
+        "Kulaklığı taktın",
+        "Birinin arkandan koştuğunu sandın",
+        "Kırmızıda geçtin",
+        "Kamyonun kornasını duymadın"
+      ],
+      "hint": "Kulaklık takmasaydın kornayı duyardın."
+    },
+    "stairs": {
+      "title": "Islak Basamak",
+      "text": "Yedinci katta ayağın kaydı. Boşluk. Hepsi bu.",
+      "chain": [
+        "Elin titredi",
+        "Kahve ayakkabına döküldü",
+        "Kurumasını beklemedin",
+        "Merdiveni seçtin",
+        "Islak taban, yıkanmış basamak"
+      ],
+      "hint": "Kafede beş dakika otursaydın ayakkabın kururdu. Asansör bugün güvenliydi."
+    },
+    "balcony": {
+      "title": "Bitişik Balkon",
+      "text": "Aradaki boşluk göründüğünden genişti.",
+      "chain": [
+        "Kırmızıda koştun",
+        "Anahtarlığı düşürdüğünü fark etmedin",
+        "Kapıda kaldın",
+        "Komşunun fikrini dinledin",
+        "On ikinci kat"
+      ],
+      "hint": "Arkandan koşan adam anahtarlığını getiriyordu."
+    },
+    "kitchen": {
+      "title": "Bir Bardak Su",
+      "text": "Su yağa değdiği an alev tavana çıktı.",
+      "chain": [
+        "Yumurta için yağı ısıttın",
+        "Annen aradı",
+        "Ocağı unuttun",
+        "Yağ tutuştu",
+        "Üstüne su döktün"
+      ],
+      "hint": "Yağ yangını suyla sönmez, patlar. Kapağı kapatmalıydın."
+    },
+    "fuse": {
+      "title": "Çıplak Kablo",
+      "text": "Karanlıkta yanlış yere dokundun.",
+      "chain": [
+        "Elif'i yanına çağırmadın",
+        "Kimseyi kurtarmadın, yanında kimse yoktu",
+        "Elektrikler gitti",
+        "Beklemek istemedin",
+        "Rutubetli zemin, çıplak kablo"
+      ],
+      "hint": "Yanında fener tutan biri olsaydı kabloyu görürdü."
+    },
+    "railing": {
+      "title": "Korkuluk",
+      "text": "Sarıldın. Korkuluk ikinizi birden taşımadı.",
+      "chain": [
+        "Elif'i kurtardın",
+        "Yanına çağırdın",
+        "Geceyi birlikte atlattınız",
+        "Rahatladın",
+        "Balkona çıktın"
+      ],
+      "hint": "Kızmasını göze alıp onu içeri çağırabilirdin."
+    },
+    "wardrobe": {
+      "title": "Gardırop",
+      "text": "Kapıyı korurken gardırobu üstüne devirdin.",
+      "chain": [
+        "Bütün gün yalnız kaldın",
+        "Kapı çalındı",
+        "Korktun",
+        "Ağır gardırobu tek başına çektin"
+      ],
+      "hint": "Kapıda kimse yoktu. Ölüm bazen sadece korkutur."
+    },
+    "panic": {
+      "title": "Bisikletli",
+      "text": "Bir yolun ortasında durdun, yürüyemedin. Bisikletliyi görmedin.",
+      "chain": ["Korkunu hiç dindirmedin", "Her şeyden şüphelendin", "Karar veremez oldun"],
+      "hint": "🧠 sıfıra inmeden nefes alma fırsatlarını kullan: oturmak, uyumak, konuşmak."
+    },
+    "collapse": {
+      "title": "Tezgâhın Köşesi",
+      "text": "Mutfakta başın döndü, tezgâhın köşesi çok yakındı.",
+      "chain": ["Yemedin, dinlenmedin", "Kendini zorladın", "Bedenin pes etti"],
+      "hint": "❤️ düşerken yemek ve uyku seni kurtarır."
+    },
+    "alone": {
+      "title": "Arayan Olmadı",
+      "text": "Düştün. Saatlerce bağırdın. Seni arayacak kimse kalmamıştı.",
+      "chain": ["İnsanları kendinden uzaklaştırdın", "Telefonlarını açmadın", "Kimse seni aramadı"],
+      "hint": "👥 sıfıra inerse yardım edecek kimse kalmaz."
+    },
+    "together": {
+      "title": "Gece Yarısı",
+      "text": "00:00. İkiniz de hayattasınız. Elif bir şey söylemiyor, sen de. Ölüm bugün iki kişiyi kaçırdı.",
+      "chain": [],
+      "hint": "En iyi sonu buldun."
+    },
+    "survivor": {
+      "title": "Gece Yarısı",
+      "text": "00:00. Hayattasın. Bugün kimseyi kurtaramadın ama buradasın. Ölüm yanıldı.",
+      "chain": [],
+      "hint": "Daha iyi bir son var: Başka biri de hayatta kalıyor."
+    }
+  }
+}

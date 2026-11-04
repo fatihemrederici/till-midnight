@@ -1,5 +1,5 @@
 // Tipler.
-import type { Card, Condition, GameState, Side, Story, Text, Language } from "./types";
+import type { Card, Condition, GameState, Side, Story, Text } from "./types";
 
 // Kural motoru. Java'daki StoryEngine'in kopyası: Kaydırma anında tepki versin diye tarayıcıda da çalışıyor.
 // İkisi de stories/first-day.paths.json ile test edildiği için birbirinden ayrılamaz.
@@ -26,7 +26,14 @@ function nextCard(story: Story, flags: Condition, from: number): number {
 // Yeni oyun başlatır.
 export function newGame(story: Story): GameState {
   // Hiç işaret yok, başlangıç göstergeleri, ilk uygun kart.
-  return { flags: {}, meters: { ...story.start }, index: nextCard(story, {}, 0), endingId: null, after: null, choices: [] };
+  return {
+    flags: {},
+    meters: { ...story.start },
+    index: nextCard(story, {}, 0),
+    endingId: null,
+    after: null,
+    choices: [],
+  };
 }
 
 // Seçimi uygular ve yeni durumu döndürür. Eski durum değişmez.
@@ -52,14 +59,22 @@ export function choose(story: Story, state: GameState, side: Side): GameState {
 
   // Sıfıra inen gösterge varsa dosyadaki sırayla ilki oyunu bitirir.
   const empty = story.meters.find((meter) => meters[meter.id] <= 0);
-  if (empty) return { flags, meters, index: state.index, choices, endingId: empty.ending, after: null };
+  if (empty)
+    return { flags, meters, index: state.index, choices, endingId: empty.ending, after: null };
 
   // Sıradaki kartı bul.
   const index = nextCard(story, flags, state.index + 1);
   // Kart kalmadıysa gece yarısına ulaşıldı: koşulu tutan ilk kurtuluş.
   if (index < 0) {
     const win = story.endings.find((ending) => ending.won && holds(ending.when, flags));
-    return { flags, meters, index: state.index, choices, endingId: win ? win.id : null, after: null };
+    return {
+      flags,
+      meters,
+      index: state.index,
+      choices,
+      endingId: win ? win.id : null,
+      after: null,
+    };
   }
   // Oyun sürüyor.
   return { flags, meters, index, choices, endingId: null, after: choice.after ?? null };
@@ -71,18 +86,4 @@ export function cardText(card: Card, flags: Condition): Text {
   const variant = card.variants?.find((item) => holds(item.when, flags));
   // Bulunan metni döndür.
   return variant ? variant.text : card.text;
-}
-
-// Bir metnin seçili dildeki hali.
-export function say(text: Text, language: Language): string {
-  // Metni döndür.
-  return text[language];
-}
-
-// "14:30" saatini günün ilerleme oranına çevirir: 08:00 başlangıç, 24:00 son.
-export function dayProgress(time: string): number {
-  // Saat ve dakikayı ayır.
-  const [hours, minutes] = time.split(":").map(Number);
-  // 0 ile 1 arasına çevir.
-  return Math.max(0, Math.min(1, (hours + minutes / 60 - 8) / 16));
 }

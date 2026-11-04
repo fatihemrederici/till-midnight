@@ -3,16 +3,10 @@ package com.tillmidnight.api.web;
 
 // Hikâye tipi.
 import com.tillmidnight.api.story.Story;
-// Analiz raporu.
-import com.tillmidnight.api.story.StoryAnalysis;
-// Analiz eden sınıf.
-import com.tillmidnight.api.story.StoryAnalyzer;
+// Hikâye kontrolü.
+import com.tillmidnight.api.story.StoryChecker;
 // Hikâye okuyucu.
 import com.tillmidnight.api.story.StoryLoader;
-// Doğrulayıcı.
-import com.tillmidnight.api.story.StoryValidator;
-// Değiştirilebilir liste.
-import java.util.ArrayList;
 // Liste arayüzü.
 import java.util.List;
 // POST adresi tanımlama etiketi.
@@ -29,20 +23,16 @@ import tools.jackson.core.JacksonException;
 @RestController
 public class InternalController {
 
-    // Yapı kontrolü.
-    private final StoryValidator validator;
-    // Yol analizi.
-    private final StoryAnalyzer analyzer;
+    // Hikâye kontrolü.
+    private final StoryChecker checker;
 
-    // Spring ikisini de buraya verir.
-    public InternalController(StoryValidator validator, StoryAnalyzer analyzer) {
-        // Doğrulayıcıyı sakla.
-        this.validator = validator;
-        // Analizciyi sakla.
-        this.analyzer = analyzer;
+    // Spring kontrol edeni buraya verir.
+    public InternalController(StoryChecker checker) {
+        // Kontrol edeni sakla.
+        this.checker = checker;
     }
 
-    // Hikâye JSON'unu alır, kullanılabilir mi diye cevap verir.
+    // Birleşik hikâye JSON'unu alır, kullanılabilir mi diye cevap verir.
     @PostMapping("/internal/validate")
     public ValidationResponse validate(@RequestBody String json) {
         // Okunan hikâye.
@@ -54,31 +44,9 @@ public class InternalController {
             // Bozuk JSON ya da bilinmeyen alan.
             return new ValidationResponse(false, List.of("Invalid JSON: " + exception.getOriginalMessage()), null);
         }
-
-        // Yapı hatalarını bul.
-        List<String> errors = new ArrayList<>(validator.validate(story));
-        // Hata varsa analiz güvenli değil.
-        if (!errors.isEmpty()) {
-            return new ValidationResponse(false, errors, null);
-        }
-
-        // Tüm yolları dene.
-        StoryAnalysis analysis;
-        try {
-            analysis = analyzer.analyze(story);
-        } catch (IllegalArgumentException exception) {
-            // Çok fazla yol.
-            return new ValidationResponse(false, List.of(exception.getMessage()), null);
-        }
-        // Kurtuluş yolu olmalı.
-        if (analysis.survivalPercent() == 0) {
-            errors.add("Story has no surviving path");
-        }
-        // Ulaşılamayan kart olmamalı.
-        analysis.unreachableCards().forEach(id -> errors.add("Card can never appear: " + id));
-        // Ulaşılamayan son olmamalı.
-        analysis.unreachableEndings().forEach(id -> errors.add("Ending can never be reached: " + id));
+        // Hikâyeyi kontrol et.
+        StoryChecker.Report report = checker.check(story);
         // Raporu döndür.
-        return new ValidationResponse(errors.isEmpty(), errors, analysis);
+        return new ValidationResponse(report.errors().isEmpty(), report.errors(), report.analysis());
     }
 }

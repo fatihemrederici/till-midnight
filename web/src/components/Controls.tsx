@@ -1,14 +1,22 @@
-// Ses ayarı.
-import { isMuted, setMuted, unlockAudio } from "./audio";
-// Dil listesi ve yazılar.
-import { LANGUAGES, UI } from "./i18n";
-// Tip.
-import type { Language } from "./types";
 // React durumu.
 import { useState } from "react";
+// Ses ayarı.
+import { isMuted, setMuted, unlockAudio } from "../audio/synth";
+// Tip.
+import type { Language } from "../game/types";
+// Dil listesi.
+import { LANGUAGES } from "../i18n/languages";
+// Yazılar.
+import { UI } from "../i18n/ui";
 
 // Dil ve ses düğmeleri. Her ekranda aynı yerde.
-export function Controls({ language, onLanguage }: { language: Language; onLanguage: (language: Language) => void }) {
+export function Controls({
+  language,
+  onLanguage,
+}: {
+  language: Language;
+  onLanguage: (language: Language) => void;
+}) {
   // Düğmenin görünüşü için sessizlik durumu.
   const [muted, setMutedState] = useState(isMuted());
 
@@ -38,7 +46,11 @@ export function Controls({ language, onLanguage }: { language: Language; onLangu
         ))}
       </div>
       {/* Ses düğmesi. */}
-      <button className="sound" onClick={toggle} aria-label={muted ? UI.soundOff[language] : UI.soundOn[language]}>
+      <button
+        className="sound"
+        onClick={toggle}
+        aria-label={muted ? UI.soundOff[language] : UI.soundOn[language]}
+      >
         {muted ? "🔇" : "🔊"}
       </button>
     </div>

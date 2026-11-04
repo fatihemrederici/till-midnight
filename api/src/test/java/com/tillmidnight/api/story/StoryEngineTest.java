@@ -12,46 +12,44 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.tillmidnight.api.story.StoryEngine.Side;
 // Dosya okuma hatası.
 import java.io.IOException;
-// Dosya okuma.
-import java.io.InputStream;
+// Metin kodlaması.
+import java.nio.charset.StandardCharsets;
 // Liste tipi.
 import java.util.List;
 // Test etiketi.
 import org.junit.jupiter.api.Test;
-// JSON ağacı.
-import tools.jackson.databind.JsonNode;
-// JSON okuyucu.
-import tools.jackson.databind.json.JsonMapper;
+// Test dosyalarını okur.
+import org.springframework.core.io.ClassPathResource;
 
 // Motorun testleri.
 class StoryEngineTest {
 
     // Testlerin kullandığı hikâye.
-    private final Story story = StoryLoader.fromClasspath("stories/first-day.json");
+    private final Story story = StoryLoader.loadChapter("first-day");
     // Test edilen motor.
     private final StoryEngine engine = new StoryEngine();
 
     // Bu metot bir test.
     @Test
-    // first-day.paths.json içindeki tüm yollar beklenen sonu vermeli.
+    // story-paths/first-day.txt içindeki tüm yollar beklenen sonu vermeli.
     // Web'deki engine.ts aynı dosyayla test edilir, böylece iki motor birbirinden ayrılamaz.
     void everyKnownPathEndsAsExpected() throws IOException {
-        // Dosyayı aç.
-        try (InputStream in = getClass().getClassLoader().getResourceAsStream("stories/first-day.paths.json")) {
-            // JSON'u oku.
-            JsonNode paths = JsonMapper.builder().build().readTree(in).get("paths");
-            // Her yolu dene.
-            for (JsonNode path : paths) {
-                // "LRL" metnini yön listesine çevir.
-                List<Side> choices = path.get("choices").asString().chars()
-                        .mapToObj(c -> c == 'L' ? Side.LEFT : Side.RIGHT)
-                        .toList();
-                // Beklenen sonu kontrol et.
-                assertEquals(path.get("ending").asString(), engine.play(story, choices).endingId(), path.toString());
-            }
-            // Yolların hepsi denenmiş olmalı.
-            assertEquals(485, paths.size());
+        // Dosyadaki satırlar: "LRL stairs".
+        List<String> lines = new ClassPathResource("story-paths/first-day.txt")
+                .getContentAsString(StandardCharsets.UTF_8)
+                .lines()
+                .toList();
+        // Her yolu dene.
+        for (String line : lines) {
+            // Seçimleri ve sonu ayır.
+            String[] parts = line.split(" ");
+            // "LRL" metnini yön listesine çevir.
+            List<Side> choices = parts[0].chars().mapToObj(c -> c == 'L' ? Side.LEFT : Side.RIGHT).toList();
+            // Beklenen sonu kontrol et.
+            assertEquals(parts[1], engine.play(story, choices).endingId(), line);
         }
+        // Yolların hepsi denenmiş olmalı.
+        assertEquals(485, lines.size());
     }
 
     // Bu metot bir test.

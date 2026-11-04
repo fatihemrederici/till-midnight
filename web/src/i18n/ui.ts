@@ -1,40 +1,5 @@
-// Tipler.
-import type { Language, Text } from "./types";
-
-// Desteklenen diller ve seçicide görünen adları.
-export const LANGUAGES: { id: Language; label: string }[] = [
-  { id: "en", label: "EN" },
-  { id: "tr", label: "TR" },
-  { id: "pl", label: "PL" },
-];
-
-// Dilin tarayıcıda saklandığı anahtar.
-const STORE_KEY = "till-midnight.language";
-
-// Açılışta kullanılacak dil: Önce seçilmiş dil, sonra telefonun dili, yoksa İngilizce.
-export function initialLanguage(): Language {
-  try {
-    // Saklı dil.
-    const saved = localStorage.getItem(STORE_KEY);
-    if (saved === "en" || saved === "tr" || saved === "pl") return saved;
-  } catch {
-    // Gizli modda depo çalışmayabilir; aşağıdaki yöntemle devam ederiz.
-  }
-  // Telefonun dilinin ilk iki harfi.
-  const device = (navigator.language || "en").slice(0, 2);
-  // Destekleniyorsa onu seç.
-  return device === "tr" || device === "pl" ? device : "en";
-}
-
-// Seçilen dili saklar.
-export function saveLanguage(language: Language): void {
-  try {
-    // Sakla.
-    localStorage.setItem(STORE_KEY, language);
-  } catch {
-    // Saklanamazsa dil sadece bu oturumda geçerli olur.
-  }
-}
+// Tip.
+import type { Text } from "../game/types";
 
 // Hikâye dışındaki tüm arayüz yazıları.
 export const UI = {
