@@ -1,45 +1,48 @@
-# 10sec
+# Until Midnight
 
-A daily puzzle game. Every day there is a new scene, and in ten seconds something goes badly wrong.
-First you get a vision of everything going wrong. Then it starts for real, and you have ten seconds and a few
-touches to stop it. Time rewinds until you make it.
+You should have died this morning. A vision showed you the bus falling off the bridge, and you stepped back. Now you have to reach midnight, one swiped card at a time, while death comes back through your own small choices. Skip lunch at noon and you can faint on the stairs at night.
 
-**Status:** in progress. Three levels are playable in the browser, with progress and stars saved to PostgreSQL.
+Playable in English, Turkish and Polish. The language changes instantly at any point in the game.
 
-## Layout
+## How it works
 
-| Path | What it is | Stack |
-| --- | --- | --- |
-| `api/` | Game engine, solver, REST API | Java 21, Spring Boot |
-| `web/` | Browser client | React, TypeScript |
-| `ai-worker/` | Generates and repairs scenes | Python, FastAPI |
-| `scenes/` | Scene JSON and its schema | |
-| `docs/` | Design notes | |
+```
+stories/first-day.json     The whole game as data: cards, rules, endings, three languages
+        |
+Java server                Loads and checks the story, replays each finished run, stores results
+        |
+PostgreSQL                 The runs table
+        |
+React client               Runs the same rules for instant swipes, plays sounds and animations
+```
 
-The engine runs only on the server. The client sends touches and plays back the timeline it receives,
-so scores cannot be faked and the puzzle's rules never reach the browser.
+The client decides nothing that counts. It sends only the list of swipes, and the server replays them to get the real result.
 
 ## Run it
 
-Requires Java 21, Node 20.19 or newer, and Docker.
+You need Java 21, Node and Docker.
 
 ```sh
-docker compose up -d
-cd api && ./mvnw spring-boot:run
-cd web && npm install && npm run dev
+docker compose up -d             # database
+cd api && ./mvnw spring-boot:run # server on port 8080
+cd web && npm install && npm run dev   # game on port 5173
 ```
 
-Then open http://localhost:5173.
-
-## Run the tests
-
-The database must be running. Tests use their own schema.
+## Test it
 
 ```sh
-docker compose up -d
-cd api && ./mvnw test
+cd api && ./mvnw test   # the database must be running
+cd web && npm test
 ```
 
-## Scene format
+Both test suites play all 485 possible paths of the story from `stories/first-day.paths.json` and must reach the same endings.
 
-See [docs/scene-format.md](docs/scene-format.md).
+## API
+
+| Request | Purpose |
+| --- | --- |
+| `GET /story` | The story |
+| `POST /runs` | Saves a finished run: `{ storyId, runId, playerId, choices: ["LEFT", "RIGHT"] }`. Returns the ending and statistics |
+| `POST /internal/validate` | Checks a story file without loading it |
+
+Writing a new story: [docs/story-format.md](docs/story-format.md)

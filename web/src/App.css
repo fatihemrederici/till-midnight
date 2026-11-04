@@ -1,14 +1,17 @@
-/* Renkler ve ölçüler tek yerde. Oyunun havası: sarı uyarı levhası. */
+/* Tek ekranlık gerilim oyunu: Üstte saat, başparmağın altında tek bir kâğıt kart. Bilerek tek koyu görünüm. */
 :root {
-  --ink: #1b1f5e;
-  --paper: #fffbea;
-  --warning: #ffc531;
-  --disaster: #f4614a;
-  --safe: #18b99a;
-  --vision: #2b1238;
-  --line: 4px solid var(--ink);
-  --display: "Bricolage Grotesque", system-ui, sans-serif;
-  --body: "Atkinson Hyperlegible", system-ui, sans-serif;
+  color-scheme: dark;
+  --night: #15100f;
+  --night-2: #2a1e1b;
+  --paper: #ecdfc6;
+  --paper-2: #b9ac95;
+  --paper-ink: #231714;
+  --blood: #c22a1d;
+  --blood-dark: #7d140c;
+  --dust: #a8988a;
+  --dawn: #1f3b33;
+  --display: "Big Shoulders Display", Impact, "Arial Narrow", sans-serif;
+  --body: "Literata", Georgia, serif;
 }
 
 /* Kutu ölçüleri kenarlığı da içersin. */
@@ -16,494 +19,741 @@
   box-sizing: border-box;
 }
 
-/* Sayfanın temeli. */
+/* Sayfa kaymasın: Oyun tek ekran. */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+/* Temel. */
 body {
-  margin: 0;
-  background: var(--warning);
-  color: var(--ink);
+  overflow: hidden;
+  background: var(--night);
+  color: var(--paper);
   font-family: var(--body);
-  font-size: 18px;
-  line-height: 1.45;
+  font-size: 17px;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Ana sütun: telefonda ekranı dolduran dikey düzen. Arka plan oyunun durumunu gösterir. */
-.page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100dvh;
-  padding: 16px max(16px, calc((100vw - 720px) / 2));
-  background: var(--warning);
-  transition: background-color 250ms;
-}
-
-/* Kaybedince her yer kırmızı olur. */
-.page[data-mood="lost"] {
-  background: var(--disaster);
-}
-
-/* Kazanınca her yer yeşil olur. */
-.page[data-mood="won"] {
-  background: var(--safe);
-}
-
-/* Kazanınca sahne küçülür: sonuç ve düğmeler ekrana sığsın. */
-.page[data-mood="won"] .stage {
-  flex: 0 0 240px;
-  min-height: 0;
-}
-
-/* Küçük sahnede nesne adları gizlenir, emojiler küçülür. */
-.page[data-mood="won"] .label {
-  display: none;
-}
-.page[data-mood="won"] .emoji {
-  font-size: 24px;
-}
-
-/* Kehanette gece gibi karanlık: gerçekten ayrı bir an olduğu belli olur. */
-.page[data-mood="vision"] {
-  background: var(--vision);
-  color: var(--paper);
-}
-
-/* Kehanette sahne kızıl görünür. */
-.page[data-mood="vision"] .board {
-  background: #f7c5bb;
-  border-color: var(--paper);
-  box-shadow: 6px 6px 0 var(--disaster);
-}
-
-/* Kehanette arka plan koyu, ikincil düğme açık renk olmalı. */
-.page[data-mood="vision"] .action.quiet {
-  color: var(--paper);
-  border-color: var(--paper);
-}
-
-/* Uyanışta sahne normale döner ama arka plan bir an beyazlar. */
-.page[data-mood="awake"] {
-  background: var(--paper);
-}
-
-/* Başlık ve sayaç aynı satırda. */
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 16px;
-  margin-bottom: 12px;
-}
-
-/* Küçük oyun adı. */
-.brand {
-  margin: 0;
-  font-weight: 700;
-}
-
-/* Bölüm listesine dönüş düğmesi. Parmakla kolay basılsın diye dolgulu. */
-.back {
-  display: block;
-  margin: -8px 0 0 -8px;
-  padding: 8px;
-  background: none;
+/* Tüm düğmeler aynı yazı tipini kullansın. */
+button {
+  font: inherit;
   color: inherit;
-  border: 0;
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-/* Sahne başlığı. */
-.title {
-  margin: 0;
-  font-family: var(--display);
-  font-size: clamp(26px, 6vw, 44px);
-  font-weight: 800;
-  line-height: 1;
-}
-
-/* Sayaç. */
-.clock {
-  margin: 0;
-  min-width: 1.4em;
-  font-family: var(--display);
-  font-size: clamp(56px, 12vw, 88px);
-  font-weight: 800;
-  line-height: 0.85;
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-/* Sahne: boş alanı doldurur, baloncuk buna göre konumlanır. */
-.stage {
-  position: relative;
-  display: flex;
-  flex: 1;
-  min-height: 340px;
-}
-
-/* Nesnelerin ızgarası. */
-.board {
-  display: grid;
-  flex: 1;
-  gap: 4px;
-  padding: 6px;
-  background: var(--paper);
-  border: var(--line);
-  border-radius: 20px;
-  box-shadow: 6px 6px 0 var(--ink);
-  transition: background-color 250ms;
-}
-
-/* Bir nesne: etiket gibi duran büyük düğme. */
-.object {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  min-width: 0;
-  min-height: 0;
-  padding: 4px 1px;
-  background: #fff;
-  color: var(--ink);
-  border: 3px solid var(--ink);
-  border-radius: 14px;
-  font: inherit;
   cursor: pointer;
   touch-action: manipulation;
 }
 
-/* Fareyle üstüne gelince hafifçe kalkar. */
-@media (hover: hover) {
-  .object:enabled:hover {
-    background: var(--warning);
-    transform: translateY(-2px);
+/* Klavye odağı. */
+button:focus-visible {
+  outline: 3px solid var(--paper);
+  outline-offset: 2px;
+}
+
+/* Ana sütun. */
+.app {
+  position: relative;
+  /* Kızarma katmanı içeriğin arkasında kalsın: Kart ve saat hep okunur. */
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  padding-block: max(12px, env(safe-area-inset-top, 0px)) max(14px, env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Tehlike: Ekranın kenarları kızarır. Tıklamaları engellemez. */
+.app::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s;
+  box-shadow: inset 0 0 90px 30px var(--blood-dark);
+}
+.app[data-danger="low"]::after {
+  opacity: 0.45;
+}
+.app[data-danger="high"]::after {
+  opacity: 1;
+  animation: pulse 0.64s infinite;
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.55;
   }
 }
 
-/* Parmak basınca içeri göçer. */
-.object:enabled:active {
-  transform: scale(0.94);
+/* Oyun ekranının içeriği. Gösterge düşünce ekran bir an sarsılır. */
+.play {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
 }
-
-/* Dokunulamazken imleç değişir, ama nesne soluklaşmaz: sahne okunur kalmalı. */
-.object:disabled {
-  cursor: default;
+.play[data-shake="true"] {
+  animation: shake 0.32s;
 }
-
-/* Az önce değişen nesne. */
-.object[data-active="true"] {
-  background: var(--warning);
-  box-shadow: 0 0 0 3px var(--ink);
-}
-
-/* Etkisiz dokunulan nesne sallanır. */
-.object[data-nothing="true"] {
-  animation: shake 300ms;
-}
-
-/* Klavyeyle gezenler için görünür odak. */
-button:focus-visible {
-  outline: 4px solid var(--ink);
-  outline-offset: 3px;
-}
-
-/* Nesnenin emojisi. Değişince küçük bir zıplama yapar. */
-.emoji {
-  font-size: clamp(30px, 8vw, 44px);
-  line-height: 1.1;
-  animation: pop 220ms ease-out;
-}
-
-/* Nesnenin adı. */
-.label {
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.05;
-}
-
-/* Olanları anlatan baloncuk: nesnelerin üstünde, en okunur yerde. */
-.bubble {
-  position: absolute;
-  z-index: 2;
-  width: min(56%, 320px);
-  margin: 6px 0;
-  padding: 10px 14px;
-  background: var(--ink);
-  color: var(--paper);
-  border-radius: 16px;
-  font-size: 19px;
-  font-weight: 700;
-  line-height: 1.2;
-  text-align: center;
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
-/* Felaket baloncuğu kırmızı ve büyük. */
-.bubble[data-danger="true"] {
-  background: #b3180a;
-  color: #fff;
-  font-family: var(--display);
-  font-size: 22px;
-  font-weight: 800;
-}
-
-/* Uyanış yazısı. */
-.wake {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 2;
-  width: 80%;
-  margin: 0;
-  padding: 14px 18px;
-  background: var(--ink);
-  color: var(--paper);
-  border-radius: 16px;
-  font-family: var(--display);
-  font-size: clamp(26px, 6vw, 40px);
-  font-weight: 800;
-  line-height: 1.05;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-/* Durum değişimi animasyonu. */
-@keyframes pop {
-  from {
-    transform: scale(0.5);
+@keyframes shake {
+  20% {
+    transform: translate(-6px, 2px);
+  }
+  45% {
+    transform: translate(5px, -2px);
   }
   70% {
-    transform: scale(1.2);
+    transform: translate(-3px, 1px);
   }
-  to {
-    transform: scale(1);
+}
+/* Düşen gösterge kırmızı yanıp söner. */
+.meter[data-hit="true"] .pips {
+  animation: hit 0.7s;
+}
+@keyframes hit {
+  0%,
+  50% {
+    background: var(--blood);
+    box-shadow: 0 0 0 3px var(--blood);
   }
 }
 
-/* Sallanma animasyonu. */
-@keyframes shake {
-  25% {
-    transform: translateX(-5px);
-  }
-  75% {
-    transform: translateX(5px);
-  }
+/* Üst satır. */
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
 }
 
-/* Zaman çizgisi: 10 kutu yan yana. */
-.timeline {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: 4px;
-  margin: 16px 0 14px;
-  padding: 0;
-  list-style: none;
-}
-
-/* Bir saniye kutusu. */
-.tick {
-  position: relative;
-  padding: 3px 0;
-  background: var(--paper);
-  color: var(--ink);
-  border: 3px solid var(--ink);
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 700;
-  text-align: center;
+/* Saat: Her kartta düşerek gelir. */
+.time {
+  font-family: var(--display);
+  font-size: 58px;
+  font-weight: 900;
+  line-height: 0.85;
   font-variant-numeric: tabular-nums;
+  animation: clock 0.35s ease-out;
+}
+@keyframes clock {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
 }
 
-/* Geçmiş saniyeler. */
-.tick[data-past="true"] {
-  background: var(--ink);
+/* Dil ve ses düğmeleri. */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.languages {
+  display: flex;
+}
+.language,
+.sound {
+  min-width: 38px;
+  min-height: 38px;
+  padding: 0 6px;
+  background: transparent;
+  border: 0;
+  color: var(--dust);
+  font-size: 14px;
+  font-weight: 600;
+}
+.language[aria-pressed="true"] {
+  background: var(--paper);
+  color: var(--paper-ink);
+}
+
+/* Günün ilerlemesi. */
+.day {
+  position: relative;
+  height: 20px;
+  background: var(--night-2);
+}
+.day-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--blood-dark);
+  transition: width 0.5s ease-out;
+}
+.day-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 7px;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--paper);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Göstergeler. */
+.meters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.meter {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+.meter-name {
+  font-size: 13px;
+  color: var(--dust);
+  white-space: nowrap;
+  overflow: hidden;
+  transition: color 0.15s;
+}
+.meter[data-hint="true"] .meter-name {
+  color: var(--paper);
+}
+.pips {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+}
+.pip {
+  height: 8px;
+  background: var(--night-2);
+  transition: background-color 0.3s;
+}
+.pip[data-on="true"] {
+  background: var(--paper);
+}
+.meter[data-low="true"] .pip[data-on="true"] {
+  background: var(--blood);
+}
+/* Kaydırırken etkilenecek gösterge parlar. */
+.meter[data-hint="true"] .pips {
+  outline: 2px solid var(--blood);
+  outline-offset: 2px;
+}
+
+/* Önceki seçimin sonucu. */
+.after {
+  display: flex;
+  align-items: flex-end;
+  min-height: 3em;
+  margin: 0;
+  color: var(--dust);
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.3;
+  animation: rise 0.4s ease-out;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+/* Kart masası. */
+.table {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Kart. */
+.card {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 18px;
+  background: var(--paper);
+  color: var(--paper-ink);
+  touch-action: none;
+  cursor: grab;
+  clip-path: polygon(0 0, 100% 0, 100% 97%, 96% 100%, 0 100%);
+}
+/* Arkadaki kart. */
+.card.back {
+  position: absolute;
+  inset: 0;
+  background: var(--paper-2);
+  transform: rotate(-1.4deg) scale(0.985);
+  cursor: default;
+}
+/* Üstteki kart: Bırakınca yumuşakça yerine döner. */
+.card.live {
+  z-index: 1;
+  transition: transform 0.2s ease-out;
+  animation: deal 0.28s ease-out;
+}
+/* Parmak kartayken gecikmesiz takip eder. */
+.card.live[data-moving="true"] {
+  transition: none;
+}
+@keyframes deal {
+  from {
+    opacity: 0.4;
+    translate: 0 14px;
+    scale: 0.965;
+  }
+}
+.who {
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1;
+}
+/* Emoji, kâğıda basılmış gibi görünsün. */
+.face {
+  display: grid;
+  flex: 1;
+  min-height: 0;
+  place-items: center;
+  font-size: clamp(64px, 18vh, 150px);
+  line-height: 1;
+  pointer-events: none;
+  filter: saturate(0.65) contrast(1.1);
+}
+.text {
+  min-height: 5.6em;
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.36;
+  pointer-events: none;
+}
+/* Sürüklerken görünen seçim yazısı. */
+.tag {
+  position: absolute;
+  top: 14px;
+  max-width: 64%;
+  padding: 7px 10px;
+  background: var(--blood);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  pointer-events: none;
+}
+.tag.left {
+  right: 12px;
+  text-align: right;
+}
+.tag.right {
+  left: 12px;
+}
+
+/* Seçim düğmeleri. */
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.pick {
+  min-height: 58px;
+  padding: 8px 10px;
+  background: var(--night-2);
+  border: 0;
+  color: var(--paper);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.pick:active {
+  background: var(--blood);
+}
+.pick.l {
+  text-align: left;
+}
+.pick.r {
+  text-align: right;
+}
+
+/* Yazı ekranları. */
+.screen {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+  /* safe: Yazı sığmazsa üstü kesilmesin, kaydırılabilsin. */
+  justify-content: safe center;
+  min-height: 0;
+  overflow-y: auto;
+}
+.big {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(54px, 17vw, 84px);
+  font-weight: 900;
+  line-height: 0.9;
+  text-wrap: balance;
+}
+.small-big {
+  font-size: 48px;
+}
+.lede {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.4;
+}
+.small {
+  margin: 0;
+  color: var(--dust);
+  font-size: 15px;
+  line-height: 1.4;
+}
+.go {
+  min-height: 60px;
+  padding: 12px 18px;
+  background: var(--paper);
+  border: 0;
+  color: var(--paper-ink);
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 800;
+}
+.go:active {
+  background: var(--paper-2);
+}
+.link {
+  min-height: 44px;
+  background: none;
+  border: 0;
+  color: var(--paper);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Kehanet: Yazı ekrana darbeyle çarpar. */
+.vision {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--blood-dark);
+  animation: strobe 1.5s infinite;
+}
+.vision[data-awake="true"] {
+  background: var(--night);
+  animation: fadein 1.2s;
+}
+.vision .screen {
+  max-width: 440px;
+}
+@keyframes strobe {
+  0%,
+  100% {
+    background: #2a0705;
+  }
+  6% {
+    background: var(--blood);
+  }
+  18% {
+    background: var(--blood-dark);
+  }
+}
+@keyframes fadein {
+  from {
+    background: #fff;
+  }
+}
+.vision-line {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(54px, 16vw, 92px);
+  font-weight: 900;
+  line-height: 0.95;
+  text-align: center;
+  text-wrap: balance;
+  animation: slam 1.5s ease-out both;
+}
+.vision-line[data-last="true"] {
+  color: #fff;
+}
+@keyframes slam {
+  0% {
+    opacity: 0;
+    transform: scale(1.35);
+    filter: blur(6px);
+  }
+  12% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  18% {
+    transform: translate(-5px, 3px);
+  }
+  24% {
+    transform: translate(4px, -3px);
+  }
+  30%,
+  90% {
+    transform: none;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+.wake {
+  font-size: 24px;
+}
+.skip {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: max(18px, env(safe-area-inset-bottom, 0px));
+  min-width: 64px;
+  min-height: 44px;
+  background: transparent;
+  border: 1px solid var(--paper);
   color: var(--paper);
 }
 
-/* Şu anki saniye. */
-.tick[data-now="true"] {
-  background: var(--disaster);
-  color: var(--ink);
+/* Ölüm ekranı. */
+.dead-screen {
+  max-width: none;
+  background: var(--blood);
+  animation: impact 0.5s;
 }
-
-/* Dokunuş yapılan saniyenin altında nokta. */
-.tick[data-touched="true"]::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -11px;
-  width: 8px;
-  height: 8px;
-  margin-left: -4px;
-  background: var(--ink);
-  border-radius: 50%;
+.dead-screen > * {
+  width: 100%;
+  max-width: 448px;
+  margin-inline: auto;
 }
-
-/* Alt panel: yüksekliği sabit, böylece sahne aşamalar arasında zıplamaz. */
-.panel {
-  min-height: 92px;
+.dead-screen .language[aria-pressed="false"],
+.dead-screen .sound,
+.won-screen .language[aria-pressed="false"],
+.won-screen .sound {
+  color: var(--paper);
 }
-
-/* Zafer cümlesi. */
-.caption {
-  margin: 0 0 4px;
-  font-family: var(--display);
-  font-size: clamp(22px, 4.5vw, 30px);
-  font-weight: 800;
-  line-height: 1.1;
+.dead-screen .small,
+.dead-screen .chain-label {
+  color: #f5d5cd;
 }
-
-/* Yönlendirme cümlesi. */
-.hint {
-  max-width: 60ch;
-  margin: 0 0 8px;
+@keyframes impact {
+  0% {
+    background: #fff;
+    transform: translate(-10px, 4px);
+  }
+  12% {
+    background: var(--blood);
+  }
+  25% {
+    transform: translate(9px, -5px);
+  }
+  45% {
+    transform: translate(-6px, 3px);
+  }
+  65% {
+    transform: translate(4px, -2px);
+  }
+  100% {
+    transform: none;
+  }
 }
-
-/* Vurgulu yönlendirme. */
-.hint.strong {
-  font-size: 20px;
-  font-weight: 700;
+.strike {
+  animation: slam-title 0.4s ease-out both;
 }
-
-/* Toplanan yıldız sayısı. */
-.star-count {
-  margin: 0;
-  font-family: var(--display);
-  font-size: 28px;
-  font-weight: 800;
-  white-space: nowrap;
+@keyframes slam-title {
+  from {
+    opacity: 0;
+    transform: scale(1.5);
+  }
 }
-
-/* Bölüm listesi. */
-.levels {
+.chain-label {
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+.chain {
   display: grid;
-  gap: 12px;
-  margin: 8px 0 0;
+  gap: 2px;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
+/* Adımlar görününceye kadar yer kaplar, böylece ekran zıplamaz. */
+.chain li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 17px;
+  line-height: 1.3;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.chain li[data-on="true"] {
+  opacity: 1;
+  transform: none;
+}
+.chain li::before {
+  content: "↓";
+  position: absolute;
+  left: 0;
+}
+.chain li:first-child::before {
+  content: "•";
+}
+.chain li:last-child {
+  font-weight: 600;
+}
+.could {
+  margin: 0;
+  padding: 12px 14px;
+  background: var(--night);
+  color: var(--paper);
+  font-size: 17px;
+  line-height: 1.35;
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.could[data-on="true"] {
+  opacity: 1;
+}
 
-/* Bir bölüm satırı. */
-.level {
-  display: grid;
-  grid-template-columns: 48px 1fr 36px;
-  align-items: center;
-  gap: 12px;
+/* Kurtuluş ekranı. */
+.won-screen {
+  max-width: none;
+  background: var(--dawn);
+  animation: dawn 2.5s ease-out;
+}
+.won-screen > * {
   width: 100%;
-  min-height: 72px;
-  padding: 10px 16px;
-  background: var(--paper);
-  color: var(--ink);
-  border: var(--line);
-  border-radius: 18px;
-  box-shadow: 4px 4px 0 var(--ink);
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
+  max-width: 448px;
+  margin-inline: auto;
 }
-
-/* Basılınca içeri göçer. */
-.level:enabled:active {
-  box-shadow: 1px 1px 0 var(--ink);
-  transform: translate(3px, 3px);
+.won-screen .small {
+  color: #c4d6cf;
 }
-
-/* Kilitli bölüm. */
-.level[data-locked="true"] {
-  background: transparent;
-  box-shadow: none;
-  cursor: default;
+@keyframes dawn {
+  from {
+    background: var(--night);
+  }
 }
-
-/* Bölüm numarası. */
-.level-number {
+/* Geri sarma. */
+.rewind {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--night);
+  animation: flicker 0.14s infinite;
+}
+.rewind-clock {
   font-family: var(--display);
-  font-size: 34px;
-  font-weight: 800;
-  line-height: 1;
+  font-size: clamp(90px, 30vw, 170px);
+  font-weight: 900;
   font-variant-numeric: tabular-nums;
+  filter: blur(1px);
+}
+@keyframes flicker {
+  50% {
+    background: var(--night-2);
+  }
 }
 
-/* Bölüm adı. */
-.level-title {
+/* Ölüm listesi. */
+.list-screen {
+  justify-content: flex-start;
+  padding-top: 8px;
+}
+/* Düğme hep görünsün, sadece liste kayar. */
+.death-list {
+  display: grid;
+  flex: 1;
+  align-content: start;
+  gap: 6px;
+  min-height: 0;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.death-list li {
+  padding: 8px 12px;
+  background: var(--night-2);
+  color: var(--dust);
+}
+.death-list li[data-found="true"] {
+  background: var(--paper);
+  color: var(--paper-ink);
   font-family: var(--display);
   font-size: 22px;
   font-weight: 800;
-  line-height: 1.1;
 }
 
-/* Durum işareti. */
-.level-status {
-  font-size: 26px;
-  text-align: center;
-}
-
-/* Hata ve yükleme yazıları. */
-.notice {
-  max-width: 60ch;
-  font-size: 20px;
-}
-
-/* Düğme sırası. */
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-/* Ana düğme. */
-.action {
-  padding: 12px 22px;
-  background: var(--ink);
-  color: var(--paper);
-  border: var(--line);
-  border-radius: 999px;
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-/* Basılınca içeri göçer. */
-.action:active {
-  transform: translateY(2px);
-}
-
-/* İkincil düğme. */
-.action.quiet {
-  background: transparent;
-  color: var(--ink);
-}
-
-/* Telefonda hücreler dar: yazıları küçült, baloncuğu genişlet. */
-@media (max-width: 560px) {
-  .label {
-    font-size: 10px;
+/* Küçük telefonlar. */
+@media (max-height: 640px) {
+  .time {
+    font-size: 44px;
   }
-  .bubble {
-    width: 72%;
+  .text {
+    min-height: 5em;
     font-size: 17px;
   }
-  .bubble[data-danger="true"] {
-    font-size: 19px;
+  .after {
+    min-height: 2.6em;
+    font-size: 14px;
+  }
+  .card {
+    padding: 14px;
+  }
+  .face {
+    font-size: 60px;
+  }
+  /* Son ekranları da tek ekrana sığsın. */
+  .screen {
+    gap: 9px;
+  }
+  .big {
+    font-size: 44px;
+  }
+  .lede {
+    font-size: 16px;
+  }
+  .chain li {
+    font-size: 14px;
+  }
+  .could {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+  .go {
+    min-height: 48px;
+    padding: 6px 12px;
+    font-size: 21px;
+  }
+  .link {
+    min-height: 36px;
   }
 }
 
-/* Hareket istemeyen kullanıcılar için animasyonları kapat. */
+/* Hareket istemeyenler için tüm animasyonları kapat. */
 @media (prefers-reduced-motion: reduce) {
-  .emoji,
-  .object[data-nothing="true"] {
-    animation: none;
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
   }
-  .page,
-  .board {
-    transition: none;
-  }
-  .object:enabled:hover,
-  .object:enabled:active,
-  .level:enabled:active {
+  .chain li {
+    opacity: 1;
     transform: none;
   }
 }

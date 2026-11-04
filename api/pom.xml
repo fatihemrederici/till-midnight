@@ -73,10 +73,10 @@
       <resource>
         <directory>src/main/resources</directory>
       </resource>
-      <!-- Sahneler ana klasörde duruyor, çünkü AI worker da okuyacak. Buradan projeye kopyalanır. -->
+      <!-- Hikâyeler ana klasörde duruyor, çünkü web testleri ve AI worker da okuyacak. Buradan projeye kopyalanır. -->
       <resource>
-        <directory>../scenes</directory>
-        <targetPath>scenes</targetPath>
+        <directory>../stories</directory>
+        <targetPath>stories</targetPath>
       </resource>
     </resources>
     <plugins>

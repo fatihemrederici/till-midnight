@@ -10,10 +10,8 @@ export default defineConfig({
   server: {
     // Bu adreslere gelen istekleri Java sunucusuna ilet. Böylece tarayıcı tek adresle konuşur.
     proxy: {
-      "/scene": "http://localhost:8080",
-      "/attempt": "http://localhost:8080",
-      "/stats": "http://localhost:8080",
-      "/levels": "http://localhost:8080",
+      "/story": "http://localhost:8080",
+      "/runs": "http://localhost:8080",
     },
   },
 });

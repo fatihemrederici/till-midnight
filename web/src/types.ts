@@ -1,73 +1,78 @@
-// Bu tipler Java'daki record'ların TypeScript karşılığı. Swift'teki struct tanımları gibi.
+// Bu tipler Java'daki Story record'unun TypeScript karşılığı. Swift'teki struct tanımları gibi.
 
-// Nesnenin ızgaradaki konumu.
-export type Position = { x: number; y: number };
+// Oyunun dilleri.
+export type Language = "en" | "tr" | "pl";
 
-// GET /scene/today cevabındaki tek bir nesne.
-export type PublicObject = {
+// Üç dilde bir metin.
+export type Text = Record<Language, string>;
+
+// Koşul: {"elif": true} işaret doğru olmalı demektir.
+export type Condition = Record<string, boolean>;
+
+// Kaydırma yönü.
+export type Side = "left" | "right";
+
+// Kartı kaydırmanın sonucu.
+export type Choice = {
+  label: Text;
+  effects?: Record<string, number>;
+  set?: Condition;
+  death?: { when?: Condition; ending: string };
+  after?: Text;
+};
+
+// Bir kart.
+export type Card = {
   id: string;
-  label: string;
-  position: Position;
+  time: string;
   emoji: string;
+  who: Text;
+  text: Text;
+  variants?: { when: Condition; text: Text }[];
+  when?: Condition;
+  left: Choice;
+  right: Choice;
 };
 
-// GET /scene/today cevabı.
-export type PublicScene = {
+// Bir gösterge.
+export type Meter = { id: string; emoji: string; label: Text; ending: string };
+
+// Bir son.
+export type Ending = {
   id: string;
-  title: string;
-  intro: string;
-  durationSeconds: number;
-  maxTouches: number;
-  grid: { columns: number; rows: number };
-  objects: PublicObject[];
-  // Oyuncunun başta göreceği kehanet.
-  vision: Vision;
-};
-
-// Kehanet: oyuncu bir şey yapmazsa olacak her şey.
-export type Vision = {
-  events: GameEvent[];
-  disasters: { second: number; caption: string }[];
-};
-
-// Oyuncunun bir dokunuşu.
-export type Touch = { object: string; second: number };
-
-// Sunucunun gönderdiği tek bir olay.
-export type GameEvent = {
-  second: number;
-  object: string;
-  emoji: string;
-  // Sunucu açıklama göndermeyebilir, bu yüzden null olabilir. Swift'teki String? gibi.
-  caption: string | null;
-  noEffect: boolean;
-};
-
-// POST /attempt cevabı.
-export type Attempt = {
   won: boolean;
-  endSecond: number;
-  disasterCaption: string | null;
-  // En az kaç dokunuşla çözülebilir. Sadece kazanınca gelir.
-  bestTouches: number | null;
-  events: GameEvent[];
+  when?: Condition;
+  title: Text;
+  text: Text;
+  chain: { when?: Condition; text: Text }[];
+  hint: Text;
 };
 
-// GET /levels cevabındaki bir bölüm.
-export type Level = {
-  number: number;
-  sceneId: string;
-  title: string;
-  unlocked: boolean;
-  completed: boolean;
-  star: boolean;
+// Hikâyenin tamamı.
+export type Story = {
+  formatVersion: number;
+  id: string;
+  title: Text;
+  vision: Text[];
+  wake: Text;
+  start: Record<string, number>;
+  maxMeter: number;
+  meters: Meter[];
+  cards: Card[];
+  endings: Ending[];
 };
 
-// GET /stats cevabı.
-export type SceneStats = {
-  attempts: number;
-  players: number;
-  solvers: number;
-  medianTriesToSolve: number | null;
-  losses: { second: number; count: number }[];
+// Oyunun anlık hali. endingId doluysa oyun bitti.
+export type GameState = {
+  flags: Condition;
+  meters: Record<string, number>;
+  index: number;
+  endingId: string | null;
+  // Son seçimin sonucu olan cümle. Bir sonraki kartın üstünde görünür.
+  after: Text | null;
+  // Bu koşudaki seçimler. Sunucu bunları baştan oynatıp sonucu doğrular.
+  choices: Side[];
 };
+
+// Sunucunun koşu cevabındaki istatistikler.
+export type RunStats = { runs: number; players: number; survived: number; sameEnding: number };

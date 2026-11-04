@@ -1,70 +1,61 @@
-// Tipleri içeri alıyoruz.
-import type { Attempt, Level, PublicScene, SceneStats, Touch } from "./types";
+// Tipler.
+import type { RunStats, Side, Story } from "./types";
 
 // Oyuncunun kimliğini tarayıcıda saklarken kullanılan anahtar.
-const PLAYER_KEY = "10sec.playerId";
+const PLAYER_KEY = "until-midnight.playerId";
 
-// Oyuncu kimliğini döndürür. Hesap yok: ilk ziyarette rastgele üretilir ve tarayıcıda saklanır.
+// Rastgele kimlik üretir. Telefondan http ile açınca crypto.randomUUID olmayabilir, bu yüzden yedeği var.
+export function newId(): string {
+  // Varsa hazır fonksiyonu kullan.
+  if (crypto.randomUUID) return crypto.randomUUID();
+  // Yoksa 16 rastgele bayttan UUID oluştur.
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
+  // UUID sürüm ve varyant bitleri.
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  // Baytları onaltılık metne çevir.
+  const hex = Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+  // Tireleri ekle.
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+}
+
+// Oyuncu kimliği: İlk ziyarette üretilir ve saklanır.
 function playerId(): string {
-  // Bazı gizli modlarda tarayıcı deposu hata verebilir, bu yüzden try kullanıyoruz.
   try {
     // Saklı kimlik varsa onu kullan.
     const saved = localStorage.getItem(PLAYER_KEY);
     if (saved) return saved;
-    // Yoksa yeni üret.
-    const created = crypto.randomUUID();
-    // Sakla.
+    // Yoksa yeni üret ve sakla.
+    const created = newId();
     localStorage.setItem(PLAYER_KEY, created);
-    // Döndür.
     return created;
   } catch {
-    // Depo kullanılamıyorsa bu sayfa için geçici kimlik üret.
-    return crypto.randomUUID();
+    // Depo kullanılamıyorsa bu sayfa için geçici kimlik.
+    return newId();
   }
 }
 
-// Oyuncunun bölüm listesini sunucudan alır. async: bekleyen işlem. Swift'teki async gibi.
-export async function fetchLevels(): Promise<Level[]> {
-  // İsteği gönder ve cevabı bekle.
-  const response = await fetch(`/levels?playerId=${playerId()}`);
+// Hikâyeyi sunucudan alır.
+export async function fetchStory(): Promise<Story> {
+  // İsteği gönder.
+  const response = await fetch("/story");
   // Hata kodu geldiyse dur.
   if (!response.ok) throw new Error(`Server returned ${response.status}`);
-  // Gelen JSON'u nesneye çevir.
+  // JSON'u nesneye çevir.
   return response.json();
 }
 
-// Bir bölümün sahnesini sunucudan alır.
-export async function fetchScene(sceneId: string): Promise<PublicScene> {
-  // İsteği gönder ve cevabı bekle.
-  const response = await fetch(`/scene/${sceneId}`);
-  // Hata kodu geldiyse dur.
-  if (!response.ok) throw new Error(`Server returned ${response.status}`);
-  // Gelen JSON'u nesneye çevir.
-  return response.json();
-}
-
-// Dokunuşları sunucuya gönderir, olacakları alır.
-export async function playAttempt(sceneId: string, touches: Touch[], attemptId: string): Promise<Attempt> {
+// Biten koşuyu gönderir. Sunucu seçimleri baştan oynatıp sonucu kendisi hesaplar.
+export async function submitRun(storyId: string, runId: string, choices: Side[]): Promise<RunStats> {
   // POST isteği gönder.
-  const response = await fetch("/attempt", {
+  const response = await fetch("/runs", {
     method: "POST",
-    // Gövdenin JSON olduğunu söyle.
     headers: { "Content-Type": "application/json" },
-    // Nesneyi JSON metnine çevir.
-    body: JSON.stringify({ sceneId, touches, attemptId, playerId: playerId() }),
+    // Java tarafı yönleri büyük harfle bekliyor.
+    body: JSON.stringify({ storyId, runId, playerId: playerId(), choices: choices.map((side) => side.toUpperCase()) }),
   });
   // Hata kodu geldiyse dur.
   if (!response.ok) throw new Error(`Server returned ${response.status}`);
-  // Gelen JSON'u nesneye çevir.
-  return response.json();
-}
-
-// Bir bölümün bugünkü istatistiklerini sunucudan alır.
-export async function fetchStats(sceneId: string): Promise<SceneStats> {
-  // İsteği gönder ve cevabı bekle.
-  const response = await fetch(`/stats/${sceneId}`);
-  // Hata kodu geldiyse dur.
-  if (!response.ok) throw new Error(`Server returned ${response.status}`);
-  // Gelen JSON'u nesneye çevir.
-  return response.json();
+  // İstatistikleri döndür.
+  return (await response.json()).stats;
 }

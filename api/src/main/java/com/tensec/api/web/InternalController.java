@@ -1,17 +1,19 @@
 // Bu dosyanın ait olduğu paket.
 package com.tensec.api.web;
 
-// Sahne tipi.
-import com.tensec.api.scene.Scene;
-// Sahne okuyucu.
-import com.tensec.api.scene.SceneLoader;
-// Anlam hatalarını bulan sınıf.
-import com.tensec.api.scene.SceneValidator;
-// Çözücünün raporu.
-import com.tensec.api.solver.SolveResult;
-// Çözücü.
-import com.tensec.api.solver.Solver;
-// Liste tipi.
+// Hikâye tipi.
+import com.tensec.api.story.Story;
+// Analiz raporu.
+import com.tensec.api.story.StoryAnalysis;
+// Analiz eden sınıf.
+import com.tensec.api.story.StoryAnalyzer;
+// Hikâye okuyucu.
+import com.tensec.api.story.StoryLoader;
+// Doğrulayıcı.
+import com.tensec.api.story.StoryValidator;
+// Değiştirilebilir liste.
+import java.util.ArrayList;
+// Liste arayüzü.
 import java.util.List;
 // POST adresi tanımlama etiketi.
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,61 +24,61 @@ import org.springframework.web.bind.annotation.RestController;
 // Jackson'ın JSON okuma hatası tipi.
 import tools.jackson.core.JacksonException;
 
-// Oyuncuların değil, AI worker'ın kullanacağı adresler.
+// AI'ın yazdığı hikâyeleri denetleyecek adres.
 // Dikkat: Yayına çıkmadan önce bu adres korumaya alınacak.
 @RestController
 public class InternalController {
 
-    // Anlam kontrolü yapan sınıf.
-    private final SceneValidator validator;
-    // Çözücü.
-    private final Solver solver;
+    // Yapı kontrolü.
+    private final StoryValidator validator;
+    // Yol analizi.
+    private final StoryAnalyzer analyzer;
 
-    // Spring ikisini de buraya kendisi verir.
-    public InternalController(SceneValidator validator, Solver solver) {
+    // Spring ikisini de buraya verir.
+    public InternalController(StoryValidator validator, StoryAnalyzer analyzer) {
         // Doğrulayıcıyı sakla.
         this.validator = validator;
-        // Çözücüyü sakla.
-        this.solver = solver;
+        // Analizciyi sakla.
+        this.analyzer = analyzer;
     }
 
-    // Sahne JSON'unu alır, kullanılabilir mi diye cevap verir.
+    // Hikâye JSON'unu alır, kullanılabilir mi diye cevap verir.
     @PostMapping("/internal/validate")
-    // String alıyoruz: JSON bozuk olsa bile hatayı kendimiz yakalayıp AI'a açıklayabilmek için.
     public ValidationResponse validate(@RequestBody String json) {
-        // Okunan sahne.
-        Scene scene;
-        // JSON'u çevirmeyi dene.
+        // Okunan hikâye.
+        Story story;
         try {
-            // Metni sahneye çevir.
-            scene = SceneLoader.parse(json);
-        // Bozuk JSON ya da bilinmeyen alan buraya düşer.
+            // Metni çevir.
+            story = StoryLoader.parse(json);
         } catch (JacksonException exception) {
-            // Hatanın kısa açıklamasını döndür.
-            return ValidationResponse.invalid(List.of("Invalid JSON: " + exception.getOriginalMessage()));
+            // Bozuk JSON ya da bilinmeyen alan.
+            return new ValidationResponse(false, List.of("Invalid JSON: " + exception.getOriginalMessage()), null);
         }
 
-        // Anlam hatalarını bul.
-        List<String> errors = validator.validate(scene);
-        // Hata varsa çözücüyü çalıştırmak güvenli değil.
+        // Yapı hatalarını bul.
+        List<String> errors = new ArrayList<>(validator.validate(story));
+        // Hata varsa analiz güvenli değil.
         if (!errors.isEmpty()) {
-            // Hatalarla dön.
-            return ValidationResponse.invalid(errors);
+            return new ValidationResponse(false, errors, null);
         }
 
-        // Sahne sağlam, tüm ihtimalleri dene.
-        SolveResult result = solver.solve(scene);
-        // Hiç çözüm yoksa
-        if (!result.solvable()) {
-            // oyuncu asla kazanamaz.
-            return ValidationResponse.solved(List.of("Scene has no solution"), result);
+        // Tüm yolları dene.
+        StoryAnalysis analysis;
+        try {
+            analysis = analyzer.analyze(story);
+        } catch (IllegalArgumentException exception) {
+            // Çok fazla yol.
+            return new ValidationResponse(false, List.of(exception.getMessage()), null);
         }
-        // Dokunmadan kazanılıyorsa
-        if (result.minTouches() == 0) {
-            // ortada bulmaca yok demektir.
-            return ValidationResponse.solved(List.of("Scene can be won without touching anything"), result);
+        // Kurtuluş yolu olmalı.
+        if (analysis.survivalPercent() == 0) {
+            errors.add("Story has no surviving path");
         }
-        // Sahne kullanılabilir.
-        return ValidationResponse.solved(List.of(), result);
+        // Ulaşılamayan kart olmamalı.
+        analysis.unreachableCards().forEach(id -> errors.add("Card can never appear: " + id));
+        // Ulaşılamayan son olmamalı.
+        analysis.unreachableEndings().forEach(id -> errors.add("Ending can never be reached: " + id));
+        // Raporu döndür.
+        return new ValidationResponse(errors.isEmpty(), errors, analysis);
     }
 }
