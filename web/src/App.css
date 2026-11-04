@@ -46,6 +46,20 @@ body {
   background: var(--safe);
 }
 
+/* Kazanınca sahne küçülür: sonuç ve düğmeler ekrana sığsın. */
+.page[data-mood="won"] .stage {
+  flex: 0 0 240px;
+  min-height: 0;
+}
+
+/* Küçük sahnede nesne adları gizlenir, emojiler küçülür. */
+.page[data-mood="won"] .label {
+  display: none;
+}
+.page[data-mood="won"] .emoji {
+  font-size: 24px;
+}
+
 /* Kehanette gece gibi karanlık: gerçekten ayrı bir an olduğu belli olur. */
 .page[data-mood="vision"] {
   background: var(--vision);
@@ -83,6 +97,19 @@ body {
 .brand {
   margin: 0;
   font-weight: 700;
+}
+
+/* Bölüm listesine dönüş düğmesi. Parmakla kolay basılsın diye dolgulu. */
+.back {
+  display: block;
+  margin: -8px 0 0 -8px;
+  padding: 8px;
+  background: none;
+  color: inherit;
+  border: 0;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 /* Sahne başlığı. */
@@ -135,6 +162,7 @@ body {
   justify-content: center;
   gap: 2px;
   min-width: 0;
+  min-height: 0;
   padding: 4px 1px;
   background: #fff;
   color: var(--ink);
@@ -340,6 +368,79 @@ button:focus-visible {
   font-weight: 700;
 }
 
+/* Toplanan yıldız sayısı. */
+.star-count {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* Bölüm listesi. */
+.levels {
+  display: grid;
+  gap: 12px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Bir bölüm satırı. */
+.level {
+  display: grid;
+  grid-template-columns: 48px 1fr 36px;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 72px;
+  padding: 10px 16px;
+  background: var(--paper);
+  color: var(--ink);
+  border: var(--line);
+  border-radius: 18px;
+  box-shadow: 4px 4px 0 var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Basılınca içeri göçer. */
+.level:enabled:active {
+  box-shadow: 1px 1px 0 var(--ink);
+  transform: translate(3px, 3px);
+}
+
+/* Kilitli bölüm. */
+.level[data-locked="true"] {
+  background: transparent;
+  box-shadow: none;
+  cursor: default;
+}
+
+/* Bölüm numarası. */
+.level-number {
+  font-family: var(--display);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Bölüm adı. */
+.level-title {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+/* Durum işareti. */
+.level-status {
+  font-size: 26px;
+  text-align: center;
+}
+
 /* Hata ve yükleme yazıları. */
 .notice {
   max-width: 60ch;
@@ -401,7 +502,8 @@ button:focus-visible {
     transition: none;
   }
   .object:enabled:hover,
-  .object:enabled:active {
+  .object:enabled:active,
+  .level:enabled:active {
     transform: none;
   }
 }

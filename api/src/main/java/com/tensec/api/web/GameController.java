@@ -21,6 +21,8 @@ import java.time.ZoneOffset;
 import org.springframework.http.HttpStatus;
 // GET adresi tanımlama etiketi.
 import org.springframework.web.bind.annotation.GetMapping;
+// Adresin bir parçasını okuma etiketi.
+import org.springframework.web.bind.annotation.PathVariable;
 // POST adresi tanımlama etiketi.
 import org.springframework.web.bind.annotation.PostMapping;
 // İstek gövdesini okuma etiketi.
@@ -65,17 +67,22 @@ public class GameController {
         return PublicScene.from(scene, engine.foresee(scene));
     }
 
+    // GET /scene/cafe-candle gibi adresler: bir bölümün sahnesini döndürür.
+    @GetMapping("/scene/{sceneId}")
+    // @PathVariable: adresteki {sceneId} parçasını değişkene alır.
+    public PublicScene scene(@PathVariable String sceneId) {
+        // Sahneyi bul, yoksa 404 döndür.
+        Scene scene = requireScene(sceneId);
+        // Sahnenin sadece güvenli kısmını ve kehaneti döndür.
+        return PublicScene.from(scene, engine.foresee(scene));
+    }
+
     // POST /attempt adresine gelen istekler bu metoda düşer.
     @PostMapping("/attempt")
     // @RequestBody: gelen JSON'u AttemptRequest'e çevir.
     public AttemptResponse attempt(@RequestBody AttemptRequest request) {
-        // İstenen sahneyi bul.
-        Scene scene = catalog.findById(request.sceneId());
-        // Bulunamadıysa
-        if (scene == null) {
-            // 404 hatası döndür.
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Scene not found");
-        }
+        // İstenen sahneyi bul, yoksa 404 döndür.
+        Scene scene = requireScene(request.sceneId());
 
         // Motoru çalıştır. Sonucu sunucu hesapladığı için oyuncu hile yapamaz.
         SimulationResult result = engine.simulate(scene, request.touches());
@@ -100,10 +107,30 @@ public class GameController {
         return AttemptResponse.from(scene, result, best);
     }
 
+    // GET /stats/cafe-candle gibi adresler: bir bölümün bugünkü istatistikleri.
+    @GetMapping("/stats/{sceneId}")
+    public SceneStats stats(@PathVariable String sceneId) {
+        // Sahne yoksa 404 döndür, varsa bugünün tarihiyle sorgula.
+        return attempts.stats(requireScene(sceneId).id(), LocalDate.now(ZoneOffset.UTC));
+    }
+
     // GET /stats/today: bugünün sahnesinin bugünkü istatistikleri.
     @GetMapping("/stats/today")
     public SceneStats statsToday() {
         // Bugünün sahnesi ve tarihiyle sorgula.
         return attempts.stats(catalog.today().id(), LocalDate.now(ZoneOffset.UTC));
+    }
+
+    // Sahneyi adıyla bulur. Yoksa 404 hatası fırlatır.
+    private Scene requireScene(String sceneId) {
+        // Kataloğa sor.
+        Scene scene = catalog.findById(sceneId);
+        // Bulunamadıysa
+        if (scene == null) {
+            // 404 hatası döndür.
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Scene not found");
+        }
+        // Bulunan sahneyi döndür.
+        return scene;
     }
 }

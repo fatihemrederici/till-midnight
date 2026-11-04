@@ -1,7 +1,7 @@
 // React'in durum ve yan etki araçları.
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 // Sunucu çağrıları.
-import { fetchTodaysScene, fetchTodaysStats, playAttempt } from "./api";
+import { fetchScene, fetchStats, playAttempt } from "./api";
 // Tipler.
 import type { Attempt, GameEvent, PublicScene, SceneStats, Touch } from "./types";
 
@@ -23,7 +23,7 @@ const NOTHING_MS = 900;
 export type Bubble = { object: string; text: string; danger: boolean };
 
 // Tüm oyun mantığı bu hook'ta. Ekran kodu ile karışmasın diye ayrı dosyada.
-export function useGame() {
+export function useGame(sceneId: string) {
   // Sahne.
   const [scene, setScene] = useState<PublicScene | null>(null);
   // Oyunun aşaması.
@@ -45,10 +45,10 @@ export function useGame() {
   // Bu koşunun kimliği. Aynı koşunun tüm istekleri tek satır olarak kaydedilir.
   const attemptId = useRef("");
 
-  // Sayfa açılınca sahneyi bir kere yükle.
+  // Bölüm açılınca sahneyi bir kere yükle.
   useEffect(() => {
     // Sahneyi iste.
-    fetchTodaysScene()
+    fetchScene(sceneId)
       // Gelince kaydet ve hazır ol.
       .then((loaded) => {
         setScene(loaded);
@@ -56,17 +56,17 @@ export function useGame() {
       })
       // Sunucuya ulaşılamazsa hata ekranına geç.
       .catch(() => setPhase("error"));
-  }, []);
+  }, [sceneId]);
 
   // Kazanınca istatistikleri getir. Gelmezse oyun yine çalışır, sadece gösterilmez.
   useEffect(() => {
     // Sadece kazanınca.
     if (phase !== "won") return;
     // İste ve kaydet.
-    fetchTodaysStats()
+    fetchStats(sceneId)
       .then(setStats)
       .catch(() => setStats(null));
-  }, [phase]);
+  }, [phase, sceneId]);
 
   // Yeni bir gerçek koşu başlatır. Dokunuşlar sıfırlanır.
   const startRun = useCallback(async () => {
@@ -223,6 +223,8 @@ export function useGame() {
 
   // Nesnenin üstünde gösterilecek baloncuk.
   const bubble: Bubble | null = useMemo(() => {
+    // Kazanınca sahne sakin kalır, sonuç altta yazar.
+    if (phase === "won") return null;
     // Etkisiz dokunuş uyarısı en önceliklisi.
     if (nothingOn) return { object: nothingOn, text: "Nothing happens.", danger: false };
 

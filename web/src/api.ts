@@ -1,5 +1,5 @@
 // Tipleri içeri alıyoruz.
-import type { Attempt, PublicScene, SceneStats, Touch } from "./types";
+import type { Attempt, Level, PublicScene, SceneStats, Touch } from "./types";
 
 // Oyuncunun kimliğini tarayıcıda saklarken kullanılan anahtar.
 const PLAYER_KEY = "10sec.playerId";
@@ -23,10 +23,20 @@ function playerId(): string {
   }
 }
 
-// Bugünün sahnesini sunucudan alır. async: bekleyen işlem. Swift'teki async gibi.
-export async function fetchTodaysScene(): Promise<PublicScene> {
+// Oyuncunun bölüm listesini sunucudan alır. async: bekleyen işlem. Swift'teki async gibi.
+export async function fetchLevels(): Promise<Level[]> {
   // İsteği gönder ve cevabı bekle.
-  const response = await fetch("/scene/today");
+  const response = await fetch(`/levels?playerId=${playerId()}`);
+  // Hata kodu geldiyse dur.
+  if (!response.ok) throw new Error(`Server returned ${response.status}`);
+  // Gelen JSON'u nesneye çevir.
+  return response.json();
+}
+
+// Bir bölümün sahnesini sunucudan alır.
+export async function fetchScene(sceneId: string): Promise<PublicScene> {
+  // İsteği gönder ve cevabı bekle.
+  const response = await fetch(`/scene/${sceneId}`);
   // Hata kodu geldiyse dur.
   if (!response.ok) throw new Error(`Server returned ${response.status}`);
   // Gelen JSON'u nesneye çevir.
@@ -49,10 +59,10 @@ export async function playAttempt(sceneId: string, touches: Touch[], attemptId: 
   return response.json();
 }
 
-// Bugünün istatistiklerini sunucudan alır.
-export async function fetchTodaysStats(): Promise<SceneStats> {
+// Bir bölümün bugünkü istatistiklerini sunucudan alır.
+export async function fetchStats(sceneId: string): Promise<SceneStats> {
   // İsteği gönder ve cevabı bekle.
-  const response = await fetch("/stats/today");
+  const response = await fetch(`/stats/${sceneId}`);
   // Hata kodu geldiyse dur.
   if (!response.ok) throw new Error(`Server returned ${response.status}`);
   // Gelen JSON'u nesneye çevir.

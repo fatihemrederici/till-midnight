@@ -5,8 +5,12 @@ package com.tensec.api.stats;
 import com.tensec.api.engine.SimulationResult;
 // Tarih tipi.
 import java.time.LocalDate;
+// Değiştirilebilir anahtar-değer tablosu.
+import java.util.HashMap;
 // Liste tipi.
 import java.util.List;
+// Anahtar-değer arayüzü.
+import java.util.Map;
 // Benzersiz kimlik tipi.
 import java.util.UUID;
 // Spring'in SQL çalıştırma aracı.
@@ -127,6 +131,25 @@ public class AttemptRepository {
                 .query(SceneStats.LossSecond.class)
                 // Hepsini listeye topla.
                 .list();
+    }
+
+    // Oyuncunun kazandığı sahneleri ve her birindeki en az dokunuş sayısını döndürür.
+    public Map<String, Integer> fewestTouchesByScene(UUID playerId) {
+        // Sonuç tablosu.
+        Map<String, Integer> fewest = new HashMap<>();
+        // Sadece kazanılan denemeler, sahne başına en küçük dokunuş sayısı.
+        jdbc.sql("""
+                SELECT scene_id, MIN(touch_count) AS fewest
+                FROM attempts
+                WHERE player_id = :playerId AND won
+                GROUP BY scene_id
+                """)
+                .param("playerId", playerId)
+                // Her satırı tabloya ekle.
+                .query((row, index) -> fewest.put(row.getString("scene_id"), row.getInt("fewest")))
+                .list();
+        // Tabloyu döndür.
+        return fewest;
     }
 
     // Toplam sorgusunun sonucu. Sadece bu sınıf kullanır.

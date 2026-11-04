@@ -53,7 +53,17 @@ export type Attempt = {
   events: GameEvent[];
 };
 
-// GET /stats/today cevabı.
+// GET /levels cevabındaki bir bölüm.
+export type Level = {
+  number: number;
+  sceneId: string;
+  title: string;
+  unlocked: boolean;
+  completed: boolean;
+  star: boolean;
+};
+
+// GET /stats cevabı.
 export type SceneStats = {
   attempts: number;
   players: number;

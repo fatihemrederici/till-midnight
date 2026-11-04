@@ -4,7 +4,7 @@ A daily puzzle game. Every day there is a new scene, and in ten seconds somethin
 First you get a vision of everything going wrong. Then it starts for real, and you have ten seconds and a few
 touches to stop it. Time rewinds until you make it.
 
-**Status:** in progress. The game is playable in the browser and saves attempts to PostgreSQL.
+**Status:** in progress. Three levels are playable in the browser, with progress and stars saved to PostgreSQL.
 
 ## Layout
 
