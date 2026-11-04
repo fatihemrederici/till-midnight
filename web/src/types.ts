@@ -40,5 +40,16 @@ export type Attempt = {
   won: boolean;
   endSecond: number;
   disasterCaption: string | null;
+  // En az kaç dokunuşla çözülebilir. Sadece kazanınca gelir.
+  bestTouches: number | null;
   events: GameEvent[];
+};
+
+// GET /stats/today cevabı.
+export type SceneStats = {
+  attempts: number;
+  players: number;
+  solvers: number;
+  medianTriesToSolve: number | null;
+  losses: { second: number; count: number }[];
 };

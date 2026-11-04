@@ -4,7 +4,7 @@ A daily puzzle game. Every day there is a new scene, and in ten seconds somethin
 You get one new touch per loop. Time rewinds, your earlier touches replay, and you work out the chain
 of events until the disaster never happens.
 
-**Status:** day 1 of 30. Scene format and API skeleton.
+**Status:** in progress. The game is playable in the browser and saves attempts to PostgreSQL.
 
 ## Layout
 
@@ -19,13 +19,25 @@ of events until the disaster never happens.
 The engine runs only on the server. The client sends touches and plays back the timeline it receives,
 so scores cannot be faked and the puzzle's rules never reach the browser.
 
-## Run the tests
+## Run it
 
-Requires Java 21.
+Requires Java 21, Node 20.19 or newer, and Docker.
 
 ```sh
-cd api
-./mvnw test
+docker compose up -d
+cd api && ./mvnw spring-boot:run
+cd web && npm install && npm run dev
+```
+
+Then open http://localhost:5173.
+
+## Run the tests
+
+The database must be running. Tests use their own schema.
+
+```sh
+docker compose up -d
+cd api && ./mvnw test
 ```
 
 ## Scene format

@@ -1,0 +1,25 @@
+# Geliştirme ortamındaki servisler. Şimdilik sadece veritabanı var.
+services:
+  # Servisin adı.
+  db:
+    # Kullanılacak PostgreSQL sürümü.
+    image: postgres:16-alpine
+    # Bilgisayar yeniden başlasa da otomatik başlasın.
+    restart: unless-stopped
+    environment:
+      # Oluşturulacak veritabanı.
+      POSTGRES_DB: tensec
+      # Kullanıcı adı.
+      POSTGRES_USER: tensec
+      # Şifre. Sadece kendi bilgisayarımız için, yayında farklı olacak.
+      POSTGRES_PASSWORD: tensec
+    ports:
+      # Bilgisayarın 5433 portu, konteynerin 5432 portuna bağlanır.
+      - "5433:5432"
+    volumes:
+      # Veriler konteyner silinse de kalsın.
+      - db-data:/var/lib/postgresql/data
+
+# Kalıcı veri alanları.
+volumes:
+  db-data:

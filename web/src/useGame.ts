@@ -1,9 +1,9 @@
 // React'in durum ve yan etki araçları.
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 // Sunucu çağrıları.
-import { fetchTodaysScene, playAttempt } from "./api";
+import { fetchTodaysScene, fetchTodaysStats, playAttempt } from "./api";
 // Tipler.
-import type { Attempt, PublicScene, Touch } from "./types";
+import type { Attempt, PublicScene, SceneStats, Touch } from "./types";
 
 // Oyunun hangi aşamada olduğu. Swift'teki enum gibi.
 export type Phase = "loading" | "ready" | "playing" | "lost" | "won" | "error";
@@ -26,6 +26,10 @@ export function useGame() {
   const [touchedThisLoop, setTouchedThisLoop] = useState(false);
   // Sunucu cevabı beklenirken ikinci dokunuşu engellemek için.
   const waitingForServer = useRef(false);
+  // Bu döngünün kimliği. Aynı döngünün iki isteği tek satır olarak kaydedilir.
+  const attemptId = useRef("");
+  // Kazanınca gösterilen istatistikler.
+  const [stats, setStats] = useState<SceneStats | null>(null);
 
   // Sayfa açılınca sahneyi bir kere yükle.
   useEffect(() => {
@@ -39,6 +43,16 @@ export function useGame() {
       // Sunucuya ulaşılamazsa hata ekranına geç.
       .catch(() => setPhase("error"));
   }, []);
+
+  // Kazanınca istatistikleri getir. Gelmezse oyun yine çalışır, sadece gösterilmez.
+  useEffect(() => {
+    // Sadece kazanınca.
+    if (phase !== "won") return;
+    // İste ve kaydet.
+    fetchTodaysStats()
+      .then(setStats)
+      .catch(() => setStats(null));
+  }, [phase]);
 
   // Zamanı ilerleten kısım. Saniye ya da sonuç değişince yeniden çalışır.
   useEffect(() => {
@@ -62,8 +76,10 @@ export function useGame() {
       // Sahne yoksa başlatma.
       if (!scene) return;
       try {
+        // Yeni döngü, yeni kimlik.
+        attemptId.current = crypto.randomUUID();
         // Sunucudan bu dokunuşların sonucunu al.
-        const result = await playAttempt(scene.id, loopTouches);
+        const result = await playAttempt(scene.id, loopTouches, attemptId.current);
         // Dokunuşları kaydet.
         setTouches(loopTouches);
         // Sonucu kaydet.
@@ -100,7 +116,7 @@ export function useGame() {
       waitingForServer.current = true;
       try {
         // Sunucudan yeni sonucu al. Geçmiş değişmediği için oyun kaldığı yerden devam eder.
-        const result = await playAttempt(scene.id, nextTouches);
+        const result = await playAttempt(scene.id, nextTouches, attemptId.current);
         // Dokunuşları güncelle.
         setTouches(nextTouches);
         // Sonucu güncelle.
@@ -164,6 +180,7 @@ export function useGame() {
     touchedThisLoop,
     emojis,
     caption,
+    stats,
     startLoop,
     touchObject,
     rewind,

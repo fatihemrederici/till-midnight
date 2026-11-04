@@ -1,6 +1,8 @@
 // Bu dosyanın ait olduğu paket.
 package com.tensec.api.web;
 
+// İki değer eşit değilse testi kaldırır.
+import static org.junit.jupiter.api.Assertions.assertEquals;
 // Metnin içermemesi gereken parçayı kontrol eder.
 import static org.hamcrest.Matchers.not;
 // Metnin içermesi gereken parçayı kontrol eder.
@@ -18,6 +20,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 // Sahne tipi.
 import com.tensec.api.scene.Scene;
+// Deneme deposu.
+import com.tensec.api.stats.AttemptRepository;
+// Tarih tipi.
+import java.time.LocalDate;
+// UTC saat dilimi.
+import java.time.ZoneOffset;
+// Benzersiz kimlik tipi.
+import java.util.UUID;
 // Test etiketi.
 import org.junit.jupiter.api.Test;
 // Spring'in nesne verme etiketi.
@@ -45,6 +55,10 @@ class GameApiTest {
     // Spring, sahne kataloğunu da buraya verir.
     @Autowired
     private SceneCatalog catalog;
+
+    // Spring, deneme deposunu da buraya verir.
+    @Autowired
+    private AttemptRepository attempts;
 
     // Bu metot bir test.
     @Test
@@ -96,7 +110,9 @@ class GameApiTest {
                 // 8. saniyede bitmeli.
                 .andExpect(jsonPath("$.endSecond").value(8))
                 // 7 olay gelmeli.
-                .andExpect(jsonPath("$.events.length()").value(7));
+                .andExpect(jsonPath("$.events.length()").value(7))
+                // Kaybedene en iyi çözüm söylenmemeli.
+                .andExpect(jsonPath("$.bestTouches").isEmpty());
     }
 
     // Bu metot bir test.
@@ -110,7 +126,9 @@ class GameApiTest {
                 // Kazanmış olmalı.
                 .andExpect(jsonPath("$.won").value(true))
                 // Felaket cümlesi olmamalı.
-                .andExpect(jsonPath("$.disasterCaption").isEmpty());
+                .andExpect(jsonPath("$.disasterCaption").isEmpty())
+                // En iyi çözüm 1 dokunuş.
+                .andExpect(jsonPath("$.bestTouches").value(1));
     }
 
     // Bu metot bir test.
@@ -137,6 +155,37 @@ class GameApiTest {
                 """)
                 // 404 gelmeli.
                 .andExpect(status().isNotFound());
+    }
+
+    // Bu metot bir test.
+    @Test
+    // Bugünün istatistikleri okunabilmeli.
+    void returnsTodaysStats() throws Exception {
+        // İsteği gönder.
+        mockMvc.perform(get("/stats/today"))
+                // 200 OK gelmeli.
+                .andExpect(status().isOk())
+                // Sayı alanı olmalı.
+                .andExpect(jsonPath("$.attempts").isNumber());
+    }
+
+    // Bu metot bir test.
+    @Test
+    // Kimlikli deneme veritabanına kaydedilmeli.
+    void savesAnAttemptWithIds() throws Exception {
+        // Kaydedilmeden önceki sayı.
+        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        int before = attempts.stats("cafe-candle", today).attempts();
+
+        // Kimliklerle deneme gönder.
+        attempt("""
+                {"sceneId": "cafe-candle", "touches": [],
+                 "playerId": "%s", "attemptId": "%s"}
+                """.formatted(UUID.randomUUID(), UUID.randomUUID()))
+                .andExpect(status().isOk());
+
+        // Bir satır eklenmiş olmalı.
+        assertEquals(before + 1, attempts.stats("cafe-candle", today).attempts());
     }
 
     // Yardımcı metot: POST /attempt isteği gönderir.

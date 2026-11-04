@@ -143,8 +143,17 @@ export function App() {
           <>
             <p className="caption">Nothing went wrong. Nobody will ever know.</p>
             <p className="hint">
-              Solved on try {game.attemptCount} with {touches.length} {touches.length === 1 ? "touch" : "touches"}.
+              Solved on try {game.attemptCount} with {touches.length} {touches.length === 1 ? "touch" : "touches"}.{" "}
+              {attempt?.bestTouches === touches.length
+                ? "That is the fewest possible."
+                : `It can be done with ${attempt?.bestTouches}.`}
             </p>
+            {game.stats && (
+              <p className="hint">
+                {game.stats.solvers} of {game.stats.players} {game.stats.players === 1 ? "player" : "players"} solved
+                this scene today.
+              </p>
+            )}
             <button className="action" onClick={game.startOver}>
               Play again
             </button>

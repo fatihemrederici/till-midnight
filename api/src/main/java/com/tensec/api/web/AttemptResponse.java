@@ -18,6 +18,8 @@ public record AttemptResponse(
         int endSecond,
         // Felaketin ekranda gösterilecek cümlesi. Kazandıysa null.
         String disasterCaption,
+        // En az kaç dokunuşla çözülebilir. Çözümü ele vermesin diye sadece kazanınca gönderilir.
+        Integer bestTouches,
         // Sırayla oynatılacak olaylar.
         List<EventView> events) {
 
@@ -25,7 +27,7 @@ public record AttemptResponse(
     public record EventView(int second, String object, String emoji, String caption, boolean noEffect) {}
 
     // Motorun sonucundan cevabı üretir.
-    public static AttemptResponse from(Scene scene, SimulationResult result) {
+    public static AttemptResponse from(Scene scene, SimulationResult result, Integer bestTouches) {
         // Olay listesini akışa çevir.
         List<EventView> events = result.events().stream()
                 // Her olayı ekran haline çevir. e -> ... Swift'teki closure gibi.
@@ -34,7 +36,7 @@ public record AttemptResponse(
                 .toList();
 
         // Cevabı oluştur.
-        return new AttemptResponse(result.won(), result.endSecond(), disasterCaption(scene, result), events);
+        return new AttemptResponse(result.won(), result.endSecond(), disasterCaption(scene, result), bestTouches, events);
     }
 
     // Tek bir olayı çevirir.

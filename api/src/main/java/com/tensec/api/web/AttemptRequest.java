@@ -5,9 +5,12 @@ package com.tensec.api.web;
 import com.tensec.api.engine.Touch;
 // Liste tipi.
 import java.util.List;
+// Benzersiz kimlik tipi.
+import java.util.UUID;
 
 // POST /attempt isteğinin gövdesi. Spring gelen JSON'u otomatik olarak buna çevirir.
-public record AttemptRequest(String sceneId, List<Touch> touches) {
+// playerId ve attemptId gönderilmezse deneme oynanır ama kaydedilmez.
+public record AttemptRequest(String sceneId, List<Touch> touches, UUID playerId, UUID attemptId) {
 
     // Nesne oluşurken çalışan kısım.
     public AttemptRequest {
