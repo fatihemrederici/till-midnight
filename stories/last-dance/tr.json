@@ -1,14 +1,18 @@
 {
   "title": "Son Dans",
   "vision": [
-    "Saat tam 00:00’da tavan üstünüze iniyor.",
-    "Toz ve küf. Nefes alamıyorsun.",
-    "Sam çıkamıyor.",
-    "Demir bir kiriş, altında Emily.",
-    "Sonra sen."
+    "Sam’in düğünü. İlk dans.",
+    "Herkes alkışlıyor. Pastaya toz yağıyor.",
+    "Avize düşüyor. Ardından tavan.",
+    "Sam enkazın altında. Emily de.",
+    "00:00. Çıkamıyorsun."
   ],
-  "wake": "Gözlerini açıyorsun. Saat 14:00. Ellerin titriyor, düğün programı hâlâ elinde.",
-  "meters": { "nerve": "Sinir", "stamina": "Takat", "trust": "Güven" },
+  "wake": "Gözlerini açıyorsun. Saat 14:00. Sam’in sağdıcısın ve düğün daha başlamadı. Ellerin titriyor, düğün programı hâlâ elinde.",
+  "meters": {
+    "nerve": "Sinir",
+    "stamina": "Takat",
+    "trust": "Güven"
+  },
   "cards": {
     "flowers": {
       "who": "Çiçekçi",
@@ -73,13 +77,22 @@
     "ice": {
       "who": "Koridor",
       "text": "Çimende tonlarca buz eriyor. Sigorta odasının koridoru yakın ve serin. Kiler ise çok uzakta.",
-      "left": { "label": "Koridora yığ", "after": "Beş dakikada bitti. Yemekçi elini sıkıyor." },
-      "right": { "label": "Kilere taşı", "after": "Merdivenden kırk sefer. Kolların kopuyor." }
+      "left": {
+        "label": "Koridora yığ",
+        "after": "Beş dakikada bitti. Yemekçi elini sıkıyor."
+      },
+      "right": {
+        "label": "Kilere taşı",
+        "after": "Merdivenden kırk sefer. Kolların kopuyor."
+      }
     },
     "gas": {
       "who": "Mutfak",
       "text": "Hafif bir gaz kokusu. Aşçı fırınlardan olduğuna yemin ediyor. On dakikaya seksen tabak çıkacak.",
-      "left": { "label": "Fanı sonuna aç", "after": "Koku gitti. Fan uçak gibi uğulduyor." },
+      "left": {
+        "label": "Fanı sonuna aç",
+        "after": "Koku gitti. Fan uçak gibi uğulduyor."
+      },
       "right": {
         "label": "Sigortayı kapat, cam aç",
         "after": "Mutfak kararıyor. Aşçı sana ömründe duymadığın küfürler ediyor."
@@ -92,7 +105,10 @@
         "label": "Koridor kalsın",
         "after": "Yirmi kişi ayakta yiyor. Emily yüzüne bakmıyor."
       },
-      "right": { "label": "Yayalım", "after": "Herkes oturdu. Emily sana başparmağını kaldırıyor." }
+      "right": {
+        "label": "Yayalım",
+        "after": "Herkes oturdu. Emily sana başparmağını kaldırıyor."
+      }
     },
     "knife": {
       "who": "Emily",
@@ -149,12 +165,18 @@
         "label": "Gir, sigortayı kaldır",
         "after": "Islak ayakkabılar, tek düğme. Işıklar yerinde. Kalbin zor duruyor."
       },
-      "right": { "label": "Elektriği kes", "after": "Bütün salon kararıyor ve seni yuhalıyor." }
+      "right": {
+        "label": "Elektriği kes",
+        "after": "Bütün salon kararıyor ve seni yuhalıyor."
+      }
     },
     "door": {
       "who": "Emily",
       "text": "“Şu paslı arka kapı açılıp duruyor. Annem dondu. Sürgüleyelim mi?”",
-      "left": { "label": "Sürgüle", "after": "İki kişi zor sürgülüyorsunuz. Artık açılmaz." },
+      "left": {
+        "label": "Sürgüle",
+        "after": "İki kişi zor sürgülüyorsunuz. Artık açılmaz."
+      },
       "right": {
         "label": "Araya taş koy",
         "after": "Pistte soğuk hava. Emily sanki suçlu senmişsin gibi iç çekiyor."
@@ -175,7 +197,10 @@
     "exit": {
       "who": "Arka kapı",
       "text": "Tavanda bir çatlak açılıyor. Herkes kaçıyor. Sürgü pastan kasaya yapışmış.",
-      "left": { "label": "Sürgüyü zorla", "after": "Açılıyor. Soğuk hava. Yol boş, koşuyorsun." },
+      "left": {
+        "label": "Sürgüyü zorla",
+        "after": "Açılıyor. Soğuk hava. Yol boş, koşuyorsun."
+      },
       "right": {
         "label": "Masaların üstünden geç",
         "after": "Pastanın üstünden, çiçeklerin yanından, mutfak camından dışarı."
@@ -184,8 +209,14 @@
     "last": {
       "who": "Emily",
       "text": "“Çantam içeride kaldı!” Çoktan geri dönüyor. Tavandan tanıdığın o ses geliyor.",
-      "left": { "label": "Sürükle, çıkar", "after": "Yol boyu sana bağırıyor. Sonra çatı iniyor." },
-      "right": { "label": "Bırak gitsin", "after": "Arkana bakmıyorsun. Yine de duyuyorsun." }
+      "left": {
+        "label": "Sürükle, çıkar",
+        "after": "Yol boyu sana bağırıyor. Sonra çatı iniyor."
+      },
+      "right": {
+        "label": "Bırak gitsin",
+        "after": "Arkana bakmıyorsun. Yine de duyuyorsun."
+      }
     }
   },
   "endings": {

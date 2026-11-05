@@ -1,14 +1,18 @@
 {
   "title": "The Last Dance",
   "vision": [
-    "At exactly 00:00 the ceiling comes down.",
-    "Dust and mold. You can’t breathe.",
-    "Sam can’t get out.",
-    "An iron beam, and Emily beneath it.",
-    "Then you."
+    "Sam’s wedding. The first dance.",
+    "Everyone claps. Dust falls on the cake.",
+    "The chandelier drops. Then the ceiling.",
+    "Sam’s under the rubble. Emily too.",
+    "00:00. You don’t get out."
   ],
-  "wake": "You open your eyes. 14:00. Your hands are shaking, and the wedding program is still in them.",
-  "meters": { "nerve": "Nerve", "stamina": "Stamina", "trust": "Trust" },
+  "wake": "You open your eyes. 14:00. You’re Sam’s best man, and the wedding hasn’t started yet. Your hands are shaking, and the program is still in them.",
+  "meters": {
+    "nerve": "Nerve",
+    "stamina": "Stamina",
+    "trust": "Trust"
+  },
   "cards": {
     "flowers": {
       "who": "The florist",
@@ -29,7 +33,10 @@
         "label": "Take the pill",
         "after": "It kicks in. Your hands stop. You can’t quite feel them."
       },
-      "right": { "label": "Just breathe", "after": "In, out. Your head clears. Your hands don’t." }
+      "right": {
+        "label": "Just breathe",
+        "after": "In, out. Your head clears. Your hands don’t."
+      }
     },
     "chandelier": {
       "who": "Ballroom",
@@ -50,7 +57,10 @@
         "label": "Loosen it",
         "after": "He takes a huge breath. The photographer rolls his eyes."
       },
-      "right": { "label": "“Hold on, photos”", "after": "He nods. He looks great. He’s a bit red." }
+      "right": {
+        "label": "“Hold on, photos”",
+        "after": "He nods. He looks great. He’s a bit red."
+      }
     },
     "car": {
       "who": "The driver",
@@ -79,7 +89,10 @@
     "gas": {
       "who": "Kitchen",
       "text": "A faint smell of gas. The chef swears it’s the ovens. Eighty plates go out in ten minutes.",
-      "left": { "label": "Fan on full", "after": "The smell is gone. The fan howls like a plane." },
+      "left": {
+        "label": "Fan on full",
+        "after": "The smell is gone. The fan howls like a plane."
+      },
       "right": {
         "label": "Cut fuse, open a window",
         "after": "The kitchen goes dark. The chef calls you things you’ve never heard."
@@ -140,7 +153,10 @@
         "label": "All the way up",
         "after": "The floor jumps. Everyone screams with joy. Dust drifts down through the lights."
       },
-      "right": { "label": "Leave it", "after": "Someone shouts “Boring!” The DJ shrugs." }
+      "right": {
+        "label": "Leave it",
+        "after": "Someone shouts “Boring!” The DJ shrugs."
+      }
     },
     "panel": {
       "who": "Fuse room",
@@ -149,12 +165,18 @@
         "label": "Go in, reset it",
         "after": "Wet shoes, one switch. The lights hold. Your heart barely does."
       },
-      "right": { "label": "Shut the power off", "after": "The whole hall goes black and boos you." }
+      "right": {
+        "label": "Shut the power off",
+        "after": "The whole hall goes black and boos you."
+      }
     },
     "door": {
       "who": "Emily",
       "text": "“That rusty back door keeps swinging open. My mother’s freezing. Bolt it?”",
-      "left": { "label": "Bolt it", "after": "It takes two of you. It won’t be swinging anymore." },
+      "left": {
+        "label": "Bolt it",
+        "after": "It takes two of you. It won’t be swinging anymore."
+      },
       "right": {
         "label": "Wedge it with a stone",
         "after": "Cold air on the dance floor. Emily sighs like you’re the problem."
@@ -191,7 +213,10 @@
         "label": "Drag her out",
         "after": "She screams at you the whole way. Then the roof goes."
       },
-      "right": { "label": "Let her go", "after": "You don’t look back. You hear it anyway." }
+      "right": {
+        "label": "Let her go",
+        "after": "You don’t look back. You hear it anyway."
+      }
     }
   },
   "endings": {

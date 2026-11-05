@@ -11,8 +11,11 @@ import { say } from "../i18n/languages";
 // Yazılar.
 import { UI } from "../i18n/ui";
 
-// Her kehanet cümlesinin ekranda kalma süresi.
-const LINE_MS = 1500;
+// Bir kehanet cümlesinin ekranda kalma süresi. Uzun cümle okunabilsin diye daha uzun kalır.
+function lineDuration(line: string): number {
+  // En az 1,5 saniye, her harf için biraz daha.
+  return Math.max(1500, 900 + line.length * 45);
+}
 
 // Kehanet: Felaket kısa cümlelerle ekranda patlar.
 export function VisionScreen({
@@ -28,6 +31,9 @@ export function VisionScreen({
   const [step, setStep] = useState(0);
   // Son adım uyanış metni.
   const awake = step >= story.vision.length;
+  // Şu anki cümle ve süresi.
+  const line = awake ? "" : say(story.vision[step], language);
+  const duration = lineDuration(line);
 
   // Ekran açılınca: Güçlü uğultu ve hızlı kalp.
   useEffect(() => {
@@ -54,9 +60,9 @@ export function VisionScreen({
       vibrate(40);
     }
     // Sıradaki cümle.
-    const timer = window.setTimeout(() => setStep((current) => current + 1), LINE_MS);
+    const timer = window.setTimeout(() => setStep((current) => current + 1), duration);
     return () => window.clearTimeout(timer);
-  }, [step, awake, story.vision.length]);
+  }, [step, awake, story.vision.length, duration]);
 
   return (
     <div className="vision" data-awake={awake}>
@@ -70,8 +76,13 @@ export function VisionScreen({
       ) : (
         <>
           {/* key değişince animasyon baştan başlar. */}
-          <p className="vision-line" key={step} data-last={step === story.vision.length - 1}>
-            {say(story.vision[step], language)}
+          <p
+            className="vision-line"
+            key={step}
+            data-last={step === story.vision.length - 1}
+            style={{ animationDuration: `${duration}ms` }}
+          >
+            {line}
           </p>
           {/* Kehaneti atlama. */}
           <button className="skip" onClick={() => setStep(story.vision.length)}>

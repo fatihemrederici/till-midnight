@@ -1,14 +1,18 @@
 {
   "title": "Ostatni taniec",
   "vision": [
-    "Punktualnie o 00:00 sufit spada.",
-    "Pył i pleśń. Nie możesz oddychać.",
-    "Sam nie może się wydostać.",
-    "Żelazna belka, a pod nią Emily.",
-    "Potem ty."
+    "Wesele Sama. Pierwszy taniec.",
+    "Wszyscy klaszczą. Na tort sypie się pył.",
+    "Spada żyrandol. Potem sufit.",
+    "Sam jest pod gruzem. Emily też.",
+    "00:00. Nie wychodzisz stamtąd."
   ],
-  "wake": "Otwierasz oczy. 14:00. Ręce ci drżą, wciąż trzymasz w nich program wesela.",
-  "meters": { "nerve": "Nerwy", "stamina": "Siły", "trust": "Zaufanie" },
+  "wake": "Otwierasz oczy. 14:00. Jesteś drużbą Sama, a wesele jeszcze się nie zaczęło. Ręce ci drżą, wciąż trzymasz w nich program.",
+  "meters": {
+    "nerve": "Nerwy",
+    "stamina": "Siły",
+    "trust": "Zaufanie"
+  },
   "cards": {
     "flowers": {
       "who": "Kwiaciarka",
@@ -49,7 +53,10 @@
     "tie": {
       "who": "Sam",
       "text": "„Stary, nie mogę w tym oddychać”. Fotograf już woła pana młodego.",
-      "left": { "label": "Poluzuj", "after": "Bierze głęboki oddech. Fotograf przewraca oczami." },
+      "left": {
+        "label": "Poluzuj",
+        "after": "Bierze głęboki oddech. Fotograf przewraca oczami."
+      },
       "right": {
         "label": "„Wytrzymaj, zdjęcia”",
         "after": "Kiwa głową. Wygląda świetnie. Jest trochę czerwony."
@@ -98,12 +105,18 @@
         "label": "Zostaw przejście",
         "after": "Dwadzieścia osób je na stojąco. Emily na ciebie nie patrzy."
       },
-      "right": { "label": "Rozstawmy", "after": "Wszyscy siedzą. Emily pokazuje ci kciuk w górę." }
+      "right": {
+        "label": "Rozstawmy",
+        "after": "Wszyscy siedzą. Emily pokazuje ci kciuk w górę."
+      }
     },
     "knife": {
       "who": "Emily",
       "text": "„Nóż do tortu zniknął. Weź szefowski, leży tu”. Jest ogromny. Patrzysz na swoje ręce.",
-      "left": { "label": "Nóż szefowski", "after": "Tort kroi się równo. Trzymasz nóż pod ręką." },
+      "left": {
+        "label": "Nóż szefowski",
+        "after": "Tort kroi się równo. Trzymasz nóż pod ręką."
+      },
       "right": {
         "label": "Nóż do chleba",
         "after": "Rwie tort. Wszyscy się śmieją. Nikomu nic się nie stało."
@@ -140,7 +153,10 @@
         "label": "Na maksa",
         "after": "Podłoga skacze. Wszyscy krzyczą z radości. Przez światła opada pył."
       },
-      "right": { "label": "Zostaw", "after": "Ktoś krzyczy: „Nudy!”. DJ wzrusza ramionami." }
+      "right": {
+        "label": "Zostaw",
+        "after": "Ktoś krzyczy: „Nudy!”. DJ wzrusza ramionami."
+      }
     },
     "panel": {
       "who": "Rozdzielnia",
@@ -149,12 +165,18 @@
         "label": "Wejdź i zresetuj",
         "after": "Mokre buty, jeden przełącznik. Światła się trzymają. Serce ledwo."
       },
-      "right": { "label": "Odetnij prąd", "after": "Cała sala gaśnie i cię wygwizduje." }
+      "right": {
+        "label": "Odetnij prąd",
+        "after": "Cała sala gaśnie i cię wygwizduje."
+      }
     },
     "door": {
       "who": "Emily",
       "text": "„Te zardzewiałe tylne drzwi ciągle się otwierają. Mama marznie. Zaryglujemy?”",
-      "left": { "label": "Zarygluj", "after": "Trzeba was dwojga. Już się nie otworzą." },
+      "left": {
+        "label": "Zarygluj",
+        "after": "Trzeba was dwojga. Już się nie otworzą."
+      },
       "right": {
         "label": "Zaklinuj kamieniem",
         "after": "Na parkiet wpada zimne powietrze. Emily wzdycha, jakbyś to ty był problemem."
@@ -191,7 +213,10 @@
         "label": "Wyciągnij ją",
         "after": "Krzyczy na ciebie przez całą drogę. Potem dach się wali."
       },
-      "right": { "label": "Puść ją", "after": "Nie oglądasz się. I tak to słyszysz." }
+      "right": {
+        "label": "Puść ją",
+        "after": "Nie oglądasz się. I tak to słyszysz."
+      }
     }
   },
   "endings": {
