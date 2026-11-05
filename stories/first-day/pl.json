@@ -8,7 +8,11 @@
     "Ty też."
   ],
   "wake": "Otwierasz oczy. Stoisz na przystanku. Autobus właśnie podjeżdża.",
-  "meters": { "mind": "Rozum", "body": "Zdrowie", "trust": "Zaufanie" },
+  "meters": {
+    "mind": "Rozum",
+    "body": "Zdrowie",
+    "trust": "Zaufanie"
+  },
   "cards": {
     "bus": {
       "who": "Kierowca autobusu",
@@ -41,12 +45,18 @@
         "label": "Posiedź, aż wyschnie",
         "after": "Pięć minut na krześle. Oddech się uspokaja."
       },
-      "right": { "label": "Wyjdź natychmiast", "after": "Tu też nie jest bezpiecznie. Wychodzisz." }
+      "right": {
+        "label": "Wyjdź natychmiast",
+        "after": "Tu też nie jest bezpiecznie. Wychodzisz."
+      }
     },
     "elif-asks": {
       "who": "Elif",
       "text": "„Skąd wiedziałeś? Czy dzisiaj stanie się coś jeszcze?”",
-      "left": { "label": "Opowiedz, co widziałeś", "after": "Nie śmieje się. Prosi o twój numer." },
+      "left": {
+        "label": "Opowiedz, co widziałeś",
+        "after": "Nie śmieje się. Prosi o twój numer."
+      },
       "right": {
         "label": "„Takie przeczucie”",
         "after": "Nie wierzy ci. Mimo to bierze twój numer."
@@ -79,7 +89,9 @@
     "locked": {
       "who": "Twoje drzwi",
       "text": "Nie masz kluczy. Sąsiad otwiera drzwi: „Balkony się stykają. Możesz przejść.”",
-      "left": { "label": "Przejdź przez balkon" },
+      "left": {
+        "label": "Przejdź przez balkon"
+      },
       "right": {
         "label": "Zaczekaj na ślusarza",
         "after": "Dwie godziny na schodach. Nudno, ale żyjesz."
@@ -112,7 +124,9 @@
     "pan-fire": {
       "who": "Kuchnia",
       "text": "Swąd spalenizny. Patelnia płonie, ogień sięga okapu.",
-      "left": { "label": "Zalej wodą" },
+      "left": {
+        "label": "Zalej wodą"
+      },
       "right": {
         "label": "Przykryj, wyłącz gaz",
         "after": "Płomień gaśnie. Masz poparzoną rękę, ale mieszkanie ocalało."
@@ -121,8 +135,14 @@
     "sleep": {
       "who": "Twoje łóżko",
       "text": "Nie spałeś od wczoraj. Oczy same ci się zamykają.",
-      "left": { "label": "Prześpij się", "after": "Śni ci się most. Mimo to pomaga." },
-      "right": { "label": "Nie śpij", "after": "Robisz kawę i patrzysz w sufit." }
+      "left": {
+        "label": "Prześpij się",
+        "after": "Śni ci się most. Mimo to pomaga."
+      },
+      "right": {
+        "label": "Nie śpij",
+        "after": "Robisz kawę i patrzysz w sufit."
+      }
     },
     "elif-news": {
       "who": "Elif",
@@ -130,7 +150,10 @@
       "variants": [
         "„Ten drugi facet, który wysiadł z autobusu, nie żyje. W windzie. Czy my jesteśmy następni? Już idę.”"
       ],
-      "left": { "label": "„Przyjdź”", "after": "Pół godziny później stoi w twoich drzwiach." },
+      "left": {
+        "label": "„Przyjdź”",
+        "after": "Pół godziny później stoi w twoich drzwiach."
+      },
       "right": {
         "label": "„Nie przychodź, to niebezpieczne”",
         "after": "Odczytano. Brak odpowiedzi."
@@ -143,7 +166,10 @@
         "label": "„Przyjdę jutro”",
         "after": "Policjant notuje. Gdy się rozłączasz, masz mokre dłonie."
       },
-      "right": { "label": "Wyłącz telefon", "after": "Telefon cichnie. Cisza jest gorsza." }
+      "right": {
+        "label": "Wyłącz telefon",
+        "after": "Telefon cichnie. Cisza jest gorsza."
+      }
     },
     "fuse": {
       "who": "Skrzynka z bezpiecznikami",
@@ -152,7 +178,10 @@
         "label": "Włącz bezpiecznik ręką",
         "after": "Elif świeci latarką. „Stój, ten kabel jest goły!” Naciskasz właściwy przełącznik."
       },
-      "right": { "label": "Czekaj w ciemności", "after": "Godzinę później światło wraca samo." }
+      "right": {
+        "label": "Czekaj w ciemności",
+        "after": "Godzinę później światło wraca samo."
+      }
     },
     "railing": {
       "who": "Elif",
@@ -161,7 +190,9 @@
         "label": "„Wracaj do środka, już!”",
         "after": "Patrzy ze złością i wchodzi. Chwilę później barierka spada w ciemność."
       },
-      "right": { "label": "Wyjdź i ją przytul" }
+      "right": {
+        "label": "Wyjdź i ją przytul"
+      }
     },
     "door": {
       "who": "Drzwi",
@@ -170,7 +201,9 @@
         "label": "Otwórz i zobacz",
         "after": "Nikogo. Na wycieraczce leży poranny bilet autobusowy."
       },
-      "right": { "label": "Zastaw drzwi szafą" }
+      "right": {
+        "label": "Zastaw drzwi szafą"
+      }
     }
   },
   "endings": {
@@ -280,13 +313,13 @@
       "hint": "Nie odbierałeś. W końcu przestali dzwonić."
     },
     "together": {
-      "title": "Północ",
+      "title": "Oboje żywi",
       "text": "00:00. Oboje żyjecie. Elif milczy. Ty też. Śmierć przegapiła dziś dwie osoby.",
       "chain": [],
       "hint": "Masz najlepsze zakończenie. Choć jutro też jest dzień."
     },
     "survivor": {
-      "title": "Północ",
+      "title": "Sam o północy",
       "text": "00:00. Żyjesz. Dziś nikogo nie uratowałeś, ale jesteś tu. Śmierć się pomyliła.",
       "chain": [],
       "hint": "Gratulacje, przeżyłeś. Sam."

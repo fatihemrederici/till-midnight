@@ -8,7 +8,11 @@
     "Including you."
   ],
   "wake": "You open your eyes. You are at the bus stop. The bus is just pulling in.",
-  "meters": { "mind": "Mind", "body": "Body", "trust": "Trust" },
+  "meters": {
+    "mind": "Mind",
+    "body": "Body",
+    "trust": "Trust"
+  },
   "cards": {
     "bus": {
       "who": "Bus driver",
@@ -85,7 +89,9 @@
     "locked": {
       "who": "Your door",
       "text": "Your keys are gone. A neighbour opens up: “The balconies touch. You can climb across.”",
-      "left": { "label": "Climb across" },
+      "left": {
+        "label": "Climb across"
+      },
       "right": {
         "label": "Wait for a locksmith",
         "after": "Two hours on the stairs. Boring, but you are alive."
@@ -118,9 +124,11 @@
     "pan-fire": {
       "who": "Kitchen",
       "text": "A burning smell. The pan is on fire and the flames reach for the hood.",
-      "left": { "label": "Pour water on it" },
+      "left": {
+        "label": "Pour water on it"
+      },
       "right": {
-        "label": "Cover it, turn off the gas",
+        "label": "Cover it, kill the gas",
         "after": "The flame chokes out. Your hand is burned, but the flat survives."
       }
     },
@@ -131,7 +139,10 @@
         "label": "Sleep for a while",
         "after": "You dream about the bridge. It still helps."
       },
-      "right": { "label": "Stay awake", "after": "You make coffee and watch the ceiling." }
+      "right": {
+        "label": "Stay awake",
+        "after": "You make coffee and watch the ceiling."
+      }
     },
     "elif-news": {
       "who": "Elif",
@@ -139,8 +150,14 @@
       "variants": [
         "“The other man who got off the bus is dead. In an elevator. Are we next? I'm coming over.”"
       ],
-      "left": { "label": "“Come”", "after": "Half an hour later she is at your door." },
-      "right": { "label": "“Stay away, it's dangerous”", "after": "Read. No reply." }
+      "left": {
+        "label": "“Come”",
+        "after": "Half an hour later she is at your door."
+      },
+      "right": {
+        "label": "“Stay away, it's dangerous”",
+        "after": "Read. No reply."
+      }
     },
     "witness": {
       "who": "Unknown number",
@@ -173,7 +190,9 @@
         "label": "“Come inside, now!”",
         "after": "She glares and steps in. A moment later the railing drops into the dark."
       },
-      "right": { "label": "Go out and hug her" }
+      "right": {
+        "label": "Go out and hug her"
+      }
     },
     "door": {
       "who": "The door",
@@ -182,7 +201,9 @@
         "label": "Open it and look",
         "after": "Nobody. On the mat lies this morning's bus ticket."
       },
-      "right": { "label": "Push the wardrobe against it" }
+      "right": {
+        "label": "Push the wardrobe against it"
+      }
     }
   },
   "endings": {
@@ -288,13 +309,13 @@
       "hint": "You didn’t pick up. Eventually, they stopped calling."
     },
     "together": {
-      "title": "Midnight",
+      "title": "Both Alive",
       "text": "00:00. You are both alive. Elif says nothing. Neither do you. Death missed two people today.",
       "chain": [],
       "hint": "You found the best ending. There’s always tomorrow, though."
     },
     "survivor": {
-      "title": "Midnight",
+      "title": "Alone at Midnight",
       "text": "00:00. You are alive. You saved nobody today, but you are here. Death got it wrong.",
       "chain": [],
       "hint": "Congratulations, you survived. Alone."

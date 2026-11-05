@@ -8,7 +8,11 @@
     "Sen de."
   ],
   "wake": "Gözlerini açıyorsun. Duraktasın. Otobüs daha yeni geliyor.",
-  "meters": { "mind": "Akıl", "body": "Sağlık", "trust": "Güven" },
+  "meters": {
+    "mind": "Akıl",
+    "body": "Sağlık",
+    "trust": "Güven"
+  },
   "cards": {
     "bus": {
       "who": "Otobüs şoförü",
@@ -17,12 +21,18 @@
         "label": "Herkesi uyar",
         "after": "Çoğu sana gülüyor. Sarı montlu bir kız inip yanına geliyor: Elif."
       },
-      "right": { "label": "Sessizce uzaklaş", "after": "Kapılar kapanıyor. Otobüs köşeyi dönüyor." }
+      "right": {
+        "label": "Sessizce uzaklaş",
+        "after": "Kapılar kapanıyor. Otobüs köşeyi dönüyor."
+      }
     },
     "sirens": {
       "who": "Sokak",
       "text": "Köprü tarafından siren sesleri geliyor. Ellerin titriyor.",
-      "left": { "label": "Kulaklığı tak", "after": "Sesler kesiliyor. Her şey biraz uzaklaşıyor." },
+      "left": {
+        "label": "Kulaklığı tak",
+        "after": "Sesler kesiliyor. Her şey biraz uzaklaşıyor."
+      },
       "right": {
         "label": "Haberlere bak",
         "after": "Ekranda köprü var. Otobüs suda. Kulaklıkları cebine atıyorsun."
@@ -35,13 +45,22 @@
         "label": "Otur, kurusun",
         "after": "Beş dakika oturuyorsun. Nefesin yerine geliyor."
       },
-      "right": { "label": "Hemen çık", "after": "Burası da güvenli değil. Çıkıyorsun." }
+      "right": {
+        "label": "Hemen çık",
+        "after": "Burası da güvenli değil. Çıkıyorsun."
+      }
     },
     "elif-asks": {
       "who": "Elif",
       "text": "“Bunu nereden bildin? Bugün başka bir şey olacak mı?”",
-      "left": { "label": "Gördüğünü anlat", "after": "Gülmüyor. Numaranı istiyor." },
-      "right": { "label": "“İçime doğdu işte”", "after": "İnanmıyor. Yine de numaranı alıyor." }
+      "left": {
+        "label": "Gördüğünü anlat",
+        "after": "Gülmüyor. Numaranı istiyor."
+      },
+      "right": {
+        "label": "“İçime doğdu işte”",
+        "after": "İnanmıyor. Yine de numaranı alıyor."
+      }
     },
     "road": {
       "who": "Yaya geçidi",
@@ -58,7 +77,10 @@
     "elevator": {
       "who": "Apartman",
       "text": "On ikinci kat. Asansör gıcırdıyor, merdivenler yeni yıkanmış.",
-      "left": { "label": "Merdiven", "after": "On iki kat. Bacakların titriyor ama çıktın." },
+      "left": {
+        "label": "Merdiven",
+        "after": "On iki kat. Bacakların titriyor ama çıktın."
+      },
       "right": {
         "label": "Asansör",
         "after": "Kapılar kapanıyor, ışık bir gidip geliyor. Bir şey olmuyor."
@@ -67,7 +89,9 @@
     "locked": {
       "who": "Dairenin kapısı",
       "text": "Anahtarın yok. Komşu kapıyı açıyor: “Balkonlar bitişik, geçebilirsin.”",
-      "left": { "label": "Balkondan geç" },
+      "left": {
+        "label": "Balkondan geç"
+      },
       "right": {
         "label": "Çilingiri bekle",
         "after": "İki saat merdivende oturuyorsun. Sıkıcı ama hayattasın."
@@ -80,7 +104,10 @@
         "label": "Yağı ısıt, yumurta kır",
         "after": "Ocağı yakıyorsun. Yağ ısınmaya başlıyor."
       },
-      "right": { "label": "Su iç, geç", "after": "Midene kramp giriyor ama ocak kapalı." }
+      "right": {
+        "label": "Su iç, geç",
+        "after": "Midene kramp giriyor ama ocak kapalı."
+      }
     },
     "mom": {
       "who": "Annen arıyor",
@@ -97,7 +124,9 @@
     "pan-fire": {
       "who": "Mutfak",
       "text": "Yanık kokusu. Tava alev almış, alev aspiratöre uzanıyor.",
-      "left": { "label": "Üstüne su dök" },
+      "left": {
+        "label": "Üstüne su dök"
+      },
       "right": {
         "label": "Kapağı kapat, ocağı söndür",
         "after": "Alev boğuluyor. Elin yandı ama ev duruyor."
@@ -106,21 +135,39 @@
     "sleep": {
       "who": "Yatağın",
       "text": "Dünden beri uyumadın. Gözlerin kapanıyor.",
-      "left": { "label": "Biraz uyu", "after": "Rüyanda yine köprü. Yine de iyi geliyor." },
-      "right": { "label": "Uyanık kal", "after": "Kahve yapıyorsun. Tavana bakıp duruyorsun." }
+      "left": {
+        "label": "Biraz uyu",
+        "after": "Rüyanda yine köprü. Yine de iyi geliyor."
+      },
+      "right": {
+        "label": "Uyanık kal",
+        "after": "Kahve yapıyorsun. Tavana bakıp duruyorsun."
+      }
     },
     "elif-news": {
       "who": "Elif",
       "text": "“Otobüsten inen öbür adam ölmüş. Asansörde. Tesadüf mü bu? Yanına geleyim mi?”",
       "variants": ["“Otobüsten inen öbür adam ölmüş. Asansörde. Sıra bizde mi? Yanına geliyorum.”"],
-      "left": { "label": "“Gel”", "after": "Yarım saat sonra kapında." },
-      "right": { "label": "“Gelme, tehlikeli”", "after": "Görüldü. Cevap yok." }
+      "left": {
+        "label": "“Gel”",
+        "after": "Yarım saat sonra kapında."
+      },
+      "right": {
+        "label": "“Gelme, tehlikeli”",
+        "after": "Görüldü. Cevap yok."
+      }
     },
     "witness": {
       "who": "Bilinmeyen numara",
       "text": "“Polisten arıyoruz. Duraktan uzaklaşırken kameraya takılmışsınız. İfadenizi almamız lazım.”",
-      "left": { "label": "“Yarın gelirim”", "after": "Not alıyorlar. Kapattığında elin terlemiş." },
-      "right": { "label": "Telefonu kapat", "after": "Telefon susuyor. Sessizlik daha beter." }
+      "left": {
+        "label": "“Yarın gelirim”",
+        "after": "Not alıyorlar. Kapattığında elin terlemiş."
+      },
+      "right": {
+        "label": "Telefonu kapat",
+        "after": "Telefon susuyor. Sessizlik daha beter."
+      }
     },
     "fuse": {
       "who": "Sigorta kutusu",
@@ -141,7 +188,9 @@
         "label": "“İçeri gel, hemen!”",
         "after": "Kızıyor ama giriyor. O anda korkuluk boşluğa düşüyor."
       },
-      "right": { "label": "Yanına çık, sarıl" }
+      "right": {
+        "label": "Yanına çık, sarıl"
+      }
     },
     "door": {
       "who": "Kapı",
@@ -150,7 +199,9 @@
         "label": "Aç, bak",
         "after": "Kimse yok. Paspasın üstünde sabahki otobüsün bileti var."
       },
-      "right": { "label": "Gardırobu kapıya daya" }
+      "right": {
+        "label": "Gardırobu kapıya daya"
+      }
     }
   },
   "endings": {
@@ -256,13 +307,13 @@
       "hint": "Telefonu açmadın. Sonunda onlar da aramayı bıraktı."
     },
     "together": {
-      "title": "Gece Yarısı",
+      "title": "İkiniz de Hayatta",
       "text": "00:00. İkiniz de hayattasınız. Elif konuşmuyor, sen de. Ölüm bugün iki kişiyi kaçırdı.",
       "chain": [],
       "hint": "En iyi sonu buldun. Yarın da var tabii."
     },
     "survivor": {
-      "title": "Gece Yarısı",
+      "title": "Gece Yarısı, Tek Başına",
       "text": "00:00. Hayattasın. Kimseyi kurtaramadın ama buradasın. Ölüm yanıldı.",
       "chain": [],
       "hint": "Tebrikler, hayatta kaldın. Tek başına."
