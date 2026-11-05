@@ -48,6 +48,9 @@ export type Ending = {
   hint: Text;
 };
 
+// Bölüm seçme ekranındaki bir satır.
+export type StorySummary = { id: string; title: Text; deaths: string[] };
+
 // Hikâyenin tamamı.
 export type Story = {
   formatVersion: number;

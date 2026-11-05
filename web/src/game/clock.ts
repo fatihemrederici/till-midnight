@@ -1,8 +1,7 @@
 // Oyunun saat hesapları.
 
-// Oyunun başladığı ve bittiği saatler.
-const DAY_START_HOUR = 8;
-const DAY_END_HOUR = 24;
+// Gece yarısının dakikası. Her bölüm burada biter.
+const MIDNIGHT = 24 * 60;
 
 // "14:30" saatini dakikaya çevirir.
 export function toMinutes(time: string): number {
@@ -18,10 +17,10 @@ export function formatMinutes(total: number): string {
   return `${String(Math.floor(total / 60)).padStart(2, "0")}:${String(total % 60).padStart(2, "0")}`;
 }
 
-// Saati günün ilerleme oranına çevirir: 0 başlangıç, 1 gece yarısı.
-export function dayProgress(time: string): number {
+// Saati bölümün ilerleme oranına çevirir: 0 bölümün başlangıç saati, 1 gece yarısı.
+export function dayProgress(time: string, start: string): number {
   // Başlangıçtan bu yana geçen oran.
-  const progress = (toMinutes(time) / 60 - DAY_START_HOUR) / (DAY_END_HOUR - DAY_START_HOUR);
+  const progress = (toMinutes(time) - toMinutes(start)) / (MIDNIGHT - toMinutes(start));
   // 0 ile 1 arasında tut.
   return Math.max(0, Math.min(1, progress));
 }

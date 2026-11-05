@@ -3,12 +3,13 @@ import type { Text } from "../game/types";
 
 // Hikâye dışındaki tüm arayüz yazıları.
 export const UI = {
+  gameTitle: { en: "Till Midnight", tr: "Gece Yarısına Kadar", pl: "Do północy" },
   tagline: {
-    en: "You should have died this morning. Swipe to get through the day. One small choice can kill you hours later.",
-    tr: "Bu sabah ölmen gerekiyordu. Günü atlatmak için kartları kaydır. Küçük bir karar saatler sonra seni öldürebilir.",
-    pl: "Dziś rano miałeś zginąć. Przesuwaj karty, żeby przetrwać dzień. Jeden drobny wybór może zabić cię kilka godzin później.",
+    en: "You saw how you die. Swipe to reach midnight. One small choice can kill you hours later.",
+    tr: "Nasıl öleceğini gördün. Gece yarısına ulaşmak için kartları kaydır. Küçük bir karar saatler sonra seni öldürebilir.",
+    pl: "Widzisz, jak umierasz. Przesuwaj karty, żeby dotrwać do północy. Jeden drobny wybór może zabić kilka godzin później.",
   },
-  start: { en: "See what happens", tr: "Neler olacağını gör", pl: "Zobacz, co się stanie" },
+  chapters: { en: "Chapters", tr: "Bölümler", pl: "Rozdziały" },
   continue: { en: "Open your eyes", tr: "Gözünü aç", pl: "Otwórz oczy" },
   skip: { en: "Skip", tr: "Geç", pl: "Pomiń" },
   deaths: { en: "Your deaths", tr: "Ölümlerin", pl: "Twoje śmierci" },

@@ -22,7 +22,13 @@ export function WinScreen({
   ending,
   tries,
   onAgain,
-}: Omit<ScreenProps, "story"> & { ending: Ending; tries: number; onAgain: () => void }) {
+  onChapters,
+}: Omit<ScreenProps, "story"> & {
+  ending: Ending;
+  tries: number;
+  onAgain: () => void;
+  onChapters: () => void;
+}) {
   // Ekran açılınca: Akor ve sessizlik.
   useEffect(() => {
     sfx.win();
@@ -42,6 +48,9 @@ export function WinScreen({
         </p>
         <button className="go" onClick={onAgain}>
           {UI.again[language]}
+        </button>
+        <button className="link" onClick={onChapters}>
+          {UI.chapters[language]}
         </button>
       </div>
     </div>

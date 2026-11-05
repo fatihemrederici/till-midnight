@@ -51,7 +51,10 @@ export function PlayScreen({
 
         {/* Günün ilerlemesi: Hedef gece yarısı. */}
         <div className="day" aria-label={UI.goal[language]}>
-          <div className="day-fill" style={{ width: `${dayProgress(card.time) * 100}%` }} />
+          <div
+            className="day-fill"
+            style={{ width: `${dayProgress(card.time, story.cards[0].time) * 100}%` }}
+          />
           <span className="day-label">
             <span>{UI.goal[language]}</span>
             <span>

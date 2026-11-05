@@ -11,7 +11,7 @@ Till Midnight has four parts, each with one job.
 
 ## One run
 
-1. The client loads the story with `GET /story`. The server has already merged the rules and languages into one object, so language changes need no request.
+1. The player picks a chapter from `GET /stories`, and the client loads it with `GET /stories/{id}`. The server has already merged the rules and languages into one object, so language changes need no request.
 2. Each swipe runs through `web/src/game/engine.ts`, so the game reacts with no network delay.
 3. When the run ends, the client sends only the list of swipes to `POST /runs`.
 4. The server replays them in `StoryEngine.java` and stores the result it calculated itself.
@@ -49,6 +49,6 @@ To keep them identical, both are tested against `api/src/test/resources/story-pa
 
 ## Known limits
 
-- `GET /story` sends the rules to the browser, so a curious player can read every ending. Results are still calculated on the server.
+- `GET /stories/{id}` sends the rules to the browser, so a curious player can read every ending. Results are still calculated on the server.
 - There are no accounts. Player ids are generated in the browser, so statistics can be inflated.
 - `POST /internal/validate` is open and must be protected before going live.

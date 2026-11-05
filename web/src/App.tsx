@@ -1,15 +1,15 @@
 // React araçları.
 import { useCallback, useEffect, useRef, useState } from "react";
 // Sunucu çağrıları.
-import { fetchStory, submitRun } from "./data/api";
+import { fetchChapters, fetchStory, submitRun } from "./data/api";
 // Motor.
 import { choose, newGame } from "./game/engine";
 // Tipler.
-import type { GameState, Language, RunStats, Side, Story } from "./game/types";
+import type { GameState, Language, RunStats, Side, Story, StorySummary } from "./game/types";
 // Bulunan sonlar.
 import { useFoundEndings } from "./hooks/useFoundEndings";
 // Dil.
-import { initialLanguage, saveLanguage, say } from "./i18n/languages";
+import { initialLanguage, saveLanguage } from "./i18n/languages";
 // Yazılar.
 import { UI } from "./i18n/ui";
 // Ekranlar.
@@ -27,7 +27,9 @@ type Screen = "loading" | "error" | "title" | "vision" | "play" | "end" | "rewin
 
 // Ana bileşen: Hangi ekranın görüneceğine karar verir ve oyun durumunu tutar.
 export function App() {
-  // Hikâye.
+  // Bölüm listesi.
+  const [chapters, setChapters] = useState<StorySummary[]>([]);
+  // Seçilen bölüm.
   const [story, setStory] = useState<Story | null>(null);
   // Görünen ekran.
   const [screen, setScreen] = useState<Screen>("loading");
@@ -40,17 +42,17 @@ export function App() {
   // Sunucudan gelen istatistikler.
   const [stats, setStats] = useState<RunStats | null>(null);
   // Bulunan sonlar.
-  const { found, addFound } = useFoundEndings();
+  const { found, addFound } = useFoundEndings(story?.id ?? "");
   // Ölüm listesinden dönülecek ekran.
-  const returnTo = useRef<Screen>("title");
+  const returnTo = useRef<Screen>("end");
   // Geri sarmanın başladığı saat.
   const rewindFrom = useRef("23:40");
 
   // Sayfanın dilini ve sekme başlığını güncel tut.
   useEffect(() => {
     document.documentElement.lang = language;
-    if (story) document.title = say(story.title, language);
-  }, [language, story]);
+    document.title = UI.gameTitle[language];
+  }, [language]);
 
   // Dili değiştirir: Tüm metinler bu değerden okunduğu için anında değişir.
   const setLanguage = useCallback((next: Language) => {
@@ -58,12 +60,24 @@ export function App() {
     saveLanguage(next);
   }, []);
 
-  // Hikâyeyi bir kere yükle.
+  // Bölüm listesini bir kere yükle.
   useEffect(() => {
-    fetchStory()
+    fetchChapters()
+      .then((loaded) => {
+        setChapters(loaded);
+        setScreen("title");
+      })
+      .catch(() => setScreen("error"));
+  }, []);
+
+  // Seçilen bölümü yükleyip kehaneti başlatır.
+  const pickChapter = useCallback((id: string) => {
+    setScreen("loading");
+    fetchStory(id)
       .then((loaded) => {
         setStory(loaded);
-        setScreen("title");
+        setTries(0);
+        setScreen("vision");
       })
       .catch(() => setScreen("error"));
   }, []);
@@ -100,17 +114,29 @@ export function App() {
 
   // Hikâye gelmeden gösterilen ekranlar.
   if (screen === "error") return <MessageScreen message={UI.error[language]} />;
-  if (!story) return <MessageScreen message={UI.loading[language]} />;
+  if (screen === "loading") return <MessageScreen message={UI.loading[language]} />;
+  if (screen === "title" || !story) {
+    return (
+      <TitleScreen
+        chapters={chapters}
+        language={language}
+        onLanguage={setLanguage}
+        onPick={pickChapter}
+      />
+    );
+  }
 
   // Ortak özellikler.
   const common = { story, language, onLanguage: setLanguage };
   // Bulunan ölüm sayısı.
   const foundDeaths = story.endings.filter((item) => !item.won && found.includes(item.id)).length;
   // Ölüm listesini açar.
-  const openDeaths = (from: Screen) => {
-    returnTo.current = from;
+  const openDeaths = () => {
+    returnTo.current = "end";
     setScreen("deaths");
   };
+  // Bölüm listesine döner.
+  const openChapters = () => setScreen("title");
 
   // Ekranı seç.
   switch (screen) {
@@ -133,6 +159,7 @@ export function App() {
           ending={ending}
           tries={tries}
           onAgain={() => setScreen("rewind")}
+          onChapters={openChapters}
         />
       ) : (
         <DeathScreen
@@ -142,18 +169,12 @@ export function App() {
           stats={stats}
           found={foundDeaths}
           onRewind={() => setScreen("rewind")}
-          onDeaths={() => openDeaths("end")}
+          onDeaths={openDeaths}
+          onChapters={openChapters}
         />
       );
     }
     default:
-      return (
-        <TitleScreen
-          {...common}
-          found={foundDeaths}
-          onStart={() => setScreen("vision")}
-          onDeaths={() => openDeaths("title")}
-        />
-      );
+      return null;
   }
 }

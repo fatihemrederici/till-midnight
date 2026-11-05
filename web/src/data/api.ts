@@ -1,5 +1,5 @@
 // Tipler.
-import type { RunStats, Side, Story } from "../game/types";
+import type { RunStats, Side, Story, StorySummary } from "../game/types";
 // Tarayıcı deposu.
 import { readValue, writeValue } from "./storage";
 
@@ -29,14 +29,26 @@ function playerId(): string {
   return created;
 }
 
-// Hikâyeyi sunucudan alır.
-export async function fetchStory(): Promise<Story> {
+// Bir adresten JSON okur.
+async function getJson<T>(path: string): Promise<T> {
   // İsteği gönder.
-  const response = await fetch("/story");
+  const response = await fetch(path);
   // Hata kodu geldiyse dur.
   if (!response.ok) throw new Error(`Server returned ${response.status}`);
   // JSON'u nesneye çevir.
   return response.json();
+}
+
+// Bölüm listesini sunucudan alır.
+export function fetchChapters(): Promise<StorySummary[]> {
+  // Listeyi oku.
+  return getJson("/stories");
+}
+
+// Bir bölümün tamamını sunucudan alır.
+export function fetchStory(id: string): Promise<Story> {
+  // Bölümü oku.
+  return getJson(`/stories/${id}`);
 }
 
 // Biten koşuyu gönderir. Sunucu seçimleri baştan oynatıp sonucu kendisi hesaplar.

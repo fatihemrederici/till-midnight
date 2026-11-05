@@ -1,0 +1,312 @@
+{
+  "title": "Gece Vardiyası",
+  "vision": [
+    "Doğu kanadı tepende inliyor.",
+    "Tavanda bir çatlak koşuyor.",
+    "Beton. Toz. Biri adını haykırıyor.",
+    "Saat 00:00.",
+    "Çıkamıyorsun."
+  ],
+  "wake": "Hemşire masasında sıçrayarak uyanıyorsun. 20:04. Vardiyan daha yeni başladı, tavan hâlâ sağlam.",
+  "meters": { "focus": "Akıl", "stamina": "Güç", "trust": "Güven" },
+  "cards": {
+    "desk": {
+      "who": "Nora",
+      "text": "“Uykunda çığlık atıyordun. Ne gördün?”",
+      "left": { "label": "Her şeyi anlat", "after": "Gülüyor. Sonra bir anlığına tavana bakıyor." },
+      "right": {
+        "label": "“Kötü bir rüyaydı”",
+        "after": "Omuz silkiyor. Rüya göğsüne taş gibi oturuyor."
+      }
+    },
+    "room-seven": {
+      "who": "Halina Hanım",
+      "text": "7 numara. Yıllardır kör. “Geciktin kızım. Otur. Bu gece seni neyin öldüreceğini söyleyeyim.”",
+      "left": {
+        "label": "Otur ve dinle",
+        "after": "“Su. Işık. Demir.” Elini okşuyor. “Bu sırayla.”"
+      },
+      "right": {
+        "label": "İlaçlarına bak, çık",
+        "after": "“Sen bilirsin,” diyor duvara. “Seni bir kere gömdüm zaten.”"
+      }
+    },
+    "spill": {
+      "who": "Koridor",
+      "text": "Temizlikçinin kovası merdiven başında devrilmiş. Yer parlıyor. Temizlikçi çoktan eve gitti.",
+      "variants": ["Merdiven başında bir kova devrilmiş. Yer parlıyor. Su, demişti yaşlı kadın."],
+      "left": {
+        "label": "Paspasla",
+        "after": "On dakika dizlerinin üstünde. Belin sana küsüyor. Ama yer kuru."
+      },
+      "right": {
+        "label": "Üstünden geç",
+        "after": "Senin işin değil. Yürüyorsun, çamaşır suyu kokusu peşinden geliyor."
+      }
+    },
+    "supply": {
+      "who": "Malzeme odası",
+      "text": "Işıklar titriyor. Bir elin boş, önünde bir raf: Ağır bir fener ya da servisin ana anahtarları.",
+      "variants": [
+        "Işıklar titriyor. Işık, demişti. Ama ana anahtarlar da aynı rafta ve tek elin boş."
+      ],
+      "left": { "label": "Feneri al", "after": "Soğuk ve ağır. Bir kere deniyorsun. Çalışıyor." },
+      "right": {
+        "label": "Anahtarları al",
+        "after": "Halka cebinde şıngırdıyor. Nora kaşını kaldırıyor: “Terfi mi aldın?”"
+      }
+    },
+    "alarm": {
+      "who": "304 numara",
+      "text": "Üst kattan alarm. Bay Wren’in oksijeni. Asansör bir dakika sürer, onun o kadar vakti olmayabilir.",
+      "left": {
+        "label": "Merdivenden koş",
+        "after": "Basamakları ikişer ikişer çıkıyorsun, paspasladığın yerin üstünden."
+      },
+      "right": {
+        "label": "Asansörü bekle",
+        "after": "Katlar arasında duruyor, sarsılıyor, sonra devam ediyor. Bir süre nefes alamıyorsun."
+      }
+    },
+    "tank": {
+      "who": "304 numara",
+      "text": "Bay Wren yeniden nefes alıyor. Yatağın arkasında yedek oksijen tüpü usulca tıslıyor. Gösterge kırmızıda.",
+      "left": {
+        "label": "Hemen dışarı çıkar",
+        "after": "Senden ağır. Koridora sürüklüyor, bir pencere açıyorsun."
+      },
+      "right": {
+        "label": "Sabaha not düş",
+        "after": "Dosyaya yazıyorsun. Biri ilgilenir. Hep biri ilgilenir."
+      }
+    },
+    "east-wing": {
+      "who": "Nora",
+      "text": "“Aris doğu kanadındaki depodan eski dosyaları istiyor. On dakikaya dönerim.”",
+      "variants": [
+        "“Aris doğu kanadından dosya istiyor. Senin doğu kanadından.” Gülmeye çalışıyor. “On dakikaya dönerim, değil mi?”"
+      ],
+      "left": {
+        "label": "Onunla git",
+        "after": "“Dosya alacağız, savaşa gitmiyoruz.” Depoda elinden geniş bir çatlak buluyorsunuz. Nora susuyor."
+      },
+      "right": {
+        "label": "Bırak gitsin",
+        "after": "Ayak sesleri doğu koridorunda uzaklaşıyor. Uzun süre duyuluyor."
+      }
+    },
+    "aris": {
+      "who": "Dr. Aris",
+      "text": "“Servisi korkuttuğunu söylüyorlar. Bana söylemek istediğin bir şey var mı?”",
+      "variants": ["“Servisi korkuttuğunu söylüyorlar.” Sen çatlağı gördün. O görmedi. “Evet?”"],
+      "left": {
+        "label": "“Doğu kanadını boşaltın”",
+        "after": "Çenesi kasılıyor. “Kanıt getir ya da evine git.” Ama o da yukarı bakıyor."
+      },
+      "right": {
+        "label": "“Sadece yorgunum”",
+        "after": "“Bir şeyler iç o zaman.” Düştüğünü gördüğün tavanın altından yürüyüp gidiyor."
+      }
+    },
+    "lamp": {
+      "who": "304 numara",
+      "text": "Bay Wren’in okuma lambası prizde kıvılcım saçıyor. Uyuyor. Havada hafif tatlı bir koku var.",
+      "left": {
+        "label": "Fişi çek",
+        "after": "Çat. Karanlık. Ellerinin titremesi geçene kadar öylece duruyorsun."
+      },
+      "right": {
+        "label": "Teknik servisi ara",
+        "after": "“Bu saatte mi?” diyor telefon. Kıvılcımlar kendiliğinden sönene kadar başında bekliyorsun."
+      }
+    },
+    "red-handle": {
+      "who": "Koridor",
+      "text": "Aşağılardan yanık lastik kokusu. Kırmızı kol hemen yanında. Yanlış alarm bu gece işine mal olur.",
+      "left": {
+        "label": "Çek",
+        "after": "Her yerde zil sesi. Pijamalı insanlar. Biri sana deli diyor. Ama yürümeye devam ediyorlar."
+      },
+      "right": {
+        "label": "Bodruma bak",
+        "after": "Merdiven, karanlık, sıcak. Bir sigorta kutusu tütüyor. Döndüğünde kimsenin haberi yok."
+      }
+    },
+    "blackout": {
+      "who": "Koridor",
+      "text": "Bütün ışıklar aynı anda sönüyor. Karanlıkta asansör kapıları yakında bir yerde gıcırdayarak açılıyor.",
+      "variants": [
+        "Bütün ışıklar aynı anda sönüyor. Işık, demişti. Yakında asansör kapıları gıcırdayarak açılıyor."
+      ],
+      "left": {
+        "label": "Yürümeye devam et",
+        "after": "Fener onu buluyor: Bir adım önünde açık bir boşluk. Etrafından dolaşıyorsun."
+      },
+      "right": {
+        "label": "Jeneratörü bekle",
+        "after": "Karanlıkta dört dakika. Tepende bir şey ağırlığını kaydırıp duruyor."
+      }
+    },
+    "halina": {
+      "who": "Halina Hanım",
+      "text": "7 numara. Herkes gitti, o hâlâ koltuğunda, boşluğa gülümsüyor. “İşte geldin.”",
+      "left": {
+        "label": "Sırtına al",
+        "after": "Hiç ağırlığı yok. Yol boyunca kulağına mırıldanıyor. “Demir,” diyor memnun."
+      },
+      "right": {
+        "label": "Bırak",
+        "after": "“Tabii,” diye sesleniyor arkandan. Mırıldanmaya devam ediyor. İki kat boyunca duyuyorsun."
+      }
+    },
+    "door": {
+      "who": "Merdiven boşluğu",
+      "text": "Bina kaymış. İç merdivenin kapısı sıkışmış ve kilitli.",
+      "variants": [
+        "Bina kaymış. İç merdivenin kapısı sıkışmış ve kilitli. Ana anahtarlar cebinde."
+      ],
+      "left": {
+        "label": "İçinden geç",
+        "after": "Anahtar ikinci denemede dönüyor. Beton merdiven. Sağlam. Koşuyorsun."
+      },
+      "right": {
+        "label": "Yangın merdiveni",
+        "after": "Dışarıda soğuk çarpıyor. Demir merdiven kımıldıyor."
+      }
+    },
+    "fire-escape": {
+      "who": "Yangın merdiveni",
+      "text": "Eski demir, beş kat aşağı, cıvatalardan pas akıyor. Her sahanlık rüzgârda sallanıyor.",
+      "variants": [
+        "Eski demir, beş kat aşağı, cıvatalardan pas akıyor. Demir, demişti. Bu sırayla."
+      ],
+      "left": { "label": "Koşarak in", "after": "Arkanda sökülüyor. Son katı atlıyorsun." },
+      "right": {
+        "label": "Yavaşça, tek tek",
+        "after": "Adım. Bekle. Adım. Tepende bir cıvata kopup yüzünün önünden düşüyor."
+      }
+    },
+    "third-floor": {
+      "who": "Çimenlik",
+      "text": "Çıktın. Soğuk çimen. Doğu kanadının üçüncü katında bir fener sallanıyor. Nora. Hâlâ orada.",
+      "left": { "label": "Geri koş" },
+      "right": {
+        "label": "Atlaması için bağır",
+        "after": "Sesin kesilene kadar bağırıyorsun. Fener hareket etmeyi bırakıyor."
+      }
+    }
+  },
+  "endings": {
+    "slip": {
+      "title": "Islak Mermer",
+      "text": "Ayağın çamaşır suyunu gözünden önce buldu. Basamak mermerdi.",
+      "chain": [
+        "Dökülenin üstünden geçtin",
+        "Üst kattan alarm geldi",
+        "Hiç kurutmadığın merdivene koştun",
+        "Ayağın kaydı"
+      ],
+      "hint": "Bazı işler sadece başkasının işi gibi görünür."
+    },
+    "shaft": {
+      "title": "Bir Adım Önde",
+      "text": "Kapılar açıktı. Asansör orada değildi.",
+      "chain": [
+        "Feneri rafta bıraktın",
+        "Bütün ışıklar söndü",
+        "Kapıları duydun, yine de yürüdün",
+        "Bir adım fazla"
+      ],
+      "hint": "Karanlık, ancak göremiyorsan öldürür."
+    },
+    "spark": {
+      "title": "Tatlı Hava",
+      "text": "Sesini duymadan oda alev almıştı.",
+      "chain": [
+        "Göstergeyi kırmızıda gördün",
+        "Onun yerine not yazdın",
+        "Bir saat boyunca oda oksijenle doldu",
+        "Kıvılcım saçan fişe dokundun"
+      ],
+      "hint": "Yatağın arkasında tıslayan neyi bıraktın?"
+    },
+    "frame": {
+      "title": "Kapı Kasası",
+      "text": "Omzunu kapıya dayadın. Duvarı tutan tek şey o kapıydı.",
+      "chain": ["Anahtar yerine feneri seçtin", "Bina kaydı", "Kapı açılmadı", "Zorladın"],
+      "hint": "21:05’te bir elin boştu. Aşağı inmenin başka bir yolu da var."
+    },
+    "iron": {
+      "title": "Eski Demir",
+      "text": "Fazla ağırlık, fazla acele. Cıvatalar 1962’den beri bunu bekliyordu.",
+      "chain": [
+        "Halina’yı 7 numaradan sırtında çıkardın",
+        "Nora’yı doğu kanadından uzak tuttun",
+        "Yangın merdivenine ulaştın",
+        "Koştun",
+        "Sahanlık duvardan koptu"
+      ],
+      "hint": "Birini kurtardın. Şimdi onu yavaşça kurtar."
+    },
+    "vision": {
+      "title": "00:00",
+      "text": "Üçüncü kata ulaştın. Tavan tam hatırladığın gibi indi.",
+      "chain": [
+        "22:20’de Nora’yı tek başına bıraktın",
+        "Doğu kanadında kaldı",
+        "Çimenlikten fenerini gördün",
+        "Geri döndün",
+        "Saat 00:00’ı gösterdi"
+      ],
+      "hint": "İki saat önce tek bir cümle yeterdi."
+    },
+    "panic": {
+      "title": "Çıkış Nerede",
+      "text": "Koridorda duruyorsun ve çıkışın nerede olduğunu hatırlayamıyorsun. Biri mırıldanıyor.",
+      "chain": [
+        "Bütün gece ne olacağını biliyordun",
+        "Gözlerine güvenmeyi bıraktın",
+        "Düşünmek için oturdun"
+      ],
+      "hint": "Aklın da bir gösterge. Bazı seçimler onu geri verir."
+    },
+    "collapse": {
+      "title": "Çift Vardiya",
+      "text": "Dizlerin bırakıyor. Yer çok rahat. Sadece bir dakika kalacaksın.",
+      "chain": [
+        "Bu gece herkesin işini yaptın",
+        "Çok fazla şeyi çok uzağa taşıdın",
+        "Bacakların dinlemez oldu"
+      ],
+      "hint": "Yerdeyken kimseyi kurtaramazsın."
+    },
+    "alone": {
+      "title": "Kimse Gelmedi",
+      "text": "Sıvaların altından bağırıyorsun. Servis bütün gece bağırışını duydu. Kimse gelmiyor.",
+      "chain": [
+        "Onları bir kez fazla korkuttun",
+        "Seni dinlemeyi bıraktılar",
+        "Kimse seni aramadı"
+      ],
+      "hint": "Gerçeğin de sana inanacak birine ihtiyacı var."
+    },
+    "everyone": {
+      "title": "Herkes Dışarıda",
+      "text": "00:00. Bir yanında Nora, bir yanında Halina. Doğu kanadı içine katlanıyor. Halina kör gözlerini sana çeviriyor. “Gördün mü? Tam vaktinde.”",
+      "chain": [],
+      "hint": "En iyi sonu buldun. Şimdi ölmenin bütün yollarını bul."
+    },
+    "two-on-the-grass": {
+      "title": "Çimenlikte İki Kişi",
+      "text": "00:00. Doğu kanadı zaten bildiğin bir sesle yıkılıyor. Nora’nın eli elini eziyor.",
+      "chain": [],
+      "hint": "İçeride başka kim kalmıştı?"
+    },
+    "survivor": {
+      "title": "Çimenlikte Yalnız",
+      "text": "00:00. Yaşıyorsun. Üçüncü kata bakmıyorsun.",
+      "chain": [],
+      "hint": "Birini çıkarabilirdin."
+    }
+  }
+}

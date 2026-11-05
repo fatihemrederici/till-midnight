@@ -63,17 +63,43 @@ class GameApiTest {
     // Bu metot bir test.
     @Test
     // Hikâye üç dilde gelmeli.
-    void returnsTheStoryInThreeLanguages() throws Exception {
+    void returnsAChapterInThreeLanguages() throws Exception {
         // İsteği gönder.
-        mockMvc.perform(get("/story"))
+        mockMvc.perform(get("/stories/first-day"))
                 // 200 OK.
                 .andExpect(status().isOk())
                 // İngilizce başlık.
-                .andExpect(jsonPath("$.title.en").value("Till Midnight"))
+                .andExpect(jsonPath("$.title.en").value("The First Day"))
                 // Türkçe başlık.
-                .andExpect(jsonPath("$.title.tr").value("Gece Yarısına Kadar"))
+                .andExpect(jsonPath("$.title.tr").value("İlk Gün"))
                 // Lehçe başlık.
-                .andExpect(jsonPath("$.title.pl").value("Do północy"));
+                .andExpect(jsonPath("$.title.pl").value("Pierwszy dzień"));
+    }
+
+    // Bu metot bir test.
+    @Test
+    // Bölüm listesi sırayla gelmeli, kurallar gitmemeli.
+    void listsChaptersInOrder() throws Exception {
+        // İsteği gönder.
+        mockMvc.perform(get("/stories"))
+                // 200 OK.
+                .andExpect(status().isOk())
+                // İlk bölüm.
+                .andExpect(jsonPath("$[0].id").value("first-day"))
+                // İkinci bölüm.
+                .andExpect(jsonPath("$[1].id").value("night-shift"))
+                // Ölümler listelenir, kurtuluşlar değil.
+                .andExpect(jsonPath("$[1].deaths.length()").value(9))
+                // Kurallar bu listede yok.
+                .andExpect(jsonPath("$[0].cards").doesNotExist());
+    }
+
+    // Bu metot bir test.
+    @Test
+    // Olmayan bölüm 404 dönmeli.
+    void returnsNotFoundForAnUnknownChapter() throws Exception {
+        // İsteği gönder.
+        mockMvc.perform(get("/stories/nope")).andExpect(status().isNotFound());
     }
 
     // Bu metot bir test.

@@ -1,0 +1,318 @@
+{
+  "title": "Nocny dyżur",
+  "vision": [
+    "Wschodnie skrzydło jęczy nad tobą.",
+    "Przez sufit biegnie pęknięcie.",
+    "Beton. Pył. Ktoś krzyczy twoje imię.",
+    "Zegar wskazuje 00:00.",
+    "Nie wychodzisz stamtąd."
+  ],
+  "wake": "Budzisz się gwałtownie w dyżurce. 20:04. Twój dyżur dopiero się zaczął, a sufit jest jeszcze cały.",
+  "meters": { "focus": "Rozum", "stamina": "Siły", "trust": "Zaufanie" },
+  "cards": {
+    "desk": {
+      "who": "Nora",
+      "text": "„Krzyczałaś przez sen. Co widziałaś?”",
+      "left": {
+        "label": "Opowiedz jej wszystko",
+        "after": "Śmieje się. Potem na sekundę zerka na sufit."
+      },
+      "right": {
+        "label": "„To tylko zły sen”",
+        "after": "Wzrusza ramionami. Sen wciąż czujesz ten sen jak kamień na piersi."
+      }
+    },
+    "room-seven": {
+      "who": "Pani Halina",
+      "text": "Sala 7. Od lat niewidoma. „Spóźniłaś się, dziecko. Siadaj. Powiem ci, co cię dziś zabije”.",
+      "left": {
+        "label": "Usiądź i słuchaj",
+        "after": "„Woda. Światło. Żelazo”. Klepie cię po dłoni. „W tej kolejności”."
+      },
+      "right": {
+        "label": "Sprawdź leki, wyjdź",
+        "after": "„Jak chcesz”, mówi do ściany. „Raz już cię pochowałam”."
+      }
+    },
+    "spill": {
+      "who": "Korytarz",
+      "text": "Wiadro sprzątaczki przewróciło się przy schodach. Podłoga lśni. Sprzątaczka dawno poszła do domu.",
+      "variants": [
+        "Przy schodach przewróciło się wiadro. Podłoga lśni. Woda, powiedziała staruszka."
+      ],
+      "left": {
+        "label": "Zetrzyj to",
+        "after": "Dziesięć minut na kolanach. Plecy cię nienawidzą. Podłoga jest sucha."
+      },
+      "right": {
+        "label": "Omiń to",
+        "after": "To nie twoja robota. Idziesz dalej, a zapach wybielacza idzie za tobą."
+      }
+    },
+    "supply": {
+      "who": "Magazynek",
+      "text": "Światła migają. Jedna wolna ręka, jedna półka: Ciężka latarka albo klucze uniwersalne oddziału.",
+      "variants": [
+        "Światła migają. Światło, powiedziała. Ale klucze uniwersalne leżą na tej samej półce, a masz jedną wolną rękę."
+      ],
+      "left": { "label": "Weź latarkę", "after": "Zimna i ciężka. Sprawdzasz raz. Działa." },
+      "right": {
+        "label": "Weź klucze",
+        "after": "Pęk dzwoni ci w kieszeni. Nora unosi brew: „Awansowałaś?”"
+      }
+    },
+    "alarm": {
+      "who": "Sala 304",
+      "text": "Alarm piętro wyżej. Tlen pana Wrena. Winda jedzie minutę, której on może nie mieć.",
+      "left": {
+        "label": "Biegnij schodami",
+        "after": "Biegniesz po dwa stopnie, przez miejsce, które wytarłaś."
+      },
+      "right": {
+        "label": "Czekaj na windę",
+        "after": "Staje między piętrami, drży, rusza dalej. Przez chwilę nie oddychasz."
+      }
+    },
+    "tank": {
+      "who": "Sala 304",
+      "text": "Pan Wren znów oddycha. Za łóżkiem cicho syczy zapasowa butla z tlenem. Wskazówka jest na czerwonym.",
+      "left": {
+        "label": "Wynieś ją od razu",
+        "after": "Waży więcej niż ty. Wyciągasz ją na korytarz i otwierasz okno."
+      },
+      "right": {
+        "label": "Zapisz na rano",
+        "after": "Zapisujesz w karcie. Ktoś się tym zajmie. Zawsze ktoś się zajmuje."
+      }
+    },
+    "east-wing": {
+      "who": "Nora",
+      "text": "„Aris chce stare akta z magazynu we wschodnim skrzydle. Wracam za dziesięć minut”.",
+      "variants": [
+        "„Aris chce akta ze wschodniego skrzydła. Twojego wschodniego skrzydła”. Próbuje się uśmiechnąć. „Wrócę za dziesięć minut, prawda?”"
+      ],
+      "left": {
+        "label": "Idź z nią",
+        "after": "„To akta, nie wojna”. W magazynie znajdujecie pęknięcie szersze niż dłoń. Nora milknie."
+      },
+      "right": {
+        "label": "Pozwól jej iść",
+        "after": "Jej kroki cichną we wschodnim korytarzu. Długo to trwa."
+      }
+    },
+    "aris": {
+      "who": "Doktor Aris",
+      "text": "„Mówią, że straszysz oddział. Chcesz mi coś powiedzieć?”",
+      "variants": ["„Mówią, że straszysz oddział”. Ty widziałaś pęknięcie. On nie. „No więc?”"],
+      "left": {
+        "label": "„Ewakuujcie skrzydło”",
+        "after": "Zaciska szczękę. „Przynieś dowód albo idź do domu”. Ale on też patrzy w górę."
+      },
+      "right": {
+        "label": "„Jestem tylko zmęczona”",
+        "after": "„To się czegoś napij”. Odchodzi pod sufitem, który widziałaś spadający."
+      }
+    },
+    "lamp": {
+      "who": "Sala 304",
+      "text": "Lampka pana Wrena sypie iskrami przy gniazdku. Pacjent śpi. W powietrzu czuć coś lekko słodkiego.",
+      "left": {
+        "label": "Wyrwij wtyczkę",
+        "after": "Trzask. Ciemność. Stoisz, aż ręce przestają ci drżeć."
+      },
+      "right": {
+        "label": "Zadzwoń po technika",
+        "after": "„O tej porze?”, mówi słuchawka. Czekasz, aż iskry same zgasną."
+      }
+    },
+    "red-handle": {
+      "who": "Korytarz",
+      "text": "Spalona guma, gdzieś z dołu. Czerwona rączka jest tuż obok. Fałszywy alarm to dziś koniec twojej pracy.",
+      "left": {
+        "label": "Pociągnij",
+        "after": "Dzwonki wszędzie. Ludzie w piżamach. Ktoś nazywa cię wariatką. Mimo to wychodzą."
+      },
+      "right": {
+        "label": "Sprawdź piwnicę",
+        "after": "Schody, ciemność, gorąco. Dymi skrzynka z bezpiecznikami. Gdy wracasz, nikt o niczym nie wie."
+      }
+    },
+    "blackout": {
+      "who": "Korytarz",
+      "text": "Wszystkie światła gasną naraz. W ciemności gdzieś blisko ze zgrzytem otwierają się drzwi windy.",
+      "variants": [
+        "Wszystkie światła gasną naraz. Światło, powiedziała. Tuż obok ze zgrzytem otwierają się drzwi windy."
+      ],
+      "left": {
+        "label": "Idź dalej",
+        "after": "Snop światła to wyłapuje: Otwarty szyb, krok przed tobą. Obchodzisz go."
+      },
+      "right": {
+        "label": "Czekaj na agregat",
+        "after": "Cztery minuty w ciemności. Coś nad tobą wciąż przenosi ciężar."
+      }
+    },
+    "halina": {
+      "who": "Pani Halina",
+      "text": "Sala 7. Wszyscy wyszli, a ona wciąż siedzi w fotelu i uśmiecha się w pustkę. „No jesteś”.",
+      "left": {
+        "label": "Weź ją na plecy",
+        "after": "Nic nie waży. Przez całą drogę nuci ci do ucha. „Żelazo”, mówi zadowolona."
+      },
+      "right": {
+        "label": "Zostaw ją",
+        "after": "„Oczywiście”, woła za tobą. Dalej nuci. Słyszysz ją przez dwa piętra."
+      }
+    },
+    "door": {
+      "who": "Klatka schodowa",
+      "text": "Budynek się przesunął. Drzwi na wewnętrzne schody są zakleszczone i zamknięte.",
+      "variants": [
+        "Budynek się przesunął. Drzwi na wewnętrzne schody są zakleszczone i zamknięte. Klucze uniwersalne masz w kieszeni."
+      ],
+      "left": {
+        "label": "Przejdź przez nie",
+        "after": "Klucz obraca się za drugim razem. Betonowe schody. Solidne. Biegniesz."
+      },
+      "right": {
+        "label": "Schody przeciwpożarowe",
+        "after": "Na zewnątrz uderza cię zimno. Żelazne schody się ruszają."
+      }
+    },
+    "fire-escape": {
+      "who": "Schody przeciwpożarowe",
+      "text": "Stare żelazo, pięć pięter w dół, z nitów cieknie rdza. Każdy podest kołysze się na wietrze.",
+      "variants": [
+        "Stare żelazo, pięć pięter w dół, z nitów cieknie rdza. Żelazo, powiedziała. W tej kolejności."
+      ],
+      "left": { "label": "Biegnij", "after": "Odrywa się za tobą. Ostatni bieg przeskakujesz." },
+      "right": {
+        "label": "Powoli, pojedynczo",
+        "after": "Krok. Czekaj. Krok. Nad tobą puszcza nit i spada tuż obok twojej twarzy."
+      }
+    },
+    "third-floor": {
+      "who": "Trawnik",
+      "text": "Jesteś na zewnątrz. Zimna trawa. Na trzecim piętrze wschodniego skrzydła macha latarka. Nora. Wciąż tam jest.",
+      "left": { "label": "Biegnij z powrotem" },
+      "right": {
+        "label": "Krzycz, żeby skoczyła",
+        "after": "Krzyczysz, aż tracisz głos. Latarka przestaje się ruszać."
+      }
+    }
+  },
+  "endings": {
+    "slip": {
+      "title": "Mokry marmur",
+      "text": "Twoja stopa znalazła wybielacz szybciej niż oczy. Stopień był marmurowy.",
+      "chain": [
+        "Ominęłaś rozlaną wodę",
+        "Zadzwonił alarm z góry",
+        "Pobiegłaś po mokrych schodach",
+        "Noga uciekła ci spod ciała"
+      ],
+      "hint": "Niektóre obowiązki tylko wyglądają na cudze."
+    },
+    "shaft": {
+      "title": "Krok przed tobą",
+      "text": "Drzwi były otwarte. Windy nie było.",
+      "chain": [
+        "Zostawiłaś latarkę na półce",
+        "Zgasły wszystkie światła",
+        "Usłyszałaś drzwi i szłaś dalej",
+        "O jeden krok za dużo"
+      ],
+      "hint": "Ciemność zabija tylko wtedy, gdy jej nie widzisz."
+    },
+    "spark": {
+      "title": "Słodkie powietrze",
+      "text": "Pokój płonął, zanim to usłyszałaś.",
+      "chain": [
+        "Widziałaś czerwoną wskazówkę",
+        "Zamiast tego napisałaś notatkę",
+        "Przez godzinę pokój napełniał się tlenem",
+        "Dotknęłaś iskrzącej wtyczki"
+      ],
+      "hint": "Co zostawiłaś syczące za łóżkiem?"
+    },
+    "frame": {
+      "title": "Framuga",
+      "text": "Naparłaś barkiem na drzwi. Tylko one trzymały ścianę.",
+      "chain": [
+        "Wybrałaś latarkę zamiast kluczy",
+        "Budynek się przesunął",
+        "Drzwi się nie otworzyły",
+        "Sforsowałaś je"
+      ],
+      "hint": "O 21:05 miałaś jedną wolną rękę. Jest też inna droga na dół."
+    },
+    "iron": {
+      "title": "Stare żelazo",
+      "text": "Za duży ciężar, za duży pośpiech. Nity czekały na to od 1962 roku.",
+      "chain": [
+        "Wyniosłaś Halinę z sali 7",
+        "Uchroniłaś Norę przed wschodnim skrzydłem",
+        "Dotarłaś do schodów przeciwpożarowych",
+        "Pobiegłaś",
+        "Podest oderwał się od ściany"
+      ],
+      "hint": "Kogoś uratowałaś. Teraz uratuj go powoli."
+    },
+    "vision": {
+      "title": "00:00",
+      "text": "Dotarłaś na trzecie piętro. Sufit spadł dokładnie tak, jak pamiętasz.",
+      "chain": [
+        "O 22:20 puściłaś Norę samą",
+        "Została we wschodnim skrzydle",
+        "Z trawnika zobaczyłaś jej latarkę",
+        "Wróciłaś",
+        "Zegar wskazał 00:00"
+      ],
+      "hint": "Dwie godziny wcześniej wystarczyłoby jedno zdanie."
+    },
+    "panic": {
+      "title": "Którędy do wyjścia",
+      "text": "Stajesz na korytarzu i nie pamiętasz, gdzie jest wyjście. Ktoś nuci.",
+      "chain": [
+        "Całą noc wiedziałaś, co nadchodzi",
+        "Przestałaś ufać własnym oczom",
+        "Usiadłaś, żeby pomyśleć"
+      ],
+      "hint": "Twój rozum też ma swój licznik. Niektóre wybory go przywracają."
+    },
+    "collapse": {
+      "title": "Podwójny dyżur",
+      "text": "Kolana odmawiają. Podłoga jest bardzo wygodna. Zostaniesz tylko chwilę.",
+      "chain": [
+        "Tej nocy robiłaś wszystko za wszystkich",
+        "Niosłaś za dużo i za daleko",
+        "Nogi przestały cię słuchać"
+      ],
+      "hint": "Z podłogi nikogo nie uratujesz."
+    },
+    "alone": {
+      "title": "Nikt nie przyszedł",
+      "text": "Krzyczysz spod tynku. Oddział słyszał twoje krzyki całą noc. Nikt nie przychodzi.",
+      "chain": ["Raz za dużo ich przestraszyłaś", "Przestali cię słuchać", "Nikt cię nie szukał"],
+      "hint": "Nawet prawda potrzebuje kogoś, kto ci uwierzy."
+    },
+    "everyone": {
+      "title": "Wszyscy na zewnątrz",
+      "text": "00:00. Po jednej stronie Nora, po drugiej Halina. Wschodnie skrzydło składa się w sobie. Halina zwraca ku tobie niewidzące oczy. „Widzisz? Punktualnie”.",
+      "chain": [],
+      "hint": "Masz najlepsze zakończenie. Teraz znajdź wszystkie sposoby na śmierć."
+    },
+    "two-on-the-grass": {
+      "title": "Dwie na trawie",
+      "text": "00:00. Wschodnie skrzydło wali się z dźwiękiem, który już znasz. Nora miażdży ci dłoń.",
+      "chain": [],
+      "hint": "Kto jeszcze został w środku?"
+    },
+    "survivor": {
+      "title": "Sama na trawniku",
+      "text": "00:00. Żyjesz. Nie patrzysz na trzecie piętro.",
+      "chain": [],
+      "hint": "Mogłaś kogoś wyprowadzić."
+    }
+  }
+}

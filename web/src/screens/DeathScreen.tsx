@@ -34,6 +34,7 @@ export function DeathScreen({
   found,
   onRewind,
   onDeaths,
+  onChapters,
 }: ScreenProps & {
   ending: Ending;
   state: GameState;
@@ -41,6 +42,7 @@ export function DeathScreen({
   found: number;
   onRewind: () => void;
   onDeaths: () => void;
+  onChapters: () => void;
 }) {
   // Bu koşuda geçerli zincir adımları.
   const steps = ending.chain.filter((step) => holds(step.when, state.flags));
@@ -106,6 +108,9 @@ export function DeathScreen({
         </button>
         <button className="link" onClick={onDeaths}>
           {UI.deaths[language]} {found}/{total}
+        </button>
+        <button className="link" onClick={onChapters}>
+          {UI.chapters[language]}
         </button>
       </div>
     </div>

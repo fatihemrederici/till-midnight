@@ -1,6 +1,6 @@
 # Till Midnight
 
-You should have died this morning. A vision showed you the bus falling off the bridge, and you stepped back. Now you have to reach midnight, one swiped card at a time, while death comes back through your own small choices. Skip lunch at noon and you can faint on the stairs at night.
+A vision shows you how you die. Now you have to reach midnight, one swiped card at a time, while death comes back through your own small choices. Skip a spill at 20:40 and you can break your neck on the stairs at 21:30.
 
 Playable in English, Turkish and Polish. The language changes instantly at any point in the game.
 
@@ -33,13 +33,14 @@ cd api && ./mvnw test   # the database must be running
 cd web && npm test
 ```
 
-Both test suites play all 485 possible paths of the first chapter and must reach the same endings.
+Both test suites play every possible path of every chapter and must reach the same endings.
 
 ## API
 
 | Request | Purpose |
 | --- | --- |
-| `GET /story` | The story |
+| `GET /stories` | The chapters |
+| `GET /stories/{id}` | One chapter |
 | `POST /runs` | Saves a finished run: `{ storyId, storyVersion, runId, playerId, choices: ["LEFT", "RIGHT"] }`. Returns the ending and statistics |
 | `POST /internal/validate` | Checks a chapter before it joins the game: `{ rules, texts: { en: {...} } }` |
 

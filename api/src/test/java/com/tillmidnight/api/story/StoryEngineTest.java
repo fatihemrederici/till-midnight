@@ -18,6 +18,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 // Test etiketi.
 import org.junit.jupiter.api.Test;
+// Parametreli test etiketi.
+import org.junit.jupiter.params.ParameterizedTest;
+// Test değerlerini metottan alan etiket.
+import org.junit.jupiter.params.provider.MethodSource;
 // Test dosyalarını okur.
 import org.springframework.core.io.ClassPathResource;
 
@@ -29,13 +33,22 @@ class StoryEngineTest {
     // Test edilen motor.
     private final StoryEngine engine = new StoryEngine();
 
-    // Bu metot bir test.
-    @Test
-    // story-paths/first-day.txt içindeki tüm yollar beklenen sonu vermeli.
-    // Web'deki engine.ts aynı dosyayla test edilir, böylece iki motor birbirinden ayrılamaz.
-    void everyKnownPathEndsAsExpected() throws IOException {
+    // Testlere verilecek bölüm kimlikleri.
+    static List<String> chapters() {
+        // chapters.json dosyasından oku.
+        return StoryLoader.chapterIds();
+    }
+
+    // Her bölüm için çalışan test.
+    @ParameterizedTest
+    @MethodSource("chapters")
+    // story-paths içindeki tüm yollar beklenen sonu vermeli.
+    // Web'deki engine.ts aynı dosyalarla test edilir, böylece iki motor birbirinden ayrılamaz.
+    void everyKnownPathEndsAsExpected(String id) throws IOException {
+        // Bölümü oku.
+        Story chapter = StoryLoader.loadChapter(id);
         // Dosyadaki satırlar: "LRL stairs".
-        List<String> lines = new ClassPathResource("story-paths/first-day.txt")
+        List<String> lines = new ClassPathResource("story-paths/" + id + ".txt")
                 .getContentAsString(StandardCharsets.UTF_8)
                 .lines()
                 .toList();
@@ -46,10 +59,10 @@ class StoryEngineTest {
             // "LRL" metnini yön listesine çevir.
             List<Side> choices = parts[0].chars().mapToObj(c -> c == 'L' ? Side.LEFT : Side.RIGHT).toList();
             // Beklenen sonu kontrol et.
-            assertEquals(parts[1], engine.play(story, choices).endingId(), line);
+            assertEquals(parts[1], engine.play(chapter, choices).endingId(), line);
         }
-        // Yolların hepsi denenmiş olmalı.
-        assertEquals(485, lines.size());
+        // Dosya, motorun bulduğu tüm yolları içermeli.
+        assertEquals(new StoryAnalyzer(engine).analyze(chapter).paths(), lines.size());
     }
 
     // Bu metot bir test.

@@ -8,36 +8,41 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 // Liste tipi.
 import java.util.List;
-// Test etiketi.
-import org.junit.jupiter.api.Test;
+// Parametreli test etiketi.
+import org.junit.jupiter.params.ParameterizedTest;
+// Test değerlerini metottan alan etiket.
+import org.junit.jupiter.params.provider.MethodSource;
 
-// Hikâye dosyasının içerik kontrolleri. Eksik çeviri ya da bozuk bağlantı burada yakalanır.
+// Bölüm dosyalarının içerik kontrolleri. Yeni bölüm eklenince otomatik olarak o da denenir.
 class StoryContentTest {
 
-    // Testlerin kullandığı hikâye.
-    private final Story story = StoryLoader.loadChapter("first-day");
-
-    // Bu metot bir test.
-    @Test
-    // Yapı hatası olmamalı. Bir metnin Lehçesi eksikse bu test kalır.
-    void hasNoStructuralErrors() {
-        // Hata listesi boş olmalı.
-        assertEquals(List.of(), new StoryValidator().validate(story));
+    // Testlere verilecek bölüm kimlikleri.
+    static List<String> chapters() {
+        // chapters.json dosyasından oku.
+        return StoryLoader.chapterIds();
     }
 
-    // Bu metot bir test.
-    @Test
+    // Her bölüm için çalışan test.
+    @ParameterizedTest
+    @MethodSource("chapters")
+    // Yapı hatası olmamalı. Bir metnin Lehçesi eksikse bu test kalır.
+    void hasNoStructuralErrors(String id) {
+        // Hata listesi boş olmalı.
+        assertEquals(List.of(), new StoryValidator().validate(StoryLoader.loadChapter(id)));
+    }
+
+    // Her bölüm için çalışan test.
+    @ParameterizedTest
+    @MethodSource("chapters")
     // Tüm kartlar ve sonlar ulaşılabilir olmalı, kurtuluş da mümkün olmalı.
-    void everythingCanBeReached() {
+    void everythingCanBeReached(String id) {
         // Tüm yolları dene.
-        StoryAnalysis analysis = new StoryAnalyzer(new StoryEngine()).analyze(story);
+        StoryAnalysis analysis = new StoryAnalyzer(new StoryEngine()).analyze(StoryLoader.loadChapter(id));
 
         // Görülmeyen kart yok.
         assertEquals(List.of(), analysis.unreachableCards());
         // Ulaşılamayan son yok.
         assertEquals(List.of(), analysis.unreachableEndings());
-        // 485 yol var.
-        assertEquals(485, analysis.paths());
         // Kurtuluş mümkün ama kolay değil.
         assertTrue(analysis.survivalPercent() > 0 && analysis.survivalPercent() < 50);
     }

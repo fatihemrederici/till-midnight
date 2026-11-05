@@ -63,7 +63,7 @@ class InternalApiTest {
     // Eksik çeviri yakalanmalı.
     void reportsAMissingTranslation() throws Exception {
         // Başlığın Lehçesini sil.
-        validate(pack().replace("\"Do północy\"", "\"\""))
+        validate(pack().replace("\"Pierwszy dzień\"", "\"\""))
                 // Hata mesajı gelmeli.
                 .andExpect(jsonPath("$.errors", hasItem("title: missing language pl")));
     }

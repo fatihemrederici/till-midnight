@@ -1,0 +1,165 @@
+{
+  "formatVersion": 1,
+  "id": "night-shift",
+  "start": { "focus": 4, "stamina": 4, "trust": 3 },
+  "maxMeter": 5,
+  "meters": [
+    { "id": "focus", "emoji": "🧠", "ending": "panic" },
+    { "id": "stamina", "emoji": "❤️", "ending": "collapse" },
+    { "id": "trust", "emoji": "👥", "ending": "alone" }
+  ],
+  "cards": [
+    {
+      "id": "desk",
+      "time": "20:04",
+      "emoji": "☕",
+      "left": { "effects": { "trust": -1 }, "set": { "told": true } },
+      "right": { "effects": { "focus": -1 } }
+    },
+    {
+      "id": "room-seven",
+      "time": "20:20",
+      "emoji": "👵",
+      "left": { "effects": { "focus": -1 }, "set": { "heard": true } },
+      "right": { "effects": { "focus": 1 } }
+    },
+    {
+      "id": "spill",
+      "time": "20:40",
+      "emoji": "🧴",
+      "variants": [{ "when": { "heard": true } }],
+      "left": { "effects": { "stamina": -1 }, "set": { "floorDry": true } },
+      "right": {}
+    },
+    {
+      "id": "supply",
+      "time": "21:05",
+      "emoji": "🔦",
+      "variants": [{ "when": { "heard": true } }],
+      "left": { "set": { "hasLight": true } },
+      "right": { "effects": { "trust": 1 }, "set": { "hasKeys": true } }
+    },
+    {
+      "id": "alarm",
+      "time": "21:30",
+      "emoji": "🔔",
+      "left": {
+        "effects": { "stamina": -1 },
+        "death": { "when": { "floorDry": false }, "ending": "slip" }
+      },
+      "right": { "effects": { "focus": -1 } }
+    },
+    {
+      "id": "tank",
+      "time": "21:55",
+      "emoji": "🫧",
+      "left": { "effects": { "stamina": -1 } },
+      "right": { "set": { "leftTank": true } }
+    },
+    {
+      "id": "east-wing",
+      "time": "22:20",
+      "emoji": "📁",
+      "variants": [{ "when": { "told": true } }],
+      "left": {
+        "effects": { "trust": 1 },
+        "set": { "noraSafe": true, "company": true, "sawCrack": true }
+      },
+      "right": {}
+    },
+    {
+      "id": "aris",
+      "time": "22:45",
+      "emoji": "🥼",
+      "variants": [{ "when": { "sawCrack": true } }],
+      "left": { "effects": { "trust": -1 } },
+      "right": { "effects": { "focus": -1 } }
+    },
+    {
+      "id": "lamp",
+      "time": "23:05",
+      "emoji": "💡",
+      "left": {
+        "effects": { "focus": 1 },
+        "death": { "when": { "leftTank": true }, "ending": "spark" }
+      },
+      "right": { "effects": { "trust": -1 } }
+    },
+    {
+      "id": "red-handle",
+      "time": "23:20",
+      "emoji": "🚨",
+      "left": { "effects": { "trust": -1 }, "set": { "evacuated": true } },
+      "right": { "effects": { "stamina": -1 } }
+    },
+    {
+      "id": "blackout",
+      "time": "23:30",
+      "emoji": "⚡",
+      "variants": [{ "when": { "heard": true } }],
+      "left": { "death": { "when": { "hasLight": false }, "ending": "shaft" } },
+      "right": { "effects": { "focus": -1 } }
+    },
+    {
+      "id": "halina",
+      "time": "23:38",
+      "emoji": "👵",
+      "left": { "effects": { "stamina": -2 }, "set": { "carried": true, "company": true } },
+      "right": { "effects": { "focus": -1 } }
+    },
+    {
+      "id": "door",
+      "time": "23:44",
+      "emoji": "🚪",
+      "variants": [{ "when": { "hasKeys": true } }],
+      "left": {
+        "set": { "innerStairs": true },
+        "death": { "when": { "hasKeys": false }, "ending": "frame" }
+      },
+      "right": {}
+    },
+    {
+      "id": "fire-escape",
+      "time": "23:51",
+      "emoji": "🪜",
+      "when": { "innerStairs": false },
+      "variants": [{ "when": { "heard": true } }],
+      "left": {
+        "effects": { "stamina": -1 },
+        "death": { "when": { "company": true }, "ending": "iron" }
+      },
+      "right": { "effects": { "focus": -1 } }
+    },
+    {
+      "id": "third-floor",
+      "time": "23:57",
+      "emoji": "🔦",
+      "when": { "noraSafe": false },
+      "left": { "death": { "ending": "vision" } },
+      "right": {}
+    }
+  ],
+  "endings": [
+    { "id": "slip", "won": false, "chain": [{}, {}, {}, {}] },
+    { "id": "shaft", "won": false, "chain": [{}, {}, {}, {}] },
+    { "id": "spark", "won": false, "chain": [{}, {}, {}, {}] },
+    { "id": "frame", "won": false, "chain": [{}, {}, {}, {}] },
+    {
+      "id": "iron",
+      "won": false,
+      "chain": [{ "when": { "carried": true } }, { "when": { "noraSafe": true } }, {}, {}, {}]
+    },
+    { "id": "vision", "won": false, "chain": [{}, {}, {}, {}, {}] },
+    { "id": "panic", "won": false, "chain": [{}, {}, {}] },
+    { "id": "collapse", "won": false, "chain": [{}, {}, {}] },
+    { "id": "alone", "won": false, "chain": [{}, {}, {}] },
+    {
+      "id": "everyone",
+      "won": true,
+      "when": { "evacuated": true, "noraSafe": true, "carried": true },
+      "chain": []
+    },
+    { "id": "two-on-the-grass", "won": true, "when": { "noraSafe": true }, "chain": [] },
+    { "id": "survivor", "won": true, "chain": [] }
+  ]
+}

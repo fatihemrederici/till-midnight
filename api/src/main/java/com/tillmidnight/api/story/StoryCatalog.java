@@ -34,10 +34,10 @@ public class StoryCatalog {
         }
     }
 
-    // Şu an oynanan bölüm. Bölüm seçme ekranı gelene kadar ilk bölüm.
-    public Story current() {
-        // İlk bölümü döndür.
-        return stories.values().iterator().next();
+    // Tüm bölümler, oynanacak sırayla.
+    public List<Story> all() {
+        // Değiştirilemez kopya döndür.
+        return List.copyOf(stories.values());
     }
 
     // Verilen adda bölüm varsa döndürür, yoksa null.

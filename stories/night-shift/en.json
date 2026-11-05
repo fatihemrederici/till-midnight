@@ -1,0 +1,330 @@
+{
+  "title": "Night Shift",
+  "vision": [
+    "The east wing groans above you.",
+    "A crack runs across the ceiling.",
+    "Concrete. Dust. Someone screaming your name.",
+    "The clock says 00:00.",
+    "You don’t get out."
+  ],
+  "wake": "You jerk awake at the nurses’ desk. 20:04. Your shift has just begun, and the ceiling is still whole.",
+  "meters": { "focus": "Focus", "stamina": "Stamina", "trust": "Trust" },
+  "cards": {
+    "desk": {
+      "who": "Nora",
+      "text": "“You were screaming in your sleep. What did you see?”",
+      "left": {
+        "label": "Tell her everything",
+        "after": "She laughs. Then she looks up at the ceiling, just for a second."
+      },
+      "right": {
+        "label": "“Just a bad dream”",
+        "after": "She shrugs. The dream sits on your chest like a stone."
+      }
+    },
+    "room-seven": {
+      "who": "Mrs. Halina",
+      "text": "Room 7. Blind for years. “You’re late, girl. Sit. I’ll tell you what kills you tonight.”",
+      "left": {
+        "label": "Sit and listen",
+        "after": "“Water. Light. Iron.” She pats your hand. “In that order.”"
+      },
+      "right": {
+        "label": "Check her pills, leave",
+        "after": "“As you like,” she says to the wall. “I’ve already buried you once.”"
+      }
+    },
+    "spill": {
+      "who": "Hallway",
+      "text": "A cleaner’s bucket has tipped over by the stairwell. The floor shines. The cleaner has gone home.",
+      "variants": [
+        "A bucket has tipped over by the stairwell. The floor shines. Water, the old woman said."
+      ],
+      "left": {
+        "label": "Mop it up",
+        "after": "Ten minutes on your knees. Your back hates you. The floor is dry."
+      },
+      "right": {
+        "label": "Step around it",
+        "after": "Not your job. You walk on, and the smell of bleach follows you."
+      }
+    },
+    "supply": {
+      "who": "Supply room",
+      "text": "The lights flicker. One hand free, one shelf: A heavy flashlight, or the ward’s master keys.",
+      "variants": [
+        "The lights flicker. Light, she said. But the ward’s master keys are on the same shelf, and you have one hand free."
+      ],
+      "left": {
+        "label": "Take the flashlight",
+        "after": "Cold and heavy. You test it once. It works."
+      },
+      "right": {
+        "label": "Take the keys",
+        "after": "The ring jingles in your pocket. Nora raises an eyebrow: “Promoted?”"
+      }
+    },
+    "alarm": {
+      "who": "Room 304",
+      "text": "The alarm from the floor above. Mr. Wren’s oxygen. The elevator takes a minute he may not have.",
+      "left": {
+        "label": "Sprint up the stairs",
+        "after": "You take the steps two at a time, past the spot you mopped."
+      },
+      "right": {
+        "label": "Wait for the elevator",
+        "after": "It stops between floors, shudders, then moves on. You stop breathing for a while."
+      }
+    },
+    "tank": {
+      "who": "Room 304",
+      "text": "Mr. Wren breathes again. Behind his bed, a spare oxygen tank hisses softly. The gauge is in the red.",
+      "left": {
+        "label": "Haul it out now",
+        "after": "It weighs more than you do. You drag it into the corridor and open a window."
+      },
+      "right": {
+        "label": "Note it for morning",
+        "after": "You write it on the chart. Someone will handle it. Someone always does."
+      }
+    },
+    "east-wing": {
+      "who": "Nora",
+      "text": "“Aris wants the old files from the east wing storeroom. Back in ten.”",
+      "variants": [
+        "“Aris wants files from the east wing. Your east wing.” She tries to grin. “Back in ten?”"
+      ],
+      "left": {
+        "label": "Go with her",
+        "after": "“It’s files, not a war.” In the storeroom you both find a crack wider than your hand. She stops talking."
+      },
+      "right": {
+        "label": "Let her go",
+        "after": "Her footsteps fade down the east corridor. They take a long time to fade."
+      }
+    },
+    "aris": {
+      "who": "Dr. Aris",
+      "text": "“People say you’re scaring the ward. Is there something you need to tell me?”",
+      "variants": [
+        "“People say you’re scaring the ward.” You’ve seen the crack. He hasn’t. “Well?”"
+      ],
+      "left": {
+        "label": "“Clear the east wing”",
+        "after": "His jaw tightens. “Bring me proof, or go home.” But he looks up too."
+      },
+      "right": {
+        "label": "“I’m just tired”",
+        "after": "“Then drink something.” He walks off under the ceiling you watched fall."
+      }
+    },
+    "lamp": {
+      "who": "Room 304",
+      "text": "Mr. Wren’s reading lamp is spitting sparks at the socket. He’s asleep. The air smells faintly sweet.",
+      "left": {
+        "label": "Yank the plug",
+        "after": "Snap. Dark. You stand there until your hands stop shaking."
+      },
+      "right": {
+        "label": "Call maintenance",
+        "after": "“At this hour?” says the phone. You stay until the sparks die on their own."
+      }
+    },
+    "red-handle": {
+      "who": "Hallway",
+      "text": "Burning rubber, from somewhere below. The red handle is right there. A false alarm costs you your job tonight.",
+      "left": {
+        "label": "Pull it",
+        "after": "Bells everywhere. People in pyjamas. Someone calls you crazy. They’re still walking out."
+      },
+      "right": {
+        "label": "Check the basement",
+        "after": "Stairs, dark, heat. A fuse box is smoking. By the time you’re back, nobody knows anything."
+      }
+    },
+    "blackout": {
+      "who": "Corridor",
+      "text": "Every light dies at once. In the black, the elevator doors are grinding open somewhere close.",
+      "variants": [
+        "Every light dies at once. Light, she said. Close by, the elevator doors are grinding open."
+      ],
+      "left": {
+        "label": "Keep walking",
+        "after": "The beam finds it: An open shaft, one step ahead. You go around."
+      },
+      "right": {
+        "label": "Wait for the generator",
+        "after": "Four minutes in the dark. Something above you keeps shifting its weight."
+      }
+    },
+    "halina": {
+      "who": "Mrs. Halina",
+      "text": "Room 7. Everyone has gone and she is still in her chair, smiling at nothing. “There you are.”",
+      "left": {
+        "label": "Carry her",
+        "after": "She weighs nothing. She hums in your ear the whole way. “Iron,” she says, pleased."
+      },
+      "right": {
+        "label": "Leave her",
+        "after": "“Of course,” she calls after you. She keeps humming. You can hear it for two floors."
+      }
+    },
+    "door": {
+      "who": "Stairwell",
+      "text": "The building has shifted. The door to the inside stairs is jammed and locked.",
+      "variants": [
+        "The building has shifted. The door to the inside stairs is jammed and locked. The master keys are in your pocket."
+      ],
+      "left": {
+        "label": "Go through it",
+        "after": "The key turns on the second try. Concrete stairs. Solid. You run."
+      },
+      "right": {
+        "label": "Take the fire escape",
+        "after": "Outside, the cold hits you. The iron stairs are moving."
+      }
+    },
+    "fire-escape": {
+      "who": "Fire escape",
+      "text": "Old iron, five floors down, bolts weeping rust. Every landing sways in the wind.",
+      "variants": [
+        "Old iron, five floors down, bolts weeping rust. Iron, she said. In that order."
+      ],
+      "left": {
+        "label": "Run for it",
+        "after": "It shakes itself loose behind you. You jump the last flight."
+      },
+      "right": {
+        "label": "Slowly, one at a time",
+        "after": "Step. Wait. Step. Above you, a bolt lets go and falls past your face."
+      }
+    },
+    "third-floor": {
+      "who": "Lawn",
+      "text": "You’re out. Cold grass. A torch is waving from the east wing, third floor. Nora. She’s still up there.",
+      "left": { "label": "Run back in" },
+      "right": {
+        "label": "Scream at her to jump",
+        "after": "You scream until your voice gives out. The torch stops moving."
+      }
+    }
+  },
+  "endings": {
+    "slip": {
+      "title": "Wet Marble",
+      "text": "Your foot found the bleach before your eye did. The step was marble.",
+      "chain": [
+        "You stepped around the spill",
+        "The alarm rang from upstairs",
+        "You ran the stairs you never dried",
+        "Your foot went out from under you"
+      ],
+      "hint": "Some chores only look like someone else’s job."
+    },
+    "shaft": {
+      "title": "One Step Ahead",
+      "text": "The doors were open. The elevator wasn’t there.",
+      "chain": [
+        "You left the flashlight on the shelf",
+        "Every light died",
+        "You heard the doors and walked anyway",
+        "One step too many"
+      ],
+      "hint": "The dark is only deadly if you can’t see it."
+    },
+    "spark": {
+      "title": "Sweet Air",
+      "text": "The room was on fire before you heard it.",
+      "chain": [
+        "You saw the gauge in the red",
+        "You wrote a note instead",
+        "For an hour the room filled with oxygen",
+        "You touched a sparking plug"
+      ],
+      "hint": "What did you leave hissing behind a bed?"
+    },
+    "frame": {
+      "title": "The Frame",
+      "text": "You put your shoulder into the door. The door was all that was holding up the wall.",
+      "chain": [
+        "You chose the flashlight over the keys",
+        "The building shifted",
+        "The door wouldn’t open",
+        "You forced it"
+      ],
+      "hint": "You had one hand free at 21:05. There is another way down, too."
+    },
+    "iron": {
+      "title": "Old Iron",
+      "text": "Too much weight, too much hurry. The bolts had been waiting since 1962.",
+      "chain": [
+        "You carried Halina out of Room 7",
+        "You kept Nora out of the east wing",
+        "You reached the fire escape",
+        "You ran",
+        "The landing came away from the wall"
+      ],
+      "hint": "You saved someone. Now save them slowly."
+    },
+    "vision": {
+      "title": "00:00",
+      "text": "You reached the third floor. The ceiling came down exactly the way you remember it.",
+      "chain": [
+        "You let Nora go alone at 22:20",
+        "She stayed in the east wing",
+        "You saw her torch from the lawn",
+        "You went back",
+        "The clock said 00:00"
+      ],
+      "hint": "Two hours earlier, it would have taken one sentence."
+    },
+    "panic": {
+      "title": "Which Way Out",
+      "text": "You stop in the corridor and can’t remember which way is out. Somebody is humming.",
+      "chain": [
+        "You knew what was coming all night",
+        "You stopped trusting your own eyes",
+        "You sat down to think"
+      ],
+      "hint": "Your mind is a meter too. Some choices give it back."
+    },
+    "collapse": {
+      "title": "Double Shift",
+      "text": "Your knees go. The floor is very comfortable. You’ll just stay a moment.",
+      "chain": [
+        "You did everyone’s job tonight",
+        "You carried too much, too far",
+        "Your legs stopped listening"
+      ],
+      "hint": "You can’t save anyone from the floor."
+    },
+    "alone": {
+      "title": "Nobody Came",
+      "text": "You shout from under the plaster. The ward has heard you shout all night. Nobody comes.",
+      "chain": [
+        "You frightened them once too often",
+        "They stopped listening to you",
+        "Nobody looked for you"
+      ],
+      "hint": "The truth still needs someone who believes you."
+    },
+    "everyone": {
+      "title": "Everyone Out",
+      "text": "00:00. Nora on one side, Halina on the other. The east wing folds in on itself. Halina turns her blind face to you. “See? On time.”",
+      "chain": [],
+      "hint": "You found the best ending. Now find all the ways to die."
+    },
+    "two-on-the-grass": {
+      "title": "Two on the Grass",
+      "text": "00:00. The east wing falls with a sound you already know. Nora’s hand is crushing yours.",
+      "chain": [],
+      "hint": "Who else was still inside?"
+    },
+    "survivor": {
+      "title": "Alone on the Lawn",
+      "text": "00:00. You’re alive. You don’t look at the third floor.",
+      "chain": [],
+      "hint": "You could have brought someone out."
+    }
+  }
+}

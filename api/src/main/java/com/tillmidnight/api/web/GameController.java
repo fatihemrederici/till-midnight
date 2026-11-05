@@ -11,10 +11,14 @@ import com.tillmidnight.api.story.Story;
 import com.tillmidnight.api.story.StoryCatalog;
 // Motor.
 import com.tillmidnight.api.story.StoryEngine;
+// Liste tipi.
+import java.util.List;
 // HTTP durum kodları.
 import org.springframework.http.HttpStatus;
 // GET adresi tanımlama etiketi.
 import org.springframework.web.bind.annotation.GetMapping;
+// Adresteki değeri okuma etiketi.
+import org.springframework.web.bind.annotation.PathVariable;
 // POST adresi tanımlama etiketi.
 import org.springframework.web.bind.annotation.PostMapping;
 // İstek gövdesini okuma etiketi.
@@ -45,12 +49,30 @@ public class GameController {
         this.runs = runs;
     }
 
-    // GET /story: oynanacak hikâye. Kaydırma anında tepki versin diye kurallar da gider;
+    // GET /stories: bölüm listesi.
+    @GetMapping("/stories")
+    public List<StorySummary> stories() {
+        // Her bölümün adını ve ölümlerini çıkar.
+        return catalog.all().stream()
+                .map(story -> new StorySummary(
+                        story.id(),
+                        story.title(),
+                        story.endings().stream().filter(ending -> !ending.won()).map(Story.Ending::id).toList()))
+                .toList();
+    }
+
+    // GET /stories/{id}: bir bölümün tamamı. Kaydırma anında tepki versin diye kurallar da gider;
     // bu tek oyunculu bir hikâye olduğu için kabul edilebilir, sonuç yine sunucuda doğrulanır.
-    @GetMapping("/story")
-    public Story story() {
-        // Hikâyeyi döndür.
-        return catalog.current();
+    @GetMapping("/stories/{id}")
+    public Story story(@PathVariable String id) {
+        // Bölümü bul.
+        Story story = catalog.findById(id);
+        // Yoksa 404.
+        if (story == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Story not found");
+        }
+        // Bölümü döndür.
+        return story;
     }
 
     // POST /runs: biten bir koşuyu doğrular ve kaydeder.
