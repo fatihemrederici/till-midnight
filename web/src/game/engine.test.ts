@@ -25,8 +25,12 @@ const text = (value: string): Text => ({ en: value, tr: value, pl: value });
 describe("engine", () => {
   // Yeni bölüm eklenince test otomatik onu da kapsar.
   it("finds every chapter", () => {
-    // İki bölüm var.
-    expect(chapters.map((story) => story.id).sort()).toEqual(["first-day", "night-shift"]);
+    // Üç bölüm var.
+    expect(chapters.map((story) => story.id).sort()).toEqual([
+      "first-day",
+      "last-dance",
+      "night-shift",
+    ]);
   });
 
   // Java motoruyla birebir aynı sonuçlar çıkmalı.
