@@ -1,0 +1,288 @@
+{
+  "title": "The Last Dance",
+  "vision": [
+    "At exactly 00:00 the ceiling comes down.",
+    "Dust and mold. You can’t breathe.",
+    "Sam can’t get out.",
+    "An iron beam, and Emily beneath it.",
+    "Then you."
+  ],
+  "wake": "You open your eyes. 14:00. Your hands are shaking, and the wedding program is still in them.",
+  "meters": { "nerve": "Nerve", "stamina": "Stamina", "trust": "Trust" },
+  "cards": {
+    "flowers": {
+      "who": "The florist",
+      "text": "“Wild meadow mix, just like she asked.” The bride is crying with joy. Sam sneezes, laughs, sneezes again.",
+      "left": {
+        "label": "Send them back",
+        "after": "The bride stops smiling. Sam stops sneezing."
+      },
+      "right": {
+        "label": "Keep them, cool the hall",
+        "after": "The bride hugs you. Sam wipes his eyes and says he’s fine."
+      }
+    },
+    "pill": {
+      "who": "Your pocket",
+      "text": "Two hundred guests. Your hands are already shaking. The pill works, but it turns your fingers to wood.",
+      "left": {
+        "label": "Take the pill",
+        "after": "It kicks in. Your hands stop. You can’t quite feel them."
+      },
+      "right": { "label": "Just breathe", "after": "In, out. Your head clears. Your hands don’t." }
+    },
+    "chandelier": {
+      "who": "Ballroom",
+      "text": "The crystal chandelier is swaying, and there’s no wind. The caterer looks up and says nothing.",
+      "left": {
+        "label": "Add a support rope",
+        "after": "Thick rope, tied to the old beam. It looks safe. It looks very safe."
+      },
+      "right": {
+        "label": "Hide it with tulle",
+        "after": "Light fabric, nothing more. You try to stop looking up."
+      }
+    },
+    "tie": {
+      "who": "Sam",
+      "text": "“Mate, I can’t breathe in this thing.” The photographer is already shouting for the groom.",
+      "left": {
+        "label": "Loosen it",
+        "after": "He takes a huge breath. The photographer rolls his eyes."
+      },
+      "right": { "label": "“Hold on, photos”", "after": "He nods. He looks great. He’s a bit red." }
+    },
+    "car": {
+      "who": "The driver",
+      "text": "“The bridal car’s on the service road. Guests are arriving. Can it just stay here?”",
+      "left": {
+        "label": "Move it to the field",
+        "after": "Twenty minutes in mud and dress shoes. The road is clear."
+      },
+      "right": {
+        "label": "“Ten minutes, fine”",
+        "after": "Nobody moves it again. Nobody even thinks about it."
+      }
+    },
+    "ice": {
+      "who": "Hallway",
+      "text": "Tons of ice melting on the lawn. The corridor by the fuse room is close and cold. The cellar is a long way off.",
+      "left": {
+        "label": "Use the corridor",
+        "after": "Done in five minutes. The caterer shakes your hand."
+      },
+      "right": {
+        "label": "Carry it to the cellar",
+        "after": "Forty trips down the stairs. You can’t feel your arms."
+      }
+    },
+    "gas": {
+      "who": "Kitchen",
+      "text": "A faint smell of gas. The chef swears it’s the ovens. Eighty plates go out in ten minutes.",
+      "left": { "label": "Fan on full", "after": "The smell is gone. The fan howls like a plane." },
+      "right": {
+        "label": "Cut fuse, open a window",
+        "after": "The kitchen goes dark. The chef calls you things you’ve never heard."
+      }
+    },
+    "tables": {
+      "who": "Emily",
+      "text": "“Twenty more guests showed up. Spread the tables to the back door. Who ever uses that door?”",
+      "left": {
+        "label": "Keep the aisle",
+        "after": "Twenty people eat standing up. Emily won’t look at you."
+      },
+      "right": {
+        "label": "Spread them",
+        "after": "Everybody’s seated. Emily gives you a thumbs up."
+      }
+    },
+    "knife": {
+      "who": "Emily",
+      "text": "“Cake knife’s gone. Use the chef’s knife, it’s right here.” It’s huge. You look at your hands.",
+      "left": {
+        "label": "Chef’s knife",
+        "after": "The cake cuts clean. You keep the knife close."
+      },
+      "right": {
+        "label": "Bread knife",
+        "after": "It tears the cake. Everyone laughs. Nobody gets hurt."
+      }
+    },
+    "sparks": {
+      "who": "The bride",
+      "text": "“Sparks for the first dance! Please. It’s the only thing I asked for.”",
+      "left": {
+        "label": "Set up the sparks",
+        "after": "The room gasps. Gold falls through the air. It’s beautiful."
+      },
+      "right": {
+        "label": "Just the LEDs",
+        "after": "Pink and blue. The bride smiles for the photos only."
+      }
+    },
+    "sam-down": {
+      "who": "Sam",
+      "text": "Sam’s on the floor by the flowers. His lips are blue. The tie is cutting into his neck. His Epi-Pen is in your pocket.",
+      "left": {
+        "label": "Cut the tie",
+        "after": "One cut. He drags in air. He’s alive, and he’s looking at you."
+      },
+      "right": {
+        "label": "Use the Epi-Pen",
+        "after": "Your wooden fingers find it. He gasps. Someone calls an ambulance."
+      }
+    },
+    "bass": {
+      "who": "The DJ",
+      "text": "“They say the bass is weak. One word and I make this room shake.”",
+      "left": {
+        "label": "All the way up",
+        "after": "The floor jumps. Everyone screams with joy. Dust drifts down through the lights."
+      },
+      "right": { "label": "Leave it", "after": "Someone shouts “Boring!” The DJ shrugs." }
+    },
+    "panel": {
+      "who": "Fuse room",
+      "text": "Water under the door. The ice has melted. The lights dip, come back, and dip again.",
+      "left": {
+        "label": "Go in, reset it",
+        "after": "Wet shoes, one switch. The lights hold. Your heart barely does."
+      },
+      "right": { "label": "Shut the power off", "after": "The whole hall goes black and boos you." }
+    },
+    "door": {
+      "who": "Emily",
+      "text": "“That rusty back door keeps swinging open. My mother’s freezing. Bolt it?”",
+      "left": { "label": "Bolt it", "after": "It takes two of you. It won’t be swinging anymore." },
+      "right": {
+        "label": "Wedge it with a stone",
+        "after": "Cold air on the dance floor. Emily sighs like you’re the problem."
+      }
+    },
+    "beam": {
+      "who": "Ballroom",
+      "text": "Plaster in your drink. You look up. The rope is creaking, and Emily is dancing right under it.",
+      "left": {
+        "label": "Pull her off the floor",
+        "after": "You drag her away. The rope holds. For now."
+      },
+      "right": {
+        "label": "Kill the music",
+        "after": "Silence. Two hundred people stare at you. The rope stops creaking."
+      }
+    },
+    "exit": {
+      "who": "Back door",
+      "text": "A crack runs across the ceiling. Everyone is running. The bolt has rusted into the frame.",
+      "left": {
+        "label": "Force the bolt",
+        "after": "It gives. Cold air. The road is clear, and you run."
+      },
+      "right": {
+        "label": "Climb over the tables",
+        "after": "Over the cake, past the flowers, out through a kitchen window."
+      }
+    },
+    "last": {
+      "who": "Emily",
+      "text": "“My bag’s still in there!” She’s already turning back. The ceiling is making a noise you know.",
+      "left": {
+        "label": "Drag her out",
+        "after": "She screams at you the whole way. Then the roof goes."
+      },
+      "right": { "label": "Let her go", "after": "You don’t look back. You hear it anyway." }
+    }
+  },
+  "endings": {
+    "sam-throat": {
+      "title": "Sam’s Throat",
+      "text": "You’re still on the floor with him when midnight comes. You knew what was coming. You stayed.",
+      "chain": [
+        "You kept the flowers",
+        "You kept his tie tight",
+        "You picked the bread knife",
+        "You skipped the pill and your hands shook",
+        "His throat closed"
+      ],
+      "hint": "At least you saved on the wreath."
+    },
+    "panel": {
+      "title": "The Panel",
+      "text": "The water found the panel. The fan burst. The gas had been waiting in the walls all evening.",
+      "chain": [
+        "You stacked the ice by the fuse room",
+        "You ran the fan at full power",
+        "The ice melted",
+        "You walked in, wet shoes and all"
+      ],
+      "hint": "You melted the ice. Now it’s your turn."
+    },
+    "chandelier": {
+      "title": "The Chandelier",
+      "text": "The beam gave way. Two hundred kilos of crystal came down on you and Emily.",
+      "chain": [
+        "You tied a rope to the old beam",
+        "You turned the bass all the way up",
+        "Your sparks lit the dust up there",
+        "You ran under it for Emily"
+      ],
+      "hint": "You loved the bass. The ceiling danced with you."
+    },
+    "trapped": {
+      "title": "Trapped",
+      "text": "The way out was right there. You’d blocked it yourself, this afternoon.",
+      "chain": [
+        "You bolted the door",
+        "You left the bridal car on the road",
+        "You spread the tables to the door",
+        "The ceiling started to go"
+      ],
+      "hint": "That door was very solid. Nobody could get in, and you couldn’t get out."
+    },
+    "chest": {
+      "title": "Your Chest",
+      "text": "The room shrinks. Your chest closes. You go down between the tables, and nobody hears you over the music.",
+      "chain": [
+        "You tried to control everything",
+        "Your hands never stopped",
+        "You ran out of air"
+      ],
+      "hint": "You controlled everything. Except your breathing."
+    },
+    "best-man": {
+      "title": "Best Man",
+      "text": "Your legs quit on the stairs. You carried everything today. Nobody carried you.",
+      "chain": ["You did every job yourself", "You never sat down", "Your legs gave out"],
+      "hint": "You carried the whole wedding. The floor carried you."
+    },
+    "uninvited": {
+      "title": "Uninvited",
+      "text": "You shout that the roof is coming down. They’ve heard enough from you today. Security walks you back into the hall.",
+      "chain": [
+        "You said no to the bride",
+        "You said no to everyone else",
+        "Nobody listened when it counted"
+      ],
+      "hint": "You ruined the wedding to save it. Only one of those worked."
+    },
+    "nobody-bled": {
+      "title": "Nobody Even Bled",
+      "text": "00:00. The band stops. The ceiling stays. Sam is dancing badly. You look up at the old beam, and you understand: Every disaster today would have been your own idea.",
+      "chain": [],
+      "hint": "Everyone lived. Nobody will ever thank you."
+    },
+    "half-a-wedding": {
+      "title": "Half a Wedding",
+      "text": "00:00. The roof comes down behind you. Emily’s crying beside you, Sam’s on a stretcher. The rope, the bass, the bolt. You did that.",
+      "chain": [],
+      "hint": "Two out of three. Not bad for a best man."
+    },
+    "walked-out": {
+      "title": "Walked Out",
+      "text": "00:00. You’re alive on the lawn, holding the wedding program. There’s nobody left to give it to.",
+      "chain": [],
+      "hint": "Nice speech, by the way."
+    }
+  }
+}
