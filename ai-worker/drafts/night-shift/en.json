@@ -1,0 +1,251 @@
+{
+  "title": "Till Midnight",
+  "vision": [
+    "The old East Wing creaks in the dark.",
+    "A structural column fractures.",
+    "Ceilings collapse down three floors.",
+    "Dust, crushed concrete, trapped nurses.",
+    "Including you."
+  ],
+  "wake": "You snap awake at your desk in St. Jude's Ward. The night shift has just begun.",
+  "meters": {
+    "focus": "Focus",
+    "stamina": "Stamina",
+    "trust": "Trust"
+  },
+  "cards": {
+    "shift-start": {
+      "who": "Dr. Aris",
+      "text": "“Night shift begins. Can you check the old East Wing storage room?”",
+      "left": {
+        "label": "Warn Dr. Aris",
+        "after": "He laughs off your warning but looks uneasy."
+      },
+      "right": {
+        "label": "Say nothing",
+        "after": "You nod and grab your clipboard quietly."
+      }
+    },
+    "bleach-spill": {
+      "who": "Hallway",
+      "text": "A bottle of harsh industrial disinfectant tipped over, leaving a slippery film.",
+      "left": {
+        "label": "Mop it up",
+        "after": "It takes ten minutes, but the corridor floor is clean and dry."
+      },
+      "right": {
+        "label": "Step around it",
+        "after": "You leave the spill for the morning janitorial crew."
+      }
+    },
+    "supply-room": {
+      "who": "Supply room",
+      "text": "Power flickers. On the counter sits a heavy steel flashlight and a ring of master keys.",
+      "left": {
+        "label": "Take flashlight",
+        "after": "Heavy in your hand. The beam is sharp and bright."
+      },
+      "right": {
+        "label": "Take master keys",
+        "after": "You slide the heavy key ring into your pocket."
+      }
+    },
+    "call-button": {
+      "who": "St. Jude Ward",
+      "text": "An alarm blares from room 304 upstairs. A patient needs immediate help!",
+      "left": {
+        "label": "Sprint up stairs",
+        "after": "You race up the steps two at a time."
+      },
+      "right": {
+        "label": "Take elevator",
+        "after": "The doors close slowly. You regain your breath."
+      }
+    },
+    "oxygen-leak": {
+      "who": "East Wing Corridor",
+      "text": "A loud hiss echoes near the gas lines. An oxygen tank pressure gauge is red.",
+      "left": {
+        "label": "Tighten valve",
+        "after": "The valve turns with a screech and stops leaking."
+      },
+      "right": {
+        "label": "Open window",
+        "after": "Fresh night air rushes in, diluting the fumes."
+      }
+    },
+    "fire-alarm": {
+      "who": "Nurse Nora",
+      "text": "“I smell burning rubber from the basement shaft! Should we trigger the alarm?”",
+      "left": {
+        "label": "Pull fire alarm",
+        "after": "Bells ring across the ward. Staff begin evacuating patients."
+      },
+      "right": {
+        "label": "Investigate first",
+        "after": "Nora looks nervous but follows your lead."
+      }
+    },
+    "aris-talk": {
+      "who": "Dr. Aris",
+      "text": "“You warned me earlier... the ceiling just groaned overhead. We need to get out!”",
+      "left": {
+        "label": "Escape together",
+        "after": "He nods, grabbing his emergency kit."
+      },
+      "right": {
+        "label": "Tell him to go",
+        "after": "He runs toward the fire escape alone, looking betrayed."
+      }
+    },
+    "alone-talk": {
+      "who": "East Wing Stairs",
+      "text": "The wall cracks beside you. Plaster dust rains down onto your shoulders.",
+      "left": {
+        "label": "Shield your head",
+        "after": "A chunk of drywall misses your shoulder."
+      },
+      "right": {
+        "label": "Run forward",
+        "after": "You leap past the falling debris."
+      }
+    },
+    "blackout": {
+      "who": "Corridor",
+      "text": "The main generator fails. Darkness swallows the floor completely.",
+      "left": {
+        "label": "Use flashlight",
+        "after": "The bright beam cuts through the pitch black."
+      },
+      "right": {
+        "label": "Feel your way",
+        "after": "You drag your hand along the wall slowly."
+      }
+    },
+    "escape-route": {
+      "who": "Fire Escape Door",
+      "text": "The heavy emergency door to the stairs is stuck shut from building tilt.",
+      "left": {
+        "label": "Shoulder the door",
+        "after": "You slam your weight into the jammed frame."
+      },
+      "right": {
+        "label": "Use window exit",
+        "after": "You slip through the ground floor window frame."
+      }
+    },
+    "balcony-escape": {
+      "who": "Dr. Aris",
+      "text": "You reach the exterior iron stairwell. It shakes under the building's strain.",
+      "left": {
+        "label": "Step out together",
+        "after": "You step onto the metal stairs side by side."
+      },
+      "right": {
+        "label": "Go one by one",
+        "after": "He goes first, then you follow safely."
+      }
+    },
+    "final-stretch": {
+      "who": "Hospital Lawn",
+      "text": "You reach the grass. Behind you, the East Wing begins its fatal collapse.",
+      "left": {
+        "label": "Look back",
+        "after": "A cloud of dust washes over you as midnight strikes."
+      },
+      "right": {
+        "label": "Keep running",
+        "after": "You cross the street as the ground shakes."
+      }
+    }
+  },
+  "endings": {
+    "slip": {
+      "title": "The Slick Floor",
+      "text": "You slipped on the wet disinfectant and broke your neck on the marble step.",
+      "chain": [
+        "Disinfectant spilled in the hallway",
+        "You decided not to mop it",
+        "The alarm rang in room 304",
+        "You sprinted down the hallway",
+        "Your foot lost traction"
+      ],
+      "hint": "Taking a moment to clean spills prevents fatal accidents later."
+    },
+    "shaft": {
+      "title": "The Open Shaft",
+      "text": "In total darkness, you stepped into an open elevator shaft.",
+      "chain": [
+        "You chose master keys over the torch",
+        "The main generator died",
+        "You tried to navigate in the pitch black",
+        "The elevator doors had warped open",
+        "Three stories down"
+      ],
+      "hint": "A source of light in an old building is worth more than keys."
+    },
+    "crush": {
+      "title": "The Falling Beam",
+      "text": "Forcing the stuck door shook the frame, bringing the heavy concrete header down on you.",
+      "chain": [
+        "You entered the East Wing alone",
+        "The exit door was jammed tight",
+        "You rammed your shoulder into it",
+        "The cracked ceiling gave way"
+      ],
+      "hint": "When a door is jammed by structural stress, look for a window."
+    },
+    "scaffold": {
+      "title": "The Overloaded Stairs",
+      "text": "The rusted iron stairwell collapsed under your combined weight.",
+      "chain": [
+        "You saved Dr. Aris",
+        "You reached the exterior fire escape",
+        "You both ran onto the stairs together",
+        "Rusted bolts snapped from the weight"
+      ],
+      "hint": "Old metal stairs can't handle two people running at once."
+    },
+    "panic": {
+      "title": "Hysteria",
+      "text": "Overwhelmed by dread, you hid inside a locker as the walls caved in.",
+      "chain": [
+        "You doubted every sound",
+        "Your focus disintegrated",
+        "Panic froze you in place"
+      ],
+      "hint": "Keep your mind sharp by taking steady, decisive action."
+    },
+    "collapse": {
+      "title": "Exhaustion",
+      "text": "Your legs buckled in the corridor. You couldn't crawl out in time.",
+      "chain": [
+        "You pushed your body past its limit",
+        "You collapsed before reaching safety"
+      ],
+      "hint": "Rest when you can; physical stamina keeps you alive."
+    },
+    "isolated": {
+      "title": "Left Behind",
+      "text": "Nobody knew you were trapped under the debris. No rescue came.",
+      "chain": [
+        "You pushed your colleagues away",
+        "No one checked on your position",
+        "You died in the dark alone"
+      ],
+      "hint": "Building trust ensures someone looks out for you."
+    },
+    "together": {
+      "title": "Midnight",
+      "text": "00:00. You and Dr. Aris stand on the lawn, watching the East Wing turn to rubble. You made it.",
+      "chain": [],
+      "hint": "You found the best ending."
+    },
+    "survivor": {
+      "title": "Midnight",
+      "text": "00:00. You stand alone on the grass as the building falls. You survived the night shift.",
+      "chain": [],
+      "hint": "There is a way to save Dr. Aris too."
+    }
+  }
+}

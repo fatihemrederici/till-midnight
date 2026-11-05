@@ -1,0 +1,352 @@
+{
+  "formatVersion": 1,
+  "id": "night-shift",
+  "start": {
+    "focus": 3,
+    "stamina": 3,
+    "trust": 3
+  },
+  "maxMeter": 5,
+  "meters": [
+    {
+      "id": "focus",
+      "emoji": "🧠",
+      "ending": "panic"
+    },
+    {
+      "id": "stamina",
+      "emoji": "🫀",
+      "ending": "collapse"
+    },
+    {
+      "id": "trust",
+      "emoji": "🤝",
+      "ending": "isolated"
+    }
+  ],
+  "cards": [
+    {
+      "id": "shift-start",
+      "time": "20:00",
+      "emoji": "🩺",
+      "left": {
+        "effects": {
+          "trust": -1
+        },
+        "set": {
+          "warnedAris": true
+        }
+      },
+      "right": {
+        "effects": {
+          "focus": -1
+        },
+        "set": {
+          "warnedAris": false
+        }
+      }
+    },
+    {
+      "id": "bleach-spill",
+      "time": "20:30",
+      "emoji": "🧴",
+      "left": {
+        "effects": {
+          "stamina": -1
+        },
+        "set": {
+          "floorDry": true
+        }
+      },
+      "right": {
+        "effects": {
+          "focus": -1
+        },
+        "set": {
+          "floorDry": false
+        }
+      }
+    },
+    {
+      "id": "supply-room",
+      "time": "21:15",
+      "emoji": "🔦",
+      "left": {
+        "effects": {
+          "focus": 1
+        },
+        "set": {
+          "flashlight": true
+        }
+      },
+      "right": {
+        "effects": {
+          "trust": 1
+        },
+        "set": {
+          "flashlight": false
+        }
+      }
+    },
+    {
+      "id": "call-button",
+      "time": "21:50",
+      "emoji": "🔔",
+      "left": {
+        "effects": {
+          "stamina": -1
+        },
+        "set": {
+          "rushed": true
+        },
+        "death": {
+          "when": {
+            "floorDry": false
+          },
+          "ending": "slip"
+        }
+      },
+      "right": {
+        "effects": {
+          "focus": 1
+        },
+        "set": {
+          "rushed": false
+        }
+      }
+    },
+    {
+      "id": "oxygen-leak",
+      "time": "22:20",
+      "emoji": "🤿",
+      "left": {
+        "effects": {
+          "stamina": -1
+        }
+      },
+      "right": {
+        "effects": {
+          "focus": -1
+        }
+      }
+    },
+    {
+      "id": "fire-alarm",
+      "time": "22:50",
+      "emoji": "🚨",
+      "left": {
+        "effects": {
+          "trust": 1
+        }
+      },
+      "right": {
+        "effects": {
+          "trust": -1
+        }
+      }
+    },
+    {
+      "id": "aris-talk",
+      "time": "23:15",
+      "emoji": "👨‍⚕️",
+      "when": {
+        "warnedAris": true
+      },
+      "left": {
+        "effects": {
+          "trust": 1
+        },
+        "set": {
+          "together": true
+        }
+      },
+      "right": {
+        "effects": {
+          "trust": -1
+        },
+        "set": {
+          "together": false
+        }
+      }
+    },
+    {
+      "id": "alone-talk",
+      "time": "23:15",
+      "emoji": "🏥",
+      "when": {
+        "warnedAris": false
+      },
+      "left": {
+        "effects": {
+          "stamina": -1
+        },
+        "set": {
+          "together": false
+        }
+      },
+      "right": {
+        "effects": {
+          "focus": -1
+        },
+        "set": {
+          "together": false
+        }
+      }
+    },
+    {
+      "id": "blackout",
+      "time": "23:35",
+      "emoji": "⚡",
+      "left": {
+        "effects": {
+          "focus": 1
+        }
+      },
+      "right": {
+        "effects": {
+          "stamina": -1
+        },
+        "death": {
+          "when": {
+            "flashlight": false
+          },
+          "ending": "shaft"
+        }
+      }
+    },
+    {
+      "id": "escape-route",
+      "time": "23:50",
+      "emoji": "🧱",
+      "when": {
+        "together": false
+      },
+      "left": {
+        "death": {
+          "ending": "crush"
+        }
+      },
+      "right": {
+        "effects": {
+          "focus": -1
+        }
+      }
+    },
+    {
+      "id": "balcony-escape",
+      "time": "23:50",
+      "emoji": "🪜",
+      "when": {
+        "together": true
+      },
+      "left": {
+        "death": {
+          "ending": "scaffold"
+        }
+      },
+      "right": {
+        "effects": {
+          "trust": 1
+        }
+      }
+    },
+    {
+      "id": "final-stretch",
+      "time": "23:58",
+      "emoji": "⏳",
+      "left": {
+        "effects": {
+          "focus": 1
+        }
+      },
+      "right": {
+        "effects": {
+          "stamina": -1
+        }
+      }
+    }
+  ],
+  "endings": [
+    {
+      "id": "slip",
+      "won": false,
+      "chain": [
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "id": "shaft",
+      "won": false,
+      "chain": [
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "id": "crush",
+      "won": false,
+      "chain": [
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "id": "scaffold",
+      "won": false,
+      "chain": [
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "id": "panic",
+      "won": false,
+      "chain": [
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "id": "collapse",
+      "won": false,
+      "chain": [
+        {},
+        {}
+      ]
+    },
+    {
+      "id": "isolated",
+      "won": false,
+      "chain": [
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "id": "together",
+      "won": true,
+      "when": {
+        "together": true
+      },
+      "chain": []
+    },
+    {
+      "id": "survivor",
+      "won": true,
+      "chain": []
+    }
+  ]
+}
