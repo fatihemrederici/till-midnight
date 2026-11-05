@@ -98,6 +98,20 @@ class InternalApiTest {
                 .andExpect(jsonPath("$.valid").value(false));
     }
 
+    // Bu metot bir test.
+    @Test
+    // Yapay zekânın yazdığı bozuk yapı sunucuyu düşürmemeli, rapor olarak dönmeli.
+    void reportsACardWithoutAChoiceInsteadOfCrashing() throws Exception {
+        // Tek kartlı, sol tarafı olmayan paket.
+        String rules = "{\"id\":\"x\",\"start\":{},\"meters\":[],\"endings\":[],"
+                + "\"cards\":[{\"id\":\"a\",\"right\":{}}]}";
+        String english = "{\"cards\":{\"a\":{\"left\":{\"label\":\"Go\"},\"right\":{\"label\":\"Stay\"}}}}";
+        // İsteği gönder.
+        validate("{\"rules\":%s,\"texts\":{\"en\":%s}}".formatted(rules, english))
+                // 200 ve geçersiz.
+                .andExpect(jsonPath("$.valid").value(false));
+    }
+
     // Yardımcı metot: Bölümün tamamını paket olarak verir.
     private String pack() throws Exception {
         // Kurallar ve üç dil.

@@ -77,8 +77,10 @@ final class StoryMerger {
         addIndexedTexts(card, "variants", path + "/variants");
         // İki seçim.
         for (String side : List.of("left", "right")) {
-            // Seçimin kural düğümü.
-            ObjectNode choice = (ObjectNode) card.get(side);
+            // Seçim yoksa atla. Eksik taraf, metni kullanılmamış olarak raporlanır.
+            if (!(card.get(side) instanceof ObjectNode choice)) {
+                continue;
+            }
             // Seçim yazısı.
             addText(choice, "label", path + "/" + side + "/label");
             // Seçimin sonucu, sadece bazı seçimlerde var.

@@ -42,8 +42,8 @@ public class InternalController {
         } catch (JacksonException exception) {
             // Bozuk JSON ya da bilinmeyen alan.
             return new ValidationResponse(false, List.of("Invalid JSON: " + exception.getOriginalMessage()), null);
-        } catch (IllegalArgumentException exception) {
-            // Eksik paket ya da kullanılmayan metin.
+        } catch (IllegalArgumentException | ClassCastException exception) {
+            // Eksik paket, yanlış yapı ya da kullanılmayan metin.
             return new ValidationResponse(false, List.of(exception.getMessage()), null);
         }
         // Hikâyeyi kontrol et.
