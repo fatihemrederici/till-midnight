@@ -64,38 +64,38 @@
     },
     "car": {
       "who": "The driver",
-      "text": "“The bridal car’s on the service road. Guests are arriving. Can it just stay here?”",
+      "text": "The bridal car is parked right against the back door. The driver: “The bride wants photos here. It can stay till the end, right?”",
       "left": {
-        "label": "Move it to the field",
-        "after": "Twenty minutes in mud and dress shoes. The road is clear."
+        "label": "Move it away",
+        "after": "Twenty minutes of arguing, but the back door is clear."
       },
       "right": {
-        "label": "“Ten minutes, fine”",
-        "after": "Nobody moves it again. Nobody even thinks about it."
+        "label": "“Let it stay”",
+        "after": "The bride poses. The car stays against the door. Nobody thinks about it again."
       }
     },
     "ice": {
       "who": "Hallway",
-      "text": "Tons of ice melting on the lawn. The corridor by the fuse room is close and cold. The cellar is a long way off.",
+      "text": "The ice truck is late and the driver’s in a hurry. Thirty bags. The corridor by the fuse room is close and cool. The cellar is two floors down.",
       "left": {
         "label": "Use the corridor",
-        "after": "Done in five minutes. The caterer shakes your hand."
+        "after": "Done in five minutes. The driver shakes your hand."
       },
       "right": {
-        "label": "Carry it to the cellar",
-        "after": "Forty trips down the stairs. You can’t feel your arms."
+        "label": "Take it to the cellar",
+        "after": "Thirty bags, two floors. You can’t feel your arms."
       }
     },
     "gas": {
       "who": "Kitchen",
-      "text": "A faint smell of gas. The chef swears it’s the ovens. Eighty plates go out in ten minutes.",
+      "text": "The kitchen smells of gas. The chef: “These old pipes always smell. Eighty plates in ten minutes, don’t touch anything.” The fan switch is right by your hand.",
       "left": {
         "label": "Fan on full",
         "after": "The smell is gone. The fan howls like a plane."
       },
       "right": {
-        "label": "Cut fuse, open a window",
-        "after": "The kitchen goes dark. The chef calls you things you’ve never heard."
+        "label": "Shut off the gas",
+        "after": "The stoves go out. The chef calls you things you’ve never heard."
       }
     },
     "tables": {
@@ -110,16 +110,16 @@
         "after": "Everybody’s seated. Emily gives you a thumbs up."
       }
     },
-    "knife": {
+    "scissors": {
       "who": "Emily",
-      "text": "“Cake knife’s gone. Use the chef’s knife, it’s right here.” It’s huge. You look at your hands.",
+      "text": "Emily’s digging through your emergency kit. “The cake ribbon’s stuck. I’m borrowing your scissors. I’ll bring them back.”",
       "left": {
-        "label": "Chef’s knife",
-        "after": "The cake cuts clean. You keep the knife close."
+        "label": "“They stay with me”",
+        "after": "She storms off and cuts it with a steak knife. You don’t have the energy for this."
       },
       "right": {
-        "label": "Bread knife",
-        "after": "It tears the cake. Everyone laughs. Nobody gets hurt."
+        "label": "“Here, take them”",
+        "after": "“You’re a lifesaver!” She vanishes into the crowd."
       }
     },
     "sparks": {
@@ -139,7 +139,7 @@
       "text": "Sam’s on the floor by the flowers. His lips are blue. The tie is cutting into his neck. His Epi-Pen is in your pocket.",
       "left": {
         "label": "Cut the tie",
-        "after": "One cut. He drags in air. He’s alive, and he’s looking at you."
+        "after": "Scissors, one cut. He drags in air. He’s alive, and he’s looking at you."
       },
       "right": {
         "label": "Use the Epi-Pen",
@@ -148,13 +148,13 @@
     },
     "bass": {
       "who": "The DJ",
-      "text": "“They say the bass is weak. One word and I make this room shake.”",
+      "text": "The dance floor is emptying. The DJ: “It’s not loud enough. I’ve got two huge speakers in the van. Say the word.”",
       "left": {
-        "label": "All the way up",
+        "label": "Bring them in",
         "after": "The floor jumps. Everyone screams with joy. Dust drifts down through the lights."
       },
       "right": {
-        "label": "Leave it",
+        "label": "Leave it as it is",
         "after": "Someone shouts “Boring!” The DJ shrugs."
       }
     },
@@ -226,7 +226,7 @@
       "chain": [
         "You kept the flowers",
         "You kept his tie tight",
-        "You picked the bread knife",
+        "You gave Emily your scissors",
         "You skipped the pill and your hands shook",
         "His throat closed"
       ],
@@ -248,7 +248,7 @@
       "text": "The beam gave way. Two hundred kilos of crystal came down on you and Emily.",
       "chain": [
         "You tied a rope to the old beam",
-        "You turned the bass all the way up",
+        "You brought in the huge speakers",
         "Your sparks lit the dust up there",
         "You ran under it for Emily"
       ],
@@ -259,7 +259,7 @@
       "text": "The way out was right there. You’d blocked it yourself, this afternoon.",
       "chain": [
         "You bolted the door",
-        "You left the bridal car on the road",
+        "You left the bridal car against the door",
         "You spread the tables to the door",
         "The ceiling started to go"
       ],
@@ -299,7 +299,7 @@
     },
     "half-a-wedding": {
       "title": "Half a Wedding",
-      "text": "00:00. The roof comes down behind you. Emily’s crying beside you, Sam’s on a stretcher. The rope, the bass, the bolt. You did that.",
+      "text": "00:00. The roof comes down behind you. Emily’s crying beside you, Sam’s on a stretcher. The rope, the speakers, the bolt. You did that.",
       "chain": [],
       "hint": "Two out of three. Not bad for a best man."
     },

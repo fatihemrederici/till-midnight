@@ -1,160 +1,404 @@
 {
   "formatVersion": 1,
   "id": "last-dance",
-  "start": { "nerve": 3, "stamina": 3, "trust": 4 },
+  "start": {
+    "nerve": 3,
+    "stamina": 3,
+    "trust": 4
+  },
   "maxMeter": 5,
   "meters": [
-    { "id": "nerve", "emoji": "🧠", "ending": "chest" },
-    { "id": "stamina", "emoji": "❤️", "ending": "best-man" },
-    { "id": "trust", "emoji": "👥", "ending": "uninvited" }
+    {
+      "id": "nerve",
+      "emoji": "🧠",
+      "ending": "chest"
+    },
+    {
+      "id": "stamina",
+      "emoji": "❤️",
+      "ending": "best-man"
+    },
+    {
+      "id": "trust",
+      "emoji": "👥",
+      "ending": "uninvited"
+    }
   ],
   "cards": [
     {
       "id": "flowers",
       "time": "14:00",
       "emoji": "🌸",
-      "left": { "effects": { "trust": -1 } },
-      "right": { "set": { "flowersKept": true } }
+      "left": {
+        "effects": {
+          "trust": -1
+        }
+      },
+      "right": {
+        "set": {
+          "flowersKept": true
+        }
+      }
     },
     {
       "id": "pill",
       "time": "14:45",
       "emoji": "💊",
-      "left": { "effects": { "stamina": -1 } },
-      "right": { "effects": { "nerve": -1 }, "set": { "shaking": true } }
+      "left": {
+        "effects": {
+          "stamina": -1
+        }
+      },
+      "right": {
+        "effects": {
+          "nerve": -1
+        },
+        "set": {
+          "shaking": true
+        }
+      }
     },
     {
       "id": "chandelier",
       "time": "15:30",
       "emoji": "💎",
-      "left": { "set": { "rope": true } },
-      "right": { "effects": { "nerve": -1 } }
+      "left": {
+        "set": {
+          "rope": true
+        }
+      },
+      "right": {
+        "effects": {
+          "nerve": -1
+        }
+      }
     },
     {
       "id": "tie",
       "time": "16:15",
       "emoji": "👔",
-      "left": { "effects": { "trust": -1 } },
-      "right": { "set": { "tieTight": true } }
+      "left": {
+        "effects": {
+          "trust": -1
+        }
+      },
+      "right": {
+        "set": {
+          "tieTight": true
+        }
+      }
     },
     {
       "id": "car",
       "time": "17:00",
       "emoji": "🚗",
-      "left": { "effects": { "stamina": -1 } },
-      "right": { "set": { "carAtDoor": true } }
+      "left": {
+        "effects": {
+          "stamina": -1
+        }
+      },
+      "right": {
+        "set": {
+          "carAtDoor": true
+        }
+      }
     },
     {
       "id": "ice",
       "time": "17:45",
       "emoji": "🧊",
-      "left": { "set": { "icePanel": true } },
-      "right": { "effects": { "stamina": -1 } }
+      "left": {
+        "set": {
+          "icePanel": true
+        }
+      },
+      "right": {
+        "effects": {
+          "stamina": -1
+        }
+      }
     },
     {
       "id": "gas",
       "time": "18:30",
       "emoji": "🍳",
-      "left": { "set": { "fanFull": true } },
-      "right": { "effects": { "trust": -1 } }
+      "left": {
+        "set": {
+          "fanFull": true
+        }
+      },
+      "right": {
+        "effects": {
+          "trust": -1
+        }
+      }
     },
     {
       "id": "tables",
       "time": "19:15",
       "emoji": "🪑",
-      "left": { "effects": { "trust": -1 } },
-      "right": { "set": { "tablesToDoor": true } }
+      "left": {
+        "effects": {
+          "trust": -1
+        }
+      },
+      "right": {
+        "set": {
+          "tablesToDoor": true
+        }
+      }
     },
     {
-      "id": "knife",
+      "id": "scissors",
       "time": "20:00",
-      "emoji": "🔪",
-      "left": { "effects": { "nerve": -1 } },
-      "right": { "set": { "bluntKnife": true } }
+      "emoji": "✂️",
+      "left": {
+        "effects": {
+          "nerve": -1
+        }
+      },
+      "right": {
+        "set": {
+          "gaveScissors": true
+        }
+      }
     },
     {
       "id": "sparks",
       "time": "21:00",
       "emoji": "✨",
-      "left": { "effects": { "trust": 1 }, "set": { "sparks": true } },
-      "right": { "effects": { "trust": -1 } }
+      "left": {
+        "effects": {
+          "trust": 1
+        },
+        "set": {
+          "sparks": true
+        }
+      },
+      "right": {
+        "effects": {
+          "trust": -1
+        }
+      }
     },
     {
       "id": "sam-down",
       "time": "21:30",
       "emoji": "🫁",
-      "when": { "flowersKept": true, "tieTight": true },
-      "left": { "death": { "when": { "bluntKnife": true }, "ending": "sam-throat" } },
-      "right": { "death": { "when": { "shaking": true }, "ending": "sam-throat" } }
+      "when": {
+        "flowersKept": true,
+        "tieTight": true
+      },
+      "left": {
+        "death": {
+          "when": {
+            "gaveScissors": true
+          },
+          "ending": "sam-throat"
+        }
+      },
+      "right": {
+        "death": {
+          "when": {
+            "shaking": true
+          },
+          "ending": "sam-throat"
+        }
+      }
     },
     {
       "id": "bass",
       "time": "22:00",
       "emoji": "🔊",
-      "left": { "effects": { "nerve": 1 }, "set": { "bass": true } },
-      "right": { "effects": { "trust": -1 } }
+      "left": {
+        "effects": {
+          "nerve": 1
+        },
+        "set": {
+          "bass": true
+        }
+      },
+      "right": {
+        "effects": {
+          "trust": -1
+        }
+      }
     },
     {
       "id": "panel",
       "time": "22:30",
       "emoji": "💧",
-      "when": { "icePanel": true },
-      "left": {
-        "effects": { "nerve": -1 },
-        "death": { "when": { "fanFull": true }, "ending": "panel" }
+      "when": {
+        "icePanel": true
       },
-      "right": { "effects": { "trust": -1 } }
+      "left": {
+        "effects": {
+          "nerve": -1
+        },
+        "death": {
+          "when": {
+            "fanFull": true
+          },
+          "ending": "panel"
+        }
+      },
+      "right": {
+        "effects": {
+          "trust": -1
+        }
+      }
     },
     {
       "id": "door",
       "time": "23:00",
       "emoji": "🚪",
-      "left": { "set": { "bolted": true } },
-      "right": { "effects": { "nerve": -1 } }
+      "left": {
+        "set": {
+          "bolted": true
+        }
+      },
+      "right": {
+        "effects": {
+          "nerve": -1
+        }
+      }
     },
     {
       "id": "beam",
       "time": "23:30",
       "emoji": "🏚️",
-      "when": { "rope": true },
-      "left": { "death": { "when": { "bass": true }, "ending": "chandelier" } },
-      "right": { "effects": { "nerve": -1 } }
+      "when": {
+        "rope": true
+      },
+      "left": {
+        "death": {
+          "when": {
+            "bass": true
+          },
+          "ending": "chandelier"
+        }
+      },
+      "right": {
+        "effects": {
+          "nerve": -1
+        }
+      }
     },
     {
       "id": "exit",
       "time": "23:50",
       "emoji": "🔩",
-      "when": { "bolted": true },
-      "left": { "death": { "when": { "carAtDoor": true }, "ending": "trapped" } },
+      "when": {
+        "bolted": true
+      },
+      "left": {
+        "death": {
+          "when": {
+            "carAtDoor": true
+          },
+          "ending": "trapped"
+        }
+      },
       "right": {
-        "effects": { "stamina": -1 },
-        "death": { "when": { "tablesToDoor": true }, "ending": "trapped" }
+        "effects": {
+          "stamina": -1
+        },
+        "death": {
+          "when": {
+            "tablesToDoor": true
+          },
+          "ending": "trapped"
+        }
       }
     },
     {
       "id": "last",
       "time": "23:57",
       "emoji": "👜",
-      "left": { "set": { "emilyOut": true } },
-      "right": { "effects": { "nerve": -1 } }
+      "left": {
+        "set": {
+          "emilyOut": true
+        }
+      },
+      "right": {
+        "effects": {
+          "nerve": -1
+        }
+      }
     }
   ],
   "endings": [
     {
       "id": "sam-throat",
       "won": false,
-      "chain": [{}, {}, { "when": { "bluntKnife": true } }, { "when": { "shaking": true } }, {}]
+      "chain": [
+        {},
+        {},
+        {
+          "when": {
+            "gaveScissors": true
+          }
+        },
+        {
+          "when": {
+            "shaking": true
+          }
+        },
+        {}
+      ]
     },
-    { "id": "panel", "won": false, "chain": [{}, {}, {}, {}] },
-    { "id": "chandelier", "won": false, "chain": [{}, {}, { "when": { "sparks": true } }, {}] },
+    {
+      "id": "panel",
+      "won": false,
+      "chain": [{}, {}, {}, {}]
+    },
+    {
+      "id": "chandelier",
+      "won": false,
+      "chain": [
+        {},
+        {},
+        {
+          "when": {
+            "sparks": true
+          }
+        },
+        {}
+      ]
+    },
     {
       "id": "trapped",
       "won": false,
-      "chain": [{}, { "when": { "carAtDoor": true } }, { "when": { "tablesToDoor": true } }, {}]
+      "chain": [
+        {},
+        {
+          "when": {
+            "carAtDoor": true
+          }
+        },
+        {
+          "when": {
+            "tablesToDoor": true
+          }
+        },
+        {}
+      ]
     },
-    { "id": "chest", "won": false, "chain": [{}, {}, {}] },
-    { "id": "best-man", "won": false, "chain": [{}, {}, {}] },
-    { "id": "uninvited", "won": false, "chain": [{}, {}, {}] },
+    {
+      "id": "chest",
+      "won": false,
+      "chain": [{}, {}, {}]
+    },
+    {
+      "id": "best-man",
+      "won": false,
+      "chain": [{}, {}, {}]
+    },
+    {
+      "id": "uninvited",
+      "won": false,
+      "chain": [{}, {}, {}]
+    },
     {
       "id": "nobody-bled",
       "won": true,
@@ -169,7 +413,18 @@
       },
       "chain": []
     },
-    { "id": "half-a-wedding", "won": true, "when": { "emilyOut": true }, "chain": [] },
-    { "id": "walked-out", "won": true, "chain": [] }
+    {
+      "id": "half-a-wedding",
+      "won": true,
+      "when": {
+        "emilyOut": true
+      },
+      "chain": []
+    },
+    {
+      "id": "walked-out",
+      "won": true,
+      "chain": []
+    }
   ]
 }

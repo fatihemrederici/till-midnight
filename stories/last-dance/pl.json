@@ -64,38 +64,38 @@
     },
     "car": {
       "who": "Kierowca",
-      "text": "„Auto panny młodej stoi na drodze technicznej. Goście już jadą. Może tu zostać?”",
+      "text": "Auto panny młodej stoi tuż pod tylnymi drzwiami. Kierowca: „Panna młoda chce tu zdjęcia. Może zostać do końca, prawda?”",
       "left": {
-        "label": "Przestaw na pole",
-        "after": "Dwadzieścia minut w błocie w eleganckich butach. Droga wolna."
+        "label": "Przestaw je",
+        "after": "Dwadzieścia minut kłótni, ale tylne drzwi są wolne."
       },
       "right": {
-        "label": "„Dziesięć minut, dobra”",
-        "after": "Nikt go już nie rusza. Nikt nawet o tym nie myśli."
+        "label": "„Niech stoi”",
+        "after": "Panna młoda pozuje. Auto zostaje pod drzwiami. Nikt już o nim nie myśli."
       }
     },
     "ice": {
       "who": "Korytarz",
-      "text": "Na trawniku topnieją tony lodu. Korytarz przy rozdzielni jest blisko i chłodny. Piwnica jest daleko.",
+      "text": "Lód przyjechał późno, a kierowca się spieszy. Trzydzieści worków. Korytarz przy rozdzielni jest blisko i chłodny. Piwnica jest dwa piętra niżej.",
       "left": {
         "label": "Do korytarza",
-        "after": "Gotowe w pięć minut. Szef cateringu ściska ci dłoń."
+        "after": "Gotowe w pięć minut. Kierowca ściska ci dłoń."
       },
       "right": {
         "label": "Znieś do piwnicy",
-        "after": "Czterdzieści kursów po schodach. Nie czujesz rąk."
+        "after": "Trzydzieści worków, dwa piętra. Nie czujesz rąk."
       }
     },
     "gas": {
       "who": "Kuchnia",
-      "text": "Lekki zapach gazu. Kucharz przysięga, że to piekarniki. Za dziesięć minut wychodzi osiemdziesiąt talerzy.",
+      "text": "W kuchni czuć gaz. Kucharz: „Te stare rury zawsze śmierdzą. Za dziesięć minut osiemdziesiąt talerzy, niczego nie ruszaj”. Włącznik wentylatora masz pod ręką.",
       "left": {
         "label": "Wentylator na full",
         "after": "Zapach znika. Wentylator wyje jak samolot."
       },
       "right": {
-        "label": "Wyłącz prąd, otwórz okno",
-        "after": "W kuchni robi się ciemno. Kucharz wyzywa cię tak, jak nikt dotąd."
+        "label": "Zakręć gaz",
+        "after": "Palniki gasną. Kucharz wyzywa cię tak, jak nikt dotąd."
       }
     },
     "tables": {
@@ -110,16 +110,16 @@
         "after": "Wszyscy siedzą. Emily pokazuje ci kciuk w górę."
       }
     },
-    "knife": {
+    "scissors": {
       "who": "Emily",
-      "text": "„Nóż do tortu zniknął. Weź szefowski, leży tu”. Jest ogromny. Patrzysz na swoje ręce.",
+      "text": "Emily grzebie w twojej torbie ratunkowej. „Wstążka na torcie się nie rozwiązuje. Biorę twoje nożyczki, zaraz oddam”.",
       "left": {
-        "label": "Nóż szefowski",
-        "after": "Tort kroi się równo. Trzymasz nóż pod ręką."
+        "label": "„Zostają u mnie”",
+        "after": "Obraża się i tnie wstążkę nożem do steków. Nie masz dziś siły na kłótnie."
       },
       "right": {
-        "label": "Nóż do chleba",
-        "after": "Rwie tort. Wszyscy się śmieją. Nikomu nic się nie stało."
+        "label": "„Masz, bierz”",
+        "after": "„Ratujesz mi życie!”. Znika w tłumie."
       }
     },
     "sparks": {
@@ -139,7 +139,7 @@
       "text": "Sam leży na podłodze przy kwiatach. Usta ma sine. Krawat wrzyna mu się w szyję. Jego Epi-Pen masz w kieszeni.",
       "left": {
         "label": "Przetnij krawat",
-        "after": "Jedno cięcie. Łapie powietrze. Żyje i patrzy na ciebie."
+        "after": "Nożyczki, jedno cięcie. Łapie powietrze. Żyje i patrzy na ciebie."
       },
       "right": {
         "label": "Użyj Epi-Pena",
@@ -148,13 +148,13 @@
     },
     "bass": {
       "who": "DJ",
-      "text": "„Mówią, że bas jest słaby. Jedno słowo i ta sala zadrży”.",
+      "text": "Parkiet pustoszeje. DJ: „Za cicho. W aucie mam dwa wielkie głośniki, jedno słowo i je przyniosę”.",
       "left": {
-        "label": "Na maksa",
+        "label": "Przynieś je",
         "after": "Podłoga skacze. Wszyscy krzyczą z radości. Przez światła opada pył."
       },
       "right": {
-        "label": "Zostaw",
+        "label": "Zostaw tak",
         "after": "Ktoś krzyczy: „Nudy!”. DJ wzrusza ramionami."
       }
     },
@@ -226,7 +226,7 @@
       "chain": [
         "Zostawiłeś kwiaty",
         "Nie poluzowałeś mu krawata",
-        "Wybrałeś nóż do chleba",
+        "Oddałeś Emily nożyczki",
         "Nie wziąłeś tabletki i ręce ci drżały",
         "Zamknęło mu się gardło"
       ],
@@ -248,7 +248,7 @@
       "text": "Belka puściła. Dwieście kilo kryształu spadło na ciebie i Emily.",
       "chain": [
         "Przywiązałeś linę do starej belki",
-        "Podkręciłeś bas na maksa",
+        "Kazałeś przynieść wielkie głośniki",
         "Twoje iskry zapaliły tam pył",
         "Pobiegłeś pod niego po Emily"
       ],
@@ -259,7 +259,7 @@
       "text": "Wyjście było tuż obok. Sam je zablokowałeś po południu.",
       "chain": [
         "Zaryglowałeś drzwi",
-        "Zostawiłeś auto na drodze",
+        "Zostawiłeś auto pod drzwiami",
         "Rozstawiłeś stoły aż do drzwi",
         "Sufit zaczął się walić"
       ],
@@ -299,7 +299,7 @@
     },
     "half-a-wedding": {
       "title": "Pół wesela",
-      "text": "00:00. Dach wali się za tobą. Emily płacze obok, Sam leży na noszach. Lina, bas, rygiel. To twoje dzieło.",
+      "text": "00:00. Dach wali się za tobą. Emily płacze obok, Sam leży na noszach. Lina, głośniki, rygiel. To twoje dzieło.",
       "chain": [],
       "hint": "Dwa na trzy. Nieźle jak na drużbę."
     },
