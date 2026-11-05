@@ -6,16 +6,16 @@ export const UI = {
   gameTitle: { en: "Till Midnight", tr: "Gece Yarısına Kadar", pl: "Do północy" },
   tagline: {
     en: "You saw how you die. Swipe to reach midnight. One small choice can kill you hours later.",
-    tr: "Nasıl öleceğini gördün. Gece yarısına ulaşmak için kartları kaydır. Küçük bir karar saatler sonra seni öldürebilir.",
+    tr: "Nasıl öleceğini gördün. Gece yarısına kadar dayan. Küçücük bir seçim saatler sonra seni öldürebilir.",
     pl: "Widzisz, jak umierasz. Przesuwaj karty, żeby dotrwać do północy. Jeden drobny wybór może zabić kilka godzin później.",
   },
   chapters: { en: "Chapters", tr: "Bölümler", pl: "Rozdziały" },
-  continue: { en: "Open your eyes", tr: "Gözünü aç", pl: "Otwórz oczy" },
+  continue: { en: "Open your eyes", tr: "Gözlerini aç", pl: "Otwórz oczy" },
   skip: { en: "Skip", tr: "Geç", pl: "Pomiń" },
   deaths: { en: "Your deaths", tr: "Ölümlerin", pl: "Twoje śmierci" },
   found: { en: "Found", tr: "Bulunan", pl: "Znalezione" },
   back: { en: "Back", tr: "Geri", pl: "Wstecz" },
-  goal: { en: "Survive until 00:00", tr: "00:00'a kadar yaşa", pl: "Przetrwaj do 00:00" },
+  goal: { en: "Survive until 00:00", tr: "00:00'a kadar dayan", pl: "Przetrwaj do 00:00" },
   attempt: { en: "Try", tr: "Deneme", pl: "Próba" },
   chain: { en: "How death found you", tr: "Ölüm seni böyle buldu", pl: "Tak znalazła cię śmierć" },
   rewind: { en: "Rewind time", tr: "Zamanı geri sar", pl: "Cofnij czas" },
@@ -31,7 +31,7 @@ export const UI = {
   },
   shareOfPlayers: {
     en: "{percent}% of runs end this way.",
-    tr: "Oyunların %{percent}'i böyle bitiyor.",
+    tr: "Böyle biten oyunlar: %{percent}",
     pl: "{percent}% gier kończy się w ten sposób.",
   },
 } satisfies Record<string, Text>;

@@ -196,7 +196,7 @@
         "You crossed on red",
         "You didn't hear the horn"
       ],
-      "hint": "Without earbuds, you would have heard the horn."
+      "hint": "At least the music was good."
     },
     "stairs": {
       "title": "The Wet Step",
@@ -208,7 +208,7 @@
         "You chose the stairs",
         "Wet sole, freshly mopped step"
       ],
-      "hint": "Five minutes in the café would have dried your shoe. The elevator was safe today."
+      "hint": "You had no time to dry your shoe. Hope you made it, wherever you were going."
     },
     "balcony": {
       "title": "The Next Balcony",
@@ -220,7 +220,7 @@
         "You listened to your neighbour",
         "Twelfth floor"
       ],
-      "hint": "The man running behind you was bringing your keys."
+      "hint": "That man was bringing your keys. Good thing you outran him."
     },
     "kitchen": {
       "title": "A Glass of Water",
@@ -232,7 +232,7 @@
         "The oil caught fire",
         "You poured water on it"
       ],
-      "hint": "Water makes an oil fire explode. Covering the pan would have smothered it."
+      "hint": "You don’t pour water on burning oil. You were the last to find out."
     },
     "fuse": {
       "title": "The Bare Wire",
@@ -244,7 +244,7 @@
         "You didn't want to wait",
         "Damp floor, bare wire"
       ],
-      "hint": "Someone holding a torch would have seen that wire."
+      "hint": "The lights would have come back in an hour. But who has an hour?"
     },
     "railing": {
       "title": "The Railing",
@@ -256,7 +256,7 @@
         "You relaxed",
         "You stepped onto the balcony"
       ],
-      "hint": "You could have risked her anger and called her inside."
+      "hint": "Very romantic. For twelve floors."
     },
     "wardrobe": {
       "title": "The Wardrobe",
@@ -267,37 +267,37 @@
         "You panicked",
         "You pulled a heavy wardrobe alone"
       ],
-      "hint": "There was nobody at the door. Sometimes death only scares you."
+      "hint": "There was nobody at the door. The wardrobe got you anyway."
     },
     "panic": {
       "title": "The Cyclist",
       "text": "You stopped in the middle of a street and couldn't walk on. You never saw the cyclist.",
       "chain": ["You never calmed down", "You suspected everything", "You couldn't decide anymore"],
-      "hint": "Before 🧠 hits zero, take the chances to breathe: sit, sleep, talk."
+      "hint": "You escaped the bridge. A bicycle got you."
     },
     "collapse": {
       "title": "The Counter's Corner",
       "text": "In the kitchen your head spun, and the counter's corner was very close.",
       "chain": ["You didn't eat or rest", "You pushed yourself too hard", "Your body gave up"],
-      "hint": "When ❤️ drops, food and sleep will save you."
+      "hint": "You cheated death and skipped breakfast. Only one of those was smart."
     },
     "alone": {
       "title": "Nobody Called",
       "text": "You fell. You shouted for hours. There was nobody left to call you.",
       "chain": ["You pushed people away", "You ignored their calls", "Nobody came looking"],
-      "hint": "If 👥 hits zero, nobody is left to help you."
+      "hint": "You didn’t pick up. Eventually, they stopped calling."
     },
     "together": {
       "title": "Midnight",
       "text": "00:00. You are both alive. Elif says nothing. Neither do you. Death missed two people today.",
       "chain": [],
-      "hint": "You found the best ending."
+      "hint": "You found the best ending. There’s always tomorrow, though."
     },
     "survivor": {
       "title": "Midnight",
       "text": "00:00. You are alive. You saved nobody today, but you are here. Death got it wrong.",
       "chain": [],
-      "hint": "There is a better ending, with someone else alive."
+      "hint": "Congratulations, you survived. Alone."
     }
   }
 }

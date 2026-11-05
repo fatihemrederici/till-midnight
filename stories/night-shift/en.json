@@ -219,7 +219,7 @@
         "You ran the stairs you never dried",
         "Your foot went out from under you"
       ],
-      "hint": "Some chores only look like someone else’s job."
+      "hint": "Not your job, right?"
     },
     "shaft": {
       "title": "One Step Ahead",
@@ -230,7 +230,7 @@
         "You heard the doors and walked anyway",
         "One step too many"
       ],
-      "hint": "The dark is only deadly if you can’t see it."
+      "hint": "You left the flashlight on the shelf. It looked great there."
     },
     "spark": {
       "title": "Sweet Air",
@@ -241,7 +241,7 @@
         "For an hour the room filled with oxygen",
         "You touched a sparking plug"
       ],
-      "hint": "What did you leave hissing behind a bed?"
+      "hint": "You left a note for the morning. There is no morning."
     },
     "frame": {
       "title": "The Frame",
@@ -252,7 +252,7 @@
         "The door wouldn’t open",
         "You forced it"
       ],
-      "hint": "You had one hand free at 21:05. There is another way down, too."
+      "hint": "Flashlights don’t open doors. Now you know."
     },
     "iron": {
       "title": "Old Iron",
@@ -264,7 +264,7 @@
         "You ran",
         "The landing came away from the wall"
       ],
-      "hint": "You saved someone. Now save them slowly."
+      "hint": "You saved someone, congratulations. Now try doing it slowly."
     },
     "vision": {
       "title": "00:00",
@@ -276,7 +276,7 @@
         "You went back",
         "The clock said 00:00"
       ],
-      "hint": "Two hours earlier, it would have taken one sentence."
+      "hint": "“I’ll come with you” was free two hours ago."
     },
     "panic": {
       "title": "Which Way Out",
@@ -286,7 +286,7 @@
         "You stopped trusting your own eyes",
         "You sat down to think"
       ],
-      "hint": "Your mind is a meter too. Some choices give it back."
+      "hint": "You saw the future and still couldn’t find the exit."
     },
     "collapse": {
       "title": "Double Shift",
@@ -296,7 +296,7 @@
         "You carried too much, too far",
         "Your legs stopped listening"
       ],
-      "hint": "You can’t save anyone from the floor."
+      "hint": "You were going to be a hero. You fell asleep on the floor."
     },
     "alone": {
       "title": "Nobody Came",
@@ -306,25 +306,25 @@
         "They stopped listening to you",
         "Nobody looked for you"
       ],
-      "hint": "The truth still needs someone who believes you."
+      "hint": "You said all night it would fall. You were right. Nobody cares."
     },
     "everyone": {
       "title": "Everyone Out",
       "text": "00:00. Nora on one side, Halina on the other. The east wing folds in on itself. Halina turns her blind face to you. “See? On time.”",
       "chain": [],
-      "hint": "You found the best ending. Now find all the ways to die."
+      "hint": "The best ending. Don’t worry, there are plenty of ways to die."
     },
     "two-on-the-grass": {
       "title": "Two on the Grass",
       "text": "00:00. The east wing falls with a sound you already know. Nora’s hand is crushing yours.",
       "chain": [],
-      "hint": "Who else was still inside?"
+      "hint": "You’re both fine. How’s Room 7 doing?"
     },
     "survivor": {
       "title": "Alone on the Lawn",
       "text": "00:00. You’re alive. You don’t look at the third floor.",
       "chain": [],
-      "hint": "You could have brought someone out."
+      "hint": "You’re alive. You’ll never tell anyone how."
     }
   }
 }

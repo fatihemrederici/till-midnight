@@ -211,7 +211,7 @@
         "Pobiegłaś po mokrych schodach",
         "Noga uciekła ci spod ciała"
       ],
-      "hint": "Niektóre obowiązki tylko wyglądają na cudze."
+      "hint": "To nie twoja robota, prawda?"
     },
     "shaft": {
       "title": "Krok przed tobą",
@@ -222,7 +222,7 @@
         "Usłyszałaś drzwi i szłaś dalej",
         "O jeden krok za dużo"
       ],
-      "hint": "Ciemność zabija tylko wtedy, gdy jej nie widzisz."
+      "hint": "Latarka została na półce. Świetnie tam wyglądała."
     },
     "spark": {
       "title": "Słodkie powietrze",
@@ -233,7 +233,7 @@
         "Przez godzinę pokój napełniał się tlenem",
         "Dotknęłaś iskrzącej wtyczki"
       ],
-      "hint": "Co zostawiłaś syczące za łóżkiem?"
+      "hint": "Zostawiłaś notatkę na rano. Rana nie będzie."
     },
     "frame": {
       "title": "Framuga",
@@ -244,7 +244,7 @@
         "Drzwi się nie otworzyły",
         "Sforsowałaś je"
       ],
-      "hint": "O 21:05 miałaś jedną wolną rękę. Jest też inna droga na dół."
+      "hint": "Latarka nie otwiera drzwi. Już wiesz."
     },
     "iron": {
       "title": "Stare żelazo",
@@ -256,7 +256,7 @@
         "Pobiegłaś",
         "Podest oderwał się od ściany"
       ],
-      "hint": "Kogoś uratowałaś. Teraz uratuj go powoli."
+      "hint": "Uratowałaś kogoś, gratulacje. Teraz spróbuj powoli."
     },
     "vision": {
       "title": "00:00",
@@ -268,7 +268,7 @@
         "Wróciłaś",
         "Zegar wskazał 00:00"
       ],
-      "hint": "Dwie godziny wcześniej wystarczyłoby jedno zdanie."
+      "hint": "„Idę z tobą” dwie godziny temu nic nie kosztowało."
     },
     "panic": {
       "title": "Którędy do wyjścia",
@@ -278,7 +278,7 @@
         "Przestałaś ufać własnym oczom",
         "Usiadłaś, żeby pomyśleć"
       ],
-      "hint": "Twój rozum też ma swój licznik. Niektóre wybory go przywracają."
+      "hint": "Widziałaś przyszłość, a nie umiesz znaleźć wyjścia."
     },
     "collapse": {
       "title": "Podwójny dyżur",
@@ -288,31 +288,31 @@
         "Niosłaś za dużo i za daleko",
         "Nogi przestały cię słuchać"
       ],
-      "hint": "Z podłogi nikogo nie uratujesz."
+      "hint": "Miałaś być bohaterką. Zasnęłaś na podłodze."
     },
     "alone": {
       "title": "Nikt nie przyszedł",
       "text": "Krzyczysz spod tynku. Oddział słyszał twoje krzyki całą noc. Nikt nie przychodzi.",
       "chain": ["Raz za dużo ich przestraszyłaś", "Przestali cię słuchać", "Nikt cię nie szukał"],
-      "hint": "Nawet prawda potrzebuje kogoś, kto ci uwierzy."
+      "hint": "Całą noc mówiłaś, że runie. Miałaś rację. Nikogo to nie obchodzi."
     },
     "everyone": {
       "title": "Wszyscy na zewnątrz",
       "text": "00:00. Po jednej stronie Nora, po drugiej Halina. Wschodnie skrzydło składa się w sobie. Halina zwraca ku tobie niewidzące oczy. „Widzisz? Punktualnie”.",
       "chain": [],
-      "hint": "Masz najlepsze zakończenie. Teraz znajdź wszystkie sposoby na śmierć."
+      "hint": "Najlepsze zakończenie. Spokojnie, sposobów na śmierć jest jeszcze sporo."
     },
     "two-on-the-grass": {
       "title": "Dwie na trawie",
       "text": "00:00. Wschodnie skrzydło wali się z dźwiękiem, który już znasz. Nora miażdży ci dłoń.",
       "chain": [],
-      "hint": "Kto jeszcze został w środku?"
+      "hint": "Obie jesteście całe. A co tam w sali 7?"
     },
     "survivor": {
       "title": "Sama na trawniku",
       "text": "00:00. Żyjesz. Nie patrzysz na trzecie piętro.",
       "chain": [],
-      "hint": "Mogłaś kogoś wyprowadzić."
+      "hint": "Żyjesz. Nikomu nie powiesz jak."
     }
   }
 }

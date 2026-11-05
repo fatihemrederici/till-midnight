@@ -184,7 +184,7 @@
         "Przeszedłeś na czerwonym",
         "Nie usłyszałeś klaksonu"
       ],
-      "hint": "Bez słuchawek usłyszałbyś klakson."
+      "hint": "Przynajmniej muzyka była dobra."
     },
     "stairs": {
       "title": "Mokry stopień",
@@ -196,7 +196,7 @@
         "Wybrałeś schody",
         "Mokra podeszwa, świeżo umyty stopień"
       ],
-      "hint": "Pięć minut w kawiarni i but by wysechł. Winda była dziś bezpieczna."
+      "hint": "Nie miałeś czasu wysuszyć buta. Mam nadzieję, że zdążyłeś, dokądkolwiek biegłeś."
     },
     "balcony": {
       "title": "Sąsiedni balkon",
@@ -208,7 +208,7 @@
         "Posłuchałeś sąsiada",
         "Dwunaste piętro"
       ],
-      "hint": "Biegnący za tobą mężczyzna niósł twoje klucze."
+      "hint": "Ten mężczyzna niósł twoje klucze. Dobrze, że mu uciekłeś."
     },
     "kitchen": {
       "title": "Szklanka wody",
@@ -220,7 +220,7 @@
         "Olej się zapalił",
         "Zalałeś go wodą"
       ],
-      "hint": "Woda sprawia, że płonący olej wybucha. Trzeba było przykryć patelnię."
+      "hint": "Płonącego oleju nie gasi się wodą. Dowiedziałeś się ostatni."
     },
     "fuse": {
       "title": "Goły kabel",
@@ -232,7 +232,7 @@
         "Nie chciałeś czekać",
         "Wilgotna podłoga, goły kabel"
       ],
-      "hint": "Ktoś z latarką zauważyłby ten kabel."
+      "hint": "Światło wróciłoby za godzinę. Ale kto ma godzinę?"
     },
     "railing": {
       "title": "Barierka",
@@ -244,7 +244,7 @@
         "Odetchnąłeś z ulgą",
         "Wyszedłeś na balkon"
       ],
-      "hint": "Mogłeś zaryzykować jej złość i zawołać ją do środka."
+      "hint": "Bardzo romantycznie. Przez dwanaście pięter."
     },
     "wardrobe": {
       "title": "Szafa",
@@ -255,7 +255,7 @@
         "Spanikowałeś",
         "Sam ciągnąłeś ciężką szafę"
       ],
-      "hint": "Za drzwiami nikogo nie było. Śmierć czasem tylko straszy."
+      "hint": "Za drzwiami nikogo nie było. Szafa i tak cię dopadła."
     },
     "panic": {
       "title": "Rowerzysta",
@@ -265,31 +265,31 @@
         "Podejrzewałeś wszystko",
         "Nie umiałeś już decydować"
       ],
-      "hint": "Zanim 🧠 spadnie do zera, łap chwile oddechu: usiądź, prześpij się, porozmawiaj."
+      "hint": "Uciekłeś z mostu. Załatwił cię rower."
     },
     "collapse": {
       "title": "Róg blatu",
       "text": "W kuchni zakręciło ci się w głowie, a róg blatu był bardzo blisko.",
       "chain": ["Nie jadłeś i nie odpoczywałeś", "Przemęczyłeś się", "Ciało się poddało"],
-      "hint": "Gdy ❤️ spada, ratują cię jedzenie i sen."
+      "hint": "Oszukałeś śmierć i pominąłeś śniadanie. Tylko jedno z tych było mądre."
     },
     "alone": {
       "title": "Nikt nie zadzwonił",
       "text": "Upadłeś. Krzyczałeś godzinami. Nie było już nikogo, kto by zadzwonił.",
       "chain": ["Odpychałeś ludzi", "Nie odbierałeś telefonów", "Nikt cię nie szukał"],
-      "hint": "Gdy 👥 spadnie do zera, nikt ci nie pomoże."
+      "hint": "Nie odbierałeś. W końcu przestali dzwonić."
     },
     "together": {
       "title": "Północ",
       "text": "00:00. Oboje żyjecie. Elif milczy. Ty też. Śmierć przegapiła dziś dwie osoby.",
       "chain": [],
-      "hint": "Znalazłeś najlepsze zakończenie."
+      "hint": "Masz najlepsze zakończenie. Choć jutro też jest dzień."
     },
     "survivor": {
       "title": "Północ",
       "text": "00:00. Żyjesz. Dziś nikogo nie uratowałeś, ale jesteś tu. Śmierć się pomyliła.",
       "chain": [],
-      "hint": "Istnieje lepsze zakończenie: ktoś jeszcze przeżywa."
+      "hint": "Gratulacje, przeżyłeś. Sam."
     }
   }
 }
