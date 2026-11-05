@@ -23,3 +23,6 @@ __pycache__/
 .vscode/
 *.iml
 .DS_Store
+
+# Python aracının reddedilen son taslağı.
+ai-worker/last_draft.json
