@@ -2,10 +2,10 @@
   "formatVersion": 2,
   "id": "first-day",
   "start": {
-    "mind": 6,
-    "body": 6
+    "mind": 3,
+    "body": 3
   },
-  "maxMeter": 6,
+  "maxMeter": 5,
   "meters": [
     {
       "id": "mind",
@@ -56,9 +56,6 @@
         }
       },
       "right": {
-        "effects": {
-          "mind": -1
-        },
         "set": {
           "fled": true
         }
@@ -94,9 +91,6 @@
         }
       },
       "right": {
-        "effects": {
-          "body": -1
-        },
         "set": {
           "noKeys": true
         },
@@ -144,8 +138,8 @@
         }
       },
       "right": {
-        "effects": {
-          "mind": -1
+        "set": {
+          "sick": true
         }
       }
     },
@@ -193,9 +187,6 @@
         ]
       },
       "right": {
-        "effects": {
-          "body": -1
-        },
         "deaths": [
           {
             "ending": "office-stairs",
@@ -213,7 +204,7 @@
       "place": "street",
       "emoji": "💊",
       "when": {
-        "work": false
+        "sick": true
       },
       "left": {
         "effects": {
@@ -242,9 +233,6 @@
         }
       ],
       "left": {
-        "effects": {
-          "body": -1
-        },
         "deaths": [
           {
             "ending": "stairs",
@@ -577,9 +565,6 @@
         "together": false
       },
       "left": {
-        "effects": {
-          "body": -1
-        },
         "set": {
           "momComing": true
         }
