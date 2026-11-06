@@ -8,12 +8,16 @@ import { ChoiceCost } from "../components/ChoiceCost";
 import { SwipeCard } from "../components/SwipeCard";
 // Motor.
 import { canAfford, currentCard } from "../game/engine";
+// Biten göstergelerin ekran etkileri.
+import { Eyelids, Whispers } from "../components/MeterEffects";
 // Saat hesapları.
 import { dayProgress } from "../game/clock";
 // Tipler.
 import type { GameState, Side } from "../game/types";
 // Sesli geri bildirim.
 import { useGameFeedback } from "../hooks/useGameFeedback";
+// Biten göstergelerin etkisi.
+import { useMeterEffects } from "../hooks/useMeterEffects";
 // Kaydırma davranışı.
 import { useSwipe } from "../hooks/useSwipe";
 // Dil yardımcısı.
@@ -42,11 +46,21 @@ export function PlayScreen({
   const swipe = useSwipe(onChoose, isLocked);
   // Kalp, uğultu ve darbe.
   const { danger, hit } = useGameFeedback(story, state, card.id);
+  // Biten göstergenin etkisi.
+  const effects = useMeterEffects(story, state);
   // Kaydırılan seçimin etkileyeceği göstergeler.
   const affected = swipe.side ? Object.keys(card[swipe.side].effects ?? {}) : [];
 
   return (
-    <div className="app" data-danger={state.crisis ? "high" : danger}>
+    <div
+      className="app"
+      data-danger={state.crisis ? "high" : danger}
+      data-mind={effects.mind}
+      data-body={effects.body}
+      data-trust={effects.trust}
+    >
+      <Eyelids level={effects.body} />
+      <Whispers level={effects.trust} language={language} />
       {/* Sarsıntı katmanı: key değişince animasyon baştan başlar. */}
       <div className="play" key={hit.count} data-shake={hit.count > 0}>
         <div className="top">

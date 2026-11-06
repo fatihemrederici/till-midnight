@@ -33,7 +33,9 @@ public record Story(
         List<Ending> endings) {
 
     // Bir gösterge. Sıfıra inince crisis kartı varsa oyuncuya bir şans verilir. Yoksa ending ile biter.
-    public record Meter(String id, String emoji, Map<String, String> label, String ending, Card crisis) {}
+    // effect, gösterge düşünce ekrandaki etkiyi seçer: mind, body ya da trust.
+    public record Meter(
+            String id, String emoji, Map<String, String> label, String ending, Card crisis, String effect) {}
 
     // Bir kart. when doluysa sadece koşul tutarsa çıkar.
     public record Card(

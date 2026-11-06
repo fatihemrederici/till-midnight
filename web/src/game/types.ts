@@ -44,6 +44,8 @@ export type Meter = {
   ending: string;
   // Sıfıra inince çıkan kart. Yoksa gösterge doğrudan oyunu bitirir.
   crisis?: Omit<Card, "time">;
+  // Gösterge düşünce ekrandaki etki.
+  effect?: "mind" | "body" | "trust";
 };
 
 // Bir son.

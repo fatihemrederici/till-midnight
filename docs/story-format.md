@@ -137,3 +137,5 @@ The player pays with another meter, and the empty meter goes back to 1. A meter 
 The crisis text lives in the language files under `crises`, using the meter's id.
 
 Any choice can have `requires`: The player needs at least that much in those meters to pick it. One side of a normal card must always be free. In a crisis, both sides can have `requires`.
+
+A meter can also set `effect` to `mind`, `body` or `trust` for its screen and sound effect when it runs low.

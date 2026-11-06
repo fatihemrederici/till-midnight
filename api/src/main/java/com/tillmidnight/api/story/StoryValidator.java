@@ -106,6 +106,10 @@ public class StoryValidator {
 
         // Kriz kartları: Metinleri ve iki seçimi olmalı.
         for (Story.Meter meter : story.meters()) {
+            // Ekran etkisi bilinen türlerden olmalı.
+            if (meter.effect() != null && !List.of("mind", "body", "trust").contains(meter.effect())) {
+                errors.add("Meter " + meter.id() + ": unknown effect " + meter.effect());
+            }
             if (meter.crisis() != null) {
                 checkCrisis(meter.crisis(), "Crisis " + meter.id(), meterIds, endingIds, errors);
             }
