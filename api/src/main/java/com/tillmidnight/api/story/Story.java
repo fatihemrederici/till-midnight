@@ -58,6 +58,8 @@ public record Story(
             String shownTime,
             String place,
             String emoji,
+            // Kartın fotoğrafı: stories/<bölüm>/images/ klasöründeki dosyanın adı. Yoksa emoji görünür.
+            String image,
             Map<String, String> who,
             Map<String, String> text,
             List<Variant> variants,

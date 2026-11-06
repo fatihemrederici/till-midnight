@@ -38,6 +38,8 @@ export type Card = {
   shownTime?: string;
   place: Place;
   emoji: string;
+  // Kartın fotoğrafı: Bölümün images klasöründeki dosya. Yoksa emoji görünür.
+  image?: string;
   who: Text;
   text: Text;
   variants?: { when: Condition; text: Text }[];

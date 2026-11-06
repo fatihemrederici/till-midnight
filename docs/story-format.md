@@ -60,6 +60,7 @@ A card:
   "time": "12:30",
   "place": "home",
   "emoji": "🛗",
+  "image": "stairs.jpg",
   "when": { "noKeys": false },
   "variants": [{ "when": { "work": true } }],
   "left": {
@@ -71,6 +72,7 @@ A card:
 ```
 
 - `place`: `street`, `home` or `work`. A meter that runs out here uses this place's death.
+- `image`: Optional. A photo in the chapter's `images/` folder, like `stairs.jpg`. The game shows it instead of the emoji. The API serves it at `/stories/{chapterId}/images/{file}`, and the loader stops if the file is missing.
 - `shownTime`: Optional. The time the screen shows when it differs from the real one, like a clock that runs fast.
 - `when`: The card only appears if the flags match.
 - `variants`: The first variant whose `when` matches replaces the card's text. This is how an earlier choice comes back later.

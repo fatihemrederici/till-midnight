@@ -19,6 +19,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 // Anahtar-değer arayüzü.
 import java.util.Map;
+// Bulunamayabilecek bir değer.
+import java.util.Optional;
 // Jackson ayarı: JSON'dan okuma özellikleri.
 import tools.jackson.databind.DeserializationFeature;
 // JSON ağacı.
@@ -66,7 +68,28 @@ public final class StoryLoader {
             throw new IllegalArgumentException("Chapter folder " + id + " has a different id in story.json");
         }
         // Birleştir.
-        return build(rules, texts);
+        Story story = build(rules, texts);
+        // Yazılan her fotoğraf gerçekten var olmalı, yoksa oyunda boş bir çerçeve görünür.
+        for (Story.Card card : story.cards()) {
+            if (card.image() != null && StoryLoader.class.getClassLoader().getResource(folder + "images/" + card.image()) == null) {
+                throw new IllegalArgumentException("Card " + card.id() + ": image not found: " + card.image());
+            }
+        }
+        return story;
+    }
+
+    // Bir bölümün fotoğrafını okur. Bölüm ya da dosya yoksa boş döner.
+    public static Optional<byte[]> readImage(String chapterId, String file) {
+        // Dosya adı sadece harf, rakam ve tire olabilir: Başka klasöre çıkılamasın.
+        if (!chapterId.matches("[a-z0-9-]+") || !file.matches("[a-z0-9-]+\\.jpg")) {
+            return Optional.empty();
+        }
+        // try (...): iş bitince dosyayı otomatik kapatır.
+        try (InputStream in = StoryLoader.class.getClassLoader().getResourceAsStream(ROOT + chapterId + "/images/" + file)) {
+            return in == null ? Optional.empty() : Optional.of(in.readAllBytes());
+        } catch (IOException exception) {
+            throw new UncheckedIOException(exception);
+        }
     }
 
     // Python'dan gelen {"rules": {...}, "texts": {"en": {...}}} paketini okur.

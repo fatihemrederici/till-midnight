@@ -152,6 +152,10 @@ public class StoryValidator {
             } else {
                 previousTime = card.time();
             }
+            // Fotoğraf adı: küçük harf, rakam, tire ve .jpg.
+            if (card.image() != null && !card.image().matches("[a-z0-9-]+\\.jpg")) {
+                errors.add(name + ": image must look like bus-stop.jpg");
+            }
             // Ekranda gösterilen saat de saat biçiminde olmalı.
             if (card.shownTime() != null && !card.shownTime().matches("[0-2][0-9]:[0-5][0-9]")) {
                 errors.add(name + ": shownTime must look like 14:30");

@@ -17,6 +17,7 @@ type Swipe = Pick<ReturnType<typeof useSwipe>, "dx" | "moving" | "transform" | "
 // Parmakla kaydırılan kart ve arkasındaki kart.
 export function SwipeCard({
   card,
+  images,
   hallucination,
   burst,
   flags,
@@ -24,6 +25,8 @@ export function SwipeCard({
   swipe,
 }: {
   card: Card;
+  // Bölümün fotoğraf klasörünün adresi.
+  images: string;
   // Akıl düşünce kart metninin yerine bir anlığına geçen cümle.
   hallucination: string | null;
   // Yazının üstündeki parazit.
@@ -46,8 +49,15 @@ export function SwipeCard({
         {...swipe.handlers}
       >
         <div className="who">{say(card.who, language)}</div>
-        <div className="face" aria-hidden="true">
-          {card.emoji}
+        {/* Fotoğraf varsa bantla tutturulmuş bir baskı, yoksa emoji. */}
+        <div className="face" aria-hidden="true" data-photo={Boolean(card.image)}>
+          {card.image ? (
+            <div className="photo">
+              <img src={`${images}/${card.image}`} alt="" draggable={false} />
+            </div>
+          ) : (
+            card.emoji
+          )}
         </div>
         {/* Yazı bir anlığına parazitlenir ve başka bir cümleye dönüşür. */}
         <div className="text-box">

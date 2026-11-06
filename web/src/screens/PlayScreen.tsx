@@ -28,6 +28,11 @@ import { say } from "../i18n/languages";
 import { UI } from "../i18n/ui";
 // Ortak özellikler.
 import type { ScreenProps } from "./types";
+// Fotoğrafları önceden yüklemek için.
+import { useEffect } from "react";
+
+// Bölümün fotoğraflarının adresi.
+const imagesOf = (storyId: string) => `/stories/${storyId}/images`;
 
 // Son saatin başladığı dakika: 23:00.
 const LAST_HOUR = 23 * 60;
@@ -56,6 +61,12 @@ export function PlayScreen({
   const effects = useMeterEffects(story, state);
   // Görünen ölüm cümlesi.
   const hallucination = effects.omen === null ? null : omenText(story, effects.omen, language);
+  // Bütün fotoğrafları baştan indir: Kart açılınca boş çerçeve görünmesin.
+  useEffect(() => {
+    story.cards.forEach((item) => {
+      if (item.image) new Image().src = `${imagesOf(story.id)}/${item.image}`;
+    });
+  }, [story]);
   // Kaydırılan seçimin etkileyeceği göstergeler.
   const affected = swipe.side ? Object.keys(card[swipe.side].effects ?? {}) : [];
 
@@ -102,6 +113,7 @@ export function PlayScreen({
 
         <SwipeCard
           card={card}
+          images={imagesOf(story.id)}
           hallucination={hallucination}
           burst={effects.burst}
           flags={state.flags}

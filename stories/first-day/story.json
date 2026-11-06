@@ -50,6 +50,7 @@
       "time": "08:14",
       "place": "street",
       "emoji": "🚌",
+      "image": "bus.jpg",
       "left": {
         "set": {
           "elif": true
@@ -66,6 +67,7 @@
       "time": "08:31",
       "place": "street",
       "emoji": "🚨",
+      "image": "sirens.jpg",
       "left": {
         "effects": {
           "mind": 1
@@ -85,6 +87,7 @@
       "time": "08:40",
       "place": "street",
       "emoji": "🚦",
+      "image": "red-light.jpg",
       "left": {
         "effects": {
           "mind": -1
@@ -110,6 +113,7 @@
       "time": "08:50",
       "place": "street",
       "emoji": "☕",
+      "image": "cafe.jpg",
       "left": {
         "effects": {
           "mind": 1
@@ -129,6 +133,7 @@
       "time": "09:15",
       "place": "street",
       "emoji": "📱",
+      "image": "work-call.jpg",
       "left": {
         "effects": {
           "mind": 1
@@ -148,6 +153,7 @@
       "time": "09:40",
       "place": "street",
       "emoji": "🧥",
+      "image": "elif-asks.jpg",
       "when": {
         "elif": true
       },
@@ -170,6 +176,7 @@
       "time": "10:00",
       "place": "work",
       "emoji": "🏢",
+      "image": "office.jpg",
       "when": {
         "work": true
       },
@@ -203,6 +210,7 @@
       "time": "11:30",
       "place": "street",
       "emoji": "💊",
+      "image": "pharmacy.jpg",
       "when": {
         "sick": true
       },
@@ -225,6 +233,7 @@
       "time": "12:30",
       "place": "home",
       "emoji": "🛗",
+      "image": "stairs.jpg",
       "variants": [
         {
           "when": {
@@ -253,6 +262,7 @@
       "time": "12:45",
       "place": "home",
       "emoji": "🔑",
+      "image": "locked.jpg",
       "when": {
         "noKeys": true
       },
@@ -280,6 +290,7 @@
       "time": "13:00",
       "place": "home",
       "emoji": "🪴",
+      "image": "railing-first.jpg",
       "left": {
         "effects": {
           "mind": 1
@@ -303,6 +314,7 @@
       "time": "14:00",
       "place": "home",
       "emoji": "🍳",
+      "image": "food.jpg",
       "left": {
         "effects": {
           "body": 1
@@ -322,6 +334,7 @@
       "time": "14:06",
       "place": "home",
       "emoji": "📞",
+      "image": "mom.jpg",
       "when": {
         "pan": true
       },
@@ -344,6 +357,7 @@
       "time": "14:28",
       "place": "home",
       "emoji": "🔥",
+      "image": "pan-fire.jpg",
       "when": {
         "panFire": true
       },
@@ -365,6 +379,7 @@
       "time": "15:10",
       "place": "home",
       "emoji": "🛏️",
+      "image": "sleep.jpg",
       "left": {
         "effects": {
           "body": 2,
@@ -382,6 +397,7 @@
       "time": "16:00",
       "place": "home",
       "emoji": "🔒",
+      "image": "lock-up.jpg",
       "left": {
         "effects": {
           "mind": 1
@@ -401,6 +417,7 @@
       "time": "16:40",
       "place": "home",
       "emoji": "🚿",
+      "image": "shower.jpg",
       "left": {
         "effects": {
           "body": 1
@@ -426,6 +443,7 @@
       "time": "17:40",
       "place": "home",
       "emoji": "📱",
+      "image": "elif-news.jpg",
       "when": {
         "elif": true,
         "doubted": false
@@ -456,6 +474,7 @@
       "time": "17:40",
       "place": "home",
       "emoji": "👮",
+      "image": "police.jpg",
       "when": {
         "fled": true
       },
@@ -478,6 +497,7 @@
       "time": "19:30",
       "place": "home",
       "emoji": "💡",
+      "image": "blackout.jpg",
       "variants": [
         {
           "when": {
@@ -510,6 +530,7 @@
       "time": "21:00",
       "place": "home",
       "emoji": "📺",
+      "image": "news-list.jpg",
       "variants": [
         {
           "when": {
@@ -536,6 +557,7 @@
       "time": "22:00",
       "place": "home",
       "emoji": "🌙",
+      "image": "elif-air.jpg",
       "when": {
         "together": true
       },
@@ -561,6 +583,7 @@
       "time": "22:00",
       "place": "home",
       "emoji": "📞",
+      "image": "mom-night.jpg",
       "when": {
         "together": false
       },
@@ -580,6 +603,7 @@
       "time": "22:30",
       "place": "home",
       "emoji": "💊",
+      "image": "night-pill.jpg",
       "when": {
         "pill": true
       },
@@ -602,6 +626,7 @@
       "time": "23:00",
       "place": "home",
       "emoji": "😴",
+      "image": "drowsy.jpg",
       "left": {
         "effects": {
           "body": 1
@@ -643,6 +668,7 @@
       "time": "23:40",
       "place": "home",
       "emoji": "⚠️",
+      "image": "railing.jpg",
       "when": {
         "together": true,
         "outside": true,
@@ -673,6 +699,7 @@
       "time": "23:40",
       "place": "home",
       "emoji": "🚪",
+      "image": "door.jpg",
       "when": {
         "together": false
       },
@@ -700,6 +727,7 @@
       "time": "23:55",
       "place": "home",
       "emoji": "🕛",
+      "image": "midnight.jpg",
       "shownTime": "00:00",
       "left": {
         "deaths": [

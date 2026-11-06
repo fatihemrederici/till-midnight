@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 // Sahte POST isteği oluşturur.
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 // Cevaptaki JSON alanlarını kontrol eder.
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 // HTTP durum kodunu kontrol eder.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -203,5 +204,15 @@ class GameApiTest {
         return mockMvc.perform(post("/runs").contentType(MediaType.APPLICATION_JSON).content("""
                 {"storyId": "first-day", "storyVersion": "%s", "runId": "%s", "playerId": "%s", "choices": [%s]}
                 """.formatted(version, runId, player, choices)));
+    }
+
+    // Kartın fotoğrafı JPEG olarak gelir; başka klasöre çıkmaya çalışan istek bulunamaz.
+    @Test
+    void servesCardImagesSafely() throws Exception {
+        mockMvc.perform(get("/stories/first-day/images/bus.jpg"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("image/jpeg"));
+        mockMvc.perform(get("/stories/first-day/images/..%2Fstory.json")).andExpect(status().isNotFound());
+        mockMvc.perform(get("/stories/first-day/images/ghost.jpg")).andExpect(status().isNotFound());
     }
 }
