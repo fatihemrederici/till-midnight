@@ -5,9 +5,11 @@ import { type Level, setBreathing, setRinging, setWhispering, stopMoods } from "
 // Tipler.
 import type { GameState, Meter, Story } from "../game/types";
 
+// Etkilerin başladığı gösterge değeri.
+const EFFECT_LIMIT = 2;
 // Halüsinasyonun ne zaman başlayıp ne kadar süreceği.
 const HALLUCINATION_DELAY_MS = 900;
-const HALLUCINATION_MS = 850;
+const HALLUCINATION_MS = 1150;
 // Fısıltı, sonuç cümlesi okunduktan sonra gelir.
 const WHISPER_DELAY_MS = 1900;
 const WHISPER_MS = 3000;
@@ -61,9 +63,11 @@ export function useMeterEffects(story: Story, state: GameState) {
 
   // Göstergeler değişince düşüş etkilerini başlat.
   useEffect(() => {
-    // Gösterge az önce düştü mü?
+    // Gösterge az önce düştü mü? Etkiler sadece gösterge 2 ve altına inince çalışır.
     const dropped = (meter?: Meter) =>
-      meter !== undefined && state.meters[meter.id] < previous.current[meter.id];
+      meter !== undefined &&
+      state.meters[meter.id] < previous.current[meter.id] &&
+      state.meters[meter.id] <= EFFECT_LIMIT;
     // Bekleyen zamanlayıcılar.
     const timers: number[] = [];
     // Sağlık: Göz bir kez kapanıp açılır. Sona yaklaştıkça daha derin.

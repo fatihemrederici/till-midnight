@@ -1,5 +1,7 @@
 // Tipler.
 import type { Card, Condition, Language } from "../game/types";
+// Televizyon paraziti.
+import { TvStatic } from "./TvStatic";
 // Motor.
 import { cardText } from "../game/engine";
 // Dil yardımcısı.
@@ -40,6 +42,8 @@ export function SwipeCard({
         style={{ transform: swipe.transform }}
         {...swipe.handlers}
       >
+        {/* Halüsinasyon geldiğinde kart bir an televizyon paraziti olur. */}
+        {hallucination !== null && <TvStatic />}
         <div className="who">{say(card.who, language)}</div>
         <div className="face" aria-hidden="true">
           {card.emoji}

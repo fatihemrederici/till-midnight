@@ -126,6 +126,8 @@ export function PlayScreen({
             className="pick l"
             aria-disabled={isLocked("left")}
             onClick={() => swipe.fling("left")}
+            onMouseEnter={() => swipe.setHover("left")}
+            onMouseLeave={() => swipe.setHover(null)}
           >
             ← {say(card.left.label, language)}
             <ChoiceCost story={story} choice={card.left} locked={isLocked("left")} />
@@ -134,6 +136,8 @@ export function PlayScreen({
             className="pick r"
             aria-disabled={isLocked("right")}
             onClick={() => swipe.fling("right")}
+            onMouseEnter={() => swipe.setHover("right")}
+            onMouseLeave={() => swipe.setHover(null)}
           >
             {say(card.right.label, language)} →
             <ChoiceCost story={story} choice={card.right} locked={isLocked("right")} />

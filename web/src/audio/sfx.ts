@@ -25,6 +25,8 @@ export const sfx = {
     tone(740, 370, 0.3, 0.14, "sawtooth", 0.34);
     tone(70, 35, 0.6, 0.5);
   },
+  // Televizyon paraziti.
+  static: () => noise(0.32, 0.16, 4200, "highpass"),
   // Kehanetteki her görüntü: Darbe ve cızırtı.
   flash: () => {
     tone(70, 30, 0.5, 0.5);

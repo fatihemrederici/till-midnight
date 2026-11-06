@@ -23,6 +23,8 @@ export function useSwipe(onChoose: (side: Side) => void, isLocked: (side: Side) 
   const [moving, setMoving] = useState(false);
   // Kart uçuyor mu? Uçarken yeni dokunuş alınmaz.
   const [leaving, setLeaving] = useState<Side | null>(null);
+  // Farenin üzerinde durduğu seçim. Tarayıcıda kaydırmadan önizleme sağlar.
+  const [hover, setHover] = useState<Side | null>(null);
   // Parmağın başladığı yer.
   const startX = useRef(0);
   // Karar eşiğini geçti mi? Tık sesi bir kez çalsın diye.
@@ -50,6 +52,7 @@ export function useSwipe(onChoose: (side: Side) => void, isLocked: (side: Side) 
       () => {
         setLeaving(null);
         setDx(0);
+        setHover(null);
         past.current = false;
         onChoose(side);
       },
@@ -104,13 +107,15 @@ export function useSwipe(onChoose: (side: Side) => void, isLocked: (side: Side) 
   };
 
   // Kartın anlık dönüşümü.
+  const hoverShift = !moving && hover && !isLocked(hover) ? (hover === "right" ? 22 : -22) : 0;
+  const shift = dx + hoverShift;
   const transform = leaving
     ? `translateX(${(leaving === "right" ? 1 : -1) * (window.innerWidth + 150)}px) rotate(${leaving === "right" ? 22 : -22}deg)`
-    : `translateX(${dx}px) rotate(${dx / 18}deg)`;
+    : `translateX(${shift}px) rotate(${shift / 18}deg)`;
 
   // Sürüklenen yön. Küçük titremeler sayılmaz.
-  const side: Side | null = Math.abs(dx) > 14 ? (dx > 0 ? "right" : "left") : null;
+  const side: Side | null = Math.abs(dx) > 14 ? (dx > 0 ? "right" : "left") : hover;
 
   // Ekranın ihtiyacı olanları döndür.
-  return { dx, side, moving, transform, handlers, fling };
+  return { dx, side, moving, transform, handlers, fling, setHover };
 }
