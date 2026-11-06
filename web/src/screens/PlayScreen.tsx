@@ -9,7 +9,7 @@ import { SwipeCard } from "../components/SwipeCard";
 // Motor.
 import { canAfford, currentCard } from "../game/engine";
 // Biten göstergelerin ekran etkileri.
-import { Eyelids, Whispers } from "../components/MeterEffects";
+import { Blink, Eyelids } from "../components/MeterEffects";
 // Saat hesapları.
 import { dayProgress } from "../game/clock";
 // Tipler.
@@ -24,6 +24,8 @@ import { useSwipe } from "../hooks/useSwipe";
 import { say } from "../i18n/languages";
 // Yazılar.
 import { UI } from "../i18n/ui";
+// Biten göstergelerin cümleleri.
+import { HALLUCINATIONS, WHISPERS } from "../i18n/whispers";
 // Ortak özellikler.
 import type { ScreenProps } from "./types";
 
@@ -48,6 +50,15 @@ export function PlayScreen({
   const { danger, hit } = useGameFeedback(story, state, card.id);
   // Biten göstergenin etkisi.
   const effects = useMeterEffects(story, state);
+  // Görünen halüsinasyon ve fısıltı cümlesi.
+  const hallucination =
+    effects.hallucination === null
+      ? null
+      : HALLUCINATIONS[language][effects.hallucination % HALLUCINATIONS[language].length];
+  const whisper =
+    effects.whisper === null
+      ? null
+      : `“${WHISPERS[language][effects.whisper % WHISPERS[language].length]}”`;
   // Kaydırılan seçimin etkileyeceği göstergeler.
   const affected = swipe.side ? Object.keys(card[swipe.side].effects ?? {}) : [];
 
@@ -58,9 +69,11 @@ export function PlayScreen({
       data-mind={effects.mind}
       data-body={effects.body}
       data-trust={effects.trust}
+      key={`fade-${effects.fade}`}
+      data-fade={effects.fade > 0}
     >
       <Eyelids level={effects.body} />
-      <Whispers level={effects.trust} language={language} />
+      <Blink count={effects.blink.count} deep={effects.blink.deep} />
       {/* Sarsıntı katmanı: key değişince animasyon baştan başlar. */}
       <div className="play" key={hit.count} data-shake={hit.count > 0}>
         <div className="top">
@@ -88,13 +101,20 @@ export function PlayScreen({
         <Meters story={story} state={state} language={language} affected={affected} hit={hit.ids} />
 
         {/* Önceki seçimin sonucu. */}
-        <p className="after" key={`after-${card.id}`} aria-live="polite">
-          {state.after ? say(state.after, language) : ""}
+        {/* Güven düşünce sonuç cümlesinden sonra aynı yerde bir fısıltı belirir. */}
+        <p
+          className="after"
+          key={`after-${card.id}-${whisper ? "whisper" : "text"}`}
+          data-whisper={whisper !== null}
+          aria-live="polite"
+        >
+          {whisper ?? (state.after ? say(state.after, language) : "")}
         </p>
 
         <SwipeCard
           card={card}
           crisis={state.crisis !== null}
+          hallucination={hallucination}
           flags={state.flags}
           language={language}
           swipe={swipe}

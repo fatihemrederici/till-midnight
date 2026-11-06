@@ -14,12 +14,15 @@ type Swipe = Pick<ReturnType<typeof useSwipe>, "dx" | "moving" | "transform" | "
 export function SwipeCard({
   card,
   crisis,
+  hallucination,
   flags,
   language,
   swipe,
 }: {
   card: Omit<Card, "time">;
   crisis: boolean;
+  // Akıl düşünce kart metninin yerine bir anlığına geçen cümle.
+  hallucination: string | null;
   flags: Condition;
   language: Language;
   swipe: Swipe;
@@ -41,7 +44,9 @@ export function SwipeCard({
         <div className="face" aria-hidden="true">
           {card.emoji}
         </div>
-        <p className="text">{say(cardText(card, flags), language)}</p>
+        <p className="text" data-hallucination={hallucination !== null}>
+          {hallucination ?? say(cardText(card, flags), language)}
+        </p>
         {/* Sürüklerken seçimin yazısı. Kart sola kayarken sağ kenarı ekranda kalır, bu yüzden yazı ters kenarda. */}
         <div className="tag left" style={{ opacity: dx < 0 ? Math.min(1, -dx / 60) : 0 }}>
           {say(card.left.label, language)}
