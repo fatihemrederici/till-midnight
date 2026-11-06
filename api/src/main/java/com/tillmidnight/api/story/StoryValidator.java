@@ -152,6 +152,10 @@ public class StoryValidator {
             } else {
                 previousTime = card.time();
             }
+            // Ekranda gösterilen saat de saat biçiminde olmalı.
+            if (card.shownTime() != null && !card.shownTime().matches("[0-2][0-9]:[0-5][0-9]")) {
+                errors.add(name + ": shownTime must look like 14:30");
+            }
             // Metinler.
             checkText(card.who(), name + " who", errors);
             checkText(card.text(), name + " text", errors);

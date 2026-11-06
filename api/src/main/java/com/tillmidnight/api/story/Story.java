@@ -51,9 +51,11 @@ public record Story(
     public record Meter(String id, String emoji, Map<String, String> label, Map<String, String> endings) {}
 
     // Bir kart. when doluysa sadece koşul tutarsa çıkar. place: sokak, ev ya da iş.
+    // shownTime: Ekranda gösterilen saat, gerçek saatten farklıysa. Örneğin ileri giden bir saat.
     public record Card(
             String id,
             String time,
+            String shownTime,
             String place,
             String emoji,
             Map<String, String> who,

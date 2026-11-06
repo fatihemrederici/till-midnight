@@ -71,6 +71,7 @@ A card:
 ```
 
 - `place`: `street`, `home` or `work`. A meter that runs out here uses this place's death.
+- `shownTime`: Optional. The time the screen shows when it differs from the real one, like a clock that runs fast.
 - `when`: The card only appears if the flags match.
 - `variants`: The first variant whose `when` matches replaces the card's text. This is how an earlier choice comes back later.
 - `effects`: Meter changes. Values stay between 0 and `maxMeter`.

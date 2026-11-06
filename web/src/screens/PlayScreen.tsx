@@ -41,8 +41,9 @@ export function PlayScreen({
 }: ScreenProps & { state: GameState; tries: number; onChoose: (side: Side) => void }) {
   // Şu anki kart.
   const card = currentCard(story, state);
-  // Kartın saati.
+  // Kartın gerçek saati ve ekranda görünen saati. Mutfak saati gibi yalan söyleyebilir.
   const time = card.time;
+  const shown = card.shownTime ?? time;
   // Parmak, düğme ve klavye.
   const swipe = useSwipe(onChoose);
   // Son saat: 23:00'ten sonra.
@@ -72,7 +73,7 @@ export function PlayScreen({
         <div className="top">
           {/* Akıl bitince saat bir an gece yarısını gösterir. */}
           <div className="time" key={time} data-lie={effects.clockLie}>
-            {effects.clockLie ? "00:00" : time}
+            {effects.clockLie ? "00:00" : shown}
           </div>
           <Controls language={language} onLanguage={onLanguage} />
         </div>

@@ -276,7 +276,8 @@
           {
             "ending": "balcony",
             "when": {
-              "pill": true
+              "pill": true,
+              "ear": true
             }
           }
         ]
@@ -692,6 +693,7 @@
       "time": "23:55",
       "place": "home",
       "emoji": "🕛",
+      "shownTime": "00:00",
       "left": {
         "deaths": [
           {
@@ -700,12 +702,19 @@
               "candle": true,
               "sealed": true
             }
+          },
+          {
+            "ending": "last-glass",
+            "when": {
+              "wine": true,
+              "pill": true
+            }
           }
         ]
       },
       "right": {
         "effects": {
-          "mind": -1
+          "mind": -2
         }
       }
     }

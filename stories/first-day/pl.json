@@ -394,14 +394,14 @@
       "who": "Zegar w kuchni",
       "text": "00:00. Czy to koniec?",
       "left": {
-        "label": "„Koniec!” Otwórz okna",
-        "past": "Myśląc, że jest północ, otworzyłeś okna na oścież",
-        "after": "Chłodne powietrze uderza cię w twarz."
+        "label": "„Koniec!” Otwórz okna, świętuj",
+        "past": "Myśląc, że jest północ, zacząłeś świętować",
+        "after": "Chłodne powietrze uderza cię w twarz. Zaczynasz się śmiać."
       },
       "right": {
         "label": "Sprawdź telefon",
-        "past": "Zaufałeś telefonowi, nie zegarowi",
-        "after": "23:55. Jeszcze pięć minut. Przyciskasz telefon do piersi i czekasz."
+        "past": "Liczyłeś ostatnie pięć minut sekunda po sekundzie",
+        "after": "23:55. Jeszcze pięć minut. Liczysz każdą sekundę."
       }
     }
   },
@@ -426,7 +426,7 @@
     },
     "balcony": {
       "title": "Sąsiedni balkon",
-      "text": "Przerwa była szersza, niż się wydawało. W połowie drogi środek uspokajający zakręcił ci w głowie.",
+      "text": "Sąsiadka krzyknęła: „Nie tędy!”. Muzyka wciąż grała ci w uszach. W połowie drogi środek uspokajający zakręcił ci w głowie.",
       "hint": "Sąsiadka chciała dobrze. To niczego nie zmienia.",
       "omen": "Daleko w dół."
     },
@@ -474,7 +474,7 @@
     },
     "curtain": {
       "title": "Firanka",
-      "text": "Zegar w kuchni spieszył się pięć minut. Wiatr z otwartego okna rzucił płomień świecy na firankę.",
+      "text": "Zegar w kuchni spieszył się pięć minut. Otworzyłeś zamknięte okna na oścież, a wiatr rzucił płomień świecy na firankę.",
       "hint": "Mama zawsze przestawiała zegary do przodu. Zawsze.",
       "omen": "Zegar kłamie."
     },

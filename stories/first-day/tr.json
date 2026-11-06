@@ -394,14 +394,14 @@
       "who": "Mutfak saati",
       "text": "00:00. Bitti mi?",
       "left": {
-        "label": "“Bitti!” Pencereleri aç",
-        "past": "Gece yarısı sanıp pencereleri bir anda açtın",
-        "after": "Serin hava yüzüne çarpıyor."
+        "label": "“Bitti!” Pencereleri aç, kutla",
+        "past": "Gece yarısı sanıp kutlamaya başladın",
+        "after": "Serin hava yüzüne çarpıyor. Gülmeye başlıyorsun."
       },
       "right": {
         "label": "Telefona bak",
-        "past": "Saate değil telefona güvendin",
-        "after": "23:55. Beş dakika daha. Telefonu göğsüne bastırıp bekliyorsun."
+        "past": "Son beş dakikayı saniye saniye saydın",
+        "after": "23:55. Beş dakika daha. Her saniyesini sayıyorsun."
       }
     }
   },
@@ -426,7 +426,7 @@
     },
     "balcony": {
       "title": "Bitişik Balkon",
-      "text": "Aradaki boşluk göründüğünden genişti. Sakinleştirici başını tam ortada döndürdü.",
+      "text": "Komşu “Dur, oradan değil!” diye bağırdı. Müzik hâlâ kulağındaydı. Sakinleştirici başını tam ortada döndürdü.",
       "hint": "Komşu iyi niyetliydi. Bu bir şey değiştirmiyor.",
       "omen": "Aşağısı çok uzak."
     },
@@ -474,7 +474,7 @@
     },
     "curtain": {
       "title": "Perde",
-      "text": "Mutfak saati beş dakika ileriydi. Açtığın pencereden giren rüzgâr mumu perdeye savurdu.",
+      "text": "Mutfak saati beş dakika ileriydi. Kapalı pencereleri bir anda açtın, içeri dolan rüzgâr mumu perdeye savurdu.",
       "hint": "Annen saatleri hep ileri kurardı. Hep.",
       "omen": "Saat yanlış."
     },

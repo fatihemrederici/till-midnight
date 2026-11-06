@@ -34,6 +34,8 @@ export type Choice = {
 export type Card = {
   id: string;
   time: string;
+  // Ekranda gösterilen saat, gerçek saatten farklıysa. Örneğin ileri giden mutfak saati.
+  shownTime?: string;
   place: Place;
   emoji: string;
   who: Text;

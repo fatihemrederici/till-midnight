@@ -394,14 +394,14 @@
       "who": "The kitchen clock",
       "text": "00:00. Is it over?",
       "left": {
-        "label": "“It’s over!” Open the windows",
-        "past": "You thought it was midnight and threw the windows open",
-        "after": "Cool air hits your face."
+        "label": "“It’s over!” Open the windows, celebrate",
+        "past": "You thought it was midnight and started celebrating",
+        "after": "Cool air hits your face. You start to laugh."
       },
       "right": {
         "label": "Check your phone",
-        "past": "You trusted your phone, not the clock",
-        "after": "23:55. Five more minutes. You hold the phone to your chest and wait."
+        "past": "You counted the last five minutes second by second",
+        "after": "23:55. Five more minutes. You count every second."
       }
     }
   },
@@ -426,7 +426,7 @@
     },
     "balcony": {
       "title": "The Next Balcony",
-      "text": "The gap was wider than it looked. The sedative made your head spin halfway across.",
+      "text": "The neighbour shouted “Not there!” The music was still in your ears. Halfway across, the sedative made your head spin.",
       "hint": "The neighbour meant well. That changes nothing.",
       "omen": "It’s a long way down."
     },
@@ -474,7 +474,7 @@
     },
     "curtain": {
       "title": "The Curtain",
-      "text": "The kitchen clock was five minutes fast. The wind from the window you opened threw the candle flame onto the curtain.",
+      "text": "The kitchen clock was five minutes fast. You threw the shut windows open and the wind blew the candle flame onto the curtain.",
       "hint": "Your mum always set the clocks fast. Always.",
       "omen": "The clock is wrong."
     },
