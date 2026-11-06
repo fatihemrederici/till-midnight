@@ -33,7 +33,7 @@
     "noKeys",
     "pill",
     "rail",
-    "doubted",
+    "pill2",
     "pan",
     "panFire",
     "sealed",
@@ -81,6 +81,34 @@
         "effects": {
           "mind": -1
         }
+      }
+    },
+    {
+      "id": "red-light",
+      "time": "08:40",
+      "place": "street",
+      "emoji": "🚦",
+      "left": {
+        "effects": {
+          "mind": -1
+        }
+      },
+      "right": {
+        "effects": {
+          "body": -1
+        },
+        "set": {
+          "noKeys": true
+        },
+        "deaths": [
+          {
+            "ending": "horn",
+            "when": {
+              "ear": true,
+              "elif": false
+            }
+          }
+        ]
       }
     },
     {
@@ -159,8 +187,7 @@
           {
             "ending": "fourth-floor",
             "when": {
-              "late": true,
-              "ear": true
+              "late": true
             }
           }
         ]
@@ -168,41 +195,13 @@
       "right": {
         "effects": {
           "body": -1
-        }
-      }
-    },
-    {
-      "id": "red-light",
-      "time": "11:05",
-      "place": "street",
-      "emoji": "🚦",
-      "left": {
-        "effects": {
-          "mind": -1
-        }
-      },
-      "right": {
-        "effects": {
-          "body": -1
-        },
-        "set": {
-          "noKeys": true
         },
         "deaths": [
           {
-            "ending": "horn",
+            "ending": "office-stairs",
             "when": {
-              "ear": true,
-              "late": true,
-              "elif": false
-            }
-          },
-          {
-            "ending": "horn",
-            "when": {
-              "ear": true,
-              "late": true,
-              "doubted": true
+              "wet": true,
+              "noKeys": true
             }
           }
         ]
@@ -213,6 +212,9 @@
       "time": "11:30",
       "place": "street",
       "emoji": "💊",
+      "when": {
+        "work": false
+      },
       "left": {
         "effects": {
           "mind": 1
@@ -247,9 +249,7 @@
           {
             "ending": "stairs",
             "when": {
-              "wet": true,
-              "pill": true,
-              "work": false
+              "pill": true
             }
           }
         ]
@@ -276,8 +276,7 @@
           {
             "ending": "balcony",
             "when": {
-              "pill": true,
-              "ear": true
+              "pill": true
             }
           }
         ]
@@ -440,7 +439,8 @@
       "place": "home",
       "emoji": "📱",
       "when": {
-        "elif": true
+        "elif": true,
+        "doubted": false
       },
       "variants": [
         {
@@ -591,6 +591,28 @@
       }
     },
     {
+      "id": "night-pill",
+      "time": "22:30",
+      "place": "home",
+      "emoji": "💊",
+      "when": {
+        "pill": true
+      },
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "pill2": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        }
+      }
+    },
+    {
       "id": "drowsy",
       "time": "23:00",
       "place": "home",
@@ -604,7 +626,7 @@
             "ending": "last-glass",
             "when": {
               "wine": true,
-              "pill": true
+              "pill2": true
             }
           },
           {
@@ -707,7 +729,7 @@
             "ending": "last-glass",
             "when": {
               "wine": true,
-              "pill": true
+              "pill2": true
             }
           }
         ]
@@ -726,6 +748,10 @@
     },
     {
       "id": "horn",
+      "won": false
+    },
+    {
+      "id": "office-stairs",
       "won": false
     },
     {

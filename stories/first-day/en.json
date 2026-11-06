@@ -41,12 +41,26 @@
         "after": "The bridge is on the screen. The bus is in the water."
       }
     },
+    "red-light": {
+      "who": "Red light",
+      "text": "The café is across the road. The light is red, the road is empty. Someone is running toward you from behind.",
+      "left": {
+        "label": "Wait and look",
+        "past": "You waited at the red light",
+        "after": "The man hands you the keys you dropped. You’re too scared to laugh."
+      },
+      "right": {
+        "label": "Run across",
+        "past": "You ran the red light",
+        "after": "A truck misses you by a hair. The man behind you shouts something you don’t hear."
+      }
+    },
     "cafe": {
       "who": "The café",
       "text": "Your hands shake and the coffee spills into your shoe. The waiter holds out a cloth.",
       "left": {
         "label": "Sit until it dries",
-        "past": "You lingered in the café and spent the day running late",
+        "past": "You lingered in the café and were late on your first day",
         "after": "You sit for half an hour. Your breath comes back. It’s well past nine."
       },
       "right": {
@@ -79,13 +93,13 @@
       },
       "right": {
         "label": "“Just a feeling”",
-        "past": "You told Elif it was just a feeling and she didn’t believe you",
+        "past": "You told Elif it was just a feeling, she didn’t believe you and never called",
         "after": "She doesn’t believe you. She takes your number anyway."
       }
     },
     "office": {
       "who": "The man in the grey suit",
-      "text": "The other man who got off the bus. He turns out to be your new desk mate. “Fourth floor, let’s take the lift.” A torn “out of order” note hangs on the door.",
+      "text": "The other man who got off the bus. He turns out to be your new desk mate. “Fourth floor, let’s take the lift.” A torn “out of order” note hangs on the door. The stairs are marble.",
       "left": {
         "label": "Take the lift with him",
         "past": "You took the broken lift",
@@ -93,22 +107,8 @@
       },
       "right": {
         "label": "Take the stairs",
-        "past": "You climbed four floors",
-        "after": "Four floors. He waits at the top, grinning. You work all morning and your shoe dries."
-      }
-    },
-    "red-light": {
-      "who": "Red light",
-      "text": "You’re heading home. The light is red, the road is empty. Someone is running toward you from behind.",
-      "left": {
-        "label": "Wait and look",
-        "past": "You waited at the red light",
-        "after": "The man hands you the keys you dropped. You’re too scared to laugh."
-      },
-      "right": {
-        "label": "Run across",
-        "past": "You ran the red light",
-        "after": "A truck misses you by a hair. The man behind you shouts something you don’t hear."
+        "past": "You took the office’s marble stairs",
+        "after": "Four floors. He waits at the top, grinning."
       }
     },
     "pharmacy": {
@@ -346,6 +346,20 @@
         "after": "She hears the lie in your voice but says nothing."
       }
     },
+    "night-pill": {
+      "who": "The pill box",
+      "text": "You can’t sleep. There’s one more pill in the box from the pharmacy. “Another one in the evening if needed.”",
+      "left": {
+        "label": "Take another one",
+        "past": "You took a second sedative in the evening",
+        "after": "You swallow it. Soon your shoulders loosen."
+      },
+      "right": {
+        "label": "Leave it",
+        "past": "You skipped the second pill",
+        "after": "You throw the box in a drawer. Your heart is still racing."
+      }
+    },
     "drowsy": {
       "who": "The sofa",
       "text": "Your eyes are closing. The sofa has never looked this soft.",
@@ -408,25 +422,31 @@
   "endings": {
     "fourth-floor": {
       "title": "Fourth Floor",
-      "text": "The cable snapped at the third floor. The janitor had shouted “Don’t get in!” You were listening to music.",
+      "text": "The cable snapped at the third floor. The janitor had shouted “Don’t get in!” You were late, so you didn’t stop.",
       "hint": "A fast drop on your first day.",
       "omen": "The lift is creaking."
     },
     "horn": {
       "title": "The Horn",
-      "text": "You never even heard the truck. You’d been running late all day.",
+      "text": "You never even heard the truck. The music was all the way up and nobody was there to pull you back.",
       "hint": "At least the music was good.",
       "omen": "A horn. Very close."
     },
+    "office-stairs": {
+      "title": "Wet Sole",
+      "text": "Your legs were still shaking from the run, and the coffee was still in your shoe. Your foot slipped on the office’s marble step.",
+      "hint": "Sitting down for five minutes wasn’t that hard.",
+      "omen": "Your shoe squelches."
+    },
     "stairs": {
-      "title": "Wet Step",
-      "text": "Your foot slipped on the seventh floor. A wet sole, heavy legs, freshly mopped marble.",
+      "title": "Mopped Stairs",
+      "text": "Your foot slipped on the seventh floor. The sedative had made your legs heavy and the marble was freshly mopped.",
       "hint": "Stairs are good for you, they say.",
       "omen": "The steps are wet."
     },
     "balcony": {
       "title": "The Next Balcony",
-      "text": "The neighbour shouted “Not there!” The music was still in your ears. Halfway across, the sedative made your head spin.",
+      "text": "The gap was wider than it looked. Halfway across, the sedative made your head spin.",
       "hint": "The neighbour meant well. That changes nothing.",
       "omen": "It’s a long way down."
     },
@@ -450,7 +470,7 @@
     },
     "last-glass": {
       "title": "The Last Glass",
-      "text": "The pharmacist had warned you. Wine and a sedative. Your breathing slowed, then stopped.",
+      "text": "The pharmacist had warned you: no alcohol. The evening pill and the wine. Your breathing slowed, then stopped.",
       "hint": "Reading the label takes three seconds.",
       "omen": "No alcohol with it."
     },

@@ -105,12 +105,12 @@ class StoryEngineTest {
         assertEquals(List.of(), new StoryValidator().validate(mini, List.of("en")));
     }
 
-    // Kahve ayakkabına döküldü, sakinleştirici aldın, merdiveni seçtin.
+    // Sakinleştirici aldın, bir saat sonra yıkanmış merdiveni seçtin.
     @Test
-    void aSpilledCoffeeKillsYouOnTheStairs() {
-        // Uzaklaş, kulaklık, hemen çık, hastayım, bekle, sakinleştirici, merdiven.
+    void aSedativeKillsYouOnTheMoppedStairs() {
+        // Uzaklaş, haberler, bekle, otur, hastayım, sakinleştirici, merdiven.
         StoryEngine.Result result = engine.play(story, List.of(
-                Side.RIGHT, Side.LEFT, Side.RIGHT, Side.RIGHT, Side.LEFT, Side.LEFT, Side.LEFT));
+                Side.RIGHT, Side.RIGHT, Side.LEFT, Side.LEFT, Side.RIGHT, Side.LEFT, Side.LEFT));
 
         assertEquals("stairs", result.endingId());
         assertEquals(false, result.won());
@@ -122,7 +122,7 @@ class StoryEngineTest {
     void rejectsInvalidRuns() {
         assertThrows(IllegalArgumentException.class, () -> engine.play(story, List.of(Side.LEFT)));
         assertThrows(IllegalArgumentException.class, () -> engine.play(story, List.of(
-                Side.RIGHT, Side.LEFT, Side.RIGHT, Side.RIGHT, Side.LEFT, Side.LEFT, Side.LEFT, Side.LEFT)));
+                Side.RIGHT, Side.RIGHT, Side.LEFT, Side.LEFT, Side.RIGHT, Side.LEFT, Side.LEFT, Side.LEFT)));
     }
 
     // Hiç ayarlanmamış işaret false sayılır.

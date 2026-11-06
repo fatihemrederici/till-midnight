@@ -43,7 +43,7 @@ import org.springframework.test.web.servlet.ResultActions;
 class GameApiTest {
 
     // Merdivende ölen kısa yol: 6 kart.
-    private static final String STAIRS = "\"RIGHT\",\"LEFT\",\"RIGHT\",\"RIGHT\",\"LEFT\",\"LEFT\",\"LEFT\"";
+    private static final String STAIRS = "\"RIGHT\",\"RIGHT\",\"LEFT\",\"LEFT\",\"RIGHT\",\"LEFT\",\"LEFT\"";
 
     // Spring, MockMvc nesnesini buraya verir.
     @Autowired
@@ -87,7 +87,7 @@ class GameApiTest {
                 // İlk bölüm.
                 .andExpect(jsonPath("$[0].id").value("first-day"))
                 // Ölümler listelenir, kurtuluşlar değil.
-                .andExpect(jsonPath("$[0].deaths.length()").value(14))
+                .andExpect(jsonPath("$[0].deaths.length()").value(15))
                 // Kurallar bu listede yok.
                 .andExpect(jsonPath("$[0].cards").doesNotExist());
     }
@@ -142,7 +142,7 @@ class GameApiTest {
         run(UUID.randomUUID(), player, STAIRS);
         run(UUID.randomUUID(), player, STAIRS);
         // Başka oyuncudan başka bir son: kamyon.
-        run(UUID.randomUUID(), UUID.randomUUID(), "\"RIGHT\",\"LEFT\",\"LEFT\",\"RIGHT\",\"RIGHT\"")
+        run(UUID.randomUUID(), UUID.randomUUID(), "\"RIGHT\",\"LEFT\",\"RIGHT\"")
                 .andExpect(jsonPath("$.endingId").value("horn"))
                 // Üç koşu.
                 .andExpect(jsonPath("$.stats.runs").value(3))
