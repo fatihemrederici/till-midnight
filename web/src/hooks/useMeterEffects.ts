@@ -1,15 +1,13 @@
 // React araçları.
 import { useEffect, useRef, useState } from "react";
 // Ses etkileri.
-import { type Level, setBreathing, setRinging, setWhispering, stopMoods } from "../audio/moods";
+import { type Level, setBreathing, setRinging, stopMoods } from "../audio/moods";
 // Ölüm cümlesi seçici.
-import { type Omen, pickOmen } from "../game/omens";
-// Bölümün ölüm cümleleri.
-import { knownOmens } from "../i18n/omens";
+import { type Omen, knownOmens, pickOmen } from "../game/omens";
 // Parazit süresi.
 import { STATIC_MS } from "../components/TvStatic";
 // Tipler.
-import type { GameState, Meter, Story } from "../game/types";
+import type { GameState, Story } from "../game/types";
 
 // Etkilerin başladığı gösterge değeri.
 const EFFECT_LIMIT = 2;
@@ -25,53 +23,27 @@ const SWAP_MS = 110;
 const LIE_AT_MS = 2500;
 const LIE_MS = 450;
 const LIE_CHANCE = 0.35;
-// Fısıltı, sonuç cümlesi okunduktan sonra gelir.
-const WHISPER_DELAY_MS = 1900;
-const WHISPER_MS = 3000;
 
-// Bir etkiye bağlı gösterge.
-function meterOf(story: Story, effect: Meter["effect"]): Meter | undefined {
-  // Bölüm bu etkiyi kullanmıyorsa boş döner.
-  return story.meters.find((item) => item.effect === effect);
+// Sürekli etkinin gücü: Gösterge 1'e düşünce açılır.
+function levelOf(state: GameState, meter: string): Level {
+  return state.meters[meter] <= 1 ? 1 : 0;
 }
-
-// Sürekli etkinin gücü: Gösterge 1'e düşünce hafif, krizdeyken güçlü.
-function levelOf(state: GameState, meter?: Meter): Level {
-  // Bölüm bu etkiyi kullanmıyor.
-  if (!meter) return 0;
-  // Bu göstergenin krizi açık.
-  if (state.crisis === meter.id) return 2;
-  // Sonuna gelindi.
-  return state.meters[meter.id] <= 1 ? 1 : 0;
-}
-
-// Rastgele bir sayı: Dil değişse de aynı cümle kalsın diye sıra numarası tutuyoruz.
-const randomLine = () => Math.floor(Math.random() * 1000);
 
 // Görünen parazit: id her seferinde yenidir, sound girişte cızırdar.
 export type StaticBurst = { id: number; sound: boolean };
 
-// Biten göstergelerin ekrandaki ve sesteki etkisi.
+// Biten göstergelerin ekrandaki ve sesteki etkisi. Her bölümde aynı iki gösterge: akıl ve sağlık.
 export function useMeterEffects(story: Story, state: GameState) {
-  // Göstergeler.
-  const mindMeter = meterOf(story, "mind");
-  const bodyMeter = meterOf(story, "body");
-  const trustMeter = meterOf(story, "trust");
   // Sürekli etkilerin gücü.
-  const mind = levelOf(state, mindMeter);
-  const body = levelOf(state, bodyMeter);
-  const trust = levelOf(state, trustMeter);
+  const mind = levelOf(state, "mind");
+  const body = levelOf(state, "body");
 
   // Tek seferlik göz kırpma: Sayaç değişince yeniden oynar.
   const [blink, setBlink] = useState({ count: 0, deep: false });
-  // Tek seferlik renk solması.
-  const [fade, setFade] = useState(0);
   // Görünen ölüm cümlesi, yazının üstündeki parazit ve yalan söyleyen saat.
   const [omen, setOmen] = useState<Omen | null>(null);
   const [burst, setBurst] = useState<StaticBurst | null>(null);
   const [clockLie, setClockLie] = useState(false);
-  // Görünen fısıltının sıra numarası.
-  const [whisper, setWhisper] = useState<number | null>(null);
   // Bir önceki göstergeler: Neyin düştüğünü anlamak için.
   const previous = useRef(state.meters);
   // Zamanlayıcılar en güncel durumu okusun diye.
@@ -94,7 +66,7 @@ export function useMeterEffects(story: Story, state: GameState) {
     };
     // Giriş: Yeni cümle o an seçilir, böylece en güncel durumu bilir.
     glitch(start, true, () => {
-      const next = pickOmen(story, latest.current, knownOmens(story.id), lastOmen.current);
+      const next = pickOmen(story, latest.current, knownOmens(story), lastOmen.current);
       lastOmen.current = next;
       setOmen(next);
     });
@@ -105,43 +77,28 @@ export function useMeterEffects(story: Story, state: GameState) {
   // Sesleri güce göre ayarla.
   useEffect(() => setRinging(mind), [mind]);
   useEffect(() => setBreathing(body), [body]);
-  useEffect(() => setWhispering(trust), [trust]);
   // Oyun ekranından çıkınca hepsini sustur.
   useEffect(() => stopMoods, []);
 
   // Göstergeler değişince düşüş etkilerini başlat.
   useEffect(() => {
     // Gösterge az önce düştü mü? Etkiler sadece gösterge 2 ve altına inince çalışır.
-    const dropped = (meter?: Meter) =>
-      meter !== undefined &&
-      state.meters[meter.id] < previous.current[meter.id] &&
-      state.meters[meter.id] <= EFFECT_LIMIT;
+    const dropped = (meter: string) =>
+      state.meters[meter] < previous.current[meter] && state.meters[meter] <= EFFECT_LIMIT;
     // Bekleyen zamanlayıcılar.
     const timers: number[] = [];
     // Sağlık: Göz bir kez kapanıp açılır. Sona yaklaştıkça daha derin.
-    if (dropped(bodyMeter)) {
-      setBlink((current) => ({
-        count: current.count + 1,
-        deep: state.meters[bodyMeter!.id] <= 1,
-      }));
+    if (dropped("body")) {
+      setBlink((current) => ({ count: current.count + 1, deep: state.meters.body <= 1 }));
     }
     // Akıl: Kart metni bir anlığına bir ölüm cümlesine dönüşür.
-    if (dropped(mindMeter)) hallucinate(timers, DROP_DELAY_MS, DROP_HOLD_MS);
-    // Güven: Renk solar, sonuç satırında bir fısıltı belirir.
-    if (dropped(trustMeter)) {
-      setFade((current) => current + 1);
-      timers.push(
-        window.setTimeout(() => setWhisper(randomLine()), WHISPER_DELAY_MS),
-        window.setTimeout(() => setWhisper(null), WHISPER_DELAY_MS + WHISPER_MS),
-      );
-    }
+    if (dropped("mind")) hallucinate(timers, DROP_DELAY_MS, DROP_HOLD_MS);
     previous.current = state.meters;
     // Yeni kart gelirse eski bekleyenler iptal olur.
     return () => {
       timers.forEach((timer) => window.clearTimeout(timer));
       setOmen(null);
       setBurst(null);
-      setWhisper(null);
     };
     // Sadece göstergeler değişince çalışsın.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -149,7 +106,6 @@ export function useMeterEffects(story: Story, state: GameState) {
 
   // Akıl 1'deyken: Her beş saniyede bir ölüm cümlesi, arada bazen saat yalan söyler.
   // Yeni kart gelince sayaç baştan başlar: Oyuncu okumaya başlar başlamaz cümle çıkmaz.
-  const cardKey = `${state.index}-${state.crisis}`;
   useEffect(() => {
     // Akıl yerindeyse bir şey yok.
     if (mind === 0) return;
@@ -174,8 +130,8 @@ export function useMeterEffects(story: Story, state: GameState) {
     };
     // Akıl ya da kart değişince yeniden kur.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mind, cardKey]);
+  }, [mind, state.index]);
 
   // Ekranın ihtiyacı olanları döndür.
-  return { mind, body, trust, blink, fade, omen, burst, clockLie, whisper };
+  return { mind, body, blink, omen, burst, clockLie };
 }

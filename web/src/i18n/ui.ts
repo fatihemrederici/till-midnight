@@ -20,6 +20,8 @@ export const UI = {
   chain: { en: "How death found you", tr: "Ölüm seni böyle buldu", pl: "Tak znalazła cię śmierć" },
   rewind: { en: "Rewind time", tr: "Zamanı geri sar", pl: "Cofnij czas" },
   again: { en: "Play again", tr: "Yeniden oyna", pl: "Zagraj ponownie" },
+  effectsFull: { en: "Effects: full", tr: "Efektler: tam", pl: "Efekty: pełne" },
+  effectsLow: { en: "Effects: reduced", tr: "Efektler: az", pl: "Efekty: ograniczone" },
   soundOn: { en: "Sound on", tr: "Ses açık", pl: "Dźwięk włączony" },
   soundOff: { en: "Sound off", tr: "Ses kapalı", pl: "Dźwięk wyłączony" },
   language: { en: "Language", tr: "Dil", pl: "Język" },

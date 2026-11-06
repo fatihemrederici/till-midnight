@@ -57,7 +57,7 @@ public class GameController {
                 .map(story -> new StorySummary(
                         story.id(),
                         story.title(),
-                        story.endings().stream().filter(ending -> !ending.won()).map(Story.Ending::id).toList()))
+                        story.deaths()))
                 .toList();
     }
 

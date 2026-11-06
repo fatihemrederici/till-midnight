@@ -2,6 +2,8 @@
 import { useState } from "react";
 // Ses ayarı.
 import { isMuted, setMuted, unlockAudio } from "../audio/synth";
+// Efekt ayarı.
+import { isLowEffects, setLowEffects } from "../data/effects";
 // Tip.
 import type { Language } from "../game/types";
 // Dil listesi.
@@ -19,6 +21,8 @@ export function Controls({
 }) {
   // Düğmenin görünüşü için sessizlik durumu.
   const [muted, setMutedState] = useState(isMuted());
+  // Efektler azaltılmış mı?
+  const [low, setLow] = useState(isLowEffects());
 
   // Sesi açıp kapatır.
   const toggle = () => {
@@ -45,6 +49,19 @@ export function Controls({
           </button>
         ))}
       </div>
+      {/* Efekt düğmesi: Göz kapakları ve titremeler rahatsız edenler için. */}
+      <button
+        className="sound"
+        onClick={() => {
+          setLowEffects(!low);
+          setLow(!low);
+        }}
+        aria-pressed={!low}
+        aria-label={low ? UI.effectsLow[language] : UI.effectsFull[language]}
+        title={low ? UI.effectsLow[language] : UI.effectsFull[language]}
+      >
+        {low ? "◌" : "✦"}
+      </button>
       {/* Ses düğmesi. */}
       <button
         className="sound"

@@ -12,11 +12,18 @@ stories/
     pl.json            Polish text
 ```
 
+## The design in four rules
+
+1. **Death comes from traps.** A choice can secretly set a trap. A later choice can trigger it. The player never sees traps; the death screen reveals them with the time of each choice.
+2. **Two meters: Mind and Body.** Every chapter has the same two. A meter at 0 kills the player, and the ending depends on where the current card is: the street, home or work.
+3. **No free choice.** Every choice lowers a meter, sets a flag or can kill. Usually the comfortable side sets a trap and the hard side costs a meter.
+4. **Every death has a reason.** A death's condition, or its card's condition, needs at least one flag. The death screen builds the chain from those flags, so the explanation is always the real one.
+
 ## Add a chapter
 
 1. Create the folder with the four files.
 2. Add its id to `chapters.json`.
-3. Generate its expected paths:
+3. Generate its sample paths:
 
    ```sh
    cd api && ./mvnw test -Dtest=UpdateStoryPaths -DupdateStoryPaths=true
@@ -24,48 +31,60 @@ stories/
 
 4. Run the tests.
 
-The server checks every chapter when it starts and refuses to run with a broken one.
+The server checks every chapter when it starts and refuses to run with a broken one. `POST /internal/validate` runs the same checks on a draft and returns the analysis, including how often a random player survives.
 
 ## Rules: `story.json`
 
 | Field | Meaning |
 | --- | --- |
+| `formatVersion` | `2` |
 | `id` | Chapter name, the same as its folder |
-| `start` | Starting value of each meter |
+| `start` | Starting value of `mind` and `body` |
 | `maxMeter` | Highest value a meter can reach |
-| `meters` | A meter that reaches 0 ends the game with its `ending` |
+| `meters` | `mind` and `body`, in that order, each with a death for every place |
+| `traps` | Flags that are traps. Setting one plays a faint sound, nothing more |
 | `cards` | The day, in order |
 | `endings` | Every way the day can end |
+
+A meter:
+
+```json
+{ "id": "mind", "emoji": "🧠", "endings": { "street": "panic-street", "home": "panic-home", "work": "panic-work" } }
+```
 
 A card:
 
 ```json
 {
-  "id": "elevator",
+  "id": "stairs",
   "time": "12:30",
+  "place": "home",
   "emoji": "🛗",
-  "when": { "elif": true },
-  "variants": [{ "when": { "warned": true } }],
-  "left": { "effects": { "mind": -1 }, "set": { "stairs": true } },
-  "right": { "death": { "when": { "wetShoes": true }, "ending": "stairs" } }
+  "when": { "noKeys": false },
+  "variants": [{ "when": { "work": true } }],
+  "left": {
+    "effects": { "body": -1 },
+    "deaths": [{ "when": { "wet": true, "pill": true }, "ending": "stairs" }]
+  },
+  "right": { "effects": { "mind": -1 }, "set": { "lift": true } }
 }
 ```
 
+- `place`: `street`, `home` or `work`. A meter that runs out here uses this place's death.
 - `when`: The card only appears if the flags match.
 - `variants`: The first variant whose `when` matches replaces the card's text. This is how an earlier choice comes back later.
 - `effects`: Meter changes. Values stay between 0 and `maxMeter`.
 - `set`: Flags to remember.
-- `death`: If `when` matches the flags from before this choice, the player dies here.
+- `deaths`: Checked against the flags from before this choice. The first one whose `when` matches ends the game. A death with no `when` always kills, so its card needs a `when`.
 
 An ending:
 
 ```json
-{ "id": "fuse", "won": false, "chain": [{ "when": { "elif": true } }, {}, {}] }
+{ "id": "together", "won": true, "when": { "together": true } }
 ```
 
 - `won`: `true` if the player reached midnight.
-- `when`: For wins, which flags this win needs. The first match is used.
-- `chain`: One entry per step that led here. A step with `when` only shows if the flags match.
+- `when`: For wins, which flags this win needs. The first match is used. One win must have no `when`.
 
 ## Text: `en.json`, `tr.json`, `pl.json`
 
@@ -73,69 +92,55 @@ All three files have the same shape. A text belongs to the card or ending with t
 
 ```json
 {
-  "title": "Till Midnight",
+  "title": "The First Day",
   "vision": ["The bus turns onto the bridge."],
   "wake": "You open your eyes.",
-  "meters": { "mind": "Mind" },
+  "meters": { "mind": "Mind", "body": "Body" },
   "cards": {
-    "elevator": {
-      "who": "The elevator",
-      "text": "The door opens.",
-      "variants": ["The same text, after a warning."],
-      "left": { "label": "Take the stairs", "after": "Twelve floors." },
-      "right": { "label": "Get in" }
+    "stairs": {
+      "who": "Your building",
+      "text": "Twelve floors. The stairs have just been mopped.",
+      "variants": ["The same text, after work."],
+      "left": { "label": "Stairs", "after": "You made it.", "past": "You climbed the freshly mopped stairs" },
+      "right": { "label": "Lift", "after": "Nothing happens.", "past": "You took the lift" }
     }
   },
   "endings": {
-    "fuse": {
-      "title": "The Bare Wire",
-      "text": "In the dark, you touched the wrong place.",
-      "chain": ["First step", "Second step", "Third step"],
-      "hint": "What to try next time."
+    "stairs": {
+      "title": "Wet Step",
+      "text": "Your foot slipped on the seventh floor.",
+      "hint": "Stairs are good for you, they say.",
+      "omen": "The steps are wet."
     }
   }
 }
 ```
 
-`variants` and `chain` match the lists in `story.json` by position.
+- `after`: Shown above the next card. Not needed on a choice that always kills.
+- `past`: The choice told in the past tense. The death screen uses it, with the card's time, to build the chain.
+- `omen`: Every death needs one. When Mind is low, a card's text turns into an omen for a moment, and sometimes it points at a death the player has really set up.
+- `variants` match the list in `story.json` by position.
 
 A missing translation or a text that nothing uses, such as a misspelled card id, stops the server with a clear message.
 
 ## Order of one swipe
 
-1. If the choice has a `death` and its `when` matches, the game ends.
+1. If one of the choice's `deaths` matches, the game ends.
 2. The choice's `set` flags are added.
 3. The `effects` are applied.
-4. The first meter at 0, in file order, ends the game.
+4. The first meter at 0, in file order, ends the game with the death for this card's place.
 5. The next card whose `when` matches comes up.
 6. With no card left, the first winning ending whose `when` matches is the result.
 
 A flag that was never set counts as `false`.
 
-## Crisis cards and locked choices
+## What the checks reject
 
-Both are optional. A chapter without them works the same, and an empty meter ends the game.
+- Meters other than `mind` and `body`, or a meter with no death for a place.
+- A choice with no cost, or a death with no flag behind it.
+- A condition that uses a flag no choice ever sets, usually a typo.
+- A trap that is never set, or never matters.
+- A card time that goes backwards.
+- A card or ending that no path reaches, or a chapter nobody can survive.
 
-A meter with a `crisis` card doesn't end the game at 0. Its card comes up first:
-
-```json
-{
-  "id": "nerve",
-  "emoji": "🧠",
-  "ending": "chest",
-  "crisis": {
-    "id": "crisis-nerve",
-    "emoji": "🫁",
-    "left": { "effects": { "trust": -2 }, "requires": { "trust": 2 } },
-    "right": { "effects": { "stamina": -2 }, "requires": { "stamina": 2 } }
-  }
-}
-```
-
-The player pays with another meter, and the empty meter goes back to 1. A meter can use its crisis only once per run. If it runs out again, or the player can't pay either side, the game ends with the meter's `ending`.
-
-The crisis text lives in the language files under `crises`, using the meter's id.
-
-Any choice can have `requires`: The player needs at least that much in those meters to pick it. One side of a normal card must always be free. In a crisis, both sides can have `requires`.
-
-A meter can also set `effect` to `mind`, `body` or `trust` for its screen and sound effect when it runs low.
+A meter's place deaths are a safety net: if Mind can never run out at work, `panic-work` stays unreachable without an error, and it doesn't count toward the deaths a player can find.

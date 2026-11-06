@@ -87,6 +87,14 @@
 .chain li:last-child {
   font-weight: 600;
 }
+/* Zincirin saati: Ne zaman olduğunu gösterir. */
+.chain-time {
+  margin-right: 6px;
+  font-family: var(--display);
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  opacity: 0.75;
+}
 .could {
   margin: 0;
   padding: 12px 14px;

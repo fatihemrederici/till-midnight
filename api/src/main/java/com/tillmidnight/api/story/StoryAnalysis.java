@@ -6,17 +6,17 @@ import java.util.List;
 // Anahtar-değer tipi.
 import java.util.Map;
 
-// Hikâyedeki tüm olası yolların raporu.
+// Hikâyenin raporu. Olasılıklar, her kartta rastgele sola ya da sağa kaydıran bir oyuncuya göredir.
 public record StoryAnalysis(
-        // Toplam yol sayısı.
-        int paths,
+        // Toplam farklı yol sayısı.
+        long paths,
         // En uzun yoldaki kart sayısı.
         int longestRun,
-        // Son -> o sona giden yol sayısı.
-        Map<String, Integer> endingCounts,
+        // Son -> rastgele oyuncunun o sona ulaşma yüzdesi.
+        Map<String, Double> endingPercent,
         // Hiçbir yolda çıkmayan kartlar.
         List<String> unreachableCards,
         // Hiçbir yolla ulaşılamayan sonlar.
         List<String> unreachableEndings,
-        // Yüzde kaç yol kurtuluşla bitiyor.
-        int survivalPercent) {}
+        // Rastgele oyuncunun gece yarısına ulaşma yüzdesi.
+        double survivalPercent) {}

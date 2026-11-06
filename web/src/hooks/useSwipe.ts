@@ -16,7 +16,7 @@ const FLING_MS = 200;
 const prefersCalm = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // Kart kaydırma davranışı: Parmak, düğme ve ok tuşları hepsi buradan geçer.
-export function useSwipe(onChoose: (side: Side) => void, isLocked: (side: Side) => boolean) {
+export function useSwipe(onChoose: (side: Side) => void) {
   // Kartın konumu: Parmak kadar kayar.
   const [dx, setDx] = useState(0);
   // Parmak kartta mı?
@@ -34,13 +34,6 @@ export function useSwipe(onChoose: (side: Side) => void, isLocked: (side: Side) 
   const fling = (side: Side) => {
     // Uçarken tekrar seçilemez.
     if (leaving) return;
-    // Kilitli seçenek kabul edilmez: Kart yerine döner, oyuncu darbeyi hisseder.
-    if (isLocked(side)) {
-      sfx.thud();
-      vibrate(40);
-      setDx(0);
-      return;
-    }
     // Ses motorunu garantiye al.
     unlockAudio();
     // Hışırtı ve küçük titreşim.
@@ -107,7 +100,7 @@ export function useSwipe(onChoose: (side: Side) => void, isLocked: (side: Side) 
   };
 
   // Kartın anlık dönüşümü.
-  const hoverShift = !moving && hover && !isLocked(hover) ? (hover === "right" ? 22 : -22) : 0;
+  const hoverShift = !moving && hover ? (hover === "right" ? 22 : -22) : 0;
   const shift = dx + hoverShift;
   const transform = leaving
     ? `translateX(${(leaving === "right" ? 1 : -1) * (window.innerWidth + 150)}px) rotate(${leaving === "right" ? 22 : -22}deg)`

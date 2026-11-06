@@ -7,7 +7,7 @@ import { sfx } from "../audio/sfx";
 // Dil ve ses düğmeleri.
 import { Controls } from "../components/Controls";
 // Motor.
-import { holds } from "../game/engine";
+import { deathChain } from "../game/engine";
 // Tipler.
 import type { Ending, GameState, RunStats } from "../game/types";
 // Dil yardımcısı.
@@ -45,7 +45,7 @@ export function DeathScreen({
   onChapters: () => void;
 }) {
   // Bu koşuda geçerli zincir adımları.
-  const steps = ending.chain.filter((step) => holds(step.when, state.flags));
+  const steps = deathChain(story, state.choices);
   // Kaç adım göründü.
   const [shown, setShown] = useState(0);
 
@@ -73,7 +73,7 @@ export function DeathScreen({
   }, []);
 
   // Toplam ölüm sayısı.
-  const total = story.endings.filter((item) => !item.won).length;
+  const total = story.deaths.length;
   // Aynı şekilde biten oyunların yüzdesi.
   const share =
     stats && stats.runs >= MIN_RUNS_FOR_SHARE
@@ -91,7 +91,7 @@ export function DeathScreen({
           <ol className="chain">
             {steps.map((step, i) => (
               <li key={i} data-on={i < shown}>
-                {say(step.text, language)}
+                <span className="chain-time">{step.time}</span> {say(step.text, language)}
               </li>
             ))}
           </ol>

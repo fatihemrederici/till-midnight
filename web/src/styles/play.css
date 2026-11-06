@@ -236,34 +236,6 @@
   left: 12px;
 }
 
-/* Kriz kartı: Kâğıt kızarır, oyuncu artık tehlikede olduğunu görür. */
-.card.live[data-crisis="true"] {
-  background: #f2c4b8;
-  animation: crisis 0.35s ease-out;
-}
-@keyframes crisis {
-  0% {
-    translate: 0 -8px;
-    background: #fff;
-  }
-}
-
-/* Düğmenin bedel satırı. */
-.cost {
-  display: block;
-  margin-top: 3px;
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--dust);
-}
-.cost[data-locked="true"] {
-  color: var(--paper);
-}
-/* Kilitli seçenek soluk durur. */
-.pick[aria-disabled="true"] {
-  opacity: 0.55;
-}
-
 /* Seçim düğmeleri. */
 .choices {
   display: grid;

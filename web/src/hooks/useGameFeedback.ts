@@ -16,6 +16,8 @@ function dangerOf(lowest: number): Danger {
   return lowest <= 1 ? "high" : lowest === 2 ? "low" : "none";
 }
 
+// Tuzak sesi, saat tıkırtısından sonra gelir.
+const TRAP_DELAY_MS = 650;
 // Tehlikeye göre sesler.
 const HEARTBEAT_MS = { none: 0, low: 1150, high: 640 };
 const DRONE_LEVEL = { none: 0.06, low: 0.1, high: 0.16 };
@@ -27,8 +29,9 @@ export function useGameFeedback(story: Story, state: GameState, cardId: string, 
   const lowest = Math.min(...story.meters.map((meter) => state.meters[meter.id]));
   // Tehlike düzeyi.
   const danger = dangerOf(lowest);
-  // Bir önceki kartın göstergeleri: Neyin değiştiğini anlamak için.
+  // Bir önceki kartın göstergeleri ve işaretleri: Neyin değiştiğini anlamak için.
   const previous = useRef(state.meters);
+  const previousFlags = useRef(state.flags);
   // Az önce düşen göstergeler. Sayaç, aynı göstergenin art arda düşüşünde animasyonu yeniden başlatır.
   const [hit, setHit] = useState({ ids: [] as string[], count: 0 });
 
@@ -44,17 +47,13 @@ export function useGameFeedback(story: Story, state: GameState, cardId: string, 
     if (late) sfx.bell();
   }, [late]);
 
-  // Kriz kartı açılınca alarm.
-  useEffect(() => {
-    if (state.crisis) {
-      sfx.crisis();
-      vibrate([80, 60, 80]);
-    }
-  }, [state.crisis]);
-
   // Her yeni kartta saat sesi ve göstergelerin geri bildirimi.
   useEffect(() => {
-    if (!state.crisis) sfx.tick();
+    sfx.tick();
+    // Gizli bir tuzak kurulduysa uzaktan hafif bir gıcırtı: Ne olduğu söylenmez.
+    const trapped = story.traps.some((trap) => state.flags[trap] && !previousFlags.current[trap]);
+    previousFlags.current = state.flags;
+    if (trapped) window.setTimeout(sfx.trap, TRAP_DELAY_MS);
     // Düşen ve yükselen göstergeler.
     const dropped = story.meters
       .filter((meter) => state.meters[meter.id] < previous.current[meter.id])

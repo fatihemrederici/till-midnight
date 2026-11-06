@@ -45,5 +45,7 @@ class StoryContentTest {
         assertEquals(List.of(), analysis.unreachableEndings());
         // Kurtuluş mümkün ama kolay değil.
         assertTrue(analysis.survivalPercent() > 0 && analysis.survivalPercent() < 50);
+        // Bilgi için: Rastgele oyuncunun sonuçları.
+        System.out.println(id + " " + analysis);
     }
 }

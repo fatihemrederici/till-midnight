@@ -178,14 +178,6 @@
 .app:not([data-body="0"])::after {
   animation: none;
 }
-/* Sağlık düşükken kart ele geç uyar: Ağırlık hissi. */
-.app:not([data-body="0"]) .card.live {
-  transition-duration: 0.45s;
-}
-.app:not([data-body="0"]) .card.live[data-moving="true"] {
-  transition: transform 0.16s ease-out;
-}
-
 /* Son saat: Saat ve gün çubuğu kızarır, aşağıdan kırmızı bir ışık yükselir. */
 .app[data-late="true"] {
   background: radial-gradient(ellipse at 50% 130%, rgb(120 12 12 / 0.4), transparent 62%);
@@ -203,29 +195,6 @@
   }
 }
 
-/* Güven: Düşük kaldığı sürece renkler soluk. */
-.app[data-trust="1"] {
-  filter: grayscale(0.5);
-}
-.app[data-trust="2"] {
-  filter: grayscale(0.85);
-}
-/* Güven düştüğü an: Renk bir kez tamamen gidip geri gelir. */
-.app[data-fade="true"] {
-  animation: trust-fade 1.4s ease-out;
-}
-@keyframes trust-fade {
-  0% {
-    filter: grayscale(1) brightness(0.8);
-  }
-}
-/* Fısıltı, sonuç satırında kendi sesiyle görünür. */
-.after[data-whisper="true"] {
-  color: var(--paper);
-  font-size: 17px;
-  font-weight: 600;
-}
-
 /* Hareket istemeyenler için göz kapakları çıkmaz, diğerleri kalır. */
 @media (prefers-reduced-motion: reduce) {
   .eyelids,
@@ -235,4 +204,14 @@
   .app[data-late="true"] .day-fill {
     animation: none;
   }
+}
+
+/* Efektler azaltılmışsa: Göz kapakları, kalp atışı, parazit ve titreme yok. Sesler ve cümleler kalır. */
+:root[data-effects="low"] .eyelids,
+:root[data-effects="low"] .heart-pulse,
+:root[data-effects="low"] .tv-static {
+  display: none;
+}
+:root[data-effects="low"] .play[data-shake="true"] {
+  animation: none;
 }

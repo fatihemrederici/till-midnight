@@ -47,7 +47,7 @@ class InternalApiTest {
                 // Geçerli.
                 .andExpect(jsonPath("$.valid").value(true))
                 // Analiz gelmeli.
-                .andExpect(jsonPath("$.analysis.paths").value(485));
+                .andExpect(jsonPath("$.analysis.survivalPercent").isNumber());
     }
 
     // Bu metot bir test.

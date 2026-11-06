@@ -12,21 +12,29 @@ export type Condition = Record<string, boolean>;
 // Kaydırma yönü.
 export type Side = "left" | "right";
 
+// Kartın geçtiği yer. Gösterge ölümü bu yere göre seçilir.
+export type Place = "street" | "home" | "work";
+
+// Bir seçimin ölüm kuralı: Koşul tutarsa oyun biter. Koşul yoksa her zaman öldürür.
+export type Death = { when?: Condition; ending: string };
+
 // Kartı kaydırmanın sonucu.
 export type Choice = {
   label: Text;
   effects?: Record<string, number>;
   set?: Condition;
-  death?: { when?: Condition; ending: string };
+  // Koşulu tutan ilk ölüm kazanır.
+  deaths?: Death[];
   after?: Text;
-  // Bu seçimi yapabilmek için göstergelerin en az bu değerde olması gerekir.
-  requires?: Record<string, number>;
+  // Ölüm zincirinde bu seçimi anlatan cümle.
+  past: Text;
 };
 
 // Bir kart.
 export type Card = {
   id: string;
   time: string;
+  place: Place;
   emoji: string;
   who: Text;
   text: Text;
@@ -36,16 +44,12 @@ export type Card = {
   right: Choice;
 };
 
-// Bir gösterge.
+// Bir gösterge: Her bölümde akıl ve sağlık. Sıfıra inince yere göre bir ölüm gelir.
 export type Meter = {
-  id: string;
+  id: "mind" | "body";
   emoji: string;
   label: Text;
-  ending: string;
-  // Sıfıra inince çıkan kart. Yoksa gösterge doğrudan oyunu bitirir.
-  crisis?: Omit<Card, "time">;
-  // Gösterge düşünce ekrandaki etki.
-  effect?: "mind" | "body" | "trust";
+  endings: Record<Place, string>;
 };
 
 // Bir son.
@@ -55,8 +59,9 @@ export type Ending = {
   when?: Condition;
   title: Text;
   text: Text;
-  chain: { when?: Condition; text: Text }[];
   hint: Text;
+  // Akıl düşükken kartın yerine bir anlığına geçen, bu ölümü ima eden cümle.
+  omen?: Text;
 };
 
 // Bölüm seçme ekranındaki bir satır.
@@ -74,27 +79,29 @@ export type Story = {
   start: Record<string, number>;
   maxMeter: number;
   meters: Meter[];
+  // Gizli tuzak işaretleri. Kurulunca sadece hafif bir ses çalar.
+  traps: string[];
   cards: Card[];
   endings: Ending[];
+  // Oyuncunun bulabileceği ölümler. Sunucu hesaplar.
+  deaths: string[];
 };
 
 // Oyunun anlık hali. endingId doluysa oyun bitti.
 export type GameState = {
   flags: Condition;
   meters: Record<string, number>;
+  // Sıradaki kart. Oyun ölümle bittiyse öldüğün kart.
   index: number;
   endingId: string | null;
   // Son seçimin sonucu olan cümle. Bir sonraki kartın üstünde görünür.
   after: Text | null;
   // Bu koşudaki seçimler. Sunucu bunları baştan oynatıp sonucu doğrular.
   choices: Side[];
-  // Doluysa önce bu göstergenin kriz kartı oynanır.
-  crisis: string | null;
-  // Bu koşuda kullanılmış krizler.
-  usedCrises: string[];
-  // En son oynanan normal kart. Kriz sırasında saat buradan okunur.
-  lastIndex: number;
 };
+
+// Ölüm zincirinin bir adımı: Saat ve o seçimin geçmiş zaman cümlesi.
+export type ChainStep = { time: string; text: Text };
 
 // Sunucunun koşu cevabındaki istatistikler.
 export type RunStats = { runs: number; players: number; survived: number; sameEnding: number };

@@ -22,7 +22,9 @@ Each chapter has a version: a fingerprint of its rules, calculated when it loads
 
 The rules exist in Java and TypeScript. Java is what counts, because a client can't be trusted. TypeScript exists for instant response.
 
-To keep them identical, both are tested against `api/src/test/resources/story-paths/`, which lists every possible path of a chapter and its ending. If one engine changes alone, its test fails.
+To keep them identical, both are tested against `api/src/test/resources/story-paths/`, a fixed sample of 3,000 paths per chapter with their endings, covering every reachable ending. If one engine changes alone, its test fails.
+
+`StoryAnalyzer` walks every path with the real engine. A chapter has hundreds of thousands of paths, but many reach the same state, so each state is calculated once and reused. It reports how often a player who swipes at random reaches each ending.
 
 ## Server: `api/`
 
@@ -40,7 +42,7 @@ To keep them identical, both are tested against `api/src/test/resources/story-pa
 | `data` | Server calls and browser storage |
 | `i18n` | Languages and interface text |
 | `audio` | Sound engine, sound effects, ambience, vibration |
-| `hooks` | Reusable behavior: swiping, game feedback, found endings |
+| `hooks` | Reusable behavior: swiping, game feedback, low meter effects, found endings |
 | `components` | Pieces used inside screens |
 | `screens` | One file per screen |
 | `styles` | One file per area of the interface |
@@ -52,3 +54,4 @@ To keep them identical, both are tested against `api/src/test/resources/story-pa
 - `GET /story` sends the rules to the browser, so a curious player can read every ending. Results are still calculated on the server.
 - There are no accounts. Player ids are generated in the browser, so statistics can be inflated.
 - `POST /internal/validate` is open and must be protected before going live.
+- The death chain is calculated in the browser from the choices. The server doesn't need it.

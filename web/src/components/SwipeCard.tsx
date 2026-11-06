@@ -17,15 +17,13 @@ type Swipe = Pick<ReturnType<typeof useSwipe>, "dx" | "moving" | "transform" | "
 // Parmakla kaydırılan kart ve arkasındaki kart.
 export function SwipeCard({
   card,
-  crisis,
   hallucination,
   burst,
   flags,
   language,
   swipe,
 }: {
-  card: Omit<Card, "time">;
-  crisis: boolean;
+  card: Card;
   // Akıl düşünce kart metninin yerine bir anlığına geçen cümle.
   hallucination: string | null;
   // Yazının üstündeki parazit.
@@ -43,7 +41,6 @@ export function SwipeCard({
         className="card live"
         key={card.id}
         data-moving={swipe.moving}
-        data-crisis={crisis}
         style={{ transform: swipe.transform }}
         {...swipe.handlers}
       >

@@ -66,14 +66,10 @@ final class StoryMerger {
         return story;
     }
 
-    // Bir göstergenin adı ve varsa kriz kartının metinleri.
+    // Bir göstergenin adı.
     private void addMeterTexts(ObjectNode meter) {
         // Göstergenin adı.
         addText(meter, "label", "/meters/" + id(meter));
-        // Kriz kartı varsa metinleri /crises altında durur.
-        if (meter.get("crisis") instanceof ObjectNode crisis) {
-            addCardTexts(crisis, "/crises/" + id(meter));
-        }
     }
 
     // Bir kartın ve iki seçiminin metinleri.
@@ -93,6 +89,8 @@ final class StoryMerger {
             addText(choice, "label", path + "/" + side + "/label");
             // Seçimin sonucu, sadece bazı seçimlerde var.
             addText(choice, "after", path + "/" + side + "/after");
+            // Ölüm zincirindeki geçmiş zaman cümlesi.
+            addText(choice, "past", path + "/" + side + "/past");
         }
     }
 
@@ -104,8 +102,8 @@ final class StoryMerger {
         addText(ending, "title", path + "/title");
         addText(ending, "text", path + "/text");
         addText(ending, "hint", path + "/hint");
-        // Zincirin adımları sırayla eşleşir.
-        addIndexedTexts(ending, "chain", path + "/chain");
+        // Akıl düşükken görünen ölüm cümlesi.
+        addText(ending, "omen", path + "/omen");
     }
 
     // Listedeki her öğeye sırayla metnini ekler.

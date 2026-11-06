@@ -3,7 +3,7 @@ import { say } from "../i18n/languages";
 // Tipler.
 import type { GameState, Language, Story } from "../game/types";
 
-// Üç gösterge: Akıl, sağlık, güven.
+// İki gösterge: Akıl ve sağlık.
 export function Meters({
   story,
   state,
@@ -35,7 +35,12 @@ export function Meters({
             <span className="meter-name">
               {meter.emoji} {say(meter.label, language)}
             </span>
-            <span className="pips" role="img" aria-label={`${value} / ${story.maxMeter}`}>
+            <span
+              className="pips"
+              role="img"
+              aria-label={`${value} / ${story.maxMeter}`}
+              style={{ gridTemplateColumns: `repeat(${story.maxMeter}, 1fr)` }}
+            >
               {Array.from({ length: story.maxMeter }, (_, i) => (
                 <i className="pip" key={i} data-on={i < value} />
               ))}

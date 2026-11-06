@@ -45,13 +45,7 @@ public class StoryChecker {
         }
 
         // Tüm yolları dene.
-        StoryAnalysis analysis;
-        try {
-            analysis = analyzer.analyze(story);
-        } catch (IllegalArgumentException exception) {
-            // Çok fazla yol.
-            return new Report(List.of(exception.getMessage()), null);
-        }
+        StoryAnalysis analysis = analyzer.analyze(story);
         // Kurtuluş yolu olmalı.
         if (analysis.survivalPercent() == 0) {
             errors.add("Story has no surviving path");

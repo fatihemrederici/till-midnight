@@ -82,9 +82,6 @@
     font-size: 19px;
     text-align: center;
   }
-  .after[data-whisper="true"] {
-    font-size: 21px;
-  }
 
   /* Kart: Yatay bir kâğıt. Solda görsel, sağda metin. */
   .table {
@@ -164,17 +161,6 @@
   }
   .pick:hover {
     background: var(--night-2);
-  }
-  .pick[aria-disabled="true"] {
-    cursor: not-allowed;
-  }
-  .pick[aria-disabled="true"]:hover {
-    background: transparent;
-  }
-  .cost {
-    margin-top: 10px;
-    font-family: var(--body);
-    font-size: 16px;
   }
 
   /* Yazı ekranları iki sütuna yayılır. */
@@ -415,9 +401,6 @@
   .after {
     font-size: 23px;
   }
-  .after[data-whisper="true"] {
-    font-size: 26px;
-  }
   .card,
   .card.back {
     max-height: 720px;
@@ -427,9 +410,6 @@
   }
   .pick {
     font-size: clamp(36px, 3.8vh, 46px);
-  }
-  .cost {
-    font-size: 19px;
   }
   .small {
     font-size: 21px;

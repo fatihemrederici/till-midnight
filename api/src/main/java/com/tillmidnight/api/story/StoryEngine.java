@@ -3,14 +3,10 @@ package com.tillmidnight.api.story;
 
 // Değiştirilebilir anahtar-değer tablosu.
 import java.util.HashMap;
-// Değiştirilebilir küme.
-import java.util.HashSet;
 // Liste arayüzü.
 import java.util.List;
 // Anahtar-değer arayüzü.
 import java.util.Map;
-// Küme arayüzü.
-import java.util.Set;
 // Spring'in "bu sınıfı sen yönet" etiketi.
 import org.springframework.stereotype.Component;
 
@@ -23,14 +19,7 @@ public class StoryEngine {
     public enum Side { LEFT, RIGHT }
 
     // Oyunun anlık hali. index: sıradaki kart. endingId doluysa oyun bitti.
-    // crisis doluysa önce o göstergenin kriz kartı oynanır. usedCrises: bu koşuda kullanılmış krizler.
-    public record State(
-            Map<String, Boolean> flags,
-            Map<String, Integer> meters,
-            int index,
-            String endingId,
-            String crisis,
-            Set<String> usedCrises) {}
+    public record State(Map<String, Boolean> flags, Map<String, Integer> meters, int index, String endingId) {}
 
     // Koşunun sonucu.
     public record Result(String endingId, boolean won, int cardsPlayed) {}
@@ -39,25 +28,13 @@ public class StoryEngine {
     public State start(Story story) {
         // Boş işaretler, başlangıç göstergeleri, ilk uygun kart.
         Map<String, Boolean> flags = Map.of();
-        return new State(flags, story.start(), nextCard(story, flags, 0), null, null, Set.of());
+        return new State(flags, story.start(), nextCard(story, flags, 0), null);
     }
 
-    // Oyuncunun önündeki kart: Kriz varsa kriz kartı, yoksa sıradaki kart.
+    // Oyuncunun önündeki kart.
     public Story.Card currentCard(Story story, State state) {
-        // Kriz yoksa normal kart.
-        if (state.crisis() == null) {
-            return story.cards().get(state.index());
-        }
-        // Krizdeki göstergenin kartı.
-        return meterById(story, state.crisis()).crisis();
-    }
-
-    // Bu taraf seçilebilir mi? Gereken göstergeler yetmiyorsa seçenek kilitlidir.
-    public boolean allowed(Story story, State state, Side side) {
-        // Tarafın seçimi.
-        Story.Card card = currentCard(story, state);
-        // Göstergeler yetiyor mu?
-        return canAfford(side == Side.LEFT ? card.left() : card.right(), state.meters());
+        // Sıradaki kart.
+        return story.cards().get(state.index());
     }
 
     // Bir seçimi uygular ve yeni durumu döndürür. Eski durum değişmez.
@@ -66,16 +43,14 @@ public class StoryEngine {
         Story.Card card = currentCard(story, state);
         // Seçilen taraf.
         Story.Choice choice = side == Side.LEFT ? card.left() : card.right();
-        // Kilitli seçenek seçilemez. Tarayıcı bunu önler, sunucu da kontrol eder.
-        if (!canAfford(choice, state.meters())) {
-            throw new IllegalArgumentException("Choice is locked");
-        }
 
-        // Ölüm koşulu, seçimin işaretleri eklenmeden önceki duruma bakar.
-        Story.Death death = choice.death();
-        // Koşul tutuyorsa oyun biter.
-        if (death != null && holds(death.when(), state.flags())) {
-            return new State(state.flags(), state.meters(), state.index(), death.ending(), null, state.usedCrises());
+        // Ölüm koşulları, seçimin işaretleri eklenmeden önceki duruma bakar. İlk tutan kazanır.
+        if (choice.deaths() != null) {
+            for (Story.Death death : choice.deaths()) {
+                if (holds(death.when(), state.flags())) {
+                    return new State(state.flags(), state.meters(), state.index(), death.ending());
+                }
+            }
         }
 
         // İşaretleri kopyala ve seçimin işaretlerini ekle.
@@ -97,63 +72,20 @@ public class StoryEngine {
             }
         }
 
-        // Kriz atlatıldıysa gösterge 1'e döner ve bu kriz bir daha çıkmaz.
-        if (state.crisis() != null) {
-            meters.put(state.crisis(), 1);
-            Set<String> used = new HashSet<>(state.usedCrises());
-            used.add(state.crisis());
-            return settle(story, flags, meters, state.index(), used);
-        }
-        // Normal kartta sıra bir sonraki uygun karta geçer.
-        return settle(story, flags, meters, nextCard(story, flags, state.index() + 1), state.usedCrises());
-    }
-
-    // Göstergelere bakıp oyunun nasıl süreceğine karar verir.
-    private State settle(
-            Story story, Map<String, Boolean> flags, Map<String, Integer> meters, int next, Set<String> used) {
-        // Sıfıra inen gösterge varsa dosyadaki sırayla ilkine bak.
+        // Sıfıra inen gösterge varsa dosyadaki sırayla ilki, bu kartın yerine göre oyunu bitirir.
         for (Story.Meter meter : story.meters()) {
             if (meters.get(meter.id()) <= 0) {
-                // Kullanılmamış ve ödenebilir bir krizi varsa oyuncuya şans verilir.
-                if (hasPayableCrisis(meter, meters, used)) {
-                    return new State(flags, meters, next, null, meter.id(), used);
-                }
-                // Yoksa bu göstergenin sonu gelir.
-                return new State(flags, meters, next, meter.ending(), null, used);
+                return new State(flags, meters, state.index(), meter.endings().get(card.place()));
             }
         }
+        // Sıradaki uygun kart.
+        int next = nextCard(story, flags, state.index() + 1);
         // Kart kalmadıysa gece yarısına ulaşıldı.
         if (next < 0) {
-            return new State(flags, meters, next, winningEnding(story, flags), null, used);
+            return new State(flags, meters, next, winningEnding(story, flags));
         }
         // Oyun sürüyor.
-        return new State(flags, meters, next, null, null, used);
-    }
-
-    // Göstergenin kullanılmamış bir krizi var mı, en az bir seçeneği ödenebiliyor mu?
-    private boolean hasPayableCrisis(Story.Meter meter, Map<String, Integer> meters, Set<String> used) {
-        // Kriz kartı yoksa ya da kullanıldıysa şans yok.
-        if (meter.crisis() == null || used.contains(meter.id())) {
-            return false;
-        }
-        // Bir tarafın ödenebilmesi yeter.
-        return canAfford(meter.crisis().left(), meters) || canAfford(meter.crisis().right(), meters);
-    }
-
-    // Göstergeler bu seçim için yetiyor mu?
-    private boolean canAfford(Story.Choice choice, Map<String, Integer> meters) {
-        // Şart yoksa her zaman seçilebilir.
-        if (choice.requires() == null) {
-            return true;
-        }
-        // Her şartı kontrol et.
-        return choice.requires().entrySet().stream().allMatch(need -> meters.get(need.getKey()) >= need.getValue());
-    }
-
-    // Kimliğiyle göstergeyi bulur.
-    private Story.Meter meterById(Story story, String id) {
-        // Göstergelerde ara.
-        return story.meters().stream().filter(meter -> meter.id().equals(id)).findFirst().orElseThrow();
+        return new State(flags, meters, next, null);
     }
 
     // Bir seçim listesini baştan oynatır. Sunucu, tarayıcının sonucuna güvenmek yerine bunu çalıştırır.

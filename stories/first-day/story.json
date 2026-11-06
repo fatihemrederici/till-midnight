@@ -1,159 +1,798 @@
 {
-  "formatVersion": 1,
+  "formatVersion": 2,
   "id": "first-day",
-  "start": { "mind": 3, "body": 3, "trust": 3 },
-  "maxMeter": 5,
+  "start": {
+    "mind": 6,
+    "body": 6
+  },
+  "maxMeter": 6,
   "meters": [
-    { "id": "mind", "emoji": "🧠", "ending": "panic" },
-    { "id": "body", "emoji": "❤️", "ending": "collapse" },
-    { "id": "trust", "emoji": "👥", "ending": "alone" }
+    {
+      "id": "mind",
+      "emoji": "🧠",
+      "endings": {
+        "street": "panic-street",
+        "home": "panic-home",
+        "work": "panic-work"
+      }
+    },
+    {
+      "id": "body",
+      "emoji": "❤️",
+      "endings": {
+        "street": "collapse-street",
+        "home": "collapse-home",
+        "work": "collapse-work"
+      }
+    }
+  ],
+  "traps": [
+    "ear",
+    "wet",
+    "late",
+    "noKeys",
+    "pill",
+    "rail",
+    "doubted",
+    "pan",
+    "panFire",
+    "sealed",
+    "rain",
+    "heater",
+    "candle",
+    "wine",
+    "outside",
+    "police"
   ],
   "cards": [
     {
       "id": "bus",
       "time": "08:14",
+      "place": "street",
       "emoji": "🚌",
-      "left": { "effects": { "trust": -1 }, "set": { "elif": true } },
-      "right": { "effects": { "mind": -1 }, "set": { "fled": true } }
+      "left": {
+        "set": {
+          "elif": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        },
+        "set": {
+          "fled": true
+        }
+      }
     },
     {
       "id": "sirens",
       "time": "08:31",
+      "place": "street",
       "emoji": "🚨",
-      "left": { "effects": { "mind": 1 }, "set": { "earbuds": true } },
-      "right": { "effects": { "mind": -1 } }
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "ear": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        }
+      }
     },
     {
       "id": "cafe",
       "time": "08:50",
+      "place": "street",
       "emoji": "☕",
-      "left": { "effects": { "mind": 1 } },
-      "right": { "effects": { "body": -1 }, "set": { "wet": true } }
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "late": true
+        }
+      },
+      "right": {
+        "set": {
+          "wet": true
+        }
+      }
+    },
+    {
+      "id": "work-call",
+      "time": "09:15",
+      "place": "street",
+      "emoji": "📱",
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "work": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        }
+      }
     },
     {
       "id": "elif-asks",
       "time": "09:40",
+      "place": "street",
       "emoji": "🧥",
-      "when": { "elif": true },
-      "left": { "effects": { "trust": 1 }, "set": { "elifKnows": true } },
-      "right": { "effects": { "trust": -1 } }
-    },
-    {
-      "id": "road",
-      "time": "11:05",
-      "emoji": "🚦",
-      "left": { "effects": { "mind": -1 } },
+      "when": {
+        "elif": true
+      },
+      "left": {
+        "effects": {
+          "mind": -1
+        }
+      },
       "right": {
-        "effects": { "body": -1 },
-        "set": { "noKeys": true },
-        "death": { "when": { "earbuds": true }, "ending": "road" }
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "doubted": true
+        }
       }
     },
     {
-      "id": "elevator",
-      "time": "12:30",
-      "emoji": "🛗",
-      "left": {
-        "effects": { "body": -1 },
-        "death": { "when": { "wet": true }, "ending": "stairs" }
+      "id": "office",
+      "time": "10:00",
+      "place": "work",
+      "emoji": "🏢",
+      "when": {
+        "work": true
       },
-      "right": { "effects": { "mind": -1 } }
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "deaths": [
+          {
+            "ending": "fourth-floor",
+            "when": {
+              "late": true,
+              "ear": true
+            }
+          }
+        ]
+      },
+      "right": {
+        "effects": {
+          "body": -1
+        }
+      }
+    },
+    {
+      "id": "red-light",
+      "time": "11:05",
+      "place": "street",
+      "emoji": "🚦",
+      "left": {
+        "effects": {
+          "mind": -1
+        }
+      },
+      "right": {
+        "effects": {
+          "body": -1
+        },
+        "set": {
+          "noKeys": true
+        },
+        "deaths": [
+          {
+            "ending": "horn",
+            "when": {
+              "ear": true,
+              "late": true,
+              "elif": false
+            }
+          },
+          {
+            "ending": "horn",
+            "when": {
+              "ear": true,
+              "late": true,
+              "doubted": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "pharmacy",
+      "time": "11:30",
+      "place": "street",
+      "emoji": "💊",
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "pill": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        }
+      }
+    },
+    {
+      "id": "stairs",
+      "time": "12:30",
+      "place": "home",
+      "emoji": "🛗",
+      "variants": [
+        {
+          "when": {
+            "work": true
+          }
+        }
+      ],
+      "left": {
+        "effects": {
+          "body": -1
+        },
+        "deaths": [
+          {
+            "ending": "stairs",
+            "when": {
+              "wet": true,
+              "pill": true,
+              "work": false
+            }
+          }
+        ]
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        }
+      }
     },
     {
       "id": "locked",
       "time": "12:45",
+      "place": "home",
       "emoji": "🔑",
-      "when": { "noKeys": true },
-      "left": { "death": { "ending": "balcony" } },
-      "right": { "effects": { "mind": -1, "body": -1 } }
+      "when": {
+        "noKeys": true
+      },
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "deaths": [
+          {
+            "ending": "balcony",
+            "when": {
+              "pill": true
+            }
+          }
+        ]
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        }
+      }
+    },
+    {
+      "id": "railing-first",
+      "time": "13:00",
+      "place": "home",
+      "emoji": "🪴",
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "rail": true
+        }
+      },
+      "right": {
+        "effects": {
+          "body": -1
+        },
+        "set": {
+          "rail": true,
+          "taped": true
+        }
+      }
     },
     {
       "id": "food",
       "time": "14:00",
+      "place": "home",
       "emoji": "🍳",
-      "left": { "effects": { "body": 1 }, "set": { "pan": true } },
-      "right": { "effects": { "body": -1 } }
+      "left": {
+        "effects": {
+          "body": 1
+        },
+        "set": {
+          "pan": true
+        }
+      },
+      "right": {
+        "effects": {
+          "body": -1
+        }
+      }
     },
     {
       "id": "mom",
       "time": "14:06",
-      "emoji": "📱",
-      "when": { "pan": true },
-      "left": { "effects": { "trust": 1, "mind": 1 }, "set": { "panBurning": true } },
-      "right": { "effects": { "trust": -1 }, "set": { "pan": false } }
+      "place": "home",
+      "emoji": "📞",
+      "when": {
+        "pan": true
+      },
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "panFire": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        }
+      }
     },
     {
       "id": "pan-fire",
       "time": "14:28",
+      "place": "home",
       "emoji": "🔥",
-      "when": { "panBurning": true },
-      "left": { "death": { "ending": "kitchen" } },
-      "right": { "effects": { "body": -1 }, "set": { "panBurning": false } }
+      "when": {
+        "panFire": true
+      },
+      "left": {
+        "deaths": [
+          {
+            "ending": "kitchen"
+          }
+        ]
+      },
+      "right": {
+        "effects": {
+          "body": -1
+        }
+      }
     },
     {
       "id": "sleep",
       "time": "15:10",
+      "place": "home",
       "emoji": "🛏️",
-      "left": { "effects": { "mind": 1, "body": 1 } },
-      "right": { "effects": { "body": -1 } }
+      "left": {
+        "effects": {
+          "body": 2,
+          "mind": -1
+        }
+      },
+      "right": {
+        "effects": {
+          "body": -1
+        }
+      }
+    },
+    {
+      "id": "lock-up",
+      "time": "16:00",
+      "place": "home",
+      "emoji": "🔒",
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "sealed": true
+        }
+      },
+      "right": {
+        "set": {
+          "rain": true
+        }
+      }
+    },
+    {
+      "id": "shower",
+      "time": "16:40",
+      "place": "home",
+      "emoji": "🚿",
+      "left": {
+        "effects": {
+          "body": 1
+        },
+        "deaths": [
+          {
+            "ending": "heater-gas",
+            "when": {
+              "sealed": true,
+              "pill": true
+            }
+          }
+        ]
+      },
+      "right": {
+        "set": {
+          "heater": true
+        }
+      }
     },
     {
       "id": "elif-news",
       "time": "17:40",
-      "emoji": "🧥",
-      "when": { "elif": true },
-      "variants": [{ "when": { "elifKnows": true } }],
-      "left": { "effects": { "trust": 1 }, "set": { "together": true } },
-      "right": { "effects": { "trust": -1, "mind": -1 } }
+      "place": "home",
+      "emoji": "📱",
+      "when": {
+        "elif": true
+      },
+      "variants": [
+        {
+          "when": {
+            "work": true
+          }
+        }
+      ],
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "together": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        }
+      }
     },
     {
-      "id": "witness",
+      "id": "police",
       "time": "17:40",
-      "emoji": "🚓",
-      "when": { "fled": true },
-      "left": { "effects": { "trust": 1 } },
-      "right": { "effects": { "mind": -1, "trust": -1 } }
+      "place": "home",
+      "emoji": "👮",
+      "when": {
+        "fled": true
+      },
+      "left": {
+        "effects": {
+          "mind": -1
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "police": true
+        }
+      }
     },
     {
-      "id": "fuse",
+      "id": "blackout",
       "time": "19:30",
-      "emoji": "⚡",
-      "left": { "death": { "when": { "together": false }, "ending": "fuse" } },
-      "right": { "effects": { "mind": -1 } }
+      "place": "home",
+      "emoji": "💡",
+      "variants": [
+        {
+          "when": {
+            "rain": true
+          }
+        }
+      ],
+      "left": {
+        "deaths": [
+          {
+            "ending": "fuse",
+            "when": {
+              "rain": true,
+              "together": false
+            }
+          }
+        ]
+      },
+      "right": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "candle": true
+        }
+      }
+    },
+    {
+      "id": "news-list",
+      "time": "21:00",
+      "place": "home",
+      "emoji": "📺",
+      "variants": [
+        {
+          "when": {
+            "elif": true
+          }
+        }
+      ],
+      "left": {
+        "effects": {
+          "mind": -1
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "wine": true
+        }
+      }
+    },
+    {
+      "id": "elif-air",
+      "time": "22:00",
+      "place": "home",
+      "emoji": "🌙",
+      "when": {
+        "together": true
+      },
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "outside": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "wine": true
+        }
+      }
+    },
+    {
+      "id": "mom-night",
+      "time": "22:00",
+      "place": "home",
+      "emoji": "📞",
+      "when": {
+        "together": false
+      },
+      "left": {
+        "effects": {
+          "body": -1
+        },
+        "set": {
+          "momComing": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        }
+      }
+    },
+    {
+      "id": "drowsy",
+      "time": "23:00",
+      "place": "home",
+      "emoji": "😴",
+      "left": {
+        "effects": {
+          "body": 1
+        },
+        "deaths": [
+          {
+            "ending": "last-glass",
+            "when": {
+              "wine": true,
+              "pill": true
+            }
+          },
+          {
+            "ending": "fell-asleep",
+            "when": {
+              "heater": true,
+              "momComing": false,
+              "together": false
+            }
+          },
+          {
+            "ending": "fell-asleep",
+            "when": {
+              "candle": true,
+              "momComing": false,
+              "together": false
+            }
+          }
+        ]
+      },
+      "right": {
+        "effects": {
+          "body": -1
+        }
+      }
     },
     {
       "id": "railing",
       "time": "23:40",
-      "emoji": "🌃",
-      "when": { "together": true },
-      "left": { "effects": { "trust": -1 } },
-      "right": { "death": { "ending": "railing" } }
+      "place": "home",
+      "emoji": "⚠️",
+      "when": {
+        "together": true,
+        "outside": true,
+        "rail": true
+      },
+      "variants": [
+        {
+          "when": {
+            "taped": true
+          }
+        }
+      ],
+      "left": {
+        "effects": {
+          "mind": -1
+        }
+      },
+      "right": {
+        "deaths": [
+          {
+            "ending": "railing"
+          }
+        ]
+      }
     },
     {
       "id": "door",
       "time": "23:40",
+      "place": "home",
       "emoji": "🚪",
-      "when": { "together": false },
-      "left": { "effects": { "mind": -1 } },
-      "right": { "death": { "ending": "wardrobe" } }
+      "when": {
+        "together": false
+      },
+      "left": {
+        "effects": {
+          "mind": -1
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": 1
+        },
+        "deaths": [
+          {
+            "ending": "wardrobe",
+            "when": {
+              "police": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "midnight",
+      "time": "23:55",
+      "place": "home",
+      "emoji": "🕛",
+      "left": {
+        "deaths": [
+          {
+            "ending": "curtain",
+            "when": {
+              "candle": true,
+              "sealed": true
+            }
+          }
+        ]
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        }
+      }
     }
   ],
   "endings": [
-    { "id": "road", "won": false, "chain": [{}, {}, {}, {}, {}] },
-    { "id": "stairs", "won": false, "chain": [{}, {}, {}, {}, {}] },
-    { "id": "balcony", "won": false, "chain": [{}, {}, {}, {}, {}] },
-    { "id": "kitchen", "won": false, "chain": [{}, {}, {}, {}, {}] },
+    {
+      "id": "fourth-floor",
+      "won": false
+    },
+    {
+      "id": "horn",
+      "won": false
+    },
+    {
+      "id": "stairs",
+      "won": false
+    },
+    {
+      "id": "balcony",
+      "won": false
+    },
+    {
+      "id": "kitchen",
+      "won": false
+    },
+    {
+      "id": "heater-gas",
+      "won": false
+    },
     {
       "id": "fuse",
-      "won": false,
-      "chain": [{ "when": { "elif": true } }, { "when": { "elif": false } }, {}, {}, {}]
+      "won": false
     },
-    { "id": "railing", "won": false, "chain": [{}, {}, {}, {}, {}] },
-    { "id": "wardrobe", "won": false, "chain": [{}, {}, {}, {}] },
-    { "id": "panic", "won": false, "chain": [{}, {}, {}] },
-    { "id": "collapse", "won": false, "chain": [{}, {}, {}] },
-    { "id": "alone", "won": false, "chain": [{}, {}, {}] },
-    { "id": "together", "won": true, "when": { "together": true }, "chain": [] },
-    { "id": "survivor", "won": true, "chain": [] }
+    {
+      "id": "last-glass",
+      "won": false
+    },
+    {
+      "id": "fell-asleep",
+      "won": false
+    },
+    {
+      "id": "railing",
+      "won": false
+    },
+    {
+      "id": "wardrobe",
+      "won": false
+    },
+    {
+      "id": "curtain",
+      "won": false
+    },
+    {
+      "id": "panic-street",
+      "won": false
+    },
+    {
+      "id": "panic-home",
+      "won": false
+    },
+    {
+      "id": "panic-work",
+      "won": false
+    },
+    {
+      "id": "collapse-street",
+      "won": false
+    },
+    {
+      "id": "collapse-home",
+      "won": false
+    },
+    {
+      "id": "collapse-work",
+      "won": false
+    },
+    {
+      "id": "together",
+      "won": true,
+      "when": {
+        "together": true
+      }
+    },
+    {
+      "id": "alone",
+      "won": true
+    }
   ]
 }

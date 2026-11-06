@@ -15,8 +15,8 @@ export function DeathsScreen({
   found,
   onBack,
 }: ScreenProps & { found: string[]; onBack: () => void }) {
-  // Sadece ölümler.
-  const deaths = story.endings.filter((ending) => !ending.won);
+  // Sadece bulunabilen ölümler, dosyadaki sırayla.
+  const deaths = story.endings.filter((ending) => story.deaths.includes(ending.id));
   // Bulunan ölüm sayısı.
   const foundCount = deaths.filter((ending) => found.includes(ending.id)).length;
   return (

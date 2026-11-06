@@ -106,7 +106,7 @@ export function App() {
         .then(setStats)
         .catch(() => setStats(null));
       // Geri sarmanın başlayacağı saat.
-      rewindFrom.current = story.cards[next.lastIndex].time;
+      rewindFrom.current = next.index >= 0 ? story.cards[next.index].time : "00:00";
       setScreen("end");
     },
     [story, state, addFound],
@@ -129,7 +129,7 @@ export function App() {
   // Ortak özellikler.
   const common = { story, language, onLanguage: setLanguage };
   // Bulunan ölüm sayısı.
-  const foundDeaths = story.endings.filter((item) => !item.won && found.includes(item.id)).length;
+  const foundDeaths = story.deaths.filter((id) => found.includes(id)).length;
   // Ölüm listesini açar.
   const openDeaths = () => {
     returnTo.current = "end";

@@ -7,322 +7,522 @@
     "Nikt nie wychodzi.",
     "Ty też."
   ],
-  "wake": "Otwierasz oczy. Stoisz na przystanku. Autobus właśnie podjeżdża.",
+  "wake": "Otwierasz oczy. Stoisz na przystanku. To pierwszy dzień w nowej pracy, a autobus właśnie podjeżdża.",
   "meters": {
     "mind": "Rozum",
-    "body": "Zdrowie",
-    "trust": "Zaufanie"
+    "body": "Zdrowie"
   },
   "cards": {
     "bus": {
-      "who": "Kierowca autobusu",
-      "text": "„Wsiada pan czy nie?” Przed chwilą widziałeś, jak ten autobus spada z mostu. To jeszcze się nie stało.",
+      "who": "Kierowca",
+      "text": "„Wsiadasz?” Przed chwilą widziałeś, jak ten autobus spada z mostu. Jeszcze nie spadł.",
       "left": {
         "label": "Ostrzeż wszystkich",
-        "after": "Większość się śmieje. Dziewczyna w żółtej kurtce wysiada i podchodzi: Elif."
+        "past": "Ostrzegłeś wszystkich i Elif wysiadła z tobą",
+        "after": "Większość się z ciebie śmieje. Dziewczyna w żółtej kurtce wysiada i podchodzi: Elif."
       },
       "right": {
         "label": "Odejdź po cichu",
-        "after": "Drzwi się zamykają. Autobus znika za rogiem."
+        "past": "Odszedłeś, nikogo nie ostrzegając",
+        "after": "Drzwi się zamykają. Kamera na przystanku patrzy, jak odchodzisz."
       }
     },
     "sirens": {
-      "who": "Ulica",
-      "text": "Od strony mostu słychać syreny. Trzęsą ci się ręce.",
+      "who": "Most",
+      "text": "Od strony mostu wyją syreny. Trzęsą ci się ręce.",
       "left": {
-        "label": "Włóż słuchawki",
-        "after": "Syreny cichną. Wszystko wydaje się trochę dalej."
+        "label": "Załóż słuchawki",
+        "past": "Założyłeś słuchawki i podkręciłeś na maksimum",
+        "after": "Hałas znika. Podkręcasz muzykę na maksimum."
       },
       "right": {
         "label": "Sprawdź wiadomości",
-        "after": "Most na ekranie. Autobus w wodzie. Chowasz słuchawki do kieszeni."
+        "past": "Oglądałeś wiadomości",
+        "after": "Na ekranie jest most. Autobus jest w wodzie."
       }
     },
     "cafe": {
-      "who": "Kawiarnia na rogu",
-      "text": "Drży ci ręka i kawa wylewa się na but. Kelner wyciera podłogę.",
+      "who": "Kawiarnia",
+      "text": "Ręce ci drżą i kawa wylewa się do buta. Kelner podaje ścierkę.",
       "left": {
         "label": "Posiedź, aż wyschnie",
-        "after": "Pięć minut na krześle. Oddech się uspokaja."
+        "past": "Zasiedziałeś się w kawiarni i cały dzień byłeś spóźniony",
+        "after": "Siedzisz pół godziny. Oddech wraca. Dawno minęła dziewiąta."
       },
       "right": {
-        "label": "Wyjdź natychmiast",
-        "after": "Tu też nie jest bezpiecznie. Wychodzisz."
+        "label": "Wyjdź od razu",
+        "past": "Kawa przemoczyła ci but, a ty nie czekałeś, aż wyschnie",
+        "after": "Tu też nie jest bezpiecznie. Wychodzisz w mokrej skarpecie."
+      }
+    },
+    "work-call": {
+      "who": "Twój nowy szef",
+      "text": "„To twój pierwszy dzień. Gdzie jesteś?”",
+      "left": {
+        "label": "Idź do pracy",
+        "past": "Poszedłeś do pracy",
+        "after": "„Czwarte piętro. Czekamy.” Zwykły dzień. Może pomoże."
+      },
+      "right": {
+        "label": "„Jestem chory”",
+        "past": "Nie poszedłeś do pracy",
+        "after": "Cisza. „Dobrze. Porozmawiamy jutro.” Jego głos jest zimny."
       }
     },
     "elif-asks": {
       "who": "Elif",
-      "text": "„Skąd wiedziałeś? Czy dzisiaj stanie się coś jeszcze?”",
+      "text": "„Skąd wiedziałeś? Czy dziś stanie się coś jeszcze?”",
       "left": {
-        "label": "Opowiedz, co widziałeś",
-        "after": "Nie śmieje się. Prosi o twój numer."
+        "label": "Powiedz, co widziałeś",
+        "past": "Opowiedziałeś Elif o wizji",
+        "after": "Nie śmieje się. Prosi o twój numer. Gdy to mówisz, staje się prawdziwe."
       },
       "right": {
-        "label": "„Takie przeczucie”",
+        "label": "„Tylko przeczucie”",
+        "past": "Powiedziałeś Elif, że to przeczucie, i ci nie uwierzyła",
         "after": "Nie wierzy ci. Mimo to bierze twój numer."
       }
     },
-    "road": {
-      "who": "Przejście",
-      "text": "Światło jest czerwone, droga wygląda na pustą. Ktoś biegnie w twoją stronę.",
+    "office": {
+      "who": "Mężczyzna w szarym garniturze",
+      "text": "Drugi mężczyzna, który wysiadł z autobusu. Okazuje się twoim nowym kolegą z biurka. „Czwarte piętro, jedźmy windą.” Na drzwiach wisi podarta kartka „awaria”.",
       "left": {
-        "label": "Zaczekaj i się obejrzyj",
-        "after": "Mężczyzna podaje ci upuszczone klucze. Ze strachu nie umiesz się zaśmiać."
+        "label": "Jedź z nim windą",
+        "past": "Wsiadłeś do zepsutej windy",
+        "after": "Drzwi się zamykają. Zgrzyt. Potem czwarte piętro. Śmieje się: „Widzisz?”"
+      },
+      "right": {
+        "label": "Idź schodami",
+        "past": "Wszedłeś na czwarte piętro",
+        "after": "Cztery piętra. Czeka na górze z uśmiechem. Pracujecie całe przedpołudnie, but ci wysycha."
+      }
+    },
+    "red-light": {
+      "who": "Czerwone światło",
+      "text": "Wracasz do domu. Światło jest czerwone, droga pusta. Ktoś biegnie w twoją stronę.",
+      "left": {
+        "label": "Zaczekaj i patrz",
+        "past": "Zaczekałeś na czerwonym",
+        "after": "Mężczyzna podaje ci klucze, które upuściłeś. Jesteś zbyt przerażony, żeby się zaśmiać."
       },
       "right": {
         "label": "Przebiegnij",
-        "after": "Ciężarówka mija cię o włos. Klakson dzwoni ci w uszach."
+        "past": "Przebiegłeś na czerwonym",
+        "after": "Ciężarówka mija cię o włos. Mężczyzna za tobą coś krzyczy, ale nie słyszysz."
       }
     },
-    "elevator": {
-      "who": "Twój blok",
-      "text": "Dwunaste piętro. Winda skrzypi. Schody właśnie umyto.",
+    "pharmacy": {
+      "who": "Farmaceutka",
+      "text": "Ręce wciąż ci drżą. „Łagodny środek uspokajający. Nie z alkoholem, kręci się po nim w głowie.”",
       "left": {
-        "label": "Idź schodami",
-        "after": "Dwanaście pięter. Nogi ci drżą, ale jesteś na górze."
+        "label": "Weź",
+        "past": "Wziąłeś środek uspokajający",
+        "after": "Pół godziny później ręce przestają drżeć. Wszystko jest trochę wolniejsze."
       },
       "right": {
-        "label": "Jedź windą",
-        "after": "Drzwi się zamykają. Światło raz mruga. Nic się nie dzieje."
+        "label": "Nie bierz",
+        "past": "Nie wziąłeś środka uspokajającego",
+        "after": "Idziesz do domu z drżącymi rękami."
       }
+    },
+    "stairs": {
+      "who": "Twój blok",
+      "text": "Dwanaście pięter. Winda skrzypi. Schody właśnie umyto, marmur błyszczy.",
+      "left": {
+        "label": "Schody",
+        "past": "Wszedłeś po świeżo umytych schodach",
+        "after": "Dwanaście pięter. Nogi ci drżą, ale dałeś radę."
+      },
+      "right": {
+        "label": "Winda",
+        "past": "Wsiadłeś do windy",
+        "after": "Drzwi się zamykają, światło migocze. Nic się nie dzieje."
+      },
+      "variants": [
+        "Dwanaście pięter. Winda skrzypi i przypomina ci się ta poranna. Schody właśnie umyto."
+      ]
     },
     "locked": {
-      "who": "Twoje drzwi",
-      "text": "Nie masz kluczy. Sąsiad otwiera drzwi: „Balkony się stykają. Możesz przejść.”",
+      "who": "Sąsiadka",
+      "text": "Kieszeń jest pusta. Nie masz kluczy. Sąsiadka otwiera drzwi: „Balkony są obok siebie, możesz przejść.”",
       "left": {
-        "label": "Przejdź przez balkon"
+        "label": "Przejdź przez balkon",
+        "past": "Przeszedłeś między balkonami na dwunastym piętrze",
+        "after": "Jeden krok, przepaść, drugi balkon. Kręci ci się w głowie, ale jesteś po drugiej stronie."
       },
       "right": {
-        "label": "Zaczekaj na ślusarza",
-        "after": "Dwie godziny na schodach. Nudno, ale żyjesz."
+        "label": "Czekaj na ślusarza",
+        "past": "Czekałeś na ślusarza",
+        "after": "Siedzisz na schodach dwie godziny."
+      }
+    },
+    "railing-first": {
+      "who": "Balkon",
+      "text": "Wychodzisz na balkon, żeby odetchnąć. Barierka chwieje się pod twoją dłonią.",
+      "left": {
+        "label": "Zajmę się tym później",
+        "past": "Zostawiłeś chwiejną barierkę",
+        "after": "Masz dziś większe problemy."
+      },
+      "right": {
+        "label": "Oklej taśmą",
+        "past": "Okleiłeś barierkę i uznałeś, że jest naprawiona",
+        "after": "Trzy warstwy taśmy. Teraz jest solidna. Wygląda na solidną."
       }
     },
     "food": {
       "who": "Kuchnia",
-      "text": "Od rana nic nie jadłeś.",
+      "text": "Od rana nic nie jadłeś. Zegar w kuchni znów spieszy się pięć minut. Mama zawsze tak go ustawiała.",
       "left": {
-        "label": "Rozgrzej olej, usmaż jajko",
+        "label": "Rozgrzej olej na jajko",
+        "past": "Rozgrzałeś olej na jajko",
         "after": "Zapalasz kuchenkę. Olej zaczyna się grzać."
       },
       "right": {
-        "label": "Napij się tylko wody",
-        "after": "Skręca ci żołądek, ale kuchenka jest wyłączona."
+        "label": "Napij się wody",
+        "past": "Cały dzień nic nie jadłeś",
+        "after": "Żołądek cię skręca, ale kuchenka jest wyłączona."
       }
     },
     "mom": {
-      "who": "Dzwoni mama",
-      "text": "Widziała wiadomości. „Nic ci nie jest? Proszę, odbierz!”",
+      "who": "Mama",
+      "text": "Widziała wiadomości. „Wszystko w porządku? Proszę, odbierz!”",
       "left": {
-        "label": "Odbierz i ją uspokój",
+        "label": "Odbierz i uspokój ją",
+        "past": "Rozmawiając z mamą, zapomniałeś o kuchence",
         "after": "Rozmawiacie dwadzieścia minut. Oboje płaczecie."
       },
       "right": {
         "label": "Najpierw wyłącz kuchenkę",
-        "after": "Kuchenka wyłączona. Gdy oddzwaniasz, jej głos drży."
+        "past": "Nie odebrałeś telefonu od mamy",
+        "after": "Wyłączasz kuchenkę. Gdy oddzwaniasz, jej głos drży."
       }
     },
     "pan-fire": {
       "who": "Kuchnia",
-      "text": "Swąd spalenizny. Patelnia płonie, ogień sięga okapu.",
+      "text": "Zapach spalenizny. Patelnia się pali, płomienie sięgają okapu.",
       "left": {
-        "label": "Zalej wodą"
+        "label": "Wylej na to wodę",
+        "past": "Wylałeś wodę na płonący olej"
       },
       "right": {
-        "label": "Przykryj, wyłącz gaz",
-        "after": "Płomień gaśnie. Masz poparzoną rękę, ale mieszkanie ocalało."
+        "label": "Przykryj i wyłącz",
+        "past": "Zdusiłeś ogień pokrywką",
+        "after": "Płomienie gasną. Masz poparzoną rękę, ale mieszkanie stoi."
       }
     },
     "sleep": {
-      "who": "Twoje łóżko",
+      "who": "Łóżko",
       "text": "Nie spałeś od wczoraj. Oczy same ci się zamykają.",
       "left": {
         "label": "Prześpij się",
-        "after": "Śni ci się most. Mimo to pomaga."
+        "past": "Spałeś i śnił ci się most",
+        "after": "Znowu śni ci się most. Budzisz się zlany potem, ale ciało odpoczęło."
       },
       "right": {
         "label": "Nie śpij",
-        "after": "Robisz kawę i patrzysz w sufit."
+        "past": "Cały dzień nie spałeś",
+        "after": "Robisz kawę i gapisz się w sufit."
+      }
+    },
+    "lock-up": {
+      "who": "Dom",
+      "text": "Wszystko wydaje się niebezpieczne. Chcesz zamknąć i zaryglować każde okno i drzwi.",
+      "left": {
+        "label": "Zamknij wszystko",
+        "past": "Zamknąłeś i zaryglowałeś wszystkie okna",
+        "after": "Ostatnie okno zamknięte. Pierwszy raz czujesz się bezpiecznie."
+      },
+      "right": {
+        "label": "Zostaw otwarte",
+        "past": "Zostawiłeś otwarte okna przed burzą",
+        "after": "Firanki falują. W oddali grzmi."
+      }
+    },
+    "shower": {
+      "who": "Łazienka",
+      "text": "Trzęsiesz się. W łazience stoi stary piecyk gazowy, jego niebieski płomień syczy.",
+      "left": {
+        "label": "Długi, gorący prysznic",
+        "past": "Wziąłeś długi prysznic przy piecyku gazowym",
+        "after": "Gorąca woda pomaga. Para wypełnia łazienkę."
+      },
+      "right": {
+        "label": "Szybki, zimny prysznic",
+        "past": "Postawiłeś grzejnik tuż przy kanapie",
+        "after": "Szczękasz zębami. Przysuwasz grzejnik elektryczny do kanapy."
       }
     },
     "elif-news": {
       "who": "Elif",
-      "text": "„Ten drugi facet, który wysiadł z autobusu, nie żyje. W windzie. To przypadek? Mam przyjść?”",
-      "variants": [
-        "„Ten drugi facet, który wysiadł z autobusu, nie żyje. W windzie. Czy my jesteśmy następni? Już idę.”"
-      ],
+      "text": "„Ten drugi, który wysiadł z autobusu, nie żyje. W windzie. Przyjeżdżam do ciebie.”",
       "left": {
-        "label": "„Przyjdź”",
+        "label": "„Przyjedź”",
+        "past": "Poprosiłeś Elif, żeby przyjechała",
         "after": "Pół godziny później stoi w twoich drzwiach."
       },
       "right": {
-        "label": "„Nie przychodź, to niebezpieczne”",
-        "after": "Odczytano. Brak odpowiedzi."
-      }
+        "label": "„Nie, to niebezpieczne”",
+        "past": "Trzymałeś Elif z daleka",
+        "after": "Wyświetlono. Brak odpowiedzi."
+      },
+      "variants": [
+        "„Ten w szarym garniturze nie żyje. W twoim biurze, w windzie. Przyjeżdżam.”"
+      ]
     },
-    "witness": {
-      "who": "Nieznany numer",
-      "text": "„Tu policja. Kamery pokazują, jak odchodzi pan z przystanku. Potrzebujemy pana zeznań.”",
+    "police": {
+      "who": "Policja",
+      "text": "„Kamera nagrała, jak odchodzi pan z przystanku. Potrzebujemy pana zeznań.”",
       "left": {
         "label": "„Przyjdę jutro”",
-        "after": "Policjant notuje. Gdy się rozłączasz, masz mokre dłonie."
+        "past": "Obiecałeś policji, że przyjdziesz jutro",
+        "after": "Zapisują. Gdy się rozłączasz, dłoń masz mokrą."
       },
       "right": {
-        "label": "Wyłącz telefon",
-        "after": "Telefon cichnie. Cisza jest gorsza."
+        "label": "Rozłącz się",
+        "past": "Rozłączyłeś się z policją",
+        "after": "Telefon milknie. Cisza jest gorsza."
       }
     },
-    "fuse": {
-      "who": "Skrzynka z bezpiecznikami",
-      "text": "Nie ma prądu. Skrzynka jest w korytarzu, a podłoga jest wilgotna.",
+    "blackout": {
+      "who": "Korytarz",
+      "text": "Nie ma prądu. Skrzynka z bezpiecznikami jest w korytarzu, wszędzie ciemno.",
       "left": {
-        "label": "Włącz bezpiecznik ręką",
-        "after": "Elif świeci latarką. „Stój, ten kabel jest goły!” Naciskasz właściwy przełącznik."
+        "label": "Podnieś bezpiecznik ręką",
+        "past": "Sięgnąłeś po bezpiecznik w ciemności",
+        "after": "Trzask. Potem światło."
       },
       "right": {
-        "label": "Czekaj w ciemności",
-        "after": "Godzinę później światło wraca samo."
+        "label": "Zapal świeczkę i czekaj",
+        "past": "Zapaliłeś świeczkę",
+        "after": "Światło świecy drga na ścianach. Jest w tym coś kojącego."
+      },
+      "variants": [
+        "Nie ma prądu. Skrzynka jest w korytarzu. Deszcz wpadł przez otwarte okno i podłoga jest przemoczona."
+      ]
+    },
+    "news-list": {
+      "who": "Wiadomości",
+      "text": "Czytają listę pasażerów. Jest na niej twoje nazwisko. Nie jako ocalałego, jako zaginionego.",
+      "left": {
+        "label": "Słuchaj do końca",
+        "past": "Wysłuchałeś całej listy pasażerów",
+        "after": "Czterdzieści dwa nazwiska. Potem reklamy."
+      },
+      "right": {
+        "label": "Wyłącz, nalej sobie",
+        "past": "Nalałeś sobie kieliszek wina",
+        "after": "Wino pali w gardle. Trochę pomaga."
+      },
+      "variants": [
+        "Czytają listę pasażerów. Jest na niej twoje nazwisko i nazwisko Elif. Nie jako ocalałych, jako zaginionych."
+      ]
+    },
+    "elif-air": {
+      "who": "Elif",
+      "text": "„Duszę się tutaj. Wyjdziemy zaczerpnąć powietrza?”",
+      "left": {
+        "label": "Wyjdźmy na balkon",
+        "past": "Wyszliście z Elif na balkon",
+        "after": "Noc jest chłodna. Miasto wciąż pełne syren."
+      },
+      "right": {
+        "label": "Zostańmy, otwórzmy wino",
+        "past": "Otworzyliście z Elif wino",
+        "after": "Dwa kieliszki. Elif śmieje się pierwszy raz dziś."
+      }
+    },
+    "mom-night": {
+      "who": "Mama",
+      "text": "„Mam przyjechać? Nie bądź dziś sam.”",
+      "left": {
+        "label": "„Przyjedź”",
+        "past": "Poprosiłeś mamę, żeby przyjechała",
+        "after": "„Będę za pół godziny.” Boisz się, że jedzie tak późno."
+      },
+      "right": {
+        "label": "„Nie, wszystko dobrze”",
+        "past": "Powiedziałeś mamie, że wszystko dobrze",
+        "after": "Słyszy kłamstwo w twoim głosie, ale nic nie mówi."
+      }
+    },
+    "drowsy": {
+      "who": "Kanapa",
+      "text": "Oczy ci się kleją. Kanapa nigdy nie wyglądała tak wygodnie.",
+      "left": {
+        "label": "Połóż się na kanapie",
+        "past": "Położyłeś się na kanapie",
+        "after": "Gdy otwierasz oczy, minął czas. Kark ci zesztywniał."
+      },
+      "right": {
+        "label": "Nie kładź się, przemyj twarz",
+        "past": "Przemyłeś twarz, żeby nie zasnąć",
+        "after": "Zimna woda. W lustrze ktoś obcy."
       }
     },
     "railing": {
       "who": "Elif",
-      "text": "Stoi na balkonie, oparta o barierkę. Czy ta barierka zawsze się tak chwiała?",
+      "text": "Elif opiera się o barierkę i patrzy w dół. „To jest bezpieczne?”",
       "left": {
-        "label": "„Wracaj do środka, już!”",
-        "after": "Patrzy ze złością i wchodzi. Chwilę później barierka spada w ciemność."
+        "label": "„Wejdź do środka, już!”",
+        "past": "Zawołałeś Elif do środka",
+        "after": "Jest zła, ale wchodzi. W tej chwili barierka spada w ciemność."
       },
       "right": {
-        "label": "Wyjdź i ją przytul"
-      }
+        "label": "Podejdź, przytul ją",
+        "past": "Oparłeś się o barierkę, żeby przytulić Elif"
+      },
+      "variants": [
+        "Elif opiera się o barierkę i patrzy na taśmę. „To ty zrobiłeś? Jest bezpieczna?”"
+      ]
     },
     "door": {
       "who": "Drzwi",
-      "text": "Ktoś puka. W wizjerze nikogo nie ma. Obok ciebie stoi ciężka szafa.",
+      "text": "Ktoś puka. W wizjerze nikogo nie ma. Obok drzwi stoi ciężka szafa.",
       "left": {
         "label": "Otwórz i zobacz",
-        "after": "Nikogo. Na wycieraczce leży poranny bilet autobusowy."
+        "past": "Otworzyłeś drzwi",
+        "after": "Nikogo. Na wycieraczce leży bilet na poranny autobus."
       },
       "right": {
-        "label": "Zastaw drzwi szafą"
+        "label": "Zastaw drzwi szafą",
+        "past": "Zastawiłeś drzwi szafą",
+        "after": "Szafa stoi na miejscu. Nikt już nie puka."
+      }
+    },
+    "midnight": {
+      "who": "Zegar w kuchni",
+      "text": "00:00. Czy to koniec?",
+      "left": {
+        "label": "„Koniec!” Otwórz okna",
+        "past": "Myśląc, że jest północ, otworzyłeś okna na oścież",
+        "after": "Chłodne powietrze uderza cię w twarz."
+      },
+      "right": {
+        "label": "Sprawdź telefon",
+        "past": "Zaufałeś telefonowi, nie zegarowi",
+        "after": "23:55. Jeszcze pięć minut. Przyciskasz telefon do piersi i czekasz."
       }
     }
   },
   "endings": {
-    "road": {
+    "fourth-floor": {
+      "title": "Czwarte piętro",
+      "text": "Lina pękła na trzecim piętrze. Woźny krzyczał „Nie wsiadać!”. Ty słuchałeś muzyki.",
+      "hint": "Szybki zjazd pierwszego dnia.",
+      "omen": "Winda skrzypi."
+    },
+    "horn": {
       "title": "Klakson",
-      "text": "Nawet nie usłyszałeś ciężarówki.",
-      "chain": [
-        "Chciałeś uciec od syren",
-        "Włożyłeś słuchawki",
-        "Myślałeś, że ktoś cię goni",
-        "Przeszedłeś na czerwonym",
-        "Nie usłyszałeś klaksonu"
-      ],
-      "hint": "Przynajmniej muzyka była dobra."
+      "text": "Nawet nie usłyszałeś ciężarówki. Cały dzień byłeś spóźniony.",
+      "hint": "Przynajmniej muzyka była dobra.",
+      "omen": "Klakson. Bardzo blisko."
     },
     "stairs": {
       "title": "Mokry stopień",
-      "text": "Na siódmym piętrze poślizgnęła ci się noga. Pustka. To wszystko.",
-      "chain": [
-        "Zadrżała ci ręka",
-        "Kawa wylała się na but",
-        "Nie zaczekałeś, aż wyschnie",
-        "Wybrałeś schody",
-        "Mokra podeszwa, świeżo umyty stopień"
-      ],
-      "hint": "Nie miałeś czasu wysuszyć buta. Mam nadzieję, że zdążyłeś, dokądkolwiek biegłeś."
+      "text": "Na siódmym piętrze noga ci się omsknęła. Mokra podeszwa, ciężkie nogi, świeżo umyty marmur.",
+      "hint": "Mówią, że schody są zdrowe.",
+      "omen": "Stopnie są mokre."
     },
     "balcony": {
       "title": "Sąsiedni balkon",
-      "text": "Szczelina była szersza, niż się wydawało.",
-      "chain": [
-        "Pobiegłeś na czerwonym",
-        "Nie zauważyłeś, że zgubiłeś klucze",
-        "Zostałeś pod drzwiami",
-        "Posłuchałeś sąsiada",
-        "Dwunaste piętro"
-      ],
-      "hint": "Ten mężczyzna niósł twoje klucze. Dobrze, że mu uciekłeś."
+      "text": "Przerwa była szersza, niż się wydawało. W połowie drogi środek uspokajający zakręcił ci w głowie.",
+      "hint": "Sąsiadka chciała dobrze. To niczego nie zmienia.",
+      "omen": "Daleko w dół."
     },
     "kitchen": {
       "title": "Szklanka wody",
-      "text": "Gdy woda dotknęła oleju, ogień skoczył pod sufit.",
-      "chain": [
-        "Rozgrzałeś olej na jajko",
-        "Zadzwoniła mama",
-        "Zapomniałeś o kuchence",
-        "Olej się zapalił",
-        "Zalałeś go wodą"
-      ],
-      "hint": "Płonącego oleju nie gasi się wodą. Dowiedziałeś się ostatni."
+      "text": "W chwili, gdy woda dotknęła oleju, płomień uderzył w sufit.",
+      "hint": "Mama miała rację: nigdy nie zostawiaj włączonej kuchenki.",
+      "omen": "Olej skwierczy."
+    },
+    "heater-gas": {
+      "title": "Piecyk gazowy",
+      "text": "Wszystkie okna były zamknięte. Po środku uspokajającym głowa ci ciążyła i nie zauważyłeś bezwonnego gazu.",
+      "hint": "Zamknąłeś wszystko. Śmierć też, w środku.",
+      "omen": "Głowa ci ciąży."
     },
     "fuse": {
-      "title": "Goły kabel",
-      "text": "W ciemności dotknąłeś nie tego miejsca.",
-      "chain": [
-        "Nie poprosiłeś Elif, żeby przyszła",
-        "Nikogo nie uratowałeś, więc byłeś sam",
-        "Zgasło światło",
-        "Nie chciałeś czekać",
-        "Wilgotna podłoga, goły kabel"
-      ],
-      "hint": "Światło wróciłoby za godzinę. Ale kto ma godzinę?"
+      "title": "Goły przewód",
+      "text": "Deszcz zalał korytarz. W ciemności stanąłeś w wodzie i sięgnąłeś po bezpiecznik.",
+      "hint": "Wezwanie elektryka nie było takie trudne.",
+      "omen": "Przewód jest goły."
+    },
+    "last-glass": {
+      "title": "Ostatni kieliszek",
+      "text": "Farmaceutka ostrzegała. Wino i środek uspokajający. Oddech zwolnił, potem ustał.",
+      "hint": "Przeczytanie ulotki zajmuje trzy sekundy.",
+      "omen": "Nie z alkoholem."
+    },
+    "fell-asleep": {
+      "title": "Zasnąłeś",
+      "text": "Zasnąłeś na kanapie. Koc dotknął grzejnika albo świeczki. Nikt cię nie obudził.",
+      "hint": "Cały dzień nie spałeś i zasnąłeś w złym momencie.",
+      "omen": "Zapach spalenizny."
     },
     "railing": {
       "title": "Barierka",
       "text": "Przytuliłeś ją. Barierka nie utrzymała was obojga.",
-      "chain": [
-        "Uratowałeś Elif",
-        "Poprosiłeś, żeby przyszła",
-        "Razem przetrwaliście noc",
-        "Odetchnąłeś z ulgą",
-        "Wyszedłeś na balkon"
-      ],
-      "hint": "Bardzo romantycznie. Przez dwanaście pięter."
+      "hint": "Mówiłeś, że zajmiesz się tym później.",
+      "omen": "Barierka skrzypi."
     },
     "wardrobe": {
       "title": "Szafa",
-      "text": "Pilnując drzwi, przewróciłeś na siebie szafę.",
-      "chain": [
-        "Cały dzień byłeś sam",
-        "Ktoś zapukał",
-        "Spanikowałeś",
-        "Sam ciągnąłeś ciężką szafę"
-      ],
-      "hint": "Za drzwiami nikogo nie było. Szafa i tak cię dopadła."
+      "text": "To była policja. Przyszli, bo się rozłączyłeś. Wyważyli drzwi i szafa runęła na ciebie.",
+      "hint": "Złożenie zeznań zajęłoby dziesięć minut.",
+      "omen": "Ktoś puka."
     },
-    "panic": {
-      "title": "Rowerzysta",
-      "text": "Zatrzymałeś się na środku ulicy i nie mogłeś iść dalej. Nie zauważyłeś rowerzysty.",
-      "chain": [
-        "Ani razu się nie uspokoiłeś",
-        "Podejrzewałeś wszystko",
-        "Nie umiałeś już decydować"
-      ],
-      "hint": "Uciekłeś z mostu. Załatwił cię rower."
+    "curtain": {
+      "title": "Firanka",
+      "text": "Zegar w kuchni spieszył się pięć minut. Wiatr z otwartego okna rzucił płomień świecy na firankę.",
+      "hint": "Mama zawsze przestawiała zegary do przodu. Zawsze.",
+      "omen": "Zegar kłamie."
     },
-    "collapse": {
-      "title": "Róg blatu",
-      "text": "W kuchni zakręciło ci się w głowie, a róg blatu był bardzo blisko.",
-      "chain": ["Nie jadłeś i nie odpoczywałeś", "Przemęczyłeś się", "Ciało się poddało"],
-      "hint": "Oszukałeś śmierć i pominąłeś śniadanie. Tylko jedno z tych było mądre."
+    "panic-street": {
+      "title": "Sparaliżowany",
+      "text": "Zamarłeś na środku jezdni. Nie zauważyłeś rowerzysty.",
+      "hint": "Twój strach był większy niż wszystko. Nawet niż rowerzysta.",
+      "omen": "Brakuje ci tchu."
     },
-    "alone": {
-      "title": "Nikt nie zadzwonił",
-      "text": "Upadłeś. Krzyczałeś godzinami. Nie było już nikogo, kto by zadzwonił.",
-      "chain": ["Odpychałeś ludzi", "Nie odbierałeś telefonów", "Nikt cię nie szukał"],
-      "hint": "Nie odbierałeś. W końcu przestali dzwonić."
+    "panic-home": {
+      "title": "Panika",
+      "text": "Nie mogłeś oddychać i rzuciłeś się do drzwi. Potknąłeś się na szczycie schodów.",
+      "hint": "Uciekłeś śmierci. Sobie nie.",
+      "omen": "Serce wali ci w piersi."
+    },
+    "panic-work": {
+      "title": "Szklane drzwi",
+      "text": "Nie mogłeś oddychać. Wbiegłeś w szklane drzwi biura, nie widząc ich.",
+      "hint": "Pierwszy dzień, pierwsze wrażenie.",
+      "omen": "Ściany się zbliżają."
+    },
+    "collapse-street": {
+      "title": "Chodnik",
+      "text": "Upadłeś na chodnik. Ludzie myśleli, że jesteś pijany. Nikt się nie zatrzymał.",
+      "hint": "Trzeba było o siebie zadbać.",
+      "omen": "Kolana ci drżą."
+    },
+    "collapse-home": {
+      "title": "Kant blatu",
+      "text": "W kuchni zakręciło ci się w głowie. Kant blatu był za blisko.",
+      "hint": "Bez jedzenia, bez snu, bez odpoczynku.",
+      "omen": "Kręci ci się w głowie."
+    },
+    "collapse-work": {
+      "title": "Schody w biurze",
+      "text": "Na schodach w biurze nogi się pod tobą ugięły.",
+      "hint": "Pierwszy dzień, ostatni dzień.",
+      "omen": "Nogi cię nie niosą."
     },
     "together": {
-      "title": "Oboje żywi",
-      "text": "00:00. Oboje żyjecie. Elif milczy. Ty też. Śmierć przegapiła dziś dwie osoby.",
-      "chain": [],
-      "hint": "Masz najlepsze zakończenie. Choć jutro też jest dzień."
+      "title": "Oboje żyjecie",
+      "text": "00:00. Elif milczy, ty też. Dziś śmierć chybiła dwa razy.",
+      "hint": "Jutro oboje się obudzicie. To wszystko."
     },
-    "survivor": {
-      "title": "Sam o północy",
-      "text": "00:00. Żyjesz. Dziś nikogo nie uratowałeś, ale jesteś tu. Śmierć się pomyliła.",
-      "chain": [],
-      "hint": "Gratulacje, przeżyłeś. Sam."
+    "alone": {
+      "title": "Północ, w samotności",
+      "text": "00:00. Żyjesz. Nikogo nie uratowałeś, ale jesteś tutaj. Śmierć się pomyliła.",
+      "hint": "Tym razem."
     }
   }
 }

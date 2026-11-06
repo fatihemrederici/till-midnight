@@ -1,58 +1,66 @@
 // Bu dosyanın ait olduğu paket.
 package com.tillmidnight.api.story;
 
-// Dosya yazma.
+// Dosya yazmak için.
 import java.nio.file.Files;
-// Dosya yolu.
 import java.nio.file.Path;
-// Değiştirilebilir liste.
-import java.util.ArrayList;
-// Liste arayüzü.
+// Sıralı ve tekrarsız küme.
+import java.util.LinkedHashSet;
+// Liste.
 import java.util.List;
-// Test etiketi.
+// Tohumlu rastgele sayı: Her çalıştırmada aynı yollar çıksın.
+import java.util.Random;
+// Küme.
+import java.util.Set;
+// JUnit test etiketi.
 import org.junit.jupiter.api.Test;
-// Sadece istenince çalışan test etiketi.
+// Sadece istenince çalışsın diye.
 import org.junit.jupiter.api.condition.EnabledIfSystemProperty;
 
-// Hikâye değişince beklenen yollar dosyasını yeniden üretir. Normal test koşusunda çalışmaz.
+// story-paths dosyalarını yeniden üretir. Normal testlerde çalışmaz.
 // Çalıştırmak için: ./mvnw test -Dtest=UpdateStoryPaths -DupdateStoryPaths=true
+// Yol sayısı milyonları bulduğu için hepsi değil, tohumlu rastgele bir örnek yazılır. Her son en az bir kez bulunur.
 class UpdateStoryPaths {
+
+    // Kaç yol yazılacak.
+    private static final int SAMPLE = 3000;
 
     // Gerçek motor.
     private final StoryEngine engine = new StoryEngine();
 
-    // Bu metot bir test.
     @Test
-    // Sadece komutta istenince çalış.
     @EnabledIfSystemProperty(named = "updateStoryPaths", matches = "true")
     void writePathFiles() throws Exception {
-        // Her bölümü dön.
+        // Her bölüm için.
         for (String id : StoryLoader.chapterIds()) {
-            // Bölümü oku.
             Story story = StoryLoader.loadChapter(id);
-            // Bulunan satırlar.
-            List<String> lines = new ArrayList<>();
-            // Baştan yürü.
-            walk(story, engine.start(story), "", lines);
-            // Dosyaya yaz.
-            Files.write(Path.of("src/test/resources/story-paths/" + id + ".txt"), lines);
+            // Aynı tohum, aynı yollar.
+            Random random = new Random(id.hashCode());
+            // Tekrarsız satırlar.
+            Set<String> lines = new LinkedHashSet<>();
+            // Her sonu bulana kadar ve örnek dolana kadar oyna.
+            Set<String> missing = new LinkedHashSet<>(new StoryAnalyzer(engine).analyze(story).endingPercent().entrySet()
+                    .stream().filter(entry -> entry.getValue() > 0).map(java.util.Map.Entry::getKey).toList());
+            for (int tries = 0; (lines.size() < SAMPLE || !missing.isEmpty()) && tries < 200_000; tries++) {
+                String line = randomRun(story, random);
+                lines.add(line);
+                missing.remove(line.split(" ")[1]);
+            }
+            Files.write(Path.of("src/test/resources/story-paths/" + id + ".txt"), List.copyOf(lines));
         }
     }
 
-    // Tüm seçimleri dener: Solu L, sağı R olarak yazar.
-    private void walk(Story story, StoryEngine.State state, String choices, List<String> lines) {
-        // Oyun bittiyse satırı ekle.
-        if (state.endingId() != null) {
-            lines.add(choices + " " + state.endingId());
-            return;
+    // Rastgele bir koşu oynar ve "LRL son" satırını döndürür.
+    private String randomRun(Story story, Random random) {
+        // Baştan başla.
+        StoryEngine.State state = engine.start(story);
+        StringBuilder choices = new StringBuilder();
+        // Oyun bitene kadar.
+        while (state.endingId() == null) {
+            boolean left = random.nextBoolean();
+            choices.append(left ? 'L' : 'R');
+            state = engine.step(story, state, left ? StoryEngine.Side.LEFT : StoryEngine.Side.RIGHT);
         }
-        // Sola git. Kilitli seçenek oynanamaz.
-        if (engine.allowed(story, state, StoryEngine.Side.LEFT)) {
-            walk(story, engine.step(story, state, StoryEngine.Side.LEFT), choices + "L", lines);
-        }
-        // Sağa git.
-        if (engine.allowed(story, state, StoryEngine.Side.RIGHT)) {
-            walk(story, engine.step(story, state, StoryEngine.Side.RIGHT), choices + "R", lines);
-        }
+        return choices + " " + state.endingId();
     }
 }

@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 // Saat hesapları.
 import { dayProgress } from "./clock";
 // Test edilen motor.
-import { canAfford, cardText, choose, currentCard, holds, newGame } from "./engine";
+import { cardText, choose, deathChain, holds, newGame } from "./engine";
 // Tipler.
 import type { Card, Side, Story, Text } from "./types";
 
@@ -29,11 +29,7 @@ describe("engine", () => {
   // Yeni bölüm eklenince test otomatik onu da kapsar.
   it("finds every chapter", () => {
     // Üç bölüm var.
-    expect(chapters.map((story) => story.id).sort()).toEqual([
-      "first-day",
-      "last-dance",
-      "night-shift",
-    ]);
+    expect(chapters.map((story) => story.id).sort()).toEqual(["first-day"]);
   });
 
   // Java motoruyla birebir aynı sonuçlar çıkmalı.
@@ -64,47 +60,90 @@ describe("engine", () => {
   );
 
   // Sıfıra inen gösterge krize girmeli, ödenince 1'e dönmeli.
-  it("opens a crisis card when a meter runs out", () => {
-    // En küçük hikâye.
-    const free = { label: text("l"), after: text("a") };
-    const mini = {
-      start: { m: 1, o: 5 },
-      maxMeter: 5,
-      meters: [
-        {
-          id: "m",
-          ending: "gone",
-          crisis: {
-            id: "c",
-            left: { ...free, effects: { o: -2 }, requires: { o: 2 } },
-            right: free,
-          },
-        },
-        { id: "o", ending: "other" },
-      ],
-      cards: [
-        { id: "a", time: "10:00", left: { ...free, effects: { m: -1 } }, right: free },
-        { id: "b", time: "11:00", left: free, right: free },
-      ],
-      endings: [{ id: "win", won: true }],
-    } as unknown as Story;
-    // Göstergeyi sıfıra indir.
+  // Küçük bir test bölümü. Metinler sadece zincirde kullanılan "past" alanında var.
+  const step = (past: string, extra: object = {}) => ({
+    label: text(past),
+    past: text(past),
+    ...extra,
+  });
+  const mini = {
+    start: { mind: 1, body: 3 },
+    maxMeter: 5,
+    meters: [
+      { id: "mind", endings: { street: "m-street", home: "m-home", work: "m-work" } },
+      { id: "body", endings: { street: "b-street", home: "b-home", work: "b-work" } },
+    ],
+    traps: ["oil"],
+    cards: [
+      {
+        id: "a",
+        time: "10:00",
+        place: "street",
+        left: step("heated oil", { set: { oil: true } }),
+        right: step("skipped", { effects: { body: -1 } }),
+      },
+      {
+        id: "b",
+        time: "11:00",
+        place: "home",
+        left: step("answered", { set: { call: true } }),
+        right: step("ignored", { effects: { body: -1 } }),
+      },
+      {
+        id: "c",
+        time: "12:00",
+        place: "home",
+        when: { call: true },
+        left: step("poured water", { deaths: [{ when: { oil: true }, ending: "fire" }] }),
+        right: step("panicked", { effects: { mind: -1 } }),
+      },
+    ],
+    endings: [
+      { id: "fire", won: false },
+      { id: "m-home", won: false },
+      { id: "win", won: true },
+    ],
+  } as unknown as Story;
+
+  // Gösterge biterse ölüm, o kartın yerine göre seçilir.
+  it("ends by place when a meter runs out", () => {
     let state = choose(mini, newGame(mini), "left");
-    expect(state.crisis).toBe("m");
-    expect(state.endingId).toBeNull();
-    // Kriz kartı açık, ödeyebiliyoruz.
-    expect(currentCard(mini, state).id).toBe("c");
-    expect(canAfford(currentCard(mini, state).left, state.meters)).toBe(true);
-    // Öde.
     state = choose(mini, state, "left");
-    expect(state.meters).toEqual({ m: 1, o: 3 });
-    expect(state.crisis).toBeNull();
-    // Saat son oynanan karttan okunur, sıradaki kart gelir.
-    expect(state.lastIndex).toBe(0);
-    expect(story_card(mini, state.index)).toBe("b");
+    state = choose(mini, state, "right");
+    expect(state.endingId).toBe("m-home");
+    expect(story_card(mini, state.index)).toBe("c");
   });
 
-  // Ayarlanmamış işaret false sayılmalı.
+  // Tuzak ölümünün zinciri: Tuzağı kuran, kartı açan ve öldüren seçim, saatleriyle.
+  it("explains a trap death with a timed chain", () => {
+    const chain = deathChain(mini, ["left", "left", "left"]);
+    expect(chain.map((item) => `${item.time} ${item.text.en}`)).toEqual([
+      "10:00 heated oil",
+      "11:00 answered",
+      "12:00 poured water",
+    ]);
+  });
+
+  // Gösterge ölümünün zinciri: O göstergeyi düşüren seçimler.
+  it("explains a meter death with the choices that drained it", () => {
+    const chain = deathChain(mini, ["left", "left", "right"]);
+    expect(chain.map((item) => item.text.en)).toEqual(["panicked"]);
+  });
+
+  // Gerçek bölümde de her ölüm bir zincirle açıklanır.
+  it.each(chapters.map((story) => [story.id, story] as const))(
+    "explains every death of %s with a chain",
+    (id, story) => {
+      const path = Object.keys(allPaths).find((key) => key.endsWith(`/${id}.txt`))!;
+      for (const line of allPaths[path].trim().split("\n").slice(0, 500)) {
+        const [choices, ending] = line.split(" ");
+        if (story.endings.find((item) => item.id === ending)?.won) continue;
+        const sides = [...choices].map((letter) => (letter === "L" ? "left" : "right") as Side);
+        expect(deathChain(story, sides).length, line).toBeGreaterThan(0);
+      }
+    },
+  );
+
   it("treats missing flags as false", () => {
     // Beklenti false, işaret yok: tutar.
     expect(holds({ elif: false }, {})).toBe(true);

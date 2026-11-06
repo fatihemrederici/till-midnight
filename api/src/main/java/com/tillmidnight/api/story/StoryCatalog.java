@@ -24,13 +24,20 @@ public class StoryCatalog {
             // Dosyaları oku.
             Story story = StoryLoader.loadChapter(id);
             // Kontrol et.
-            List<String> errors = checker.check(story).errors();
+            StoryChecker.Report report = checker.check(story);
+            List<String> errors = report.errors();
             // Bozuk hikâyeyle sunucu açılmaz: Hata oyuncuya değil bize görünsün.
             if (!errors.isEmpty()) {
                 throw new IllegalStateException("Chapter " + id + " is broken: " + errors);
             }
             // Listeye ekle.
-            stories.put(id, story);
+            // Oyuncunun bulabileceği ölümler: En az bir yolla ulaşılan, kurtuluş olmayan sonlar.
+            List<String> deaths = story.endings().stream()
+                    .filter(ending -> !ending.won())
+                    .map(Story.Ending::id)
+                    .filter(endingId -> report.analysis().endingPercent().getOrDefault(endingId, 0.0) > 0)
+                    .toList();
+            stories.put(id, story.withDeaths(deaths));
         }
     }
 

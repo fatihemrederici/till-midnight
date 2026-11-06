@@ -1,7 +1,9 @@
-// Akıl düşükken görünen ölüm cümlelerini seçer. Metinlere bakmaz, sadece hangi sonun seçileceğine karar verir.
+// Akıl düşükken görünen ölüm cümlelerini seçer. Sadece hangi ölümün seçileceğine karar verir, metni bölüm dosyası verir.
 import { holds } from "./engine";
 // Tipler.
-import type { GameState, Story } from "./types";
+import type { GameState, Language, Story } from "./types";
+// Bölümde cümle yoksa kullanılan genel cümleler.
+import { HALLUCINATIONS } from "../i18n/whispers";
 
 // Bir ölüm cümlesi: Bölümün bir ölümüne ait ya da genel bir cümle.
 export type Omen = { ending: string } | { generic: number };
@@ -13,27 +15,33 @@ const TRUTH = 0.4;
 export function armedEndings(story: Story, state: GameState): string[] {
   // Aynı ölüm iki kez sayılmasın.
   const armed = new Set<string>();
+  // Kartın yeri: Gösterge ölümü bu yere göre gelir.
+  const place = story.cards[state.index]?.place ?? "home";
   // Sonuna gelmiş göstergenin ölümü.
   for (const meter of story.meters) {
-    if (state.meters[meter.id] <= 1) armed.add(meter.ending);
+    if (state.meters[meter.id] <= 1) armed.add(meter.endings[place]);
   }
   // Önümüzdeki kartlardaki ölümcül seçimler.
   story.cards.slice(state.index).forEach((card, offset) => {
     for (const choice of [card.left, card.right]) {
-      // Ölümcül değilse geç.
-      if (!choice.death) continue;
-      // Şartlı ölüm: Önceki seçimlerin kurduğu tuzak.
-      const conditional = Object.keys(choice.death.when ?? {}).length > 0;
-      // Şartsız ölümü sadece şu anki kartta say, yoksa her şey yakın görünür.
-      if ((offset === 0 || conditional) && holds(choice.death.when, state.flags)) {
-        armed.add(choice.death.ending);
+      for (const death of choice.deaths ?? []) {
+        // Şartlı ölüm: Önceki seçimlerin kurduğu tuzak.
+        const conditional = Object.keys(death.when ?? {}).length > 0;
+        // Şartsız ölümü sadece şu anki kartta say, yoksa her şey yakın görünür.
+        if ((offset === 0 || conditional) && holds(death.when, state.flags))
+          armed.add(death.ending);
       }
     }
   });
   return [...armed];
 }
 
-// Bir sonraki cümleyi seçer. known: Bölümde cümlesi yazılmış ölümler.
+// Bölümde cümlesi olan ölümler.
+export function knownOmens(story: Story): string[] {
+  return story.endings.filter((ending) => !ending.won && ending.omen).map((ending) => ending.id);
+}
+
+// Bir sonraki cümleyi seçer. known: Cümlesi olan ölümler.
 export function pickOmen(
   story: Story,
   state: GameState,
@@ -54,4 +62,16 @@ export function pickOmen(
   if (all.length > 0) return { ending: any(all) };
   // Bölümün cümlesi yoksa genel bir cümle.
   return { generic: Math.floor(random() * 1000) };
+}
+
+// Cümlenin seçilen dildeki metni.
+export function omenText(story: Story, omen: Omen, language: Language): string {
+  // Bölümün kendi cümlesi.
+  if ("ending" in omen) {
+    const line = story.endings.find((ending) => ending.id === omen.ending)?.omen;
+    if (line) return line[language];
+  }
+  // Genel cümle.
+  const lines = HALLUCINATIONS[language];
+  return lines[("generic" in omen ? omen.generic : 0) % lines.length];
 }

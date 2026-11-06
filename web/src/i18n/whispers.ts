@@ -1,35 +1,7 @@
 // Tip.
 import type { Language } from "../game/types";
 
-// Güven düşünce sonuç satırında beliren fısıltılar.
-export const WHISPERS: Record<Language, string[]> = {
-  en: [
-    "Is he crazy?",
-    "Did you hear what he said?",
-    "Not again.",
-    "Why is he still here?",
-    "Nobody believes him.",
-    "Don’t look at him.",
-  ],
-  tr: [
-    "Bu adam deli galiba.",
-    "Ne dediğini duydun mu?",
-    "Yine başladı.",
-    "Bu hâlâ burada mı?",
-    "Kimse inanmıyor ona.",
-    "Bakma ona.",
-  ],
-  pl: [
-    "Czy on oszalał?",
-    "Słyszałeś, co powiedział?",
-    "Znowu to samo.",
-    "Czemu on tu jeszcze jest?",
-    "Nikt mu nie wierzy.",
-    "Nie patrz na niego.",
-  ],
-};
-
-// Akıl düşünce kart metninin yerine bir anlığına geçen cümleler.
+// Bölümde ölüm cümlesi yoksa akıl düşükken kullanılan genel cümleler.
 export const HALLUCINATIONS: Record<Language, string[]> = {
   en: [
     "You’re going to die.",

@@ -6,9 +6,8 @@ export type Level = 0 | 1 | 2;
 
 // Kulak çınlamasının kaynağı ve ses seviyesi.
 let ringing: { oscillator: OscillatorNode; gain: GainNode } | null = null;
-// Nefes ve fısıltı zamanlayıcıları.
+// Nefes zamanlayıcısı.
 let breathTimer: number | null = null;
-let whisperTimer: number | null = null;
 
 // Akıl: Kulak çınlaması. İnce, kesilmeyen bir ton.
 export function setRinging(level: Level): void {
@@ -49,17 +48,8 @@ export function setBreathing(level: Level): void {
   });
 }
 
-// Güven: Fısıltı. Tiz, kısa, anlaşılmayan hışırtılar.
-export function setWhispering(level: Level): void {
-  whisperTimer = retime(whisperTimer, [0, 3600, 2200][level], () => {
-    noise(0.22, 0.035, 3400, "bandpass");
-    window.setTimeout(() => noise(0.3, 0.03, 2600, "bandpass"), 320);
-  });
-}
-
 // Tüm sesleri susturur. Ekrandan çıkınca çağrılır.
 export function stopMoods(): void {
   setRinging(0);
   setBreathing(0);
-  setWhispering(0);
 }

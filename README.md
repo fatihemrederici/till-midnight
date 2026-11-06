@@ -1,6 +1,6 @@
 # Till Midnight
 
-A vision shows you how you die. Now you have to reach midnight, one swiped card at a time, while death comes back through your own small choices. Skip a spill at 20:40 and you can break your neck on the stairs at 21:30.
+A vision shows you how you die. Now you have to reach midnight, one swiped card at a time, while death comes back through your own small choices. Leave the café with coffee in your shoe at 08:50, take a sedative at 11:30, and the freshly mopped stairs kill you at 12:30. You only find out how when the death screen shows the chain.
 
 Playable in English, Turkish and Polish. The language changes instantly at any point in the game.
 
@@ -33,7 +33,7 @@ cd api && ./mvnw test   # the database must be running
 cd web && npm test
 ```
 
-Both test suites play every possible path of every chapter and must reach the same endings.
+Both test suites replay the same sample of paths and must reach the same endings. GitHub Actions runs both on every push.
 
 ## API
 
