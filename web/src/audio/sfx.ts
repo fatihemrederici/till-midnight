@@ -37,6 +37,15 @@ export const sfx = {
     tone(70, 30, 0.5, 0.5);
     noise(0.35, 0.22, 3000, "highpass");
   },
+  // Göz kapanınca: Boğuk, yumuşak bir kapanış.
+  lidClose: () => {
+    tone(120, 60, 0.18, 0.14);
+    noise(0.16, 0.05, 420);
+  },
+  // Göz irkilerek açılınca: Hızlı bir nefes çekiş.
+  gasp: () => noise(0.32, 0.07, 900, "bandpass", true),
+  // Göz ağırlaşırken: Yavaş bir nefes veriş.
+  exhale: () => noise(1.1, 0.045, 600, "bandpass"),
   // Kehanetin sonu: Cam ve su.
   crash: () => {
     noise(1.2, 0.5, 1800, "highpass");

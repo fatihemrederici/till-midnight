@@ -12,6 +12,9 @@ import { say } from "../i18n/languages";
 import { UI } from "../i18n/ui";
 
 // Bir kehanet cümlesinin ekranda kalma süresi. Uzun cümle okunabilsin diye daha uzun kalır.
+// Satırın sönmesi, süresinin sonunda bu kadar sürer.
+const FADE_MS = 260;
+
 function lineDuration(line: string): number {
   // En az 1,5 saniye, her harf için biraz daha.
   return Math.max(1500, 900 + line.length * 45);
@@ -75,12 +78,18 @@ export function VisionScreen({
         </div>
       ) : (
         <>
-          {/* key değişince animasyon baştan başlar. */}
+          {/* Işık patlaması: Sesle aynı anda, her satırda bir kez. key değişince baştan oynar. */}
+          <div
+            className="vision-flash"
+            key={`flash-${step}`}
+            data-last={step === story.vision.length - 1}
+          />
+          {/* Yazı: Hemen çarpar, satırın süresi bitmeden söner. */}
           <p
             className="vision-line"
             key={step}
             data-last={step === story.vision.length - 1}
-            style={{ animationDuration: `${duration}ms` }}
+            style={{ animationDelay: `0ms, ${duration - FADE_MS}ms` }}
           >
             {line}
           </p>

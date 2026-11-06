@@ -56,4 +56,8 @@
     opacity: 1;
     transform: none;
   }
+  /* Işık patlaması animasyonsuz kalırsa ekranı kaplar, hiç çizilmesin. */
+  .vision-flash {
+    display: none;
+  }
 }

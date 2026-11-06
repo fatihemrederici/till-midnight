@@ -1,7 +1,7 @@
 // React araçları.
 import { useEffect, useRef, useState } from "react";
 // Ses etkileri.
-import { type Level, setBreathing, setRinging, stopMoods } from "../audio/moods";
+import { type Level, setRinging, stopMoods } from "../audio/moods";
 // Ölüm cümlesi seçici.
 import { type Omen, knownOmens, pickOmen } from "../game/omens";
 // Parazit süresi.
@@ -76,7 +76,6 @@ export function useMeterEffects(story: Story, state: GameState) {
 
   // Sesleri güce göre ayarla.
   useEffect(() => setRinging(mind), [mind]);
-  useEffect(() => setBreathing(body), [body]);
   // Oyun ekranından çıkınca hepsini sustur.
   useEffect(() => stopMoods, []);
 

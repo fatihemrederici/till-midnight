@@ -1,13 +1,11 @@
 // Ses üreticileri.
-import { engine, noise } from "./synth";
+import { engine } from "./synth";
 
 // Etkinin gücü: 0 yok, 1 hafif, 2 güçlü.
 export type Level = 0 | 1 | 2;
 
 // Kulak çınlamasının kaynağı ve ses seviyesi.
 let ringing: { oscillator: OscillatorNode; gain: GainNode } | null = null;
-// Nefes zamanlayıcısı.
-let breathTimer: number | null = null;
 
 // Akıl: Kulak çınlaması. İnce, kesilmeyen bir ton.
 export function setRinging(level: Level): void {
@@ -29,27 +27,7 @@ export function setRinging(level: Level): void {
   ringing.gain.gain.setTargetAtTime([0, 0.004, 0.012][level], audio.context.currentTime, 0.4);
 }
 
-// Bir zamanlayıcıyı değiştirir. Aralık 0 ise durdurur.
-function retime(current: number | null, interval: number, action: () => void): number | null {
-  // Eskisini durdur.
-  if (current !== null) window.clearInterval(current);
-  // Yeni aralık yoksa bitir.
-  if (interval <= 0) return null;
-  // Hemen çal ve tekrarla.
-  action();
-  return window.setInterval(action, interval);
-}
-
-// Sağlık: Ağır nefes. İçeri ve dışarı iki yumuşak hışırtı.
-export function setBreathing(level: Level): void {
-  breathTimer = retime(breathTimer, [0, 4200, 2800][level], () => {
-    noise(1.1, 0.05, 700, "bandpass", true);
-    window.setTimeout(() => noise(1.3, 0.06, 450, "bandpass"), 1200);
-  });
-}
-
 // Tüm sesleri susturur. Ekrandan çıkınca çağrılır.
 export function stopMoods(): void {
   setRinging(0);
-  setBreathing(0);
 }

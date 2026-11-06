@@ -132,9 +132,6 @@
 .eyelids.loop {
   animation: doze 6s 1.8s infinite;
 }
-.eyelids.loop[data-level="2"] {
-  animation-duration: 3.6s;
-}
 @keyframes doze {
   0%,
   50% {

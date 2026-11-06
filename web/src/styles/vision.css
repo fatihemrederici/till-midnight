@@ -1,4 +1,4 @@
-/* Kehanet: Yazı ekrana darbeyle çarpar. */
+/* Kehanet: Yazı ekrana darbeyle çarpar. Işık ve ses aynı anda: Satır ekrana geldiği an. */
 .vision {
   position: fixed;
   inset: 0;
@@ -6,8 +6,7 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: var(--blood-dark);
-  animation: strobe 1.5s infinite;
+  background: #2a0705;
 }
 .vision[data-awake="true"] {
   background: var(--night);
@@ -16,24 +15,34 @@
 .vision .screen {
   max-width: 440px;
 }
-@keyframes strobe {
-  0%,
-  100% {
-    background: #2a0705;
-  }
-  6% {
-    background: var(--blood);
-  }
-  18% {
-    background: var(--blood-dark);
-  }
-}
 @keyframes fadein {
   from {
     background: #fff;
   }
 }
+/* Her satırda bir kez parlayan ışık. Sıfırıncı anda en parlak, böylece darbe sesiyle tam aynı anda görünür. */
+.vision-flash {
+  position: absolute;
+  inset: 0;
+  background: var(--blood);
+  pointer-events: none;
+  animation: vision-flash 0.55s ease-out both;
+}
+/* Son satır: Beyaz bir patlama. */
+.vision-flash[data-last="true"] {
+  background: #fff;
+  animation-duration: 0.9s;
+}
+@keyframes vision-flash {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .vision-line {
+  position: relative;
   margin: 0;
   font-family: var(--display);
   font-size: clamp(54px, 16vw, 92px);
@@ -41,34 +50,35 @@
   line-height: 0.95;
   text-align: center;
   text-wrap: balance;
-  animation: slam 1.5s ease-out both;
+  /* İki animasyon: Çarpma hemen, sönme satırın sonunda. Gecikmeler VisionScreen'den gelir. */
+  animation:
+    slam 0.42s ease-out both,
+    vision-out 0.26s ease-in forwards;
 }
 .vision-line[data-last="true"] {
   color: #fff;
 }
+/* Çarpma: İlk karede yazı zaten görünür, büyükten yerine oturur ve sarsılır. */
 @keyframes slam {
   0% {
-    opacity: 0;
-    transform: scale(1.35);
-    filter: blur(6px);
-  }
-  12% {
     opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
+    transform: scale(1.25);
   }
-  18% {
+  22% {
+    transform: scale(1);
+  }
+  45% {
     transform: translate(-5px, 3px);
   }
-  24% {
+  70% {
     transform: translate(4px, -3px);
   }
-  30%,
-  90% {
-    transform: none;
-    opacity: 1;
-  }
   100% {
+    transform: none;
+  }
+}
+@keyframes vision-out {
+  to {
     opacity: 0.1;
   }
 }
