@@ -6,14 +6,17 @@ export function ChoiceCost({
   story,
   choice,
   locked,
+  hidden,
 }: {
   story: Story;
   choice: Choice;
   locked: boolean;
+  // Güven bitince kimse yol göstermez: Bedel görünmez, sadece kilit kalır.
+  hidden: boolean;
 }) {
   // Şartı olmayan seçimde gösterilecek bir şey yok.
   const needs = Object.entries(choice.requires ?? {});
-  if (needs.length === 0) return null;
+  if (needs.length === 0 || (hidden && !locked)) return null;
   // Göstergenin simgesi.
   const emoji = (id: string) => story.meters.find((meter) => meter.id === id)?.emoji;
   // Bedel: Kilitli değilken düşecek değer.

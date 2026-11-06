@@ -1,110 +1,205 @@
 /* Biten göstergelerin etkileri. Metin hep okunabilir kalmalı. */
 
-/* Akıl: Kart metni bir anlığına başka bir cümleye dönüşür. */
-.text[data-hallucination="true"] {
-  color: var(--blood);
-  font-weight: 600;
-  animation: hallucination 0.85s linear;
+/* Akıl: Kart metni bir anlığına bir ölüm cümlesine dönüşür. */
+.text[data-hidden="true"] {
+  visibility: hidden;
 }
-@keyframes hallucination {
-  0%,
-  100% {
-    opacity: 0.2;
-  }
-  12%,
-  85% {
-    opacity: 1;
-  }
-}
-
-/* Televizyon paraziti: Kartı bir an kaplar. */
-.tv-static {
+.text.omen {
   position: absolute;
   inset: 0;
+  display: flex;
+  align-items: center;
+  min-height: 0;
+  color: var(--blood);
+  font-weight: 600;
+}
+
+/* Televizyon paraziti: Sadece yazıyı kaplar. */
+.text-box {
+  position: relative;
+}
+.tv-static {
+  position: absolute;
+  inset: -6px -8px;
   z-index: 2;
-  width: 100%;
-  height: 100%;
+  width: calc(100% + 16px);
+  height: calc(100% + 12px);
   image-rendering: pixelated;
   pointer-events: none;
 }
 
-/* Sağlık: Göz kapakları. Ekranı aşan oval bir delik; dikeyde daralınca göz kapanır. */
+/* Akıl: Saat bir an gece yarısını gösterir. */
+.time[data-lie="true"] {
+  color: var(--blood);
+  text-shadow:
+    3px 0 #00e5ff,
+    -3px 0 #ff0040;
+  animation: none;
+}
+
+/* Sağlık: Göz kapakları. --shut 0 açık, 1 kapalı. Tek değer üç katmanı birlikte yönetir. */
+@property --shut {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
 .eyelids {
+  --shut: 0;
   position: fixed;
   inset: 0;
   z-index: 5;
   overflow: hidden;
   pointer-events: none;
 }
-/* Yükseklik değişir, ölçek değil: Ölçeklenirse karanlık da küçülür ve kapanışta ekran açılır. */
+/* Kapaklar ekrandan geniş: Kavisli kenarın köşeleri görünmez. */
 .lid {
   position: absolute;
-  top: 50%;
-  left: -60%;
-  width: 220%;
-  height: 220%;
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 200vmax #000,
-    inset 0 0 70px 30px #000;
-  transform: translateY(-50%);
+  left: -15%;
+  width: 130%;
+  background: #0d0404;
 }
-/* Sağlık düşükken: Aralıklı, çift kırpış. Düşüş anındaki kırpışla çakışmasın diye geç başlar. */
-.eyelids.loop .lid {
-  animation: lid-loop 6s 1.8s infinite;
+/* Üst kapak yolun çoğunu iner. Kenarı aşağı doğru kavisli ve yumuşak. */
+.lid.upper {
+  top: 0;
+  height: 64%;
+  border-radius: 0 0 50% 50% / 0 0 26% 26%;
+  box-shadow: 0 16px 44px 24px #0d0404;
+  transform: translateY(calc((var(--shut) - 1) * 140%));
 }
-.eyelids.loop[data-level="2"] .lid {
-  animation-duration: 3.2s;
+/* Alt kapak az yükselir. */
+.lid.lower {
+  bottom: 0;
+  height: 40%;
+  border-radius: 50% 50% 0 0 / 26% 26% 0 0;
+  box-shadow: 0 -14px 40px 20px #0d0404;
+  transform: translateY(calc((1 - var(--shut)) * 150%));
 }
-@keyframes lid-loop {
-  0%,
-  72%,
+/* Kapalı göz siyah değil: Işık kapaktan koyu kırmızı sızar. */
+.lid-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 45%, #6e0d0d, #1a0202 75%);
+  opacity: calc(var(--shut) * var(--shut) * 0.85);
+}
+
+/* Sağlık düştüğü an: Hızlı kapanış, daha yavaş açılış. */
+.eyelids.once {
+  animation: blink 0.45s forwards;
+}
+@keyframes blink {
+  0% {
+    --shut: 0;
+    animation-timing-function: ease-in;
+  }
+  35%,
+  48% {
+    --shut: 1;
+    animation-timing-function: ease-out;
+  }
   100% {
-    height: 220%;
-  }
-  80%,
-  83% {
-    height: 0;
-  }
-  88% {
-    height: 66%;
-  }
-  92% {
-    height: 30%;
+    --shut: 0;
   }
 }
-/* Sağlık düştüğü an: Tek kırpış. */
-.eyelids.once .lid {
-  animation: lid-once 0.9s ease-in-out forwards;
+/* Sağlık 1'e düştüğü an: Ağır kapanış, titreyerek açılış. */
+.eyelids.once[data-deep="true"] {
+  animation: blink-deep 1.7s forwards;
 }
-.eyelids.once[data-deep="true"] .lid {
-  animation-name: lid-once-deep;
-  animation-duration: 1.5s;
-}
-@keyframes lid-once {
-  0%,
+@keyframes blink-deep {
+  0% {
+    --shut: 0;
+    animation-timing-function: ease-in;
+  }
+  25%,
+  50% {
+    --shut: 1;
+    animation-timing-function: ease-out;
+  }
+  62% {
+    --shut: 0.3;
+  }
+  70% {
+    --shut: 0.85;
+  }
+  84% {
+    --shut: 0.12;
+  }
   100% {
-    height: 220%;
-  }
-  40%,
-  55% {
-    height: 36%;
+    --shut: 0;
   }
 }
-@keyframes lid-once-deep {
+/* Sağlık 1'deyken: Göz ağırlaşıp kapanır, bir an kapalı kalır, irkilerek açılır, sonra hızlı bir kırpış.
+   Düşüş anındaki kırpışla çakışmasın diye geç başlar. */
+.eyelids.loop {
+  animation: doze 6s 1.8s infinite;
+}
+.eyelids.loop[data-level="2"] {
+  animation-duration: 3.6s;
+}
+@keyframes doze {
   0%,
+  50% {
+    --shut: 0;
+    animation-timing-function: ease-in-out;
+  }
+  70% {
+    --shut: 0.7;
+    animation-timing-function: ease-in;
+  }
+  76%,
+  82% {
+    --shut: 1;
+    animation-timing-function: ease-out;
+  }
+  85%,
+  89% {
+    --shut: 0;
+    animation-timing-function: ease-in;
+  }
+  90.5% {
+    --shut: 1;
+    animation-timing-function: ease-out;
+  }
+  93%,
   100% {
-    height: 220%;
+    --shut: 0;
   }
-  30%,
-  55% {
-    height: 0;
-  }
-  75% {
-    height: 44%;
-  }
-  85% {
-    height: 22%;
+}
+
+/* Sağlık: Ekran kenarları kalp sesiyle atar. */
+.heart-pulse {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: inset 0 0 120px 36px var(--blood);
+}
+/* Kalp atarken kenarların kendi nabzı durur, ikisi üst üste binmesin. */
+.app:not([data-body="0"])::after {
+  animation: none;
+}
+/* Sağlık düşükken kart ele geç uyar: Ağırlık hissi. */
+.app:not([data-body="0"]) .card.live {
+  transition-duration: 0.45s;
+}
+.app:not([data-body="0"]) .card.live[data-moving="true"] {
+  transition: transform 0.16s ease-out;
+}
+
+/* Son saat: Saat ve gün çubuğu kızarır, aşağıdan kırmızı bir ışık yükselir. */
+.app[data-late="true"] {
+  background: radial-gradient(ellipse at 50% 130%, rgb(120 12 12 / 0.4), transparent 62%);
+}
+.app[data-late="true"] .time {
+  color: var(--blood);
+}
+.app[data-late="true"] .day-fill {
+  background: var(--blood);
+  animation: last-hour 2.4s ease-in-out infinite;
+}
+@keyframes last-hour {
+  50% {
+    opacity: 0.55;
   }
 }
 
@@ -136,5 +231,8 @@
   .eyelids,
   .tv-static {
     display: none;
+  }
+  .app[data-late="true"] .day-fill {
+    animation: none;
   }
 }

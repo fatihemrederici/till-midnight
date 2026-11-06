@@ -9,9 +9,9 @@ import { SwipeCard } from "../components/SwipeCard";
 // Motor.
 import { canAfford, currentCard } from "../game/engine";
 // Biten göstergelerin ekran etkileri.
-import { Blink, Eyelids } from "../components/MeterEffects";
+import { Blink, Eyelids, HeartPulse } from "../components/MeterEffects";
 // Saat hesapları.
-import { dayProgress } from "../game/clock";
+import { dayProgress, toMinutes } from "../game/clock";
 // Tipler.
 import type { GameState, Side } from "../game/types";
 // Sesli geri bildirim.
@@ -25,9 +25,14 @@ import { say } from "../i18n/languages";
 // Yazılar.
 import { UI } from "../i18n/ui";
 // Biten göstergelerin cümleleri.
-import { HALLUCINATIONS, WHISPERS } from "../i18n/whispers";
+import { WHISPERS } from "../i18n/whispers";
+// Ölüm cümleleri.
+import { omenText } from "../i18n/omens";
 // Ortak özellikler.
 import type { ScreenProps } from "./types";
+
+// Son saatin başladığı dakika: 23:00.
+const LAST_HOUR = 23 * 60;
 
 // Oyun ekranı: Saat, göstergeler ve kaydırılan kart.
 export function PlayScreen({
@@ -46,21 +51,22 @@ export function PlayScreen({
   const isLocked = (side: Side) => !canAfford(card[side], state.meters);
   // Parmak, düğme ve klavye.
   const swipe = useSwipe(onChoose, isLocked);
+  // Son saat: 23:00'ten sonra.
+  const late = toMinutes(time) >= LAST_HOUR;
   // Kalp, uğultu ve darbe.
-  const { danger, hit } = useGameFeedback(story, state, card.id);
+  const { danger, hit } = useGameFeedback(story, state, card.id, late);
   // Biten göstergenin etkisi.
   const effects = useMeterEffects(story, state);
   // Görünen halüsinasyon ve fısıltı cümlesi.
-  const hallucination =
-    effects.hallucination === null
-      ? null
-      : HALLUCINATIONS[language][effects.hallucination % HALLUCINATIONS[language].length];
+  const hallucination = effects.omen === null ? null : omenText(story.id, effects.omen, language);
   const whisper =
     effects.whisper === null
       ? null
       : `“${WHISPERS[language][effects.whisper % WHISPERS[language].length]}”`;
+  // Güven bitince kimse yol göstermez: Seçimin etkisi önceden görünmez.
+  const blind = effects.trust > 0;
   // Kaydırılan seçimin etkileyeceği göstergeler.
-  const affected = swipe.side ? Object.keys(card[swipe.side].effects ?? {}) : [];
+  const affected = swipe.side && !blind ? Object.keys(card[swipe.side].effects ?? {}) : [];
 
   return (
     <div
@@ -69,17 +75,20 @@ export function PlayScreen({
       data-mind={effects.mind}
       data-body={effects.body}
       data-trust={effects.trust}
+      data-late={late}
       key={`fade-${effects.fade}`}
       data-fade={effects.fade > 0}
     >
       <Eyelids level={effects.body} />
       <Blink count={effects.blink.count} deep={effects.blink.deep} />
+      <HeartPulse active={effects.body > 0} />
       {/* Sarsıntı katmanı: key değişince animasyon baştan başlar. */}
       <div className="play" key={hit.count} data-shake={hit.count > 0}>
         <div className="top">
           {/* key saat değişince animasyonu yeniden başlatır. */}
-          <div className="time" key={time}>
-            {time}
+          {/* Akıl bitince saat bir an gece yarısını gösterir. */}
+          <div className="time" key={time} data-lie={effects.clockLie}>
+            {effects.clockLie ? "00:00" : time}
           </div>
           <Controls language={language} onLanguage={onLanguage} />
         </div>
@@ -115,6 +124,7 @@ export function PlayScreen({
           card={card}
           crisis={state.crisis !== null}
           hallucination={hallucination}
+          burst={effects.burst}
           flags={state.flags}
           language={language}
           swipe={swipe}
@@ -130,7 +140,7 @@ export function PlayScreen({
             onMouseLeave={() => swipe.setHover(null)}
           >
             ← {say(card.left.label, language)}
-            <ChoiceCost story={story} choice={card.left} locked={isLocked("left")} />
+            <ChoiceCost story={story} choice={card.left} locked={isLocked("left")} hidden={blind} />
           </button>
           <button
             className="pick r"
@@ -140,7 +150,12 @@ export function PlayScreen({
             onMouseLeave={() => swipe.setHover(null)}
           >
             {say(card.right.label, language)} →
-            <ChoiceCost story={story} choice={card.right} locked={isLocked("right")} />
+            <ChoiceCost
+              story={story}
+              choice={card.right}
+              locked={isLocked("right")}
+              hidden={blind}
+            />
           </button>
         </div>
       </div>

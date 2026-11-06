@@ -5,6 +5,16 @@ import { engine, tone, whenReady } from "./synth";
 let droneGain: GainNode | null = null;
 // Kalp atışı zamanlayıcısı.
 let heartTimer: number | null = null;
+// Her atışta haber verilecekler: Ekranın atışı sesle aynı anda olsun diye.
+const beatListeners = new Set<() => void>();
+
+// Kalp atışlarını dinler. Dönen fonksiyon dinlemeyi bırakır.
+export function onBeat(listener: () => void): () => void {
+  beatListeners.add(listener);
+  return () => {
+    beatListeners.delete(listener);
+  };
+}
 
 // Ses motoru açılınca uğultuyu başlat.
 whenReady((context, output) => {
@@ -48,6 +58,8 @@ export function setHeartbeat(interval: number): void {
   const beat = () => {
     tone(60, 38, 0.13, 0.55);
     tone(52, 34, 0.15, 0.4, "sine", 0.18);
+    // Ses kapalı olsa da ekran atar.
+    beatListeners.forEach((listener) => listener());
   };
   // Hemen başla, sonra tekrarla.
   beat();

@@ -2,14 +2,29 @@
 import { useEffect, useRef, useState } from "react";
 // Ses etkileri.
 import { type Level, setBreathing, setRinging, setWhispering, stopMoods } from "../audio/moods";
+// Ölüm cümlesi seçici.
+import { type Omen, pickOmen } from "../game/omens";
+// Bölümün ölüm cümleleri.
+import { knownOmens } from "../i18n/omens";
+// Parazit süresi.
+import { STATIC_MS } from "../components/TvStatic";
 // Tipler.
 import type { GameState, Meter, Story } from "../game/types";
 
 // Etkilerin başladığı gösterge değeri.
 const EFFECT_LIMIT = 2;
-// Halüsinasyonun ne zaman başlayıp ne kadar süreceği.
-const HALLUCINATION_DELAY_MS = 900;
-const HALLUCINATION_MS = 1150;
+// Akıl düştüğü an: Sonuç cümlesi okunduktan sonra bir cümle.
+const DROP_DELAY_MS = 900;
+const DROP_HOLD_MS = 900;
+// Akıl 1'deyken: Her beş saniyede bir kısa cümle. Kart okunabilsin diye kısa kalır.
+const OMEN_EVERY_MS = 5000;
+const OMEN_HOLD_MS = 800;
+// Parazitin ortasında yazı değişir, böylece değişim görünmez.
+const SWAP_MS = 110;
+// Yalan söyleyen saat: İki cümlenin arasında, bazen.
+const LIE_AT_MS = 2500;
+const LIE_MS = 450;
+const LIE_CHANCE = 0.35;
 // Fısıltı, sonuç cümlesi okunduktan sonra gelir.
 const WHISPER_DELAY_MS = 1900;
 const WHISPER_MS = 3000;
@@ -33,6 +48,9 @@ function levelOf(state: GameState, meter?: Meter): Level {
 // Rastgele bir sayı: Dil değişse de aynı cümle kalsın diye sıra numarası tutuyoruz.
 const randomLine = () => Math.floor(Math.random() * 1000);
 
+// Görünen parazit: id her seferinde yenidir, sound girişte cızırdar.
+export type StaticBurst = { id: number; sound: boolean };
+
 // Biten göstergelerin ekrandaki ve sesteki etkisi.
 export function useMeterEffects(story: Story, state: GameState) {
   // Göstergeler.
@@ -48,11 +66,41 @@ export function useMeterEffects(story: Story, state: GameState) {
   const [blink, setBlink] = useState({ count: 0, deep: false });
   // Tek seferlik renk solması.
   const [fade, setFade] = useState(0);
-  // Görünen halüsinasyon ve fısıltının sıra numarası.
-  const [hallucination, setHallucination] = useState<number | null>(null);
+  // Görünen ölüm cümlesi, yazının üstündeki parazit ve yalan söyleyen saat.
+  const [omen, setOmen] = useState<Omen | null>(null);
+  const [burst, setBurst] = useState<StaticBurst | null>(null);
+  const [clockLie, setClockLie] = useState(false);
+  // Görünen fısıltının sıra numarası.
   const [whisper, setWhisper] = useState<number | null>(null);
   // Bir önceki göstergeler: Neyin düştüğünü anlamak için.
   const previous = useRef(state.meters);
+  // Zamanlayıcılar en güncel durumu okusun diye.
+  const latest = useRef(state);
+  latest.current = state;
+  // Son cümle: Aynısı üst üste gelmesin.
+  const lastOmen = useRef<Omen | null>(null);
+  // Parazitlere sıra numarası.
+  const burstId = useRef(0);
+
+  // Yazı paraziti ile kartın bir an başka bir cümleye dönüşmesi.
+  const hallucinate = (timers: number[], start: number, hold: number) => {
+    // Parazit başlar, yazı parazitin altında değişir, parazit kalkar.
+    const glitch = (at: number, sound: boolean, change: () => void) => {
+      timers.push(
+        window.setTimeout(() => setBurst({ id: ++burstId.current, sound }), at),
+        window.setTimeout(change, at + SWAP_MS),
+        window.setTimeout(() => setBurst(null), at + STATIC_MS),
+      );
+    };
+    // Giriş: Yeni cümle o an seçilir, böylece en güncel durumu bilir.
+    glitch(start, true, () => {
+      const next = pickOmen(story, latest.current, knownOmens(story.id), lastOmen.current);
+      lastOmen.current = next;
+      setOmen(next);
+    });
+    // Dönüş: Kartın kendi metni.
+    glitch(start + hold, false, () => setOmen(null));
+  };
 
   // Sesleri güce göre ayarla.
   useEffect(() => setRinging(mind), [mind]);
@@ -77,13 +125,8 @@ export function useMeterEffects(story: Story, state: GameState) {
         deep: state.meters[bodyMeter!.id] <= 1,
       }));
     }
-    // Akıl: Kart metni bir anlığına başka bir cümleye dönüşür.
-    if (dropped(mindMeter)) {
-      timers.push(
-        window.setTimeout(() => setHallucination(randomLine()), HALLUCINATION_DELAY_MS),
-        window.setTimeout(() => setHallucination(null), HALLUCINATION_DELAY_MS + HALLUCINATION_MS),
-      );
-    }
+    // Akıl: Kart metni bir anlığına bir ölüm cümlesine dönüşür.
+    if (dropped(mindMeter)) hallucinate(timers, DROP_DELAY_MS, DROP_HOLD_MS);
     // Güven: Renk solar, sonuç satırında bir fısıltı belirir.
     if (dropped(trustMeter)) {
       setFade((current) => current + 1);
@@ -96,13 +139,43 @@ export function useMeterEffects(story: Story, state: GameState) {
     // Yeni kart gelirse eski bekleyenler iptal olur.
     return () => {
       timers.forEach((timer) => window.clearTimeout(timer));
-      setHallucination(null);
+      setOmen(null);
+      setBurst(null);
       setWhisper(null);
     };
     // Sadece göstergeler değişince çalışsın.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.meters]);
 
+  // Akıl 1'deyken: Her beş saniyede bir ölüm cümlesi, arada bazen saat yalan söyler.
+  // Yeni kart gelince sayaç baştan başlar: Oyuncu okumaya başlar başlamaz cümle çıkmaz.
+  const cardKey = `${state.index}-${state.crisis}`;
+  useEffect(() => {
+    // Akıl yerindeyse bir şey yok.
+    if (mind === 0) return;
+    // Bekleyen zamanlayıcılar.
+    const timers: number[] = [];
+    const cycle = () => {
+      hallucinate(timers, 0, OMEN_HOLD_MS);
+      if (Math.random() < LIE_CHANCE) {
+        timers.push(
+          window.setTimeout(() => setClockLie(true), LIE_AT_MS),
+          window.setTimeout(() => setClockLie(false), LIE_AT_MS + LIE_MS),
+        );
+      }
+    };
+    const interval = window.setInterval(cycle, OMEN_EVERY_MS);
+    return () => {
+      window.clearInterval(interval);
+      timers.forEach((timer) => window.clearTimeout(timer));
+      setOmen(null);
+      setBurst(null);
+      setClockLie(false);
+    };
+    // Akıl ya da kart değişince yeniden kur.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mind, cardKey]);
+
   // Ekranın ihtiyacı olanları döndür.
-  return { mind, body, trust, blink, fade, hallucination, whisper };
+  return { mind, body, trust, blink, fade, omen, burst, clockLie, whisper };
 }

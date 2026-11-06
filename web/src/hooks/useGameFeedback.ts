@@ -21,7 +21,8 @@ const HEARTBEAT_MS = { none: 0, low: 1150, high: 640 };
 const DRONE_LEVEL = { none: 0.06, low: 0.1, high: 0.16 };
 
 // Oyuncuya durumu hissettiren sesler: Kalp, uğultu, darbe.
-export function useGameFeedback(story: Story, state: GameState, cardId: string) {
+// late: Son saat. Göstergeler iyi olsa da gerilim artar.
+export function useGameFeedback(story: Story, state: GameState, cardId: string, late: boolean) {
   // En düşük gösterge.
   const lowest = Math.min(...story.meters.map((meter) => state.meters[meter.id]));
   // Tehlike düzeyi.
@@ -31,12 +32,17 @@ export function useGameFeedback(story: Story, state: GameState, cardId: string) 
   // Az önce düşen göstergeler. Sayaç, aynı göstergenin art arda düşüşünde animasyonu yeniden başlatır.
   const [hit, setHit] = useState({ ids: [] as string[], count: 0 });
 
-  // Tehlikeye göre kalp ve uğultu.
+  // Tehlikeye göre kalp ve uğultu. Son saatte kalp sakin olsa bile atar, uğultu yükselir.
   useEffect(() => {
-    setHeartbeat(HEARTBEAT_MS[danger]);
-    setDrone(DRONE_LEVEL[danger]);
+    setHeartbeat(HEARTBEAT_MS[late && danger === "none" ? "low" : danger]);
+    setDrone(DRONE_LEVEL[danger] + (late ? 0.05 : 0));
     return () => setHeartbeat(0);
-  }, [danger]);
+  }, [danger, late]);
+
+  // Son saate girince uzaktan bir çan.
+  useEffect(() => {
+    if (late) sfx.bell();
+  }, [late]);
 
   // Kriz kartı açılınca alarm.
   useEffect(() => {

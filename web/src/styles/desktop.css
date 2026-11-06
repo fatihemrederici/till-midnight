@@ -125,8 +125,11 @@
   .face {
     font-size: clamp(90px, min(24vh, 13vw), 220px);
   }
-  .text {
+  .text-box {
     align-self: center;
+    min-height: 0;
+  }
+  .text {
     min-height: 0;
     font-size: clamp(23px, 3.3vh, 32px);
     line-height: 1.34;
