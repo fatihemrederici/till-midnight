@@ -46,9 +46,13 @@ class UpdateStoryPaths {
             lines.add(choices + " " + state.endingId());
             return;
         }
-        // Sola git.
-        walk(story, engine.step(story, state, StoryEngine.Side.LEFT), choices + "L", lines);
+        // Sola git. Kilitli seçenek oynanamaz.
+        if (engine.allowed(story, state, StoryEngine.Side.LEFT)) {
+            walk(story, engine.step(story, state, StoryEngine.Side.LEFT), choices + "L", lines);
+        }
         // Sağa git.
-        walk(story, engine.step(story, state, StoryEngine.Side.RIGHT), choices + "R", lines);
+        if (engine.allowed(story, state, StoryEngine.Side.RIGHT)) {
+            walk(story, engine.step(story, state, StoryEngine.Side.RIGHT), choices + "R", lines);
+        }
     }
 }

@@ -104,6 +104,13 @@ public class StoryValidator {
             }
         }
 
+        // Kriz kartları: Metinleri ve iki seçimi olmalı.
+        for (Story.Meter meter : story.meters()) {
+            if (meter.crisis() != null) {
+                checkCrisis(meter.crisis(), "Crisis " + meter.id(), meterIds, endingIds, errors);
+            }
+        }
+
         // Kartları kontrol et.
         Set<String> cardIds = new HashSet<>();
         for (Story.Card card : story.cards()) {
@@ -125,9 +132,28 @@ public class StoryValidator {
             }
             checkChoice(card.left(), name + " left", meterIds, endingIds, errors);
             checkChoice(card.right(), name + " right", meterIds, endingIds, errors);
+            // İki taraf birden kilitlenirse oyuncu sıkışır.
+            if (card.left().requires() != null && card.right().requires() != null) {
+                errors.add(name + ": one side must always be free");
+            }
         }
         // Tüm hataları döndür.
         return errors;
+    }
+
+    // Bir kriz kartını kontrol eder.
+    private void checkCrisis(
+            Story.Card card, String name, Set<String> meterIds, Set<String> endingIds, List<String> errors) {
+        // Kişi ve metin.
+        checkText(card.who(), name + " who", errors);
+        checkText(card.text(), name + " text", errors);
+        // İki taraf da olmalı.
+        if (card.left() == null || card.right() == null) {
+            errors.add(name + ": left and right are required");
+            return;
+        }
+        checkChoice(card.left(), name + " left", meterIds, endingIds, errors);
+        checkChoice(card.right(), name + " right", meterIds, endingIds, errors);
     }
 
     // Bir seçimi kontrol eder.
@@ -140,6 +166,14 @@ public class StoryValidator {
             for (Map.Entry<String, Integer> effect : choice.effects().entrySet()) {
                 if (!meterIds.contains(effect.getKey())) {
                     errors.add(name + ": unknown meter " + effect.getKey());
+                }
+            }
+        }
+        // Şartlar var olan göstergelere mi?
+        if (choice.requires() != null) {
+            for (String meter : choice.requires().keySet()) {
+                if (!meterIds.contains(meter)) {
+                    errors.add(name + ": unknown meter " + meter);
                 }
             }
         }

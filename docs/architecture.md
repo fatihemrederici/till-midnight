@@ -49,6 +49,6 @@ To keep them identical, both are tested against `api/src/test/resources/story-pa
 
 ## Known limits
 
-- `GET /stories/{id}` sends the rules to the browser, so a curious player can read every ending. Results are still calculated on the server.
+- `GET /story` sends the rules to the browser, so a curious player can read every ending. Results are still calculated on the server.
 - There are no accounts. Player ids are generated in the browser, so statistics can be inflated.
 - `POST /internal/validate` is open and must be protected before going live.

@@ -9,8 +9,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 // Anahtar-değer arayüzü.
 import java.util.Map;
+// Null kontrolü.
+import java.util.Objects;
 // Küme arayüzü.
 import java.util.Set;
+// Akış: Listeleri birleştirmek için.
+import java.util.stream.Stream;
 // Spring'in "bu sınıfı sen yönet" etiketi.
 import org.springframework.stereotype.Component;
 
@@ -38,7 +42,9 @@ public class StoryAnalyzer {
         visit(story, engine.start(story), 0, walk);
 
         // Hiç görülmeyen kartları bul.
-        List<String> unreachableCards = story.cards().stream()
+        List<String> unreachableCards = Stream.concat(
+                        story.cards().stream(),
+                        story.meters().stream().map(Story.Meter::crisis).filter(Objects::nonNull))
                 .map(Story.Card::id)
                 .filter(id -> !walk.seenCards.contains(id))
                 .toList();
@@ -80,11 +86,13 @@ public class StoryAnalyzer {
             return;
         }
         // Bu kart görüldü.
-        walk.seenCards.add(story.cards().get(state.index()).id());
-        // Sola git.
-        visit(story, engine.step(story, state, StoryEngine.Side.LEFT), depth + 1, walk);
-        // Sağa git.
-        visit(story, engine.step(story, state, StoryEngine.Side.RIGHT), depth + 1, walk);
+        walk.seenCards.add(engine.currentCard(story, state).id());
+        // Sadece seçilebilen tarafları dene: Kilitli seçenek oynanamaz.
+        for (StoryEngine.Side side : StoryEngine.Side.values()) {
+            if (engine.allowed(story, state, side)) {
+                visit(story, engine.step(story, state, side), depth + 1, walk);
+            }
+        }
     }
 
     // Yürüyüşün biriken verileri.

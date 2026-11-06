@@ -32,8 +32,8 @@ public record Story(
         // Tüm sonlar: ölümler ve kurtuluşlar.
         List<Ending> endings) {
 
-    // Bir gösterge. Sıfıra inerse ending ile biter.
-    public record Meter(String id, String emoji, Map<String, String> label, String ending) {}
+    // Bir gösterge. Sıfıra inince crisis kartı varsa oyuncuya bir şans verilir. Yoksa ending ile biter.
+    public record Meter(String id, String emoji, Map<String, String> label, String ending, Card crisis) {}
 
     // Bir kart. when doluysa sadece koşul tutarsa çıkar.
     public record Card(
@@ -56,7 +56,9 @@ public record Story(
             Map<String, Integer> effects,
             Map<String, Boolean> set,
             Death death,
-            Map<String, String> after) {}
+            Map<String, String> after,
+            // Bu seçimi yapabilmek için göstergelerin en az bu değerde olması gerekir.
+            Map<String, Integer> requires) {}
 
     // Bu seçim, koşul tutarsa oyuncuyu öldürür.
     public record Death(Map<String, Boolean> when, String ending) {}

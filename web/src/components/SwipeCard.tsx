@@ -13,11 +13,13 @@ type Swipe = Pick<ReturnType<typeof useSwipe>, "dx" | "moving" | "transform" | "
 // Parmakla kaydırılan kart ve arkasındaki kart.
 export function SwipeCard({
   card,
+  crisis,
   flags,
   language,
   swipe,
 }: {
-  card: Card;
+  card: Omit<Card, "time">;
+  crisis: boolean;
   flags: Condition;
   language: Language;
   swipe: Swipe;
@@ -31,6 +33,7 @@ export function SwipeCard({
         className="card live"
         key={card.id}
         data-moving={swipe.moving}
+        data-crisis={crisis}
         style={{ transform: swipe.transform }}
         {...swipe.handlers}
       >

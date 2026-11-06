@@ -12,8 +12,8 @@
   ],
   "wake": "Otwierasz oczy. 14:00. Jesteś drużbą Sama, a wesele jeszcze się nie zaczęło. Ręce ci drżą, wciąż trzymasz w nich program.",
   "meters": {
-    "nerve": "Nerwy",
-    "stamina": "Siły",
+    "nerve": "Rozum",
+    "stamina": "Zdrowie",
     "trust": "Zaufanie"
   },
   "cards": {
@@ -311,6 +311,44 @@
       "text": "00:00. Żyjesz, stoisz na trawniku z programem wesela. Nie ma już komu go dać.",
       "chain": [],
       "hint": "A przemowa była niezła."
+    }
+  },
+  "crises": {
+    "nerve": {
+      "who": "Twoja pierś",
+      "text": "Sala się kurczy. W piersi ci się zaciska. Nie możesz złapać powietrza, a wszyscy na ciebie patrzą.",
+      "left": {
+        "label": "Złap Sama za ramię",
+        "after": "Sam sadza cię i zostaje przy tobie. Wszyscy to widzieli. Nie zapomną."
+      },
+      "right": {
+        "label": "Wybiegnij na dwór",
+        "after": "Biegniesz, aż palą cię płuca, i wymiotujesz w żywopłot. Potem wracasz."
+      }
+    },
+    "stamina": {
+      "who": "Twoje nogi",
+      "text": "Na korytarzu nogi odmawiają ci posłuszeństwa. Podłoga jest zimna. A tyle jeszcze do zrobienia.",
+      "left": {
+        "label": "Wezwij pomoc",
+        "after": "Dwóch kelnerów niesie cię do krzesła na oczach wszystkich. Emily to nagrywa."
+      },
+      "right": {
+        "label": "Mimo to wstań",
+        "after": "Wstajesz i uśmiechasz się do wszystkich. Ręce już nie są twoje."
+      }
+    },
+    "trust": {
+      "who": "Ochrona",
+      "text": "„Cały dzień psujesz to wesele. Idziemy”. Dłoń ochroniarza zaciska się na twoim ramieniu.",
+      "left": {
+        "label": "Błagaj Sama",
+        "after": "Błagasz na oczach wszystkich. Sam wprowadza cię z powrotem. Ręce nie przestają drżeć."
+      },
+      "right": {
+        "label": "Wyjdź i wróć",
+        "after": "Przez kuchnię, przez mur, z powrotem przez piwnicę. Nikt już na ciebie nie patrzy."
+      }
     }
   }
 }

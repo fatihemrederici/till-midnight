@@ -12,8 +12,8 @@
   ],
   "wake": "Gözlerini açıyorsun. Saat 14:00. Sam’in sağdıcısın ve düğün daha başlamadı. Ellerin titriyor, düğün programı hâlâ elinde.",
   "meters": {
-    "nerve": "Sinir",
-    "stamina": "Takat",
+    "nerve": "Akıl",
+    "stamina": "Sağlık",
     "trust": "Güven"
   },
   "cards": {
@@ -303,6 +303,44 @@
       "text": "00:00. Çimende, elinde düğün programıyla yaşıyorsun. Verecek kimse kalmadı.",
       "chain": [],
       "hint": "Bu arada konuşman güzeldi."
+    }
+  },
+  "crises": {
+    "nerve": {
+      "who": "Göğsün",
+      "text": "Salon üstüne geliyor. Göğsün kilitleniyor. Nefes alamıyorsun ve herkes sana bakıyor.",
+      "left": {
+        "label": "Sam’in koluna yapış",
+        "after": "Sam seni oturtuyor, yanından ayrılmıyor. Herkes gördü. Unutmayacaklar."
+      },
+      "right": {
+        "label": "Dışarı koş",
+        "after": "Ciğerlerin yanana kadar koşuyorsun, çalıların dibine kusuyorsun. Sonra geri giriyorsun."
+      }
+    },
+    "stamina": {
+      "who": "Bacakların",
+      "text": "Koridorda bacakların bırakıyor. Yer soğuk. Daha yapacak çok iş var.",
+      "left": {
+        "label": "Yardım iste",
+        "after": "İki garson seni herkesin önünde sandalyeye taşıyor. Emily videoya çekiyor."
+      },
+      "right": {
+        "label": "Yine de kalk",
+        "after": "Kalkıyorsun, herkese gülümsüyorsun. Ellerin artık senin değil."
+      }
+    },
+    "trust": {
+      "who": "Güvenlik",
+      "text": "“Bütün gün düğünü mahvettin. Hadi, çıkıyoruz.” Görevlinin eli kolunda.",
+      "left": {
+        "label": "Sam’e yalvar",
+        "after": "Herkesin önünde yalvarıyorsun. Sam seni içeri aldırıyor. Ellerin durmuyor."
+      },
+      "right": {
+        "label": "Çık, geri dön",
+        "after": "Mutfaktan çık, duvardan atla, kilerden gir. Artık kimse seni izlemiyor."
+      }
     }
   }
 }

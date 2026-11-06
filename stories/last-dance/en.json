@@ -12,8 +12,8 @@
   ],
   "wake": "You open your eyes. 14:00. You’re Sam’s best man, and the wedding hasn’t started yet. Your hands are shaking, and the program is still in them.",
   "meters": {
-    "nerve": "Nerve",
-    "stamina": "Stamina",
+    "nerve": "Mind",
+    "stamina": "Health",
     "trust": "Trust"
   },
   "cards": {
@@ -311,6 +311,44 @@
       "text": "00:00. You’re alive on the lawn, holding the wedding program. There’s nobody left to give it to.",
       "chain": [],
       "hint": "Nice speech, by the way."
+    }
+  },
+  "crises": {
+    "nerve": {
+      "who": "Your chest",
+      "text": "The hall closes in. Your chest locks. You can’t get air, and everyone’s looking at you.",
+      "left": {
+        "label": "Grab Sam’s arm",
+        "after": "Sam sits you down and stays. People saw. They won’t forget it."
+      },
+      "right": {
+        "label": "Run outside",
+        "after": "You run until your lungs burn and throw up in the hedge. Then you go back in."
+      }
+    },
+    "stamina": {
+      "who": "Your legs",
+      "text": "Your legs go out from under you in the corridor. The floor’s cold. There’s still so much to do.",
+      "left": {
+        "label": "Call for help",
+        "after": "Two waiters carry you to a chair in front of everyone. Emily films it."
+      },
+      "right": {
+        "label": "Get up anyway",
+        "after": "You get up, and you smile at everybody. Your hands aren’t yours anymore."
+      }
+    },
+    "trust": {
+      "who": "Security",
+      "text": "“You’ve been ruining this wedding all day. Let’s go.” The guard’s hand is on your arm.",
+      "left": {
+        "label": "Beg Sam",
+        "after": "You beg in front of everyone. Sam gets you back in. Your hands won’t stop."
+      },
+      "right": {
+        "label": "Slip out, come back",
+        "after": "Out through the kitchen, over the wall, back through the cellar. Nobody’s watching you now."
+      }
     }
   }
 }

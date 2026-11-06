@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 // Saat hesapları.
 import { dayProgress } from "./clock";
 // Test edilen motor.
-import { cardText, choose, holds, newGame } from "./engine";
+import { canAfford, cardText, choose, currentCard, holds, newGame } from "./engine";
 // Tipler.
 import type { Card, Side, Story, Text } from "./types";
 
@@ -17,6 +17,9 @@ const allPaths = import.meta.glob("../../../api/src/test/resources/story-paths/*
 }) as Record<string, string>;
 // Bölüm kimliği -> kurallar.
 const chapters = Object.values(stories).map((module) => module as unknown as Story);
+
+// Sıradaki kartın kimliği.
+const story_card = (story: Story, index: number) => story.cards[index].id;
 
 // Testler için üç dilde aynı metin.
 const text = (value: string): Text => ({ en: value, tr: value, pl: value });
@@ -59,6 +62,47 @@ describe("engine", () => {
       }
     },
   );
+
+  // Sıfıra inen gösterge krize girmeli, ödenince 1'e dönmeli.
+  it("opens a crisis card when a meter runs out", () => {
+    // En küçük hikâye.
+    const free = { label: text("l"), after: text("a") };
+    const mini = {
+      start: { m: 1, o: 5 },
+      maxMeter: 5,
+      meters: [
+        {
+          id: "m",
+          ending: "gone",
+          crisis: {
+            id: "c",
+            left: { ...free, effects: { o: -2 }, requires: { o: 2 } },
+            right: free,
+          },
+        },
+        { id: "o", ending: "other" },
+      ],
+      cards: [
+        { id: "a", time: "10:00", left: { ...free, effects: { m: -1 } }, right: free },
+        { id: "b", time: "11:00", left: free, right: free },
+      ],
+      endings: [{ id: "win", won: true }],
+    } as unknown as Story;
+    // Göstergeyi sıfıra indir.
+    let state = choose(mini, newGame(mini), "left");
+    expect(state.crisis).toBe("m");
+    expect(state.endingId).toBeNull();
+    // Kriz kartı açık, ödeyebiliyoruz.
+    expect(currentCard(mini, state).id).toBe("c");
+    expect(canAfford(currentCard(mini, state).left, state.meters)).toBe(true);
+    // Öde.
+    state = choose(mini, state, "left");
+    expect(state.meters).toEqual({ m: 1, o: 3 });
+    expect(state.crisis).toBeNull();
+    // Saat son oynanan karttan okunur, sıradaki kart gelir.
+    expect(state.lastIndex).toBe(0);
+    expect(story_card(mini, state.index)).toBe("b");
+  });
 
   // Ayarlanmamış işaret false sayılmalı.
   it("treats missing flags as false", () => {

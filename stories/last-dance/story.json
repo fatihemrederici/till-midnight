@@ -2,8 +2,8 @@
   "formatVersion": 1,
   "id": "last-dance",
   "start": {
-    "nerve": 3,
-    "stamina": 3,
+    "nerve": 4,
+    "stamina": 4,
     "trust": 4
   },
   "maxMeter": 5,
@@ -11,17 +11,77 @@
     {
       "id": "nerve",
       "emoji": "🧠",
-      "ending": "chest"
+      "ending": "chest",
+      "crisis": {
+        "id": "crisis-nerve",
+        "emoji": "🫁",
+        "left": {
+          "effects": {
+            "trust": -2
+          },
+          "requires": {
+            "trust": 2
+          }
+        },
+        "right": {
+          "effects": {
+            "stamina": -2
+          },
+          "requires": {
+            "stamina": 2
+          }
+        }
+      }
     },
     {
       "id": "stamina",
       "emoji": "❤️",
-      "ending": "best-man"
+      "ending": "best-man",
+      "crisis": {
+        "id": "crisis-stamina",
+        "emoji": "🦵",
+        "left": {
+          "effects": {
+            "trust": -2
+          },
+          "requires": {
+            "trust": 2
+          }
+        },
+        "right": {
+          "effects": {
+            "nerve": -2
+          },
+          "requires": {
+            "nerve": 2
+          }
+        }
+      }
     },
     {
       "id": "trust",
       "emoji": "👥",
-      "ending": "uninvited"
+      "ending": "uninvited",
+      "crisis": {
+        "id": "crisis-trust",
+        "emoji": "🚨",
+        "left": {
+          "effects": {
+            "nerve": -2
+          },
+          "requires": {
+            "nerve": 2
+          }
+        },
+        "right": {
+          "effects": {
+            "stamina": -2
+          },
+          "requires": {
+            "stamina": 2
+          }
+        }
+      }
     }
   ],
   "cards": [
@@ -195,6 +255,9 @@
             "gaveScissors": true
           },
           "ending": "sam-throat"
+        },
+        "requires": {
+          "nerve": 2
         }
       },
       "right": {
@@ -276,6 +339,9 @@
             "bass": true
           },
           "ending": "chandelier"
+        },
+        "requires": {
+          "trust": 2
         }
       },
       "right": {
@@ -308,6 +374,9 @@
             "tablesToDoor": true
           },
           "ending": "trapped"
+        },
+        "requires": {
+          "stamina": 2
         }
       }
     },
@@ -318,6 +387,9 @@
       "left": {
         "set": {
           "emilyOut": true
+        },
+        "requires": {
+          "stamina": 2
         }
       },
       "right": {

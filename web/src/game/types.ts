@@ -19,6 +19,8 @@ export type Choice = {
   set?: Condition;
   death?: { when?: Condition; ending: string };
   after?: Text;
+  // Bu seçimi yapabilmek için göstergelerin en az bu değerde olması gerekir.
+  requires?: Record<string, number>;
 };
 
 // Bir kart.
@@ -35,7 +37,14 @@ export type Card = {
 };
 
 // Bir gösterge.
-export type Meter = { id: string; emoji: string; label: Text; ending: string };
+export type Meter = {
+  id: string;
+  emoji: string;
+  label: Text;
+  ending: string;
+  // Sıfıra inince çıkan kart. Yoksa gösterge doğrudan oyunu bitirir.
+  crisis?: Omit<Card, "time">;
+};
 
 // Bir son.
 export type Ending = {
@@ -77,6 +86,12 @@ export type GameState = {
   after: Text | null;
   // Bu koşudaki seçimler. Sunucu bunları baştan oynatıp sonucu doğrular.
   choices: Side[];
+  // Doluysa önce bu göstergenin kriz kartı oynanır.
+  crisis: string | null;
+  // Bu koşuda kullanılmış krizler.
+  usedCrises: string[];
+  // En son oynanan normal kart. Kriz sırasında saat buradan okunur.
+  lastIndex: number;
 };
 
 // Sunucunun koşu cevabındaki istatistikler.

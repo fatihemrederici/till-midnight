@@ -57,8 +57,8 @@ final class StoryMerger {
         // Kehanet cümleleri.
         story.set("vision", merger.visionLines());
         // Göstergeler, kartlar ve sonlar.
-        each(story, "meters", meter -> merger.addText(meter, "label", "/meters/" + id(meter)));
-        each(story, "cards", merger::addCardTexts);
+        each(story, "meters", merger::addMeterTexts);
+        each(story, "cards", card -> merger.addCardTexts(card, "/cards/" + id(card)));
         each(story, "endings", merger::addEndingTexts);
         // Hikâyede karşılığı olmayan metin yanlış yazılmış bir kimlik demektir.
         merger.failOnUnusedTexts(id(story));
@@ -66,10 +66,18 @@ final class StoryMerger {
         return story;
     }
 
+    // Bir göstergenin adı ve varsa kriz kartının metinleri.
+    private void addMeterTexts(ObjectNode meter) {
+        // Göstergenin adı.
+        addText(meter, "label", "/meters/" + id(meter));
+        // Kriz kartı varsa metinleri /crises altında durur.
+        if (meter.get("crisis") instanceof ObjectNode crisis) {
+            addCardTexts(crisis, "/crises/" + id(meter));
+        }
+    }
+
     // Bir kartın ve iki seçiminin metinleri.
-    private void addCardTexts(ObjectNode card) {
-        // Metinlerin dil dosyasındaki yeri.
-        String path = "/cards/" + id(card);
+    private void addCardTexts(ObjectNode card, String path) {
         // Kişi ve metin.
         addText(card, "who", path + "/who");
         addText(card, "text", path + "/text");

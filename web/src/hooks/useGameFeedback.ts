@@ -38,9 +38,17 @@ export function useGameFeedback(story: Story, state: GameState, cardId: string) 
     return () => setHeartbeat(0);
   }, [danger]);
 
+  // Kriz kartı açılınca alarm.
+  useEffect(() => {
+    if (state.crisis) {
+      sfx.crisis();
+      vibrate([80, 60, 80]);
+    }
+  }, [state.crisis]);
+
   // Her yeni kartta saat sesi ve göstergelerin geri bildirimi.
   useEffect(() => {
-    sfx.tick();
+    if (!state.crisis) sfx.tick();
     // Düşen ve yükselen göstergeler.
     const dropped = story.meters
       .filter((meter) => state.meters[meter.id] < previous.current[meter.id])

@@ -106,7 +106,7 @@ export function App() {
         .then(setStats)
         .catch(() => setStats(null));
       // Geri sarmanın başlayacağı saat.
-      rewindFrom.current = story.cards[next.index].time;
+      rewindFrom.current = story.cards[next.lastIndex].time;
       setScreen("end");
     },
     [story, state, addFound],

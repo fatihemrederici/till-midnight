@@ -111,3 +111,29 @@ A missing translation or a text that nothing uses, such as a misspelled card id,
 6. With no card left, the first winning ending whose `when` matches is the result.
 
 A flag that was never set counts as `false`.
+
+## Crisis cards and locked choices
+
+Both are optional. A chapter without them works the same, and an empty meter ends the game.
+
+A meter with a `crisis` card doesn't end the game at 0. Its card comes up first:
+
+```json
+{
+  "id": "nerve",
+  "emoji": "🧠",
+  "ending": "chest",
+  "crisis": {
+    "id": "crisis-nerve",
+    "emoji": "🫁",
+    "left": { "effects": { "trust": -2 }, "requires": { "trust": 2 } },
+    "right": { "effects": { "stamina": -2 }, "requires": { "stamina": 2 } }
+  }
+}
+```
+
+The player pays with another meter, and the empty meter goes back to 1. A meter can use its crisis only once per run. If it runs out again, or the player can't pay either side, the game ends with the meter's `ending`.
+
+The crisis text lives in the language files under `crises`, using the meter's id.
+
+Any choice can have `requires`: The player needs at least that much in those meters to pick it. One side of a normal card must always be free. In a crisis, both sides can have `requires`.

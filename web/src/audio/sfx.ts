@@ -19,6 +19,12 @@ export const sfx = {
   },
   // Gösterge yükseldiğinde hafif bir nefes.
   relief: () => tone(330, 440, 0.25, 0.05, "triangle"),
+  // Kriz kartı: Alarm gibi inen iki ton.
+  crisis: () => {
+    tone(740, 370, 0.3, 0.14, "sawtooth");
+    tone(740, 370, 0.3, 0.14, "sawtooth", 0.34);
+    tone(70, 35, 0.6, 0.5);
+  },
   // Kehanetteki her görüntü: Darbe ve cızırtı.
   flash: () => {
     tone(70, 30, 0.5, 0.5);
