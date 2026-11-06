@@ -9,7 +9,9 @@ import { currentCard } from "../game/engine";
 // Biten göstergelerin ekran etkileri.
 import { Blink, Eyelids, HeartPulse } from "../components/MeterEffects";
 // Saat hesapları.
-import { dayProgress, toMinutes } from "../game/clock";
+import { dayPhase, dayProgress, toMinutes } from "../game/clock";
+// Çevrilen rakamlı saat.
+import { Clock } from "../components/Clock";
 // Ölüm cümlesinin metni.
 import { omenText } from "../game/omens";
 // Tipler.
@@ -64,6 +66,7 @@ export function PlayScreen({
       data-mind={effects.mind}
       data-body={effects.body}
       data-late={late}
+      data-phase={dayPhase(time)}
     >
       <Eyelids level={effects.body} />
       <Blink count={effects.blink.count} deep={effects.blink.deep} />
@@ -72,9 +75,7 @@ export function PlayScreen({
       <div className="play" key={hit.count} data-shake={hit.count > 0}>
         <div className="top">
           {/* Akıl bitince saat bir an gece yarısını gösterir. */}
-          <div className="time" key={time} data-lie={effects.clockLie}>
-            {effects.clockLie ? "00:00" : shown}
-          </div>
+          <Clock value={effects.clockLie ? "00:00" : shown} lie={effects.clockLie} />
           <Controls language={language} onLanguage={onLanguage} />
         </div>
 

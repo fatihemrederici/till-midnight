@@ -23,3 +23,22 @@
   background: var(--paper);
   color: var(--paper-ink);
 }
+
+/* Dar telefonlar: Saat ve beş düğme aynı satıra sığsın. */
+@media (max-width: 420px) {
+  .controls {
+    gap: 2px;
+  }
+  .language,
+  .sound {
+    min-width: 32px;
+    padding: 0 4px;
+  }
+}
+@media (max-width: 340px) {
+  .language,
+  .sound {
+    min-width: 28px;
+    padding: 0 2px;
+  }
+}

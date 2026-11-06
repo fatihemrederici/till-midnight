@@ -11,6 +11,10 @@
   --dust: #a8988a;
   --dawn: #1f3b33;
   --display: "Big Shoulders Display", Impact, "Arial Narrow", sans-serif;
+  /* Daktilo: Tutanaklar ve ofis kâğıtları. */
+  --type: "Courier Prime", "Courier New", monospace;
+  /* El yazısı: Tutanağın kenarındaki not. */
+  --hand: "Caveat", "Comic Sans MS", cursive;
   --body: "Literata", Georgia, serif;
 }
 

@@ -168,6 +168,7 @@ export function App() {
           state={state!}
           stats={stats}
           found={foundDeaths}
+          tries={tries}
           onRewind={() => setScreen("rewind")}
           onDeaths={openDeaths}
           onChapters={openChapters}

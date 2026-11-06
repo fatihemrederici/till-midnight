@@ -32,6 +32,7 @@ export function DeathScreen({
   state,
   stats,
   found,
+  tries,
   onRewind,
   onDeaths,
   onChapters,
@@ -40,6 +41,8 @@ export function DeathScreen({
   state: GameState;
   stats: RunStats | null;
   found: number;
+  // Kaçıncı deneme: Tutanağın numarası.
+  tries: number;
   onRewind: () => void;
   onDeaths: () => void;
   onChapters: () => void;
@@ -80,13 +83,26 @@ export function DeathScreen({
       ? Math.round((100 * stats.sameEnding) / stats.runs)
       : null;
 
+  // Ölüm saati: Zincirin son adımı, yoksa öldüğün kart.
+  const timeOfDeath = steps.at(-1)?.time ?? story.cards[state.index]?.time ?? "";
+
   return (
     <div className="app dead-screen">
       <Controls language={language} onLanguage={onLanguage} />
-      <div className="screen">
-        <h1 className="big strike">{say(ending.title, language)}</h1>
-        <p className="lede">{say(ending.text, language)}</p>
-        <div>
+      <div className="report-wrap">
+        {/* Olay tutanağı: Ne olduğu, ne zaman ve hangi seçimlerin buraya getirdiği. */}
+        <article className="report">
+          <header className="report-head">
+            <span>{UI.report[language]}</span>
+            <span>
+              {UI.attempt[language]} {tries}
+            </span>
+          </header>
+          <h1 className="report-title strike">{say(ending.title, language)}</h1>
+          <p className="report-time">
+            {UI.timeOfDeath[language]}: <b>{timeOfDeath}</b>
+          </p>
+          <p className="report-text">{say(ending.text, language)}</p>
           <p className="chain-label">{UI.chain[language]}</p>
           <ol className="chain">
             {steps.map((step, i) => (
@@ -95,23 +111,30 @@ export function DeathScreen({
               </li>
             ))}
           </ol>
+          {/* İpucu en sonda, kenara el yazısıyla düşülmüş bir not gibi gelir. */}
+          <p className="could" data-on={shown >= steps.length}>
+            {say(ending.hint, language)}
+          </p>
+          <span className="report-stamp" aria-hidden="true">
+            {UI.stamp[language]}
+          </span>
+        </article>
+        <div className="report-actions">
+          {share !== null && (
+            <p className="small">
+              {UI.shareOfPlayers[language].replace("{percent}", String(share))}
+            </p>
+          )}
+          <button className="go" onClick={onRewind}>
+            {UI.rewind[language]}
+          </button>
+          <button className="link" onClick={onDeaths}>
+            {UI.deaths[language]} {found}/{total}
+          </button>
+          <button className="link" onClick={onChapters}>
+            {UI.chapters[language]}
+          </button>
         </div>
-        {/* İpucu en sonda gelir: "Demek öyleymiş" anı. */}
-        <p className="could" data-on={shown >= steps.length}>
-          {say(ending.hint, language)}
-        </p>
-        {share !== null && (
-          <p className="small">{UI.shareOfPlayers[language].replace("{percent}", String(share))}</p>
-        )}
-        <button className="go" onClick={onRewind}>
-          {UI.rewind[language]}
-        </button>
-        <button className="link" onClick={onDeaths}>
-          {UI.deaths[language]} {found}/{total}
-        </button>
-        <button className="link" onClick={onChapters}>
-          {UI.chapters[language]}
-        </button>
       </div>
     </div>
   );

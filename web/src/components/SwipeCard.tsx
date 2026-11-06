@@ -41,6 +41,7 @@ export function SwipeCard({
         className="card live"
         key={card.id}
         data-moving={swipe.moving}
+        data-place={card.place}
         style={{ transform: swipe.transform }}
         {...swipe.handlers}
       >

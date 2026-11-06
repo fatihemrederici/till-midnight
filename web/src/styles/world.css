@@ -1,0 +1,423 @@
+/* Oyunun dünyası: Günün ışığı, yerin kâğıdı, tutanaklar ve morg etiketleri. */
+
+/* ---------- Günün ışığı: Arka plan kartın saatine göre değişir. ---------- */
+.app[data-phase] {
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 70%);
+  transition: background 1.2s;
+}
+/* Sabah: Soğuk, gri-mavi bir aydınlık. */
+.app[data-phase="morning"] {
+  --sky-top: #3a4d5c;
+  --sky-bottom: #12171c;
+}
+/* Öğle: Sert, soluk bir ışık. */
+.app[data-phase="noon"] {
+  --sky-top: #5b574b;
+  --sky-bottom: #1a1815;
+}
+/* Akşamüstü: Kehribar. */
+.app[data-phase="afternoon"] {
+  --sky-top: #7a4a22;
+  --sky-bottom: #1c120b;
+}
+/* Gece: Koyu lacivert. */
+.app[data-phase="night"] {
+  --sky-top: #1d2544;
+  --sky-bottom: #090b14;
+}
+/* Son saat: Karanlık kırmızıya kayar. */
+.app[data-phase="late"] {
+  --sky-top: #4f0f0b;
+  --sky-bottom: #110606;
+}
+
+/* ---------- Çevrilen rakamlı saat. ---------- */
+.time {
+  display: flex;
+  gap: 3px;
+  perspective: 300px;
+  animation: none;
+}
+.digit {
+  position: relative;
+  display: inline-block;
+  min-width: 0.62em;
+  padding: 0.06em 0.04em 0;
+  background: rgb(0 0 0 / 0.28);
+  text-align: center;
+  transform-origin: 50% 0;
+  animation: flip 0.42s ease-out both;
+}
+/* Tabeladaki ortadaki çizgi. */
+.digit::after {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 2px;
+  background: rgb(0 0 0 / 0.45);
+}
+.colon {
+  align-self: center;
+  opacity: 0.8;
+}
+@keyframes flip {
+  from {
+    transform: rotateX(-90deg);
+    opacity: 0.4;
+  }
+}
+/* Yalan söyleyen saat: Rakamların zemini kızarır. */
+.time[data-lie="true"] .digit {
+  background: rgb(194 42 29 / 0.35);
+}
+
+/* ---------- Kartın kâğıdı bulunduğun yere göre değişir. ---------- */
+/* Sokak: Bilet. Kenarlarında delikler, isim altında kesik çizgi. */
+.card.live[data-place="street"] {
+  background: #f1ece2;
+  -webkit-mask:
+    radial-gradient(circle at left 50%, transparent 15px, #000 16px) left / 51% 100% no-repeat,
+    radial-gradient(circle at right 50%, transparent 15px, #000 16px) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle at left 50%, transparent 15px, #000 16px) left / 51% 100% no-repeat,
+    radial-gradient(circle at right 50%, transparent 15px, #000 16px) right / 51% 100% no-repeat;
+}
+.card.live[data-place="street"] .who {
+  padding-bottom: 10px;
+  border-bottom: 2px dashed rgb(35 23 20 / 0.3);
+}
+/* Ev: Defter sayfası. Mavi çizgiler, kırmızı kenar çizgisi, üstte bant. */
+.card.live[data-place="home"] {
+  background-color: #f3ead2;
+  background-image:
+    linear-gradient(90deg, transparent 30px, rgb(194 42 29 / 0.35) 30px 32px, transparent 32px),
+    repeating-linear-gradient(transparent 0 33px, rgb(60 90 140 / 0.16) 33px 34px);
+  padding-left: 46px;
+}
+.card.live[data-place="home"]::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 96px;
+  height: 22px;
+  background: rgb(255 252 235 / 0.6);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.15);
+  transform: translateX(-50%) rotate(-3deg);
+  pointer-events: none;
+}
+/* İş: Ofis notu. Beyaz kâğıt, daktilo başlık, çift çizgi. */
+.card.live[data-place="work"] {
+  background: #faf8f3;
+}
+.card.live[data-place="work"] .who {
+  padding-bottom: 10px;
+  border-bottom: 4px double rgb(35 23 20 / 0.45);
+  font-family: var(--type);
+  font-weight: 700;
+}
+
+/* ---------- Emojiler kâğıda basılmış gibi. ---------- */
+.face {
+  position: relative;
+  filter: grayscale(0.85) sepia(0.4) contrast(1.25) brightness(0.95);
+  mix-blend-mode: multiply;
+}
+
+/* ---------- Film greni: Bütün ekranda çok hafif. ---------- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: 20;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.07;
+  pointer-events: none;
+  animation: grain 0.9s steps(6) infinite;
+}
+@keyframes grain {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-3%, 2%);
+  }
+  40% {
+    transform: translate(2%, -4%);
+  }
+  60% {
+    transform: translate(-4%, -1%);
+  }
+  80% {
+    transform: translate(3%, 3%);
+  }
+}
+/* Efektler azsa gren durur ve azalır. */
+:root[data-effects="low"] body::after {
+  opacity: 0.04;
+  animation: none;
+}
+
+/* ---------- Ölüm ekranı: Olay tutanağı. ---------- */
+.dead-screen {
+  overflow-y: auto;
+}
+.report-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  margin: auto;
+  padding-bottom: 8px;
+}
+.report {
+  position: relative;
+  padding: 22px 20px 20px;
+  background: #ece3d0;
+  color: var(--paper-ink);
+  font-family: var(--type);
+  box-shadow: 0 18px 40px rgb(0 0 0 / 0.35);
+  transform: rotate(-0.6deg);
+  animation: report-in 0.5s ease-out both;
+}
+@keyframes report-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) rotate(-2deg);
+  }
+}
+.report-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgb(35 23 20 / 0.35);
+  font-size: 13px;
+}
+.report-title {
+  margin: 14px 0 2px;
+  color: var(--blood-dark);
+  font-family: var(--display);
+  font-size: clamp(48px, 13vw, 76px);
+  font-weight: 900;
+  line-height: 0.9;
+}
+.report-time {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+.report-text {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.45;
+}
+.report .chain-label {
+  margin: 0 0 6px;
+  color: var(--paper-ink);
+  font-family: var(--type);
+  font-weight: 700;
+  text-decoration: underline;
+}
+.report .chain li {
+  font-size: 15px;
+  line-height: 1.35;
+}
+.report .chain-time {
+  color: var(--blood-dark);
+  font-family: var(--type);
+}
+/* Kenar notu: Kırmızı mürekkeple el yazısı. */
+.report .could {
+  margin-top: 16px;
+  padding: 0;
+  background: none;
+  color: var(--blood);
+  font-family: var(--hand);
+  font-size: 27px;
+  line-height: 1.1;
+  transform: rotate(-1.5deg);
+}
+/* Damga. */
+/* Kâğıdın üst kenarına taşan damga: Başlığın üstüne binmez. */
+.report-stamp {
+  position: absolute;
+  top: -16px;
+  right: 12px;
+  background: rgb(236 227 208 / 0.6);
+  padding: 4px 12px;
+  border: 3px solid rgb(194 42 29 / 0.7);
+  color: rgb(194 42 29 / 0.75);
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  transform: rotate(12deg);
+  pointer-events: none;
+  animation: stamp 0.35s 0.5s ease-in both;
+}
+@keyframes stamp {
+  from {
+    opacity: 0;
+    transform: rotate(12deg) scale(2.2);
+  }
+}
+.report-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.report-actions .small {
+  margin: 0;
+}
+
+/* ---------- Ölümler: Morg etiketleri. ---------- */
+.death-list li {
+  position: relative;
+  padding: 12px 14px 12px 38px;
+  background: #c9a46b;
+  color: #3b2614;
+  font-family: var(--type);
+  font-weight: 700;
+  clip-path: polygon(14px 0, 100% 0, 100% 100%, 14px 100%, 0 50%);
+}
+/* Etiketin deliği. */
+.death-list li::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #6b4c2a;
+  border-radius: 50%;
+  background: var(--night);
+  transform: translateY(-50%);
+}
+/* Bulunmamış ölüm: Boş, soluk etiket. */
+.death-list li[data-found="false"] {
+  background: #5a4a36;
+  color: #8f7d63;
+}
+.death-list li[data-found="true"] {
+  background: #d8b57a;
+  color: #2b1a0c;
+}
+
+/* ---------- Kurtuluş: Gece yarısından sonra soluk bir sabah ışığı. ---------- */
+.won-screen {
+  background: linear-gradient(180deg, #1c2b35 0%, #3f5866 55%, #c99a72 100%);
+  animation: dawn 2.4s ease-out both;
+}
+@keyframes dawn {
+  from {
+    background: #0b0d14;
+  }
+}
+
+/* ---------- Geri sarma: VHS kaset. ---------- */
+.rewind::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(transparent 0 3px, rgb(0 0 0 / 0.25) 3px 4px);
+  pointer-events: none;
+}
+.rewind::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 18%;
+  background: linear-gradient(transparent, rgb(255 255 255 / 0.12), transparent);
+  pointer-events: none;
+  animation: tracking 0.6s linear infinite;
+}
+@keyframes tracking {
+  from {
+    top: 100%;
+  }
+  to {
+    top: -20%;
+  }
+}
+.rewind-clock {
+  text-shadow:
+    4px 0 rgb(0 229 255 / 0.6),
+    -4px 0 rgb(255 0 64 / 0.6);
+  animation: jitter 0.12s steps(2) infinite;
+}
+@keyframes jitter {
+  50% {
+    transform: translateX(-3px) skewX(-2deg);
+  }
+}
+
+/* ---------- Geniş ekran. ---------- */
+@media (min-width: 900px) and (min-aspect-ratio: 1/1) {
+  /* Saat sol sütuna sığsın: Rakam kutuları göstergelere değmesin. */
+  .time {
+    gap: 4px;
+    font-size: clamp(56px, 7.5vh, 88px);
+  }
+  .play {
+    grid-template-columns: minmax(250px, 1fr) minmax(520px, 860px) minmax(180px, 1fr);
+  }
+  .report-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 760px) minmax(260px, 320px);
+    align-items: center;
+    justify-content: center;
+    gap: 56px;
+    padding: 24px 16px;
+  }
+  .report {
+    padding: 34px 40px 30px;
+  }
+  .report-head {
+    font-size: 15px;
+  }
+  .report-title {
+    font-size: clamp(64px, min(7vw, 11vh), 110px);
+  }
+  .report-time {
+    font-size: 18px;
+  }
+  .report-text {
+    font-size: 19px;
+  }
+  .report .chain li {
+    padding-left: 26px;
+    font-size: 18px;
+  }
+  .report .could {
+    font-size: 34px;
+  }
+  .report-stamp {
+    top: -20px;
+    right: 28px;
+    font-size: 34px;
+  }
+  .report-actions .go {
+    align-self: stretch;
+    min-width: 0;
+  }
+  .death-list li {
+    padding: 16px 18px 16px 42px;
+  }
+  .card.live[data-place="home"] {
+    padding-left: 64px;
+    background-image:
+      linear-gradient(90deg, transparent 44px, rgb(194 42 29 / 0.35) 44px 46px, transparent 46px),
+      repeating-linear-gradient(transparent 0 41px, rgb(60 90 140 / 0.16) 41px 42px);
+  }
+}
+
+/* Büyük monitörler: Desktop.css'teki geniş sütunlar korunur, saat sütunu biraz genişler. */
+@media (min-width: 1600px) and (min-height: 900px) {
+  .play {
+    grid-template-columns: minmax(300px, 1fr) minmax(760px, 1120px) minmax(220px, 1fr);
+  }
+  .time {
+    font-size: clamp(72px, 8vh, 104px);
+  }
+}
