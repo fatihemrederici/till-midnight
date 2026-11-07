@@ -26,3 +26,6 @@ __pycache__/
 
 # Python aracının reddedilen son taslağı.
 ai-worker/last_draft.json
+
+# Python aracının ham fotoğraf taslakları.
+ai-worker/drafts/images/
