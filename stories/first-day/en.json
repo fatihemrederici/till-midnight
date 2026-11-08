@@ -408,7 +408,7 @@
       "left": {
         "label": "Fix the fuse by hand",
         "past": "You reached for the fuse box in the dark",
-        "after": "A small spark. Then the lights come on."
+        "after": "A small spark and a burnt smell. Then the lights come on."
       },
       "right": {
         "label": "Light a candle and wait",
@@ -624,9 +624,15 @@
     },
     "curtain": {
       "title": "The Curtain",
-      "text": "The kitchen clock was five minutes fast. You opened all the windows at once, and the wind blew the candle onto the curtain.",
+      "text": "The kitchen clock was five minutes fast. You threw the windows wide open to celebrate, and the wind blew the candle onto the curtain.",
       "hint": "Your mum always set the clocks fast. Always.",
       "omen": "The clock is wrong."
+    },
+    "short-circuit": {
+      "title": "Short Circuit",
+      "text": "The kitchen clock was five minutes fast. You fixed the fuse by hand in the dark, and the wire got burned. When you opened the windows to celebrate, the rain blew onto the socket. A bang, then fire.",
+      "hint": "You saw the spark. You should have remembered it.",
+      "omen": "The socket is buzzing."
     },
     "panic-street": {
       "title": "Frozen",

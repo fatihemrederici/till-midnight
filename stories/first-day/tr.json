@@ -408,7 +408,7 @@
       "left": {
         "label": "Sigortayı elinle kaldır",
         "past": "Karanlıkta sigortaya uzandın",
-        "after": "Bir çıtırtı. Sonra ışıklar."
+        "after": "Bir kıvılcım, hafif bir yanık kokusu. Sonra ışıklar yanıyor."
       },
       "right": {
         "label": "Mum yak, bekle",
@@ -624,9 +624,15 @@
     },
     "curtain": {
       "title": "Perde",
-      "text": "Mutfak saati beş dakika ileriydi. Kapalı pencereleri bir anda açtın, içeri dolan rüzgâr mumu perdeye savurdu.",
+      "text": "Mutfak saati beş dakika ileriydi. Kutlamak için pencereleri sonuna kadar açtın, içeri dolan rüzgâr mumu perdeye savurdu.",
       "hint": "Annen saatleri hep ileri kurardı. Hep.",
       "omen": "Saat yanlış."
+    },
+    "short-circuit": {
+      "title": "Kısa Devre",
+      "text": "Mutfak saati beş dakika ileriydi. Sigortayı karanlıkta elle kaldırmıştın, kablo o an yanmıştı. Kutlamak için pencereleri açınca yağmur prizin üstüne savruldu. Bir patlama, sonra alevler.",
+      "hint": "O kıvılcımı görmüştün. Unutmamalıydın.",
+      "omen": "Prizden bir cızırtı geliyor."
     },
     "panic-street": {
       "title": "Donakaldın",

@@ -33,6 +33,7 @@
     "noKeys",
     "lanyard",
     "boxes",
+    "fused",
     "pill",
     "rail",
     "pill2",
@@ -732,6 +733,9 @@
         }
       ],
       "left": {
+        "set": {
+          "fused": true
+        },
         "deaths": [
           {
             "ending": "fuse",
@@ -958,24 +962,29 @@
       "left": {
         "deaths": [
           {
-            "ending": "curtain",
-            "when": {
-              "candle": true,
-              "sealed": true
-            }
-          },
-          {
             "ending": "last-glass",
             "when": {
               "wine": true,
               "pill2": true
+            }
+          },
+          {
+            "ending": "curtain",
+            "when": {
+              "candle": true
+            }
+          },
+          {
+            "ending": "short-circuit",
+            "when": {
+              "fused": true
             }
           }
         ]
       },
       "right": {
         "effects": {
-          "mind": -2
+          "mind": -1
         }
       }
     }
@@ -1039,6 +1048,10 @@
     },
     {
       "id": "curtain",
+      "won": false
+    },
+    {
+      "id": "short-circuit",
       "won": false
     },
     {

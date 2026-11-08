@@ -408,7 +408,7 @@
       "left": {
         "label": "Podnieś bezpiecznik ręką",
         "past": "Sięgnąłeś po bezpiecznik w ciemności",
-        "after": "Trzask. Potem światło."
+        "after": "Iskra i lekki zapach spalenizny. Potem zapala się światło."
       },
       "right": {
         "label": "Zapal świeczkę i czekaj",
@@ -624,9 +624,15 @@
     },
     "curtain": {
       "title": "Firanka",
-      "text": "Zegar w kuchni spieszył się pięć minut. Otworzyłeś zamknięte okna na oścież, a wiatr rzucił płomień świecy na firankę.",
+      "text": "Zegar w kuchni spieszył się pięć minut. Żeby świętować, otworzyłeś okna na oścież, a wiatr rzucił płomień świecy na firankę.",
       "hint": "Mama zawsze przestawiała zegary do przodu. Zawsze.",
       "omen": "Zegar kłamie."
+    },
+    "short-circuit": {
+      "title": "Zwarcie",
+      "text": "Zegar w kuchni spieszył się pięć minut. Naprawiłeś bezpiecznik ręką po ciemku i kabel się nadpalił. Gdy otworzyłeś okna, żeby świętować, deszcz wpadł na gniazdko. Huk, a potem ogień.",
+      "hint": "Widziałeś tę iskrę. Trzeba było o niej pamiętać.",
+      "omen": "Gniazdko brzęczy."
     },
     "panic-street": {
       "title": "Sparaliżowany",
