@@ -6,7 +6,7 @@ export type Language = "en" | "tr" | "pl";
 // Üç dilde bir metin.
 export type Text = Record<Language, string>;
 
-// Koşul: {"elif": true} işaret doğru olmalı demektir.
+// Koşul: {"emily": true} işaret doğru olmalı demektir.
 export type Condition = Record<string, boolean>;
 
 // Kaydırma yönü.

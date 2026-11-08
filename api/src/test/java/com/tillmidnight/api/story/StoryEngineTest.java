@@ -129,6 +129,6 @@ class StoryEngineTest {
     @Test
     void treatsMissingFlagsAsFalse() {
         assertTrue(StoryEngine.holds(null, Map.of()));
-        assertTrue(StoryEngine.holds(Map.of("elif", false), Map.of()));
+        assertTrue(StoryEngine.holds(Map.of("emily", false), Map.of()));
     }
 }

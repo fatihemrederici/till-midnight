@@ -87,7 +87,7 @@
         "after": "Cisza. „Dobrze. Porozmawiamy jutro.” Jego głos jest zimny."
       }
     },
-    "elif-asks": {
+    "emily-asks": {
       "who": "Emily",
       "text": "„Skąd wiedziałeś? Czy dziś stanie się coś jeszcze?”",
       "left": {
@@ -375,7 +375,7 @@
         "after": "Szczękasz zębami. Przysuwasz grzejnik elektryczny do kanapy."
       }
     },
-    "elif-news": {
+    "emily-news": {
       "who": "Emily",
       "text": "„Ten drugi, który wysiadł z autobusu, nie żyje. W windzie. Przyjeżdżam do ciebie.”",
       "left": {
@@ -440,7 +440,7 @@
         "Czytają listę pasażerów. Jest na niej twoje nazwisko i nazwisko Emily. Nie jako ocalałych, jako zaginionych."
       ]
     },
-    "elif-air": {
+    "emily-air": {
       "who": "Emily",
       "text": "„Duszę się tutaj. Wyjdziemy zaczerpnąć powietrza?”",
       "left": {

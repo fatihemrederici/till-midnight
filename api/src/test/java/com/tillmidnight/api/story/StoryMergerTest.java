@@ -47,7 +47,7 @@ class StoryMergerTest {
     // Seçimin duruma göre değişen sonuç metni, kuraldaki sırasıyla eşleşmeli.
     void combinesChoiceVariants() {
         // Tek kartlı, sağ seçiminde bir varyant olan bölüm.
-        String rules = "{\"id\":\"mini\",\"cards\":[{\"id\":\"road\",\"right\":{\"variants\":[{\"when\":{\"elif\":true}}]}}]}";
+        String rules = "{\"id\":\"mini\",\"cards\":[{\"id\":\"road\",\"right\":{\"variants\":[{\"when\":{\"emily\":true}}]}}]}";
         JsonNode story = StoryMerger.merge(JSON.readTree(rules), texts(
                 "{\"cards\":{\"road\":{\"right\":{\"variants\":[\"Emily pulls you back.\"]}}}}",
                 "{\"cards\":{\"road\":{\"right\":{\"variants\":[\"Emily seni çekiyor.\"]}}}}"));

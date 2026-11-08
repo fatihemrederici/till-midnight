@@ -146,9 +146,9 @@ describe("engine", () => {
 
   it("treats missing flags as false", () => {
     // Beklenti false, işaret yok: tutar.
-    expect(holds({ elif: false }, {})).toBe(true);
+    expect(holds({ emily: false }, {})).toBe(true);
     // Beklenti true, işaret yok: tutmaz.
-    expect(holds({ elif: true }, {})).toBe(false);
+    expect(holds({ emily: true }, {})).toBe(false);
   });
 
   // Durum değişken metni seçmeli.
@@ -168,9 +168,9 @@ describe("engine", () => {
   it("picks the after text that matches earlier choices", () => {
     const choice = {
       after: text("missed"),
-      variants: [{ when: { elif: true }, text: text("pulled back") }],
+      variants: [{ when: { emily: true }, text: text("pulled back") }],
     } as unknown as Choice;
-    expect(afterText(choice, { elif: true })?.en).toBe("pulled back");
+    expect(afterText(choice, { emily: true })?.en).toBe("pulled back");
     expect(afterText(choice, {})?.en).toBe("missed");
     expect(afterText({} as Choice, {})).toBeNull();
   });

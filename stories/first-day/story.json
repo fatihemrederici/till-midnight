@@ -56,7 +56,7 @@
       "image": "bus.jpg",
       "left": {
         "set": {
-          "elif": true
+          "emily": true
         }
       },
       "right": {
@@ -105,7 +105,7 @@
             "ending": "horn",
             "when": {
               "ear": true,
-              "elif": false
+              "emily": false
             }
           }
         ],
@@ -117,7 +117,7 @@
           },
           {
             "when": {
-              "elif": true
+              "emily": true
             }
           }
         ]
@@ -164,13 +164,13 @@
       }
     },
     {
-      "id": "elif-asks",
+      "id": "emily-asks",
       "time": "09:40",
       "place": "street",
       "emoji": "🧥",
-      "image": "elif-asks.jpg",
+      "image": "emily-asks.jpg",
       "when": {
-        "elif": true
+        "emily": true
       },
       "left": {
         "effects": {
@@ -672,13 +672,13 @@
       }
     },
     {
-      "id": "elif-news",
+      "id": "emily-news",
       "time": "17:40",
       "place": "home",
       "emoji": "📱",
-      "image": "elif-news.jpg",
+      "image": "emily-news.jpg",
       "when": {
-        "elif": true,
+        "emily": true,
         "doubted": false
       },
       "variants": [
@@ -770,7 +770,7 @@
       "variants": [
         {
           "when": {
-            "elif": true
+            "emily": true
           }
         }
       ],
@@ -789,11 +789,11 @@
       }
     },
     {
-      "id": "elif-air",
+      "id": "emily-air",
       "time": "22:00",
       "place": "home",
       "emoji": "🌙",
-      "image": "elif-air.jpg",
+      "image": "emily-air.jpg",
       "when": {
         "together": true
       },

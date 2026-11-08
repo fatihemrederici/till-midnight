@@ -87,7 +87,7 @@
         "after": "Silence. “Fine. We’ll talk tomorrow.” His voice is cold."
       }
     },
-    "elif-asks": {
+    "emily-asks": {
       "who": "Emily",
       "text": "“How did you know? Is something else going to happen today?”",
       "left": {
@@ -375,7 +375,7 @@
         "after": "You’re freezing. You pull the electric heater close to the sofa."
       }
     },
-    "elif-news": {
+    "emily-news": {
       "who": "Emily",
       "text": "“The other man who got off the bus is dead. In a lift. I’m coming over.”",
       "left": {
@@ -440,7 +440,7 @@
         "They read the passenger list. Your name is on it, and so is Emily’s. Not as survivors, as missing."
       ]
     },
-    "elif-air": {
+    "emily-air": {
       "who": "Emily",
       "text": "“I can’t breathe in here. Can we go out for some air?”",
       "left": {

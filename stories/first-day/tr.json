@@ -87,7 +87,7 @@
         "after": "Sessizlik. “Peki. Yarın konuşuruz.” Sesi soğuk."
       }
     },
-    "elif-asks": {
+    "emily-asks": {
       "who": "Emily",
       "text": "“Bunu nereden bildin? Bugün başka bir şey olacak mı?”",
       "left": {
@@ -375,7 +375,7 @@
         "after": "Dişlerin takırdıyor. Elektrikli ısıtıcıyı kanepenin yanına çekiyorsun."
       }
     },
-    "elif-news": {
+    "emily-news": {
       "who": "Emily",
       "text": "“Otobüsten inen öbür adam ölmüş. Asansörde. Yanına geliyorum.”",
       "left": {
@@ -440,7 +440,7 @@
         "Yolcu listesi okunuyor. Senin adın da var, Emily’ninki de. “Kurtulan” değil, “kayıp” olarak."
       ]
     },
-    "elif-air": {
+    "emily-air": {
       "who": "Emily",
       "text": "“Burada boğuluyorum. Biraz hava alalım mı?”",
       "left": {
