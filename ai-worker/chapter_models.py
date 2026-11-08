@@ -2,7 +2,7 @@
 from pydantic import BaseModel
 
 
-# Bir işaret koşulu ya da ataması: {"name": "elif", "value": true}.
+# Bir işaret koşulu ya da ataması: {"name": "emily", "value": true}.
 class Flag(BaseModel):
     name: str
     value: bool
@@ -86,12 +86,12 @@ class Chapter(BaseModel):
     endings: list[Ending]
 
 
-# Listeyi sözlüğe çevirir: [Flag("elif", True)] -> {"elif": True}.
+# Listeyi sözlüğe çevirir: [Flag("emily", True)] -> {"emily": True}.
 def flags_to_dict(flags):
     return {flag.name: flag.value for flag in flags}
 
 
-# Sözlüğü listeye çevirir: {"elif": True} -> [Flag("elif", True)].
+# Sözlüğü listeye çevirir: {"emily": True} -> [Flag("emily", True)].
 def dict_to_flags(values):
     return [Flag(name=name, value=value) for name, value in (values or {}).items()]
 
