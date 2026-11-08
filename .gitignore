@@ -28,4 +28,4 @@ __pycache__/
 ai-worker/last_draft.json
 
 # Python aracının ham fotoğraf taslakları.
-ai-worker/drafts/images/
+ai-worker/drafts/

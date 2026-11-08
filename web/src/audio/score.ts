@@ -4,7 +4,7 @@
 // Ses motoru.
 import { engine } from "./synth";
 // Saatin günün hangi dilimine düştüğü.
-import { dayPhase } from "../game/clock";
+import { dayPhase, toMinutes } from "../game/clock";
 // Kartın geçtiği yer.
 import type { Place } from "../game/types";
 
@@ -13,8 +13,10 @@ type LayerName = "music" | "ambience";
 // Bir katmanda çalan parça.
 type Playing = { name: string; source: AudioBufferSourceNode; gain: GainNode };
 
-// Geçişlerin süresi (saniye): Parçalar birbirine yavaşça karışır.
-const CROSSFADE = 2.5;
+// Geçişlerin süresi (saniye): Parçalar birbirine yavaşça karışır. Müzik daha uzun sürede değişir.
+const CROSSFADE: Record<LayerName, number> = { music: 5, ambience: 2.5 };
+// Gece müziğinin başladığı saat (dakika).
+const NIGHT_FROM = 22 * 60;
 // Katmanların ses seviyesi. Efektlerin altında kalsınlar.
 const VOLUME: Record<LayerName, number> = { music: 0.32, ambience: 0.22 };
 
@@ -25,14 +27,10 @@ const playing: Record<LayerName, Playing | null> = { music: null, ambience: null
 // Her katmanda çalması istenen parça. Yükleme bitince hâlâ isteniyor mu diye bakılır.
 const wanted: Record<LayerName, string | null> = { music: null, ambience: null };
 
-// Saate göre müzik: Gün ilerledikçe gerilir, son saatte neredeyse susar.
-export function musicFor(time: string): string {
-  const phase = dayPhase(time);
-  if (phase === "morning") return "morning";
-  if (phase === "night") return "night";
-  if (phase === "late") return "last-hour";
-  // Öğle ve akşamüstü aynı parça.
-  return "day";
+// Müzik: Eve gelene kadar gündüz, evde 22:00'ye kadar akşam, sonra gece.
+export function musicFor(time: string, place: Place): string {
+  if (toMinutes(time) >= NIGHT_FROM) return "night";
+  return place === "home" ? "evening" : "day";
 }
 
 // Yere ve saate göre ortam sesi: Akşam fırtına başlar, evde yağmur duyulur.
@@ -78,7 +76,7 @@ async function play(layer: LayerName, name: string): Promise<void> {
   const audio = engine();
   // Yüklenirken oyuncu başka yere geçtiyse ya da dosya yoksa vazgeç.
   if (!audio || wanted[layer] !== name || playing[layer]?.name === name) return;
-  fadeOut(layer, CROSSFADE);
+  fadeOut(layer, CROSSFADE[layer]);
   if (!buffer) return;
   // Yeni parça sessiz başlar ve yavaşça yükselir. Döngüde çalar.
   const source = audio.context.createBufferSource();
@@ -87,7 +85,7 @@ async function play(layer: LayerName, name: string): Promise<void> {
   const gain = audio.context.createGain();
   const now = audio.context.currentTime;
   gain.gain.setValueAtTime(0, now);
-  gain.gain.linearRampToValueAtTime(VOLUME[layer], now + CROSSFADE);
+  gain.gain.linearRampToValueAtTime(VOLUME[layer], now + CROSSFADE[layer]);
   source.connect(gain);
   gain.connect(audio.master);
   // Parçanın hep başından değil, rastgele bir yerinden başla: Her oyunda aynı an duyulmasın.
@@ -97,7 +95,7 @@ async function play(layer: LayerName, name: string): Promise<void> {
 
 // Kart değişince çağrılır: Saate ve yere uyan müziği ve ortam sesini çalar.
 export function setScore(time: string, place: Place): void {
-  void play("music", musicFor(time));
+  void play("music", musicFor(time, place));
   void play("ambience", ambienceFor(place, time));
 }
 

@@ -4,13 +4,14 @@ import { describe, expect, it } from "vitest";
 import { ambienceFor, musicFor } from "./score";
 
 describe("background score", () => {
-  // Müzik gün ilerledikçe değişmeli ve son saatte kendi parçasına geçmeli.
-  it("picks music by time of day", () => {
-    expect(musicFor("08:14")).toBe("morning");
-    expect(musicFor("13:50")).toBe("day");
-    expect(musicFor("17:40")).toBe("day");
-    expect(musicFor("21:00")).toBe("night");
-    expect(musicFor("23:55")).toBe("last-hour");
+  // Müzik eve gelene kadar gündüz, evde akşam, 22:00'den sonra gece olmalı.
+  it("picks music by place and time", () => {
+    expect(musicFor("08:14", "street")).toBe("day");
+    expect(musicFor("14:00", "work")).toBe("day");
+    expect(musicFor("12:30", "home")).toBe("evening");
+    expect(musicFor("21:00", "home")).toBe("evening");
+    expect(musicFor("22:00", "home")).toBe("night");
+    expect(musicFor("23:55", "home")).toBe("night");
   });
 
   // Ortam sesi yere göre değişmeli, akşam evde yağmur başlamalı.
