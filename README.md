@@ -17,13 +17,16 @@ The client decides nothing that counts. It sends only the list of swipes, and th
 Read more in [docs/architecture.md](docs/architecture.md).
 
 ## Run it
+```bash
+./dev.sh   # starts the database, the server and the game, then opens the browser
+```
+Press Ctrl + C to stop everything. Docker Desktop opens by itself if it is closed.
 
-You need Java 21, Node and Docker.
-
-```sh
-docker compose up -d             # database
-cd api && ./mvnw spring-boot:run # server on port 8080
-cd web && npm install && npm run dev   # game on port 5173
+Or start each part on its own:
+```bash
+docker compose up -d                  # database on port 5433
+cd api && ./mvnw spring-boot:run      # server on port 8080
+cd web && npm install && npm run dev  # game on port 5173
 ```
 
 ## Test it
