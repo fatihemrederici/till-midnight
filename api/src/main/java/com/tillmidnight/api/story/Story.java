@@ -78,6 +78,8 @@ public record Story(
             // Koşulu tutan ilk ölüm oyunu bitirir.
             List<Death> deaths,
             Map<String, String> after,
+            // Önceki seçimlere göre after yerine geçen metinler. İlk tutan kazanır.
+            List<Variant> variants,
             // Ölüm zincirinde bu seçimi anlatan geçmiş zaman cümlesi.
             Map<String, String> past) {}
 

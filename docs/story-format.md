@@ -78,6 +78,7 @@ A card:
 - `variants`: The first variant whose `when` matches replaces the card's text. This is how an earlier choice comes back later.
 - `effects`: Meter changes. Values stay between 0 and `maxMeter`.
 - `set`: Flags to remember.
+- `variants` (on a choice): Like a card's variants, but they replace the choice's `after` text. They check the flags from before this choice, so an earlier choice can explain why the player survived.
 - `deaths`: Checked against the flags from before this choice. The first one whose `when` matches ends the game. A death with no `when` always kills, so its card needs a `when`.
 
 An ending:
@@ -120,6 +121,7 @@ All three files have the same shape. A text belongs to the card or ending with t
 ```
 
 - `after`: Shown above the next card. Not needed on a choice that always kills.
+- `variants` (on a choice): One text per variant in the rules, in the same order.
 - `past`: The choice told in the past tense. The death screen uses it, with the card's time, to build the chain.
 - `omen`: Every death needs one. When Mind is low, a card's text turns into an omen for a moment, and sometimes it points at a death the player has really set up.
 - `variants` match the list in `story.json` by position.

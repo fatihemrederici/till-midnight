@@ -232,6 +232,13 @@ public class StoryValidator {
         if (!alwaysDies) {
             checkText(choice.after(), name + " after", errors);
         }
+        // Duruma göre değişen sonuç metinleri.
+        if (choice.variants() != null) {
+            for (Story.Variant variant : choice.variants()) {
+                checkText(variant.text(), name + " variant", errors);
+                checkFlags(variant.when(), name + " variant", setFlags, usedFlags, errors);
+            }
+        }
         // Bedelsiz seçim yok: Gösterge düşürür, bir işaret kurar ya da öldürebilir.
         boolean costs = (choice.effects() != null && choice.effects().values().stream().anyMatch(v -> v < 0))
                 || (choice.set() != null && choice.set().containsValue(true))

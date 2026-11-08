@@ -52,7 +52,11 @@
       "right": {
         "label": "Przebiegnij",
         "past": "Przebiegłeś na czerwonym",
-        "after": "Ciężarówka mija cię o włos. Mężczyzna za tobą coś krzyczy, ale nie słyszysz."
+        "after": "Ciężarówka trąbi i mija cię o włos. Mężczyzna za tobą coś krzyczy, ale się nie odwracasz.",
+        "variants": [
+          "Elif łapie cię za ramię i szarpie do tyłu. Słuchawka wypada ci z ucha, a ciężarówka przejeżdża tuż przed twoim nosem. W ogóle nie słyszałeś klaksonu.",
+          "Elif odciąga cię za ramię, a ciężarówka trąbiąc mija cię o włos. „Zwariowałeś?” Mężczyzna za tobą coś krzyczy."
+        ]
       }
     },
     "cafe": {

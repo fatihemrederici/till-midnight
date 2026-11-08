@@ -44,6 +44,20 @@ class StoryMergerTest {
 
     // Bu metot bir test.
     @Test
+    // Seçimin duruma göre değişen sonuç metni, kuraldaki sırasıyla eşleşmeli.
+    void combinesChoiceVariants() {
+        // Tek kartlı, sağ seçiminde bir varyant olan bölüm.
+        String rules = "{\"id\":\"mini\",\"cards\":[{\"id\":\"road\",\"right\":{\"variants\":[{\"when\":{\"elif\":true}}]}}]}";
+        JsonNode story = StoryMerger.merge(JSON.readTree(rules), texts(
+                "{\"cards\":{\"road\":{\"right\":{\"variants\":[\"Elif pulls you back.\"]}}}}",
+                "{\"cards\":{\"road\":{\"right\":{\"variants\":[\"Elif seni çekiyor.\"]}}}}"));
+
+        // Varyantın metni iki dilde.
+        assertEquals("Elif seni çekiyor.", story.at("/cards/0/right/variants/0/text/tr").asString());
+    }
+
+    // Bu metot bir test.
+    @Test
     // Eksik dil burada hata vermez, doğrulayıcının listesine düşer.
     void leavesMissingTextsForTheValidator() {
         // Türkçe başlık yok.

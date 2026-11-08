@@ -89,6 +89,8 @@ final class StoryMerger {
             addText(choice, "label", path + "/" + side + "/label");
             // Seçimin sonucu, sadece bazı seçimlerde var.
             addText(choice, "after", path + "/" + side + "/after");
+            // Önceki seçimlere göre değişen sonuç metinleri.
+            addIndexedTexts(choice, "variants", path + "/" + side + "/variants");
             // Ölüm zincirindeki geçmiş zaman cümlesi.
             addText(choice, "past", path + "/" + side + "/past");
         }

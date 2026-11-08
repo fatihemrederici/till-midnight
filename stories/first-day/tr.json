@@ -52,7 +52,11 @@
       "right": {
         "label": "Koşarak geç",
         "past": "Kırmızıda koşarak geçtin",
-        "after": "Bir kamyon kıl payı geçiyor. Arkandaki adam bir şey bağırıyor, duymuyorsun."
+        "after": "Bir kamyon kornaya basarak kıl payı geçiyor. Arkandaki adam bir şey bağırıyor ama dönüp bakmıyorsun.",
+        "variants": [
+          "Elif kolundan asılıp seni geri çekiyor. Kulaklığın yere düşüyor, kamyon burnunun dibinden geçiyor. Kornayı hiç duymamıştın.",
+          "Elif kolundan çekiyor, kamyon kornaya basarak kıl payı geçiyor. “Delirdin mi?” Arkandaki adam bir şey bağırıyor."
+        ]
       }
     },
     "cafe": {

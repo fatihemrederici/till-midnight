@@ -52,7 +52,11 @@
       "right": {
         "label": "Run across",
         "past": "You ran the red light",
-        "after": "A truck misses you by a hair. The man behind you shouts something you don’t hear."
+        "after": "A truck blares its horn and misses you by a hair. The man behind you shouts something, but you don’t look back.",
+        "variants": [
+          "Elif grabs your arm and yanks you back. Your earbud falls out as a truck passes right in front of your nose. You never heard its horn.",
+          "Elif pulls you back by the arm as a truck blares past by a hair. “Are you crazy?” The man behind you shouts something."
+        ]
       }
     },
     "cafe": {

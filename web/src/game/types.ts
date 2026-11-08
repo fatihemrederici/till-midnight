@@ -26,6 +26,8 @@ export type Choice = {
   // Koşulu tutan ilk ölüm kazanır.
   deaths?: Death[];
   after?: Text;
+  // Önceki seçimlere göre after yerine geçen metinler. İlk tutan kazanır.
+  variants?: { when: Condition; text: Text }[];
   // Ölüm zincirinde bu seçimi anlatan cümle.
   past: Text;
 };

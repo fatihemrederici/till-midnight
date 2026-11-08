@@ -82,7 +82,13 @@ export function choose(story: Story, state: GameState, side: Side): GameState {
     return { flags, meters, index, choices, endingId: win ? win.id : null, after: null };
   }
   // Oyun sürüyor.
-  return { flags, meters, index, choices, endingId: null, after: choice.after ?? null };
+  return { flags, meters, index, choices, endingId: null, after: afterText(choice, state.flags) };
+}
+
+// Seçimin sonucu: Seçimden önceki işaretlere uyan ilk varyant, yoksa normal metin.
+export function afterText(choice: Choice, flags: Condition): Text | null {
+  const variant = choice.variants?.find((item) => holds(item.when, flags));
+  return variant ? variant.text : (choice.after ?? null);
 }
 
 // Kartın o anki metni: Koşulu tutan ilk varyant, yoksa normal metin.

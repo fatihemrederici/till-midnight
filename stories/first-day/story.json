@@ -105,6 +105,18 @@
               "elif": false
             }
           }
+        ],
+        "variants": [
+          {
+            "when": {
+              "ear": true
+            }
+          },
+          {
+            "when": {
+              "elif": true
+            }
+          }
         ]
       }
     },

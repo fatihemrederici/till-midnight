@@ -3,9 +3,9 @@ import { describe, expect, it } from "vitest";
 // Saat hesapları.
 import { dayProgress } from "./clock";
 // Test edilen motor.
-import { cardText, choose, deathChain, holds, newGame } from "./engine";
+import { afterText, cardText, choose, deathChain, holds, newGame } from "./engine";
 // Tipler.
-import type { Card, Side, Story, Text } from "./types";
+import type { Card, Choice, Side, Story, Text } from "./types";
 
 // Tüm bölümlerin kuralları. Motor metinlere bakmadığı için dil dosyaları gerekmiyor.
 const stories = import.meta.glob("../../../stories/*/story.json", { eager: true });
@@ -162,6 +162,17 @@ describe("engine", () => {
     expect(cardText(card, { warned: true }).en).toBe("warned");
     // Tutmuyorsa normal metin.
     expect(cardText(card, {}).en).toBe("normal");
+  });
+
+  // Seçimin sonucu da önceki seçimlere göre değişebilmeli. Örneğin Elif yanındaysa seni geri çeker.
+  it("picks the after text that matches earlier choices", () => {
+    const choice = {
+      after: text("missed"),
+      variants: [{ when: { elif: true }, text: text("pulled back") }],
+    } as unknown as Choice;
+    expect(afterText(choice, { elif: true })?.en).toBe("pulled back");
+    expect(afterText(choice, {})?.en).toBe("missed");
+    expect(afterText({} as Choice, {})).toBeNull();
   });
 
   // Saat, gün çubuğuna doğru çevrilmeli.
