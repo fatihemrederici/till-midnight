@@ -164,7 +164,7 @@ describe("engine", () => {
     expect(cardText(card, {}).en).toBe("normal");
   });
 
-  // Seçimin sonucu da önceki seçimlere göre değişebilmeli. Örneğin Elif yanındaysa seni geri çeker.
+  // Seçimin sonucu da önceki seçimlere göre değişebilmeli. Örneğin Emily yanındaysa seni geri çeker.
   it("picks the after text that matches earlier choices", () => {
     const choice = {
       after: text("missed"),

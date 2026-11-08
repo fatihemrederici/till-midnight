@@ -18,8 +18,8 @@
       "text": "“Are you getting on?” You just saw this bus fall off the bridge. It hasn’t fallen yet.",
       "left": {
         "label": "Warn everyone",
-        "past": "You warned everyone and Elif got off with you",
-        "after": "Most of them laugh at you. A girl in a yellow coat gets off and walks over: Elif."
+        "past": "You warned everyone and Emily got off with you",
+        "after": "Most of them laugh at you. A girl in a yellow coat gets off and walks over: Emily."
       },
       "right": {
         "label": "Walk away quietly",
@@ -54,8 +54,8 @@
         "past": "You ran the red light",
         "after": "A truck hits its horn and only just misses you. The man behind you shouts something, but you don’t look back.",
         "variants": [
-          "Elif grabs your arm and pulls you back. Your earbud falls out. A truck goes past right in front of you. You never heard its horn.",
-          "Elif pulls you back by the arm. A truck goes past, very close, horn on. “Are you crazy?” The man behind you shouts something."
+          "Emily grabs your arm and pulls you back. Your earbud falls out. A truck goes past right in front of you. You never heard its horn.",
+          "Emily pulls you back by the arm. A truck goes past, very close, horn on. “Are you crazy?” The man behind you shouts something."
         ]
       }
     },
@@ -88,16 +88,16 @@
       }
     },
     "elif-asks": {
-      "who": "Elif",
+      "who": "Emily",
       "text": "“How did you know? Is something else going to happen today?”",
       "left": {
         "label": "Tell her what you saw",
-        "past": "You told Elif about the vision",
+        "past": "You told Emily about the vision",
         "after": "She doesn’t laugh. She asks for your number. Saying it out loud makes it feel real."
       },
       "right": {
         "label": "“Just a feeling”",
-        "past": "You told Elif it was just a feeling, she didn’t believe you and never called",
+        "past": "You told Emily it was just a feeling, she didn’t believe you and never called",
         "after": "She doesn’t believe you. She takes your number anyway."
       }
     },
@@ -376,16 +376,16 @@
       }
     },
     "elif-news": {
-      "who": "Elif",
+      "who": "Emily",
       "text": "“The other man who got off the bus is dead. In a lift. I’m coming over.”",
       "left": {
         "label": "“Come”",
-        "past": "You asked Elif to come over",
+        "past": "You asked Emily to come over",
         "after": "Half an hour later, she is at your door."
       },
       "right": {
         "label": "“Don’t, it’s dangerous”",
-        "past": "You kept Elif away",
+        "past": "You kept Emily away",
         "after": "Seen. No reply."
       },
       "variants": [
@@ -437,21 +437,21 @@
         "after": "The wine burns your throat. It helps a little."
       },
       "variants": [
-        "They read the passenger list. Your name is on it, and so is Elif’s. Not as survivors, as missing."
+        "They read the passenger list. Your name is on it, and so is Emily’s. Not as survivors, as missing."
       ]
     },
     "elif-air": {
-      "who": "Elif",
+      "who": "Emily",
       "text": "“I can’t breathe in here. Can we go out for some air?”",
       "left": {
         "label": "Go out on the balcony",
-        "past": "You went out on the balcony with Elif",
+        "past": "You went out on the balcony with Emily",
         "after": "The night is cool. The city is still full of sirens."
       },
       "right": {
         "label": "Stay in, open some wine",
-        "past": "You opened a bottle of wine with Elif",
-        "after": "Two glasses. Elif laughs for the first time today."
+        "past": "You opened a bottle of wine with Emily",
+        "after": "Two glasses. Emily laughs for the first time today."
       }
     },
     "mom-night": {
@@ -497,19 +497,19 @@
       }
     },
     "railing": {
-      "who": "Elif",
-      "text": "Elif leans on the railing, looking down. “Is this safe?”",
+      "who": "Emily",
+      "text": "Emily leans on the railing, looking down. “Is this safe?”",
       "left": {
         "label": "“Come inside, now!”",
-        "past": "You called Elif inside",
+        "past": "You called Emily inside",
         "after": "She’s angry, but she comes in. Just then the railing falls into the dark."
       },
       "right": {
         "label": "Go to her, hug her",
-        "past": "You leaned on the railing to hug Elif"
+        "past": "You leaned on the railing to hug Emily"
       },
       "variants": [
-        "Elif leans on the railing and looks at the tape. “Did you do this? Is it safe?”"
+        "Emily leans on the railing and looks at the tape. “Did you do this? Is it safe?”"
       ]
     },
     "door": {
@@ -676,7 +676,7 @@
     },
     "together": {
       "title": "You Both Made It",
-      "text": "00:00. Elif says nothing, and neither do you. Today death missed two people.",
+      "text": "00:00. Emily says nothing, and neither do you. Today death missed two people.",
       "hint": "Tomorrow you’ll both wake up. That’s all."
     },
     "alone": {

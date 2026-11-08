@@ -18,8 +18,8 @@
       "text": "„Wsiadasz?” Przed chwilą widziałeś, jak ten autobus spada z mostu. Jeszcze nie spadł.",
       "left": {
         "label": "Ostrzeż wszystkich",
-        "past": "Ostrzegłeś wszystkich i Elif wysiadła z tobą",
-        "after": "Większość się z ciebie śmieje. Dziewczyna w żółtej kurtce wysiada i podchodzi: Elif."
+        "past": "Ostrzegłeś wszystkich i Emily wysiadła z tobą",
+        "after": "Większość się z ciebie śmieje. Dziewczyna w żółtej kurtce wysiada i podchodzi: Emily."
       },
       "right": {
         "label": "Odejdź po cichu",
@@ -54,8 +54,8 @@
         "past": "Przebiegłeś na czerwonym",
         "after": "Ciężarówka trąbi i mija cię o włos. Mężczyzna za tobą coś krzyczy, ale się nie odwracasz.",
         "variants": [
-          "Elif łapie cię za ramię i szarpie do tyłu. Słuchawka wypada ci z ucha, a ciężarówka przejeżdża tuż przed twoim nosem. W ogóle nie słyszałeś klaksonu.",
-          "Elif odciąga cię za ramię, a ciężarówka trąbiąc mija cię o włos. „Zwariowałeś?” Mężczyzna za tobą coś krzyczy."
+          "Emily łapie cię za ramię i szarpie do tyłu. Słuchawka wypada ci z ucha, a ciężarówka przejeżdża tuż przed twoim nosem. W ogóle nie słyszałeś klaksonu.",
+          "Emily odciąga cię za ramię, a ciężarówka trąbiąc mija cię o włos. „Zwariowałeś?” Mężczyzna za tobą coś krzyczy."
         ]
       }
     },
@@ -88,16 +88,16 @@
       }
     },
     "elif-asks": {
-      "who": "Elif",
+      "who": "Emily",
       "text": "„Skąd wiedziałeś? Czy dziś stanie się coś jeszcze?”",
       "left": {
         "label": "Powiedz, co widziałeś",
-        "past": "Opowiedziałeś Elif o wizji",
+        "past": "Opowiedziałeś Emily o wizji",
         "after": "Nie śmieje się. Prosi o twój numer. Gdy to mówisz, staje się prawdziwe."
       },
       "right": {
         "label": "„Tylko przeczucie”",
-        "past": "Powiedziałeś Elif, że to przeczucie, nie uwierzyła ci i nie zadzwoniła",
+        "past": "Powiedziałeś Emily, że to przeczucie, nie uwierzyła ci i nie zadzwoniła",
         "after": "Nie wierzy ci. Mimo to bierze twój numer."
       }
     },
@@ -376,16 +376,16 @@
       }
     },
     "elif-news": {
-      "who": "Elif",
+      "who": "Emily",
       "text": "„Ten drugi, który wysiadł z autobusu, nie żyje. W windzie. Przyjeżdżam do ciebie.”",
       "left": {
         "label": "„Przyjedź”",
-        "past": "Poprosiłeś Elif, żeby przyjechała",
+        "past": "Poprosiłeś Emily, żeby przyjechała",
         "after": "Pół godziny później stoi w twoich drzwiach."
       },
       "right": {
         "label": "„Nie, to niebezpieczne”",
-        "past": "Trzymałeś Elif z daleka",
+        "past": "Trzymałeś Emily z daleka",
         "after": "Wyświetlono. Brak odpowiedzi."
       },
       "variants": [
@@ -437,21 +437,21 @@
         "after": "Wino pali w gardle. Trochę pomaga."
       },
       "variants": [
-        "Czytają listę pasażerów. Jest na niej twoje nazwisko i nazwisko Elif. Nie jako ocalałych, jako zaginionych."
+        "Czytają listę pasażerów. Jest na niej twoje nazwisko i nazwisko Emily. Nie jako ocalałych, jako zaginionych."
       ]
     },
     "elif-air": {
-      "who": "Elif",
+      "who": "Emily",
       "text": "„Duszę się tutaj. Wyjdziemy zaczerpnąć powietrza?”",
       "left": {
         "label": "Wyjdźmy na balkon",
-        "past": "Wyszliście z Elif na balkon",
+        "past": "Wyszliście z Emily na balkon",
         "after": "Noc jest chłodna. Miasto wciąż pełne syren."
       },
       "right": {
         "label": "Zostańmy, otwórzmy wino",
-        "past": "Otworzyliście z Elif wino",
-        "after": "Dwa kieliszki. Elif śmieje się pierwszy raz dziś."
+        "past": "Otworzyliście z Emily wino",
+        "after": "Dwa kieliszki. Emily śmieje się pierwszy raz dziś."
       }
     },
     "mom-night": {
@@ -497,19 +497,19 @@
       }
     },
     "railing": {
-      "who": "Elif",
-      "text": "Elif opiera się o barierkę i patrzy w dół. „To jest bezpieczne?”",
+      "who": "Emily",
+      "text": "Emily opiera się o barierkę i patrzy w dół. „To jest bezpieczne?”",
       "left": {
         "label": "„Wejdź do środka, już!”",
-        "past": "Zawołałeś Elif do środka",
+        "past": "Zawołałeś Emily do środka",
         "after": "Jest zła, ale wchodzi. W tej chwili barierka spada w ciemność."
       },
       "right": {
         "label": "Podejdź, przytul ją",
-        "past": "Oparłeś się o barierkę, żeby przytulić Elif"
+        "past": "Oparłeś się o barierkę, żeby przytulić Emily"
       },
       "variants": [
-        "Elif opiera się o barierkę i patrzy na taśmę. „To ty zrobiłeś? Jest bezpieczna?”"
+        "Emily opiera się o barierkę i patrzy na taśmę. „To ty zrobiłeś? Jest bezpieczna?”"
       ]
     },
     "door": {
@@ -676,7 +676,7 @@
     },
     "together": {
       "title": "Oboje żyjecie",
-      "text": "00:00. Elif milczy, ty też. Dziś śmierć chybiła dwa razy.",
+      "text": "00:00. Emily milczy, ty też. Dziś śmierć chybiła dwa razy.",
       "hint": "Jutro oboje się obudzicie. To wszystko."
     },
     "alone": {

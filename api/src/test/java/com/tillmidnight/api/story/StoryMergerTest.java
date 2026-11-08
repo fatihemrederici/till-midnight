@@ -49,11 +49,11 @@ class StoryMergerTest {
         // Tek kartlı, sağ seçiminde bir varyant olan bölüm.
         String rules = "{\"id\":\"mini\",\"cards\":[{\"id\":\"road\",\"right\":{\"variants\":[{\"when\":{\"elif\":true}}]}}]}";
         JsonNode story = StoryMerger.merge(JSON.readTree(rules), texts(
-                "{\"cards\":{\"road\":{\"right\":{\"variants\":[\"Elif pulls you back.\"]}}}}",
-                "{\"cards\":{\"road\":{\"right\":{\"variants\":[\"Elif seni çekiyor.\"]}}}}"));
+                "{\"cards\":{\"road\":{\"right\":{\"variants\":[\"Emily pulls you back.\"]}}}}",
+                "{\"cards\":{\"road\":{\"right\":{\"variants\":[\"Emily seni çekiyor.\"]}}}}"));
 
         // Varyantın metni iki dilde.
-        assertEquals("Elif seni çekiyor.", story.at("/cards/0/right/variants/0/text/tr").asString());
+        assertEquals("Emily seni çekiyor.", story.at("/cards/0/right/variants/0/text/tr").asString());
     }
 
     // Bu metot bir test.

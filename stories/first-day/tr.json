@@ -18,8 +18,8 @@
       "text": "“Binmiyor musun?” Bu otobüsün köprüden düştüğünü az önce gördün. Henüz düşmedi.",
       "left": {
         "label": "Herkesi uyar",
-        "past": "Herkesi uyardın, Elif seninle indi",
-        "after": "Çoğu sana gülüyor. Sarı montlu bir kız inip yanına geliyor: Elif."
+        "past": "Herkesi uyardın, Emily seninle indi",
+        "after": "Çoğu sana gülüyor. Sarı montlu bir kız inip yanına geliyor: Emily."
       },
       "right": {
         "label": "Sessizce uzaklaş",
@@ -54,8 +54,8 @@
         "past": "Kırmızıda koşarak geçtin",
         "after": "Bir kamyon kornaya basarak kıl payı geçiyor. Arkandaki adam bir şey bağırıyor ama dönüp bakmıyorsun.",
         "variants": [
-          "Elif kolundan asılıp seni geri çekiyor. Kulaklığın yere düşüyor, kamyon burnunun dibinden geçiyor. Kornayı hiç duymamıştın.",
-          "Elif kolundan çekiyor, kamyon kornaya basarak kıl payı geçiyor. “Delirdin mi?” Arkandaki adam bir şey bağırıyor."
+          "Emily kolundan asılıp seni geri çekiyor. Kulaklığın yere düşüyor, kamyon burnunun dibinden geçiyor. Kornayı hiç duymamıştın.",
+          "Emily kolundan çekiyor, kamyon kornaya basarak kıl payı geçiyor. “Delirdin mi?” Arkandaki adam bir şey bağırıyor."
         ]
       }
     },
@@ -88,16 +88,16 @@
       }
     },
     "elif-asks": {
-      "who": "Elif",
+      "who": "Emily",
       "text": "“Bunu nereden bildin? Bugün başka bir şey olacak mı?”",
       "left": {
         "label": "Gördüğünü anlat",
-        "past": "Elif’e kehaneti anlattın",
+        "past": "Emily’ye kehaneti anlattın",
         "after": "Gülmüyor. Numaranı istiyor. Söyleyince her şey daha gerçek."
       },
       "right": {
         "label": "“İçime doğdu”",
-        "past": "Elif’e “içime doğdu” dedin, sana inanmadı ve bir daha aramadı",
+        "past": "Emily’ye “içime doğdu” dedin, sana inanmadı ve bir daha aramadı",
         "after": "İnanmıyor. Yine de numaranı alıyor."
       }
     },
@@ -376,16 +376,16 @@
       }
     },
     "elif-news": {
-      "who": "Elif",
+      "who": "Emily",
       "text": "“Otobüsten inen öbür adam ölmüş. Asansörde. Yanına geliyorum.”",
       "left": {
         "label": "“Gel”",
-        "past": "Elif’i yanına çağırdın",
+        "past": "Emily’yi yanına çağırdın",
         "after": "Yarım saat sonra kapında."
       },
       "right": {
         "label": "“Gelme, tehlikeli”",
-        "past": "Elif’i uzak tuttun",
+        "past": "Emily’yi uzak tuttun",
         "after": "Görüldü. Cevap yok."
       },
       "variants": [
@@ -437,21 +437,21 @@
         "after": "Şarap boğazını yakıyor. Biraz geçiyor."
       },
       "variants": [
-        "Yolcu listesi okunuyor. Senin adın da var, Elif’inki de. “Kurtulan” değil, “kayıp” olarak."
+        "Yolcu listesi okunuyor. Senin adın da var, Emily’ninki de. “Kurtulan” değil, “kayıp” olarak."
       ]
     },
     "elif-air": {
-      "who": "Elif",
+      "who": "Emily",
       "text": "“Burada boğuluyorum. Biraz hava alalım mı?”",
       "left": {
         "label": "Balkona çıkalım",
-        "past": "Elif’le balkona çıktınız",
+        "past": "Emily’yle balkona çıktınız",
         "after": "Gece serin. Şehir hâlâ sirenlerle dolu."
       },
       "right": {
         "label": "İçeride kalalım, şarap açalım",
-        "past": "Elif’le şarap açtınız",
-        "after": "İki kadeh. Elif bugün ilk kez gülüyor."
+        "past": "Emily’yle şarap açtınız",
+        "after": "İki kadeh. Emily bugün ilk kez gülüyor."
       }
     },
     "mom-night": {
@@ -497,19 +497,19 @@
       }
     },
     "railing": {
-      "who": "Elif",
-      "text": "Elif korkuluğa yaslanmış, aşağı bakıyor. “Bu sağlam mı?”",
+      "who": "Emily",
+      "text": "Emily korkuluğa yaslanmış, aşağı bakıyor. “Bu sağlam mı?”",
       "left": {
         "label": "“İçeri gel, hemen!”",
-        "past": "Elif’i içeri çağırdın",
+        "past": "Emily’yi içeri çağırdın",
         "after": "Kızıyor ama giriyor. O anda korkuluk boşluğa düşüyor."
       },
       "right": {
         "label": "Yanına git, sarıl",
-        "past": "Elif’e sarılmak için korkuluğa yaslandın"
+        "past": "Emily’ye sarılmak için korkuluğa yaslandın"
       },
       "variants": [
-        "Elif korkuluğa yaslanmış. Bantlara bakıyor. “Bunu sen mi yaptın? Sağlam mı?”"
+        "Emily korkuluğa yaslanmış. Bantlara bakıyor. “Bunu sen mi yaptın? Sağlam mı?”"
       ]
     },
     "door": {
@@ -676,7 +676,7 @@
     },
     "together": {
       "title": "İkiniz de Hayattasınız",
-      "text": "00:00. Elif konuşmuyor, sen de. Ölüm bugün iki kişiyi kaçırdı.",
+      "text": "00:00. Emily konuşmuyor, sen de. Ölüm bugün iki kişiyi kaçırdı.",
       "hint": "Yarın yine uyanacaksınız. Bu kadar."
     },
     "alone": {
