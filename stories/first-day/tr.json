@@ -115,6 +115,20 @@
         "after": "Dört kat. Seni yukarıda gülerek bekliyor."
       }
     },
+    "badge": {
+      "who": "Yeni patronun",
+      "text": "“Hoş geldin. Bu giriş kartın, her kapıda lazım.” Kartın uzun bir ipi var.",
+      "left": {
+        "label": "Boynuna as",
+        "past": "Giriş kartını boynuna astın",
+        "after": "Kart göğsünde sallanıyor. İlk kez buraya ait hissediyorsun."
+      },
+      "right": {
+        "label": "Cebine koy",
+        "past": "Kartı cebine koydun",
+        "after": "Sonra kartı bulamıyorsun. Kapıda yirmi dakika bekliyorsun, patron kaşlarını çatıyor."
+      }
+    },
     "pharmacy": {
       "who": "Eczacı",
       "text": "Ellerin hâlâ titriyor. “Hafif bir sakinleştirici. Alkolle almayın, başınız döner.”",
@@ -129,6 +143,20 @@
         "after": "Titreyen ellerle eve yürüyorsun."
       }
     },
+    "lunch": {
+      "who": "Gri takımlı adam",
+      "text": "“Yemekten sonra arşive birkaç koli indirmeme yardım eder misin? Bodrum katta.”",
+      "left": {
+        "label": "“Tabii”",
+        "past": "Gri takımlı adama koli taşımayı söz verdin",
+        "after": "“Harika. Bu arada asansörü tamir etmişler.”"
+      },
+      "right": {
+        "label": "“Kusura bakma, işim var”",
+        "past": "Gri takımlı adama yardım etmedin",
+        "after": "Yüzü düşüyor. Masasına tek başına dönüyor."
+      }
+    },
     "stairs": {
       "who": "Apartman",
       "text": "On iki kat. Asansör gıcırdıyor. Merdivenler yeni yıkanmış, mermer parlıyor.",
@@ -141,10 +169,7 @@
         "label": "Asansör",
         "past": "Asansöre bindin",
         "after": "Kapılar kapanıyor, ışık bir gidip geliyor. Bir şey olmuyor."
-      },
-      "variants": [
-        "On iki kat. Asansör gıcırdıyor, sabahki asansör aklına geliyor. Merdivenler yeni yıkanmış."
-      ]
+      }
     },
     "locked": {
       "who": "Komşu",
@@ -174,6 +199,19 @@
         "after": "Koli bandı, üç tur. Artık sağlam. Öyle görünüyor."
       }
     },
+    "archive": {
+      "who": "Gri takımlı adam",
+      "text": "Kolileri asansörün önüne dizmiş. Kapıdaki “bakımda” kâğıdı yok. “Gel, ikimiz de sığarız.”",
+      "left": {
+        "label": "Asansöre bin",
+        "past": "Kolilerle birlikte asansöre bindin"
+      },
+      "right": {
+        "label": "Kolileri merdivenden taşı",
+        "past": "Kolileri merdivenden taşıdın",
+        "after": "“Sen bilirsin.” Kapılar kapanıyor. İkinci kattayken yukarıda bir şey kopuyor."
+      }
+    },
     "food": {
       "who": "Mutfak",
       "text": "Sabahtan beri bir şey yemedin. Mutfak saati yine beş dakika ileri. Annen hep öyle kurardı.",
@@ -187,6 +225,23 @@
         "past": "Bütün gün bir şey yemedin",
         "after": "Midene kramp giriyor ama ocak kapalı."
       }
+    },
+    "crash": {
+      "who": "Asansör boşluğu",
+      "text": "Metal bir çığlık, sonra büyük bir gürültü. Asansör dibe düştü. Gri takımlı adam içindeydi.",
+      "left": {
+        "label": "Aşağı koş, yardım et",
+        "past": "Düşen asansöre koştun",
+        "after": "Çok geç. Gördüğünü hiç unutmayacaksın."
+      },
+      "right": {
+        "label": "Geri çekil, 112’yi ara",
+        "past": "Uzaktan 112’yi aradın",
+        "after": "Sesin titriyor. Ellerin buz gibi, miden bulanıyor."
+      },
+      "variants": [
+        "Elindeki koliler merdivene saçılıyor. Asansör dibe düştü. Gri takımlı adam içindeydi."
+      ]
     },
     "mom": {
       "who": "Annen",
@@ -215,6 +270,20 @@
         "after": "Alev boğuluyor. Elin yandı ama ev duruyor."
       }
     },
+    "shredder": {
+      "who": "Yeni patronun",
+      "text": "“Ofisi kapatıyoruz, herkes eve. Çıkmadan şu dosyaları kâğıt öğütücüye at.”",
+      "left": {
+        "label": "Hepsini hızlıca at",
+        "past": "Öğütücünün üstüne eğilip kâğıtları hızla ittin",
+        "after": "Makine homurdanarak kâğıtları yutuyor. Bitti, eve gidiyorsun."
+      },
+      "right": {
+        "label": "Bırak, hemen eve git",
+        "past": "Patronun istediğini yapmadan çıktın",
+        "after": "Patron arkandan bir şey söylüyor. Duymazdan geliyorsun."
+      }
+    },
     "sleep": {
       "who": "Yatak",
       "text": "Dünden beri uyumadın. Gözlerin kapanıyor.",
@@ -227,6 +296,48 @@
         "label": "Uyanık kal",
         "past": "Bütün gün uyumadın",
         "after": "Kahve yapıyorsun. Tavana bakıp duruyorsun."
+      }
+    },
+    "stairs-late": {
+      "who": "Apartman",
+      "text": "Erken döndün. On iki kat. Bugün bir asansörün düştüğünü gördün.",
+      "left": {
+        "label": "Merdiven",
+        "past": "Yorgun bacaklarla on iki kat çıktın",
+        "after": "On iki kat. Bacakların titriyor ama çıktın."
+      },
+      "right": {
+        "label": "Asansör",
+        "past": "Bir asansörün düştüğünü gördükten sonra yine asansöre bindin",
+        "after": "Kapılar kapanırken nefesini tutuyorsun. Her gıcırtıda gözlerini kapatıyorsun."
+      }
+    },
+    "locked-late": {
+      "who": "Komşu",
+      "text": "Cebin boş, anahtarın yok. Komşu kapıyı açıyor: “Balkonlar bitişik, geçebilirsin.”",
+      "left": {
+        "label": "Balkondan geç",
+        "past": "On ikinci katta balkondan balkona geçtin",
+        "after": "Bir adım, aradaki boşluk, öbür balkon. Dizin sıyrılıyor ama geçtin."
+      },
+      "right": {
+        "label": "Çilingiri bekle",
+        "past": "Çilingiri bekledin",
+        "after": "İki saat merdivende oturuyorsun."
+      }
+    },
+    "railing-late": {
+      "who": "Balkon",
+      "text": "Nefes almak için balkona çıkıyorsun. Korkuluk elinin altında sallanıyor.",
+      "left": {
+        "label": "Sonra bakarım",
+        "past": "Sallanan korkuluğu öylece bıraktın",
+        "after": "Bugün bundan büyük dertlerin var."
+      },
+      "right": {
+        "label": "Bantla, sağlamlaştır",
+        "past": "Korkuluğu bantladın ve sağlam sandın",
+        "after": "Koli bandı, üç tur. Artık sağlam. Öyle görünüyor."
       }
     },
     "lock-up": {
@@ -271,7 +382,7 @@
         "after": "Görüldü. Cevap yok."
       },
       "variants": [
-        "“Gri takımlı adam ölmüş. Senin ofisinde, asansörde. Yanına geliyorum.”"
+        "“Haberlerde senin ofisini gösteriyorlar. Asansör düşmüş, gri takımlı adam ölmüş. İyi misin? Yanına geliyorum.”"
       ]
     },
     "police": {
@@ -429,6 +540,18 @@
       "text": "Kablo üçüncü katta koptu. Görevli “Binmeyin!” diye bağırmıştı. Geç kalmıştın, durmadın.",
       "hint": "İlk günden hızlı bir iniş.",
       "omen": "Asansör gıcırdıyor."
+    },
+    "archive": {
+      "title": "Arşiv",
+      "text": "“Tamir ettiler” demişti. Etmemişlerdi. Sabah o kâğıdı görmüştün ama kibar olmak istedin.",
+      "hint": "Yardım etmek güzeldir. Merdiven daha güzel.",
+      "omen": "Asansörün üstünde bir şey kopuyor."
+    },
+    "shredder": {
+      "title": "Kâğıt Öğütücü",
+      "text": "Eğildiğin an kartın ipi makineye takıldı. Makine durmadı. O kartı sabahtan beri boynunda taşıyordun.",
+      "hint": "Kart cebinde de çalışıyordu.",
+      "omen": "Bir şey seni çekiyor."
     },
     "horn": {
       "title": "Korna",

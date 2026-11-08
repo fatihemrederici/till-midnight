@@ -31,6 +31,8 @@
     "wet",
     "late",
     "noKeys",
+    "lanyard",
+    "boxes",
     "pill",
     "rail",
     "pill2",
@@ -196,6 +198,9 @@
         "effects": {
           "mind": 1
         },
+        "set": {
+          "rode": true
+        },
         "deaths": [
           {
             "ending": "fourth-floor",
@@ -215,6 +220,29 @@
             }
           }
         ]
+      }
+    },
+    {
+      "id": "badge",
+      "time": "10:40",
+      "place": "work",
+      "emoji": "🪪",
+      "image": "badge.jpg",
+      "when": {
+        "work": true
+      },
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "lanyard": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        }
       }
     },
     {
@@ -241,18 +269,40 @@
       }
     },
     {
+      "id": "lunch",
+      "time": "12:00",
+      "place": "work",
+      "emoji": "🥪",
+      "image": "lunch.jpg",
+      "when": {
+        "work": true,
+        "rode": true
+      },
+      "left": {
+        "effects": {
+          "mind": 1,
+          "body": 1
+        },
+        "set": {
+          "boxes": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": -1,
+          "body": 1
+        }
+      }
+    },
+    {
       "id": "stairs",
       "time": "12:30",
       "place": "home",
       "emoji": "🛗",
       "image": "stairs.jpg",
-      "variants": [
-        {
-          "when": {
-            "work": true
-          }
-        }
-      ],
+      "when": {
+        "work": false
+      },
       "left": {
         "deaths": [
           {
@@ -276,7 +326,8 @@
       "emoji": "🔑",
       "image": "locked.jpg",
       "when": {
-        "noKeys": true
+        "noKeys": true,
+        "work": false
       },
       "left": {
         "effects": {
@@ -303,6 +354,9 @@
       "place": "home",
       "emoji": "🪴",
       "image": "railing-first.jpg",
+      "when": {
+        "work": false
+      },
       "left": {
         "effects": {
           "mind": 1
@@ -322,17 +376,69 @@
       }
     },
     {
+      "id": "archive",
+      "time": "13:50",
+      "place": "work",
+      "emoji": "📦",
+      "image": "archive.jpg",
+      "when": {
+        "boxes": true
+      },
+      "left": {
+        "deaths": [
+          {
+            "ending": "archive"
+          }
+        ]
+      },
+      "right": {
+        "effects": {
+          "body": -1
+        }
+      }
+    },
+    {
       "id": "food",
       "time": "14:00",
       "place": "home",
       "emoji": "🍳",
       "image": "food.jpg",
+      "when": {
+        "work": false
+      },
       "left": {
         "effects": {
           "body": 1
         },
         "set": {
           "pan": true
+        }
+      },
+      "right": {
+        "effects": {
+          "body": -1
+        }
+      }
+    },
+    {
+      "id": "crash",
+      "time": "14:00",
+      "place": "work",
+      "emoji": "💥",
+      "image": "crash.jpg",
+      "when": {
+        "work": true
+      },
+      "variants": [
+        {
+          "when": {
+            "boxes": true
+          }
+        }
+      ],
+      "left": {
+        "effects": {
+          "mind": -1
         }
       },
       "right": {
@@ -387,11 +493,43 @@
       }
     },
     {
+      "id": "shredder",
+      "time": "14:30",
+      "place": "work",
+      "emoji": "🗂️",
+      "image": "shredder.jpg",
+      "when": {
+        "work": true,
+        "boxes": false
+      },
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "deaths": [
+          {
+            "ending": "shredder",
+            "when": {
+              "lanyard": true
+            }
+          }
+        ]
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        }
+      }
+    },
+    {
       "id": "sleep",
       "time": "15:10",
       "place": "home",
       "emoji": "🛏️",
       "image": "sleep.jpg",
+      "when": {
+        "work": false
+      },
       "left": {
         "effects": {
           "body": 2,
@@ -401,6 +539,75 @@
       "right": {
         "effects": {
           "body": -1
+        }
+      }
+    },
+    {
+      "id": "stairs-late",
+      "time": "15:30",
+      "place": "home",
+      "emoji": "🛗",
+      "image": "stairs.jpg",
+      "when": {
+        "work": true
+      },
+      "left": {
+        "effects": {
+          "body": -1
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        }
+      }
+    },
+    {
+      "id": "locked-late",
+      "time": "15:35",
+      "place": "home",
+      "emoji": "🔑",
+      "image": "locked.jpg",
+      "when": {
+        "noKeys": true,
+        "work": true
+      },
+      "left": {
+        "effects": {
+          "mind": 1,
+          "body": -1
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        }
+      }
+    },
+    {
+      "id": "railing-late",
+      "time": "15:45",
+      "place": "home",
+      "emoji": "🪴",
+      "image": "railing-first.jpg",
+      "when": {
+        "work": true
+      },
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "rail": true
+        }
+      },
+      "right": {
+        "effects": {
+          "body": -1
+        },
+        "set": {
+          "rail": true,
+          "taped": true
         }
       }
     },
@@ -769,6 +976,14 @@
   "endings": [
     {
       "id": "fourth-floor",
+      "won": false
+    },
+    {
+      "id": "archive",
+      "won": false
+    },
+    {
+      "id": "shredder",
       "won": false
     },
     {

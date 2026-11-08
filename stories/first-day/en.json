@@ -5,9 +5,9 @@
     "A cable snaps.",
     "Glass. Water. Screaming.",
     "Nobody gets out.",
-    "Including you."
+    "Not even you."
   ],
-  "wake": "You open your eyes. You’re at the bus stop. It’s the first day of your new job, and the bus is just pulling in.",
+  "wake": "You open your eyes. You’re at the bus stop. It’s the first day of your new job, and the bus is just arriving.",
   "meters": {
     "mind": "Mind",
     "body": "Body"
@@ -24,15 +24,15 @@
       "right": {
         "label": "Walk away quietly",
         "past": "You walked away without warning anyone",
-        "after": "The doors close. The stop’s camera watches you leave."
+        "after": "The doors close. A camera at the bus stop sees you walk away."
       }
     },
     "sirens": {
       "who": "The bridge",
-      "text": "Sirens wail from the direction of the bridge. Your hands are shaking.",
+      "text": "You hear sirens from the bridge. Your hands are shaking.",
       "left": {
         "label": "Put your earbuds in",
-        "past": "You put your earbuds in and turned it all the way up",
+        "past": "You put your earbuds in and turned the music up loud",
         "after": "The noise is gone. You turn the music all the way up."
       },
       "right": {
@@ -52,25 +52,25 @@
       "right": {
         "label": "Run across",
         "past": "You ran the red light",
-        "after": "A truck blares its horn and misses you by a hair. The man behind you shouts something, but you don’t look back.",
+        "after": "A truck hits its horn and only just misses you. The man behind you shouts something, but you don’t look back.",
         "variants": [
-          "Elif grabs your arm and yanks you back. Your earbud falls out as a truck passes right in front of your nose. You never heard its horn.",
-          "Elif pulls you back by the arm as a truck blares past by a hair. “Are you crazy?” The man behind you shouts something."
+          "Elif grabs your arm and pulls you back. Your earbud falls out. A truck goes past right in front of you. You never heard its horn.",
+          "Elif pulls you back by the arm. A truck goes past, very close, horn on. “Are you crazy?” The man behind you shouts something."
         ]
       }
     },
     "cafe": {
       "who": "The café",
-      "text": "Your hands shake and the coffee spills into your shoe. The waiter holds out a cloth.",
+      "text": "Your hands shake and the coffee spills into your shoe. The waiter gives you a cloth.",
       "left": {
         "label": "Sit until it dries",
-        "past": "You lingered in the café and were late on your first day",
-        "after": "You sit for half an hour. Your breath comes back. It’s well past nine."
+        "past": "You stayed too long in the café and were late for your first day",
+        "after": "You sit for half an hour and calm down. It’s already after nine."
       },
       "right": {
         "label": "Leave right away",
         "past": "Coffee soaked your shoe and you didn’t wait for it to dry",
-        "after": "Nowhere is safe. You leave in a wet sock."
+        "after": "Nowhere feels safe. You leave with a wet sock."
       }
     },
     "work-call": {
@@ -93,7 +93,7 @@
       "left": {
         "label": "Tell her what you saw",
         "past": "You told Elif about the vision",
-        "after": "She doesn’t laugh. She asks for your number. Saying it makes it real."
+        "after": "She doesn’t laugh. She asks for your number. Saying it out loud makes it feel real."
       },
       "right": {
         "label": "“Just a feeling”",
@@ -103,48 +103,73 @@
     },
     "office": {
       "who": "The man in the grey suit",
-      "text": "The other man who got off the bus. He turns out to be your new desk mate. “Fourth floor, let’s take the lift.” A torn “out of order” note hangs on the door. The stairs are marble.",
+      "text": "It’s the other man who got off the bus. He works at the desk next to yours. “Fourth floor, let’s take the lift.” There’s a torn “out of order” note on the lift door. The stairs are marble.",
       "left": {
         "label": "Take the lift with him",
         "past": "You took the broken lift",
-        "after": "The doors close. A screech. Then the fourth floor. He laughs: “See?”"
+        "after": "The doors close. A loud creak. Then the fourth floor. He laughs: “See?”"
       },
       "right": {
         "label": "Take the stairs",
         "past": "You took the office’s marble stairs",
-        "after": "Four floors. He waits at the top, grinning."
+        "after": "Four floors. He’s waiting at the top with a smile."
+      }
+    },
+    "badge": {
+      "who": "Your new boss",
+      "text": "“Welcome. This is your ID card. You need it for every door.” It hangs on a long strap.",
+      "left": {
+        "label": "Wear it round your neck",
+        "past": "You wore your ID card round your neck",
+        "after": "The card hangs on your chest. For the first time, you feel like you belong here."
+      },
+      "right": {
+        "label": "Put it in your pocket",
+        "past": "You put the card in your pocket",
+        "after": "Later you can’t find it. You wait at the door for twenty minutes and your boss frowns."
       }
     },
     "pharmacy": {
       "who": "The pharmacist",
-      "text": "Your hands are still shaking. “A mild sedative. No alcohol with it, it makes you dizzy.”",
+      "text": "Your hands are still shaking. “This will calm you down. Don’t drink alcohol with it, it makes you dizzy.”",
       "left": {
         "label": "Take it",
-        "past": "You took the sedative",
-        "after": "Half an hour later your hands are still. Everything feels a little slow."
+        "past": "You took the calming pills",
+        "after": "Half an hour later your hands stop shaking. Everything feels a bit slow."
       },
       "right": {
         "label": "Leave it",
-        "past": "You turned down the sedative",
+        "past": "You didn’t take the pills",
         "after": "You walk home with shaking hands."
+      }
+    },
+    "lunch": {
+      "who": "The man in the grey suit",
+      "text": "“After lunch, can you help me take some boxes down to the archive? It’s in the basement.”",
+      "left": {
+        "label": "“Sure”",
+        "past": "You promised to help the man in the grey suit with the boxes",
+        "after": "“Great. They fixed the lift, by the way.”"
+      },
+      "right": {
+        "label": "“Sorry, I’m busy”",
+        "past": "You didn’t help the man in the grey suit",
+        "after": "His face falls. He goes back to his desk alone."
       }
     },
     "stairs": {
       "who": "Your building",
-      "text": "Twelve floors. The lift is creaking. The stairs have just been mopped and the marble shines.",
+      "text": "You live on the twelfth floor. The lift is making a strange noise. The stairs were just washed and they’re shiny.",
       "left": {
         "label": "Stairs",
-        "past": "You climbed the freshly mopped stairs",
+        "past": "You walked up the freshly washed stairs",
         "after": "Twelve floors. Your legs are shaking, but you made it."
       },
       "right": {
         "label": "Lift",
         "past": "You took the lift",
-        "after": "The doors close and the light flickers. Nothing happens."
-      },
-      "variants": [
-        "Twelve floors. The lift is creaking and you think of the one this morning. The stairs have just been mopped."
-      ]
+        "after": "The doors close and the light goes on and off. Nothing happens."
+      }
     },
     "locked": {
       "who": "The neighbour",
@@ -152,7 +177,7 @@
       "left": {
         "label": "Climb across",
         "past": "You climbed between balconies on the twelfth floor",
-        "after": "One step, the drop, the other balcony. Your head spins, but you’re over."
+        "after": "One step over the gap to the other balcony. You feel dizzy, but you make it."
       },
       "right": {
         "label": "Wait for a locksmith",
@@ -162,57 +187,101 @@
     },
     "railing-first": {
       "who": "The balcony",
-      "text": "You step onto the balcony to breathe. The railing wobbles under your hand.",
+      "text": "You go out on the balcony for some air. The railing moves under your hand.",
       "left": {
-        "label": "Deal with it later",
-        "past": "You left the wobbly railing alone",
+        "label": "Fix it later",
+        "past": "You left the loose railing as it was",
         "after": "You have bigger problems today."
       },
       "right": {
         "label": "Tape it up",
         "past": "You taped the railing and thought it was fixed",
-        "after": "Three turns of packing tape. It’s solid now. It looks solid."
+        "after": "You wrap it in tape three times. Now it feels strong. At least it looks strong."
+      }
+    },
+    "archive": {
+      "who": "The man in the grey suit",
+      "text": "He has put the boxes in front of the lift. The “out of order” note is gone. “Come on, there’s room for both of us.”",
+      "left": {
+        "label": "Get in the lift",
+        "past": "You got in the lift with the boxes"
+      },
+      "right": {
+        "label": "Carry the boxes down the stairs",
+        "past": "You carried the boxes down the stairs",
+        "after": "“Your choice.” The doors close. You’re on the second floor when something above you snaps."
       }
     },
     "food": {
       "who": "The kitchen",
       "text": "You haven’t eaten since morning. The kitchen clock is five minutes fast again. Your mum always set it that way.",
       "left": {
-        "label": "Heat oil for an egg",
+        "label": "Fry an egg",
         "past": "You heated oil for an egg",
-        "after": "You light the stove. The oil starts to heat."
+        "after": "You turn on the stove. The oil starts to get hot."
       },
       "right": {
         "label": "Just drink water",
         "past": "You didn’t eat all day",
-        "after": "Your stomach cramps, but the stove stays off."
+        "after": "Your stomach hurts, but the stove stays off."
       }
+    },
+    "crash": {
+      "who": "The lift shaft",
+      "text": "A scream of metal, then a loud crash. The lift fell to the bottom. The man in the grey suit was inside.",
+      "left": {
+        "label": "Run down and help",
+        "past": "You ran down to the fallen lift",
+        "after": "It’s too late. You will never forget what you see."
+      },
+      "right": {
+        "label": "Step back and call 112",
+        "past": "You called 112 from a distance",
+        "after": "Your voice shakes. Your hands are ice cold and you feel sick."
+      },
+      "variants": [
+        "The boxes fall out of your hands onto the stairs. The lift fell to the bottom. The man in the grey suit was inside."
+      ]
     },
     "mom": {
       "who": "Your mum",
       "text": "She saw the news. “Are you all right? Please pick up!”",
       "left": {
-        "label": "Answer and calm her",
+        "label": "Answer and calm her down",
         "past": "You forgot the stove while talking to your mum",
         "after": "You talk for twenty minutes. You both cry."
       },
       "right": {
         "label": "Turn off the stove first",
-        "past": "You let your mum’s call ring out",
+        "past": "You didn’t answer your mum’s call",
         "after": "You turn off the stove. When you call back, her voice is shaking."
       }
     },
     "pan-fire": {
       "who": "The kitchen",
-      "text": "A smell of burning. The pan is on fire and the flames reach for the hood.",
+      "text": "Something is burning. The pan is on fire and the flames are reaching the cooker hood.",
       "left": {
         "label": "Throw water on it",
         "past": "You threw water on burning oil"
       },
       "right": {
         "label": "Cover it and turn it off",
-        "past": "You smothered the pan with a lid",
-        "after": "The flames die. Your hand is burned, but the flat is fine."
+        "past": "You put a lid on the burning pan",
+        "after": "The fire goes out. You burned your hand, but the flat is OK."
+      }
+    },
+    "shredder": {
+      "who": "Your new boss",
+      "text": "“We’re closing the office. Everyone go home. Before you leave, put these papers through the shredder.”",
+      "left": {
+        "label": "Do it fast, all at once",
+        "past": "You leaned over the shredder and pushed the papers in fast",
+        "after": "The machine eats the papers with a loud noise. Done. You go home."
+      },
+      "right": {
+        "label": "Leave them and go home now",
+        "past": "You left without doing what your boss asked",
+        "after": "Your boss says something behind you. You pretend not to hear."
       }
     },
     "sleep": {
@@ -221,12 +290,54 @@
       "left": {
         "label": "Sleep a little",
         "past": "You slept and dreamed of the bridge",
-        "after": "The bridge again in your dream. You wake up soaked in sweat, but your body has rested."
+        "after": "You dream about the bridge again. You wake up covered in sweat, but your body feels rested."
       },
       "right": {
         "label": "Stay awake",
         "past": "You didn’t sleep all day",
         "after": "You make coffee and stare at the ceiling."
+      }
+    },
+    "stairs-late": {
+      "who": "Your building",
+      "text": "You’re home early. Twelve floors. Today you saw a lift fall.",
+      "left": {
+        "label": "Stairs",
+        "past": "You climbed twelve floors on tired legs",
+        "after": "Twelve floors. Your legs are shaking, but you made it."
+      },
+      "right": {
+        "label": "Lift",
+        "past": "You took a lift again after seeing one fall",
+        "after": "You hold your breath as the doors close. You close your eyes at every creak."
+      }
+    },
+    "locked-late": {
+      "who": "The neighbour",
+      "text": "Your pocket is empty. No keys. The neighbour opens her door: “The balconies are next to each other. You can climb over.”",
+      "left": {
+        "label": "Climb across",
+        "past": "You climbed between balconies on the twelfth floor",
+        "after": "One step over the gap to the other balcony. You scrape your knee, but you make it."
+      },
+      "right": {
+        "label": "Wait for a locksmith",
+        "past": "You waited for the locksmith",
+        "after": "You sit on the stairs for two hours."
+      }
+    },
+    "railing-late": {
+      "who": "The balcony",
+      "text": "You go out on the balcony for some air. The railing moves under your hand.",
+      "left": {
+        "label": "Fix it later",
+        "past": "You left the loose railing as it was",
+        "after": "You have bigger problems today."
+      },
+      "right": {
+        "label": "Tape it up",
+        "past": "You taped the railing and thought it was fixed",
+        "after": "You wrap it in tape three times. Now it feels strong. At least it looks strong."
       }
     },
     "lock-up": {
@@ -240,12 +351,12 @@
       "right": {
         "label": "Leave them open",
         "past": "You left the windows open with a storm coming",
-        "after": "The curtains flutter. Thunder rolls in the distance."
+        "after": "The curtains move in the wind. You hear thunder far away."
       }
     },
     "shower": {
       "who": "The bathroom",
-      "text": "You’re shivering. There’s an old gas water heater in the bathroom, its blue flame hissing.",
+      "text": "You’re cold and shaking. The bathroom has an old gas water heater with a small blue flame.",
       "left": {
         "label": "A long, hot shower",
         "past": "You took a long shower next to the gas heater",
@@ -254,7 +365,7 @@
       "right": {
         "label": "A quick, cold shower",
         "past": "You put the heater right next to the sofa",
-        "after": "Your teeth chatter. You drag the electric heater next to the sofa."
+        "after": "You’re freezing. You pull the electric heater close to the sofa."
       }
     },
     "elif-news": {
@@ -271,16 +382,16 @@
         "after": "Seen. No reply."
       },
       "variants": [
-        "“The man in the grey suit is dead. In your office, in the lift. I’m coming over.”"
+        "“Your office is on the news. The lift fell and the man in the grey suit is dead. Are you OK? I’m coming over.”"
       ]
     },
     "police": {
       "who": "The police",
-      "text": "“A camera caught you leaving the bus stop. We need your statement.”",
+      "text": "“A camera saw you walk away from the bus stop. We need to ask you some questions.”",
       "left": {
         "label": "“I’ll come tomorrow”",
         "past": "You promised the police you’d come tomorrow",
-        "after": "They take a note. Your palm is sweaty when you hang up."
+        "after": "They write it down. Your hands are sweaty when you hang up."
       },
       "right": {
         "label": "Hang up",
@@ -292,17 +403,17 @@
       "who": "The hallway",
       "text": "The power is out. The fuse box is in the hallway and everything is dark.",
       "left": {
-        "label": "Flip the fuse by hand",
+        "label": "Fix the fuse by hand",
         "past": "You reached for the fuse box in the dark",
-        "after": "A crackle. Then the lights."
+        "after": "A small spark. Then the lights come on."
       },
       "right": {
         "label": "Light a candle and wait",
         "past": "You lit a candle",
-        "after": "The candlelight flickers on the walls. There’s something calming about it."
+        "after": "The candle light moves on the walls. It feels calming."
       },
       "variants": [
-        "The power is out. The fuse box is in the hallway. Rain has come in through the open window and the floor is soaked."
+        "The power is out. The fuse box is in the hallway. Rain came in through the open window and the floor is all wet."
       ]
     },
     "news-list": {
@@ -311,10 +422,10 @@
       "left": {
         "label": "Listen to the end",
         "past": "You listened to the whole passenger list",
-        "after": "Forty-two names. Then the adverts."
+        "after": "Forty-two names. Then the ads."
       },
       "right": {
-        "label": "Switch off, pour a drink",
+        "label": "Turn it off, pour some wine",
         "past": "You poured yourself a glass of wine",
         "after": "The wine burns your throat. It helps a little."
       },
@@ -324,7 +435,7 @@
     },
     "elif-air": {
       "who": "Elif",
-      "text": "“I can’t breathe in here. Shall we get some air?”",
+      "text": "“I can’t breathe in here. Can we go out for some air?”",
       "left": {
         "label": "Go out on the balcony",
         "past": "You went out on the balcony with Elif",
@@ -338,7 +449,7 @@
     },
     "mom-night": {
       "who": "Your mum",
-      "text": "“Shall I come over? Don’t be alone tonight.”",
+      "text": "“Should I come over? Don’t be alone tonight.”",
       "left": {
         "label": "“Come”",
         "past": "You asked your mum to come",
@@ -347,21 +458,21 @@
       "right": {
         "label": "“Don’t, I’m fine”",
         "past": "You told your mum you were fine",
-        "after": "She hears the lie in your voice but says nothing."
+        "after": "She can hear you’re lying, but she says nothing."
       }
     },
     "night-pill": {
       "who": "The pill box",
-      "text": "You can’t sleep. There’s one more pill in the box from the pharmacy. “Another one in the evening if needed.”",
+      "text": "You can’t sleep. There’s one more pill in the box from the pharmacy. “You can take one more in the evening if you need it.”",
       "left": {
         "label": "Take another one",
-        "past": "You took a second sedative in the evening",
-        "after": "You swallow it. Soon your shoulders loosen."
+        "past": "You took a second pill in the evening",
+        "after": "You take it. Soon you feel more relaxed."
       },
       "right": {
         "label": "Leave it",
         "past": "You skipped the second pill",
-        "after": "You throw the box in a drawer. Your heart is still racing."
+        "after": "You put the box in a drawer. Your heart is still beating fast."
       }
     },
     "drowsy": {
@@ -370,12 +481,12 @@
       "left": {
         "label": "Lie down on the sofa",
         "past": "You lay down on the sofa",
-        "after": "When you open your eyes, time has passed. Your neck is stiff."
+        "after": "When you open your eyes, it’s later. Your neck hurts."
       },
       "right": {
-        "label": "Stay up, splash your face",
-        "past": "You splashed your face to stay awake",
-        "after": "Cold water. A stranger in the mirror."
+        "label": "Stay up, wash your face",
+        "past": "You washed your face to stay awake",
+        "after": "Cold water. You don’t know the face in the mirror."
       }
     },
     "railing": {
@@ -384,11 +495,11 @@
       "left": {
         "label": "“Come inside, now!”",
         "past": "You called Elif inside",
-        "after": "She’s annoyed, but she steps in. At that moment the railing falls into the dark."
+        "after": "She’s angry, but she comes in. Just then the railing falls into the dark."
       },
       "right": {
-        "label": "Go to her, hold her",
-        "past": "You leaned on the railing to hold Elif"
+        "label": "Go to her, hug her",
+        "past": "You leaned on the railing to hug Elif"
       },
       "variants": [
         "Elif leans on the railing and looks at the tape. “Did you do this? Is it safe?”"
@@ -396,16 +507,16 @@
     },
     "door": {
       "who": "The door",
-      "text": "Someone knocks. There’s nobody in the peephole. The heavy wardrobe stands next to the door.",
+      "text": "Someone knocks. You look through the peephole: nobody. The heavy wardrobe stands next to the door.",
       "left": {
         "label": "Open and look",
         "past": "You opened the door",
-        "after": "Nobody. On the doormat lies a ticket for this morning’s bus."
+        "after": "Nobody. There’s a ticket for this morning’s bus on the doormat."
       },
       "right": {
         "label": "Push the wardrobe against it",
         "past": "You pushed the wardrobe against the door",
-        "after": "The wardrobe is in place. Nobody knocks again."
+        "after": "The wardrobe blocks the door. Nobody knocks again."
       }
     },
     "midnight": {
@@ -426,9 +537,21 @@
   "endings": {
     "fourth-floor": {
       "title": "Fourth Floor",
-      "text": "The cable snapped at the third floor. The janitor had shouted “Don’t get in!” You were late, so you didn’t stop.",
-      "hint": "A fast drop on your first day.",
-      "omen": "The lift is creaking."
+      "text": "The cable broke at the third floor. The cleaner shouted “Don’t get in!”, but you were late and didn’t stop.",
+      "hint": "Your first day went down fast.",
+      "omen": "The lift is making a noise."
+    },
+    "archive": {
+      "title": "The Archive",
+      "text": "He said they fixed it. They hadn’t. You saw the note this morning, but you wanted to be nice.",
+      "hint": "Helping is nice. Stairs are nicer.",
+      "omen": "Something above the lift is breaking."
+    },
+    "shredder": {
+      "title": "The Shredder",
+      "text": "When you leaned over, the strap of your ID card got caught in the machine. It didn’t stop. You had worn that card round your neck since the morning.",
+      "hint": "The card worked in your pocket too.",
+      "omen": "Something is pulling you."
     },
     "horn": {
       "title": "The Horn",
@@ -437,46 +560,46 @@
       "omen": "A horn. Very close."
     },
     "office-stairs": {
-      "title": "Wet Sole",
+      "title": "Wet Shoe",
       "text": "Your legs were still shaking from the run, and the coffee was still in your shoe. Your foot slipped on the office’s marble step.",
       "hint": "Sitting down for five minutes wasn’t that hard.",
-      "omen": "Your shoe squelches."
+      "omen": "Your shoe is still wet."
     },
     "stairs": {
-      "title": "Mopped Stairs",
-      "text": "Your foot slipped on the seventh floor. The sedative had made your legs heavy and the marble was freshly mopped.",
+      "title": "Wet Stairs",
+      "text": "You slipped on the seventh floor. The pills made your legs heavy, and the stairs were still wet.",
       "hint": "Stairs are good for you, they say.",
       "omen": "The steps are wet."
     },
     "balcony": {
       "title": "The Next Balcony",
-      "text": "The gap was wider than it looked. Halfway across, the sedative made your head spin.",
-      "hint": "The neighbour meant well. That changes nothing.",
+      "text": "The gap was bigger than it looked. Halfway over, the pills made you dizzy.",
+      "hint": "The neighbour wanted to help. It didn’t help.",
       "omen": "It’s a long way down."
     },
     "kitchen": {
       "title": "A Glass of Water",
       "text": "The moment the water hit the oil, the flames hit the ceiling.",
       "hint": "Your mum was right: never leave the stove on.",
-      "omen": "The oil is hissing."
+      "omen": "The oil is getting very hot."
     },
     "heater-gas": {
       "title": "The Gas Heater",
-      "text": "Every window was shut. The sedative made your head heavy and you never noticed the odourless gas.",
-      "hint": "You locked everything. Death too, on the inside.",
+      "text": "All the windows were closed. The pills made you sleepy, and the gas had no smell.",
+      "hint": "You locked every door. Death was already inside.",
       "omen": "Your head feels heavy."
     },
     "fuse": {
-      "title": "Live Wire",
-      "text": "The rain had flooded the hallway. In the dark you stood in water and reached for the fuse.",
+      "title": "Electric Shock",
+      "text": "Rain had covered the hallway floor. In the dark you stood in the water and touched the fuse box.",
       "hint": "Calling an electrician wasn’t that hard.",
-      "omen": "The wire is bare."
+      "omen": "A wire is sparking."
     },
     "last-glass": {
       "title": "The Last Glass",
       "text": "The pharmacist had warned you: no alcohol. The evening pill and the wine. Your breathing slowed, then stopped.",
       "hint": "Reading the label takes three seconds.",
-      "omen": "No alcohol with it."
+      "omen": "Don’t drink with it."
     },
     "fell-asleep": {
       "title": "Fast Asleep",
@@ -487,18 +610,18 @@
     "railing": {
       "title": "The Railing",
       "text": "You held her. The railing couldn’t hold you both.",
-      "hint": "You said you’d deal with it later.",
+      "hint": "You said you’d fix it later.",
       "omen": "The railing creaks."
     },
     "wardrobe": {
       "title": "The Wardrobe",
-      "text": "It was the police. They came because you hung up on them. They forced the door and the wardrobe fell on you.",
-      "hint": "Giving a statement would have taken ten minutes.",
+      "text": "It was the police. They came because you hung up on them. They broke the door open and the wardrobe fell on you.",
+      "hint": "Talking to them would have taken ten minutes.",
       "omen": "Someone is knocking."
     },
     "curtain": {
       "title": "The Curtain",
-      "text": "The kitchen clock was five minutes fast. You threw the shut windows open and the wind blew the candle flame onto the curtain.",
+      "text": "The kitchen clock was five minutes fast. You opened all the windows at once, and the wind blew the candle onto the curtain.",
       "hint": "Your mum always set the clocks fast. Always.",
       "omen": "The clock is wrong."
     },
@@ -510,8 +633,8 @@
     },
     "panic-home": {
       "title": "Panic",
-      "text": "You couldn’t breathe and ran for the door. Your foot caught at the top of the stairs.",
-      "hint": "You escaped death. Not yourself.",
+      "text": "You couldn’t breathe and ran for the door. You tripped at the top of the stairs.",
+      "hint": "You ran from death, but not from yourself.",
       "omen": "Your heart is pounding."
     },
     "panic-work": {
@@ -527,14 +650,14 @@
       "omen": "Your knees are shaking."
     },
     "collapse-home": {
-      "title": "The Counter’s Edge",
-      "text": "Your head spun in the kitchen. The corner of the counter was too close.",
+      "title": "The Kitchen Counter",
+      "text": "You felt dizzy in the kitchen and hit your head on the counter.",
       "hint": "No food, no sleep, no rest.",
       "omen": "Your head is spinning."
     },
     "collapse-work": {
       "title": "The Office Stairs",
-      "text": "Your knees gave out on the office stairs.",
+      "text": "Your legs gave up on the office stairs.",
       "hint": "First day, last day.",
       "omen": "Your legs won’t carry you."
     },

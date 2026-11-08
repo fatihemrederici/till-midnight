@@ -88,7 +88,7 @@ class GameApiTest {
                 // İlk bölüm.
                 .andExpect(jsonPath("$[0].id").value("first-day"))
                 // Ölümler listelenir, kurtuluşlar değil.
-                .andExpect(jsonPath("$[0].deaths.length()").value(16))
+                .andExpect(jsonPath("$[0].deaths.length()").value(19))
                 // Kurallar bu listede yok.
                 .andExpect(jsonPath("$[0].cards").doesNotExist());
     }

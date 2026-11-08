@@ -115,6 +115,20 @@
         "after": "Cztery piętra. Czeka na górze z uśmiechem."
       }
     },
+    "badge": {
+      "who": "Twój nowy szef",
+      "text": "„Witaj. To twoja karta wejściowa, potrzebna przy każdych drzwiach.” Wisi na długiej smyczy.",
+      "left": {
+        "label": "Załóż na szyję",
+        "past": "Założyłeś kartę na szyję",
+        "after": "Karta wisi ci na piersi. Pierwszy raz czujesz, że tu pasujesz."
+      },
+      "right": {
+        "label": "Włóż do kieszeni",
+        "past": "Schowałeś kartę do kieszeni",
+        "after": "Później nie możesz jej znaleźć. Czekasz pod drzwiami dwadzieścia minut, a szef marszczy brwi."
+      }
+    },
     "pharmacy": {
       "who": "Farmaceutka",
       "text": "Ręce wciąż ci drżą. „Łagodny środek uspokajający. Nie z alkoholem, kręci się po nim w głowie.”",
@@ -129,6 +143,20 @@
         "after": "Idziesz do domu z drżącymi rękami."
       }
     },
+    "lunch": {
+      "who": "Mężczyzna w szarym garniturze",
+      "text": "„Po obiedzie pomożesz mi znieść kilka pudeł do archiwum? Jest w piwnicy.”",
+      "left": {
+        "label": "„Jasne”",
+        "past": "Obiecałeś pomóc mężczyźnie w szarym garniturze z pudłami",
+        "after": "„Super. Swoją drogą, windę już naprawili.”"
+      },
+      "right": {
+        "label": "„Sorry, jestem zajęty”",
+        "past": "Nie pomogłeś mężczyźnie w szarym garniturze",
+        "after": "Mina mu rzednie. Wraca sam do biurka."
+      }
+    },
     "stairs": {
       "who": "Twój blok",
       "text": "Dwanaście pięter. Winda skrzypi. Schody właśnie umyto, marmur błyszczy.",
@@ -141,10 +169,7 @@
         "label": "Winda",
         "past": "Wsiadłeś do windy",
         "after": "Drzwi się zamykają, światło migocze. Nic się nie dzieje."
-      },
-      "variants": [
-        "Dwanaście pięter. Winda skrzypi i przypomina ci się ta poranna. Schody właśnie umyto."
-      ]
+      }
     },
     "locked": {
       "who": "Sąsiadka",
@@ -174,6 +199,19 @@
         "after": "Trzy warstwy taśmy. Teraz jest solidna. Wygląda na solidną."
       }
     },
+    "archive": {
+      "who": "Mężczyzna w szarym garniturze",
+      "text": "Ustawił pudła przed windą. Kartki „awaria” już nie ma. „Chodź, zmieścimy się obaj.”",
+      "left": {
+        "label": "Wsiądź do windy",
+        "past": "Wsiadłeś z pudłami do windy"
+      },
+      "right": {
+        "label": "Znieś pudła schodami",
+        "past": "Zniosłeś pudła schodami",
+        "after": "„Jak chcesz.” Drzwi się zamykają. Jesteś na drugim piętrze, gdy coś nad tobą pęka."
+      }
+    },
     "food": {
       "who": "Kuchnia",
       "text": "Od rana nic nie jadłeś. Zegar w kuchni znów spieszy się pięć minut. Mama zawsze tak go ustawiała.",
@@ -187,6 +225,23 @@
         "past": "Cały dzień nic nie jadłeś",
         "after": "Żołądek cię skręca, ale kuchenka jest wyłączona."
       }
+    },
+    "crash": {
+      "who": "Szyb windy",
+      "text": "Zgrzyt metalu, potem huk. Winda spadła na dół. Mężczyzna w szarym garniturze był w środku.",
+      "left": {
+        "label": "Zbiegnij i pomóż",
+        "past": "Zbiegłeś do rozbitej windy",
+        "after": "Jest za późno. Nigdy nie zapomnisz tego widoku."
+      },
+      "right": {
+        "label": "Cofnij się i dzwoń na 112",
+        "past": "Zadzwoniłeś na 112 z daleka",
+        "after": "Głos ci drży. Ręce masz lodowate i robi ci się niedobrze."
+      },
+      "variants": [
+        "Pudła wypadają ci z rąk na schody. Winda spadła na dół. Mężczyzna w szarym garniturze był w środku."
+      ]
     },
     "mom": {
       "who": "Mama",
@@ -215,6 +270,20 @@
         "after": "Płomienie gasną. Masz poparzoną rękę, ale mieszkanie stoi."
       }
     },
+    "shredder": {
+      "who": "Twój nowy szef",
+      "text": "„Zamykamy biuro, wszyscy do domu. Zanim wyjdziesz, wrzuć te papiery do niszczarki.”",
+      "left": {
+        "label": "Szybko, wszystko naraz",
+        "past": "Pochyliłeś się nad niszczarką i szybko wpychałeś papiery",
+        "after": "Maszyna z hukiem połyka papiery. Gotowe. Idziesz do domu."
+      },
+      "right": {
+        "label": "Zostaw je i idź do domu",
+        "past": "Wyszedłeś, nie robiąc tego, o co prosił szef",
+        "after": "Szef coś mówi za tobą. Udajesz, że nie słyszysz."
+      }
+    },
     "sleep": {
       "who": "Łóżko",
       "text": "Nie spałeś od wczoraj. Oczy same ci się zamykają.",
@@ -227,6 +296,48 @@
         "label": "Nie śpij",
         "past": "Cały dzień nie spałeś",
         "after": "Robisz kawę i gapisz się w sufit."
+      }
+    },
+    "stairs-late": {
+      "who": "Twój blok",
+      "text": "Wracasz wcześniej. Dwanaście pięter. Dziś widziałeś, jak spada winda.",
+      "left": {
+        "label": "Schody",
+        "past": "Wszedłeś na dwunaste piętro na zmęczonych nogach",
+        "after": "Dwanaście pięter. Nogi ci drżą, ale dałeś radę."
+      },
+      "right": {
+        "label": "Winda",
+        "past": "Po tym, co widziałeś, znowu wsiadłeś do windy",
+        "after": "Wstrzymujesz oddech, gdy drzwi się zamykają. Przy każdym skrzypnięciu zamykasz oczy."
+      }
+    },
+    "locked-late": {
+      "who": "Sąsiadka",
+      "text": "Kieszeń jest pusta. Nie masz kluczy. Sąsiadka otwiera drzwi: „Balkony są obok siebie, możesz przejść.”",
+      "left": {
+        "label": "Przejdź przez balkon",
+        "past": "Przeszedłeś między balkonami na dwunastym piętrze",
+        "after": "Jeden krok nad przepaścią na drugi balkon. Obcierasz kolano, ale dajesz radę."
+      },
+      "right": {
+        "label": "Czekaj na ślusarza",
+        "past": "Czekałeś na ślusarza",
+        "after": "Siedzisz na schodach dwie godziny."
+      }
+    },
+    "railing-late": {
+      "who": "Balkon",
+      "text": "Wychodzisz na balkon, żeby odetchnąć. Barierka chwieje się pod twoją dłonią.",
+      "left": {
+        "label": "Zajmę się tym później",
+        "past": "Zostawiłeś chwiejną barierkę",
+        "after": "Masz dziś większe problemy."
+      },
+      "right": {
+        "label": "Oklej taśmą",
+        "past": "Okleiłeś barierkę i uznałeś, że jest naprawiona",
+        "after": "Trzy warstwy taśmy. Teraz jest solidna. Wygląda na solidną."
       }
     },
     "lock-up": {
@@ -271,7 +382,7 @@
         "after": "Wyświetlono. Brak odpowiedzi."
       },
       "variants": [
-        "„Ten w szarym garniturze nie żyje. W twoim biurze, w windzie. Przyjeżdżam.”"
+        "„W wiadomościach pokazują twoje biuro. Winda spadła, a mężczyzna w szarym garniturze nie żyje. Wszystko w porządku? Przyjeżdżam.”"
       ]
     },
     "police": {
@@ -429,6 +540,18 @@
       "text": "Lina pękła na trzecim piętrze. Woźny krzyczał „Nie wsiadać!”. Byłeś spóźniony, więc się nie zatrzymałeś.",
       "hint": "Szybki zjazd pierwszego dnia.",
       "omen": "Winda skrzypi."
+    },
+    "archive": {
+      "title": "Archiwum",
+      "text": "Mówił, że ją naprawili. Nie naprawili. Rano widziałeś tę kartkę, ale chciałeś być miły.",
+      "hint": "Pomaganie jest miłe. Schody są milsze.",
+      "omen": "Coś nad windą pęka."
+    },
+    "shredder": {
+      "title": "Niszczarka",
+      "text": "Kiedy się pochyliłeś, smycz karty wkręciła się w maszynę. Nie zatrzymała się. Nosiłeś tę kartę na szyi od rana.",
+      "hint": "W kieszeni karta też by działała.",
+      "omen": "Coś cię wciąga."
     },
     "horn": {
       "title": "Klakson",
