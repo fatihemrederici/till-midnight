@@ -30,6 +30,8 @@ import { UI } from "../i18n/ui";
 import type { ScreenProps } from "./types";
 // Fotoğrafları önceden yüklemek için.
 import { useEffect } from "react";
+// Arka plan müziği.
+import { setScore, stopScore } from "../audio/score";
 
 // Bölümün fotoğraflarının adresi.
 const imagesOf = (storyId: string) => `/stories/${storyId}/images`;
@@ -67,6 +69,12 @@ export function PlayScreen({
       if (item.image) new Image().src = `${imagesOf(story.id)}/${item.image}`;
     });
   }, [story]);
+  // Arka plan müziği ve ortam sesi kartın saatine ve yerine göre değişir.
+  useEffect(() => {
+    setScore(card.time, card.place);
+  }, [card.time, card.place]);
+  // Ekrandan çıkınca (ölüm ya da gece yarısı) müzik bir anda kesilir.
+  useEffect(() => () => stopScore(), []);
   // Kaydırılan seçimin etkileyeceği göstergeler.
   const affected = swipe.side ? Object.keys(card[swipe.side].effects ?? {}) : [];
 
