@@ -182,7 +182,7 @@
       "right": {
         "label": "Çilingiri bekle",
         "past": "Çilingiri bekledin",
-        "after": "İki saat merdivende oturuyorsun."
+        "after": "İki saat merdivende oturuyorsun. Sonunda çilingir geliyor, kapıyı açıp kilidi değiştiriyor."
       }
     },
     "railing-first": {
@@ -323,7 +323,7 @@
       "right": {
         "label": "Çilingiri bekle",
         "past": "Çilingiri bekledin",
-        "after": "İki saat merdivende oturuyorsun."
+        "after": "İki saat merdivende oturuyorsun. Sonunda çilingir geliyor, kapıyı açıp kilidi değiştiriyor."
       }
     },
     "railing-late": {
@@ -354,7 +354,8 @@
         "after": "Perdeler uçuşuyor. Uzaktan gök gürlüyor."
       },
       "variants": [
-        "Mutfak saati yine beş dakika ileri, annen hep öyle kurardı. Her şey tehlikeli görünüyor. Bütün pencereleri ve kapıları kapatıp kilitlemek istiyorsun."
+        "Mutfak saati yine beş dakika ileri, annen hep öyle kurardı. Her şey tehlikeli görünüyor. Bütün pencereleri ve kapıları kapatıp kilitlemek istiyorsun.",
+        "Kapında yeni, parlak bir kilit var. Yine de her şey tehlikeli görünüyor. Bütün pencereleri ve kapıları kapatıp kilitlemek istiyorsun."
       ]
     },
     "shower": {

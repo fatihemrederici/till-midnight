@@ -182,7 +182,7 @@
       "right": {
         "label": "Wait for a locksmith",
         "past": "You waited for the locksmith",
-        "after": "You sit on the stairs for two hours."
+        "after": "You sit on the stairs for two hours. Then the locksmith comes, opens the door and puts in a new lock."
       }
     },
     "railing-first": {
@@ -323,7 +323,7 @@
       "right": {
         "label": "Wait for a locksmith",
         "past": "You waited for the locksmith",
-        "after": "You sit on the stairs for two hours."
+        "after": "You sit on the stairs for two hours. Then the locksmith comes, opens the door and puts in a new lock."
       }
     },
     "railing-late": {
@@ -354,7 +354,8 @@
         "after": "The curtains move in the wind. You hear thunder far away."
       },
       "variants": [
-        "The kitchen clock is five minutes fast again. Your mum always set it that way. Everything looks dangerous. You want to shut and lock every window and door."
+        "The kitchen clock is five minutes fast again. Your mum always set it that way. Everything looks dangerous. You want to shut and lock every window and door.",
+        "There’s a shiny new lock on your door. Still, everything looks dangerous. You want to shut and lock every window and door."
       ]
     },
     "shower": {

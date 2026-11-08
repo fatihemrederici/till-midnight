@@ -344,8 +344,8 @@
         ]
       },
       "right": {
-        "effects": {
-          "mind": -1
+        "set": {
+          "newLock": true
         }
       }
     },
@@ -580,8 +580,8 @@
         }
       },
       "right": {
-        "effects": {
-          "mind": -1
+        "set": {
+          "newLock": true
         }
       }
     },
@@ -622,6 +622,11 @@
         {
           "when": {
             "work": true
+          }
+        },
+        {
+          "when": {
+            "newLock": true
           }
         }
       ],

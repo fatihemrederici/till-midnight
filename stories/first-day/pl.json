@@ -182,7 +182,7 @@
       "right": {
         "label": "Czekaj na ślusarza",
         "past": "Czekałeś na ślusarza",
-        "after": "Siedzisz na schodach dwie godziny."
+        "after": "Siedzisz na schodach dwie godziny. W końcu przychodzi ślusarz, otwiera drzwi i wymienia zamek."
       }
     },
     "railing-first": {
@@ -323,7 +323,7 @@
       "right": {
         "label": "Czekaj na ślusarza",
         "past": "Czekałeś na ślusarza",
-        "after": "Siedzisz na schodach dwie godziny."
+        "after": "Siedzisz na schodach dwie godziny. W końcu przychodzi ślusarz, otwiera drzwi i wymienia zamek."
       }
     },
     "railing-late": {
@@ -354,7 +354,8 @@
         "after": "Firanki falują. W oddali grzmi."
       },
       "variants": [
-        "Zegar w kuchni znów spieszy się pięć minut, mama zawsze tak go ustawiała. Wszystko wydaje się niebezpieczne. Chcesz zamknąć i zaryglować każde okno i drzwi."
+        "Zegar w kuchni znów spieszy się pięć minut, mama zawsze tak go ustawiała. Wszystko wydaje się niebezpieczne. Chcesz zamknąć i zaryglować każde okno i drzwi.",
+        "W drzwiach jest nowy, błyszczący zamek. Mimo to wszystko wydaje się niebezpieczne. Chcesz zamknąć i zaryglować każde okno i drzwi."
       ]
     },
     "shower": {
