@@ -617,6 +617,13 @@
       "place": "home",
       "emoji": "🔒",
       "image": "lock-up.jpg",
+      "variants": [
+        {
+          "when": {
+            "work": true
+          }
+        }
+      ],
       "left": {
         "effects": {
           "mind": 1

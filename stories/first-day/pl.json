@@ -352,7 +352,10 @@
         "label": "Zostaw otwarte",
         "past": "Zostawiłeś otwarte okna przed burzą",
         "after": "Firanki falują. W oddali grzmi."
-      }
+      },
+      "variants": [
+        "Zegar w kuchni znów spieszy się pięć minut, mama zawsze tak go ustawiała. Wszystko wydaje się niebezpieczne. Chcesz zamknąć i zaryglować każde okno i drzwi."
+      ]
     },
     "shower": {
       "who": "Łazienka",

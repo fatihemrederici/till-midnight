@@ -352,7 +352,10 @@
         "label": "Açık bırak",
         "past": "Fırtına gelirken pencereleri açık bıraktın",
         "after": "Perdeler uçuşuyor. Uzaktan gök gürlüyor."
-      }
+      },
+      "variants": [
+        "Mutfak saati yine beş dakika ileri, annen hep öyle kurardı. Her şey tehlikeli görünüyor. Bütün pencereleri ve kapıları kapatıp kilitlemek istiyorsun."
+      ]
     },
     "shower": {
       "who": "Banyo",
