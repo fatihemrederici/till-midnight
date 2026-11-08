@@ -183,7 +183,10 @@
         "label": "Wait for a locksmith",
         "past": "You waited for the locksmith",
         "after": "You sit on the stairs for two hours. Then the locksmith comes, opens the door and puts in a new lock."
-      }
+      },
+      "variants": [
+        "The lift lets you out on the twelfth floor. Your pocket is empty. No keys. The neighbour opens her door: “The balconies are next to each other, you can climb over.”"
+      ]
     },
     "railing-first": {
       "who": "The balcony",

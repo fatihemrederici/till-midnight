@@ -315,8 +315,8 @@
         ]
       },
       "right": {
-        "effects": {
-          "mind": -1
+        "set": {
+          "homeLift": true
         }
       }
     },
@@ -330,6 +330,13 @@
         "noKeys": true,
         "work": false
       },
+      "variants": [
+        {
+          "when": {
+            "homeLift": true
+          }
+        }
+      ],
       "left": {
         "effects": {
           "mind": 1

@@ -183,7 +183,10 @@
         "label": "Czekaj na ślusarza",
         "past": "Czekałeś na ślusarza",
         "after": "Siedzisz na schodach dwie godziny. W końcu przychodzi ślusarz, otwiera drzwi i wymienia zamek."
-      }
+      },
+      "variants": [
+        "Winda wypuszcza cię na dwunastym piętrze. Kieszeń jest pusta. Nie masz kluczy. Sąsiadka otwiera drzwi: „Balkony są obok siebie, możesz przejść.”"
+      ]
     },
     "railing-first": {
       "who": "Balkon",

@@ -183,7 +183,10 @@
         "label": "Çilingiri bekle",
         "past": "Çilingiri bekledin",
         "after": "İki saat merdivende oturuyorsun. Sonunda çilingir geliyor, kapıyı açıp kilidi değiştiriyor."
-      }
+      },
+      "variants": [
+        "Asansör seni on ikinci katta bırakıyor. Cebin boş, anahtarın yok. Komşu kapıyı açıyor: “Balkonlar bitişik, geçebilirsin.”"
+      ]
     },
     "railing-first": {
       "who": "Balkon",
