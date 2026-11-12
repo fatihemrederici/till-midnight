@@ -1,0 +1,625 @@
+{
+  "title": "Ostatni lot",
+  "vision": [
+    "Samolot wjeżdża na pas.",
+    "Pęka przewód paliwowy.",
+    "Błysk na skrzydle.",
+    "Ogień. Dym. Krzyk.",
+    "Miejsce 14C nie jest puste."
+  ],
+  "wake": "Otwierasz oczy. Jesteś w samolocie, miejsce 14C. Jutro czeka cię najważniejsza rozmowa o pracę w życiu, a samolot właśnie szykuje się do startu.",
+  "meters": {
+    "mind": "Rozum",
+    "body": "Zdrowie"
+  },
+  "cards": {
+    "cabin": {
+      "who": "Miejsce 14C",
+      "text": "Silniki ruszają. Właśnie widziałeś, jak ten samolot płonie na końcu pasa. Obok ciebie Daniel obgryza paznokcie.",
+      "left": {
+        "label": "Wstań, ostrzeż wszystkich",
+        "past": "Ostrzegłeś wszystkich w samolocie",
+        "after": "Ludzie na ciebie krzyczą. Załoga wyprowadza cię z samolotu. Daniel idzie za tobą: „Ja też nie lecę.”"
+      },
+      "right": {
+        "label": "Udaj chorego, wysiądź po cichu",
+        "past": "Wysiadłeś, nikomu nic nie mówiąc",
+        "after": "Stewardesa odprowadza cię do drzwi. Za tobą nikt się nie rusza."
+      }
+    },
+    "jetbridge": {
+      "who": "Rękaw",
+      "text": "Biegniesz rękawem. Rozwiązuje ci się sznurówka i ciągnie się po ziemi.",
+      "left": {
+        "label": "Zatrzymaj się, zawiąż",
+        "past": "Zawiązałeś sznurówkę",
+        "after": "Wysiadasz ostatni. Za tobą zamykają się drzwi samolotu."
+      },
+      "right": {
+        "label": "Biegnij dalej",
+        "past": "Biegłeś dalej z rozwiązaną sznurówką",
+        "after": "Docierasz do terminalu. Sznurówka wciąż ciągnie się po ziemi."
+      }
+    },
+    "window": {
+      "who": "Okno terminalu",
+      "text": "Samolot startuje. Na końcu pasa błysk, potem ogień. Wszyscy biegną do szyby.",
+      "left": {
+        "label": "Nagraj telefonem",
+        "past": "Nagrałeś płonący samolot i film się rozszedł",
+        "after": "Nagrywasz wszystko. Godzinę później film jest wszędzie, twoja twarz też."
+      },
+      "right": {
+        "label": "Odwróć się",
+        "past": "Nie patrzyłeś na płonący samolot",
+        "after": "Słyszysz tylko wybuch. To i tak dość."
+      }
+    },
+    "escalator": {
+      "who": "Wyjście",
+      "text": "Wszyscy schodzą do hali przylotów. Ruchome schody są pełne, a zwykłymi schodami obok ludzie idą w górę.",
+      "left": {
+        "label": "Ruchome schody",
+        "past": "Wjechałeś na zatłoczone ruchome schody",
+        "after": "Stopnie powoli wiozą cię w dół. Na dole tworzą się kolejki."
+      },
+      "right": {
+        "label": "Schody obok",
+        "past": "Zszedłeś schodami pod prąd i się spóźniłeś",
+        "after": "Schodzisz powoli pod prąd tłumu. Na dole kolejki są już długie."
+      }
+    },
+    "police": {
+      "who": "Inspektor Novak",
+      "text": "Dwóch policjantów zabiera cię do pokoju. „Skąd wiedziałeś, że samolot spłonie?”",
+      "left": {
+        "label": "Opowiedz o wizji",
+        "past": "Opowiedziałeś policji o wizji",
+        "after": "Nie wierzy ci, ale dobrze jest to powiedzieć. Trzymają cię trzy godziny w pokoju bez okien i dają kanapkę."
+      },
+      "right": {
+        "label": "„Miałem atak paniki”",
+        "past": "Okłamałeś policję",
+        "after": "Novak długo patrzy ci w oczy. Zapisuje twoje nazwisko w notesie i cię puszcza."
+      },
+      "variants": [
+        "Dwóch policjantów zabiera cię do pokoju. Na stole telefon, na ekranie twój film. „Skąd wiedziałeś, że samolot spłonie?”",
+        "Dwóch policjantów zabiera cię do pokoju. „Mówiłeś wszystkim w samolocie, że spłonie. Skąd wiedziałeś?”"
+      ]
+    },
+    "cafe": {
+      "who": "Kawiarnia na lotnisku",
+      "text": "Ręce ci drżą. W telewizji znowu te same obrazy. Kelner: „Co podać?”",
+      "left": {
+        "label": "Porządne śniadanie",
+        "past": "Zjadłeś śniadanie na lotnisku",
+        "after": "Jajka, chleb, gorąca herbata. Nogi nabierają sił."
+      },
+      "right": {
+        "label": "Podwójne espresso",
+        "past": "Wypiłeś podwójne espresso",
+        "after": "W głowie się przejaśnia. Ręce na chwilę przestają drżeć."
+      }
+    },
+    "recruiter": {
+      "who": "Pani Lang",
+      "text": "Dzwoni firma, do której leciałeś. „To był pana samolot? Mój Boże. Możemy zrobić rozmowę online dziś o 21:00?”",
+      "left": {
+        "label": "„Tak, dziś wieczorem”",
+        "past": "Zgodziłeś się na rozmowę online dziś wieczorem",
+        "after": "Po rozmowie przypominasz sobie: laptop masz, ale ładowarka była w walizce. A walizka była w samolocie."
+      },
+      "right": {
+        "label": "„Dziś nie dam rady”",
+        "past": "Odwołałeś rozmowę o pracę",
+        "after": "„Rozumiem” – mówi. Coś zmienia się w jej głosie. Ta praca przepadła."
+      },
+      "variants": [
+        "W pokoju policji dzwoni ci telefon, policjant pozwala odebrać. To firma, do której leciałeś: „To był pana samolot? Możemy zrobić rozmowę online dziś o 21:00?”"
+      ]
+    },
+    "airline": {
+      "who": "Stanowisko linii",
+      "text": "„Pana bagaż był w samolocie, bardzo nam przykro. Dostaje pan pokój w hotelu przy lotnisku i miejsce w jutrzejszym samolocie o 6:00.” Hotelowy bus odjeżdża za godzinę. Przy drzwiach jakiś mężczyzna szepcze: „Taksówka?”",
+      "left": {
+        "label": "Czekaj na busa",
+        "past": "Czekałeś na hotelowego busa",
+        "after": "Godzinę czekasz w tłumie. Bus wysadza cię pod drzwiami hotelu."
+      },
+      "right": {
+        "label": "Wsiądź do jego taksówki",
+        "past": "Wsiadłeś do nielegalnej taksówki z urwanym pasem",
+        "after": "Na aucie nie ma znaku taxi. Na tylnym siedzeniu zapięcie pasa jest urwane."
+      },
+      "variants": [
+        "„Pana bagaż był w samolocie, bardzo nam przykro. Dostaje pan pokój w hotelu przy lotnisku i miejsce w jutrzejszym samolocie o 6:00.” Bus właśnie odjechał, następny za godzinę. Przy drzwiach jakiś mężczyzna szepcze: „Taksówka?”"
+      ]
+    },
+    "ride": {
+      "who": "Kierowca",
+      "text": "Kierowca jedzie bardzo szybko i ciągle patrzy na ciebie w lusterku. „Skądś cię znam.” Z naprzeciwka wąską drogą jedzie wóz strażacki.",
+      "left": {
+        "label": "„Patrz na drogę!”",
+        "past": "Krzyknąłeś na kierowcę",
+        "after": "Ostre hamowanie, uderzasz w przedni fotel. Wściekły, wysadza cię w deszczu kilometr przed hotelem."
+      },
+      "right": {
+        "label": "Porozmawiaj z nim",
+        "past": "Rozmawiałeś z kierowcą nielegalnej taksówki",
+        "after": "Rozmawiacie o piłce. Nie może sobie przypomnieć, skąd cię zna. Wóz strażacki przemyka obok."
+      }
+    },
+    "reception": {
+      "who": "Recepcja",
+      "text": "„Zostały dwa pokoje. Na dziewiątym piętrze z balkonem, ale drzwi na schody pożarowe się nie domykają. Albo na parterze, obok kotłowni. Tam jest trochę ciepło.”",
+      "left": {
+        "label": "Dziewiąte piętro",
+        "past": "Wziąłeś pokój na dziewiątym piętrze",
+        "after": "Z balkonu widać pas. Samoloty startują jeden za drugim."
+      },
+      "right": {
+        "label": "Parter",
+        "past": "Wziąłeś pokój obok kotłowni",
+        "after": "W pokoju jest ciepło. Zza ściany dochodzi głuchy szum."
+      },
+      "variants": [
+        "Daniel też przychodzi, z tym samym voucherem. Recepcja: „Zostały dwa pokoje. Na dziewiątym piętrze z balkonem, ale drzwi na schody pożarowe się nie domykają. Albo na parterze, obok kotłowni. Tam jest trochę ciepło.” Daniel weźmie drugi."
+      ]
+    },
+    "charger": {
+      "who": "Recepcja",
+      "text": "„Ładowarka? Mamy tylko tę, pięć euro.” Bez marki, cienki kabel. Najbliższy sklep z elektroniką jest dwadzieścia pięć minut pieszo w deszczu.",
+      "left": {
+        "label": "Kup tę za pięć euro",
+        "past": "Kupiłeś w recepcji tanią ładowarkę bez marki",
+        "after": "Po podłączeniu cicho bzyczy. Laptop się ładuje, to się liczy."
+      },
+      "right": {
+        "label": "Idź do sklepu w deszczu",
+        "past": "Poszedłeś w deszczu po porządną ładowarkę",
+        "after": "Po pięćdziesięciu minutach wracasz przemoczony, z porządną ładowarką w pudełku."
+      }
+    },
+    "sister": {
+      "who": "Twoja siostra",
+      "text": "Czternaście nieodebranych połączeń. Potem wiadomość: „Twoje nazwisko jest na liście pasażerów! Odbierz, proszę!”",
+      "left": {
+        "label": "Zadzwoń, powiedz, że żyjesz",
+        "past": "Zadzwoniłeś do siostry i powiedziałeś, że żyjesz",
+        "after": "Oboje płaczecie. Kiedy się rozłączasz, jest ci lżej."
+      },
+      "right": {
+        "label": "Tylko napisz: „Nic mi nie jest”",
+        "past": "Tylko napisałeś do siostry, nie zadzwoniłeś",
+        "after": "„Muszę usłyszeć twój głos” – pisze. Nie odpowiadasz."
+      }
+    },
+    "rest": {
+      "who": "Pokój",
+      "text": "Nie masz już siły. Ale kiedy zamykasz oczy, znowu widzisz ogień.",
+      "left": {
+        "label": "Prześpij się trochę",
+        "past": "Spałeś po południu",
+        "after": "Dwie godziny koszmarów. Ciało odpoczęło, głowa nie."
+      },
+      "right": {
+        "label": "Obejdź hotel",
+        "past": "Obszedłeś hotel i znalazłeś drugie schody",
+        "after": "Na końcu korytarza znajdujesz drugą klatkę schodową. Na drzwiach „Tylko dla personelu”, ale nie są zamknięte."
+      }
+    },
+    "window-high": {
+      "who": "Okno",
+      "text": "W pokoju jest duszno i gorąco. Okno otwiera się na oścież. Co cztery minuty startuje samolot, szyba drży.",
+      "left": {
+        "label": "Otwórz na oścież",
+        "past": "Zostawiłeś okno na dziewiątym piętrze otwarte na oścież",
+        "after": "Chłodne powietrze uderza cię w twarz. Przeciąg trzaska drzwiami pokoju."
+      },
+      "right": {
+        "label": "Zostaw zamknięte",
+        "past": "Trzymałeś okno zamknięte",
+        "after": "Gorąco, ale cicho. Samoloty tylko widzisz."
+      }
+    },
+    "spa": {
+      "who": "Ogród hotelu",
+      "text": "Recepcja dodała do vouchera wejście do spa. Przestało padać, ogród jest pusty.",
+      "left": {
+        "label": "Ciepły basen w spa",
+        "past": "Wszedłeś do ciepłego basenu w spa",
+        "after": "Mięśnie się rozluźniają. Głowa robi się trochę ciężka."
+      },
+      "right": {
+        "label": "Przejdź się po ogrodzie",
+        "past": "Widziałeś dym z kotłowni",
+        "after": "Świeże powietrze pomaga. Z piwnicznego okna przy kotłowni leci dym i czuć coś jak gaz."
+      }
+    },
+    "news": {
+      "who": "Wiadomości",
+      "text": "„Sześciu pasażerów opuściło samolot przed startem. Jeden z nich zachowywał się, jakby wszystko wiedział wcześniej.”",
+      "left": {
+        "label": "Oglądaj do końca",
+        "past": "Obejrzałeś wiadomości do końca",
+        "after": "Pęknięcie przewodu paliwowego. Zdjęcia ofiar pojawiają się jedno po drugim."
+      },
+      "right": {
+        "label": "Wyłącz",
+        "past": "Wyłączyłeś wiadomości",
+        "after": "W pokoju robi się cicho. Na razie lepiej nie wiedzieć."
+      },
+      "variants": [
+        "„Tylko jeden pasażer opuścił samolot przed startem.” Na ekranie twoja twarz. Obok zdjęcia ofiar: 14B, Daniel."
+      ]
+    },
+    "dinner": {
+      "who": "Kolacja",
+      "text": "Cały dzień nie zjadłeś porządnego posiłku.",
+      "left": {
+        "label": "Room service",
+        "past": "Zjadłeś w pokoju",
+        "after": "Kelner stawia tacę i mruczy: „Kocioł znowu się zepsuł, woda jest letnia.” Jedzenie jest dobre, ale jesteś sam, a w telewizji znowu wiadomości."
+      },
+      "right": {
+        "label": "Restauracja hotelowa",
+        "past": "Zjadłeś w restauracji",
+        "after": "Rozgrzewasz się. Zza kuchni czuć lekki zapach gazu, ale kelnerzy się tym nie przejmują."
+      }
+    },
+    "smell": {
+      "who": "Korytarz",
+      "text": "Na korytarzu czuć mocno gaz. Skądś dochodzi głuchy szum.",
+      "left": {
+        "label": "Zgłoś w recepcji",
+        "past": "Zgłosiłeś zapach gazu",
+        "after": "„Stary kocioł, to normalne” – mówią. Ale ktoś dzwoni przez radio do piwnicy i idą sprawdzić pokoje na parterze."
+      },
+      "right": {
+        "label": "Stary hotel, odpuść",
+        "past": "Nikomu nie powiedziałeś o gazie",
+        "after": "Wracasz do pokoju. Zapach jeszcze długo czujesz."
+      },
+      "variants": [
+        "Na korytarzu czuć mocno gaz. Przypominasz sobie dymiące okno piwnicy w ogrodzie."
+      ]
+    },
+    "bar": {
+      "who": "Bar hotelowy",
+      "text": "Barman wyciera szklanki. „Długi dzień?”",
+      "left": {
+        "label": "Jeden kieliszek na nerwy",
+        "past": "Wieczorem piłeś w barze",
+        "after": "Ciepło rozlewa się po piersi. Przychodzi kolejny kieliszek."
+      },
+      "right": {
+        "label": "Napij się wody",
+        "past": "W barze piłeś tylko wodę",
+        "after": "Zimna woda. Głowa zostaje jasna."
+      },
+      "variants": [
+        "Daniel siedzi przy barze nad trzecim kieliszkiem. „Siadaj. Jak nie dziś pić, to kiedy?”"
+      ]
+    },
+    "rooftop": {
+      "who": "Daniel",
+      "text": "Daniel siedzi pijany przy basenie na dachu, na szklanej balustradzie. Nogi zwisają mu nad przepaścią.",
+      "left": {
+        "label": "Biegnij, ściągnij go",
+        "past": "Pobiegłeś ściągnąć Daniela z balustrady",
+        "after": "Łapiesz go za ramię i ciągniesz. Obaj padacie na mokrą posadzkę. Daniel się śmieje, potem płacze."
+      },
+      "right": {
+        "label": "Zadzwoń do recepcji",
+        "past": "Zamiast ściągnąć Daniela, zadzwoniłeś do recepcji",
+        "after": "Kiedy obsługa dociera na górę, balustrada jest pusta."
+      }
+    },
+    "roof-alone": {
+      "who": "Dach",
+      "text": "Na dachu nikogo nie ma. Jeden panel szklanej balustrady jest luźny i stuka na wietrze. Pas startowy cały w światłach.",
+      "left": {
+        "label": "Patrz na pas przy szybie",
+        "past": "Oparłeś się o luźną szklaną balustradę, żeby patrzeć na pas",
+        "after": "Startuje samolot. Pieką cię oczy, ale patrzysz dalej."
+      },
+      "right": {
+        "label": "Usiądź na leżaku",
+        "past": "Siedziałeś na leżaku na dachu",
+        "after": "Samoloty przelatują nad twoją głową. Zaczynasz je liczyć."
+      }
+    },
+    "interview": {
+      "who": "Pani Lang",
+      "text": "Na ekranie trzy osoby. „Może pan opowiedzieć o sytuacji, w której szybko podjął pan decyzję pod presją?”",
+      "left": {
+        "label": "Opowiedz, że wysiadłeś z samolotu",
+        "past": "Na rozmowie opowiedziałeś, jak wysiadłeś z samolotu",
+        "after": "Cisza. Potem pani Lang się uśmiecha: „Chyba nie ma lepszego przykładu.”"
+      },
+      "right": {
+        "label": "Daj wyuczoną odpowiedź",
+        "past": "Na rozmowie dałeś wyuczoną odpowiedź",
+        "after": "Grzecznie notują. Nikt się nie uśmiecha."
+      }
+    },
+    "hotplug": {
+      "who": "Ładowarka",
+      "text": "Rozmowa skończona. Ładowarka jest bardzo gorąca i czuć od niej plastik. Bateria laptopa wciąż ma 5%.",
+      "left": {
+        "label": "Zostaw na noc",
+        "past": "Zostawiłeś gorącą ładowarkę w gniazdku na noc",
+        "after": "Nie ruszasz wtyczki. Jej bzyczenie miesza się z ciszą pokoju."
+      },
+      "right": {
+        "label": "Wyjmij z gniazdka",
+        "past": "Wyjąłeś ładowarkę z gniazdka",
+        "after": "Plastik parzy ci palce. Ekran laptopa gaśnie."
+      }
+    },
+    "novak": {
+      "who": "Inspektor Novak",
+      "text": "W drzwiach inspektor Novak. „Atak paniki, tak? W dokumentach nie ma żadnego ataku paniki. Porozmawiajmy.”",
+      "left": {
+        "label": "Wpuść go, opowiedz wszystko",
+        "past": "Opowiedziałeś Novakowi wszystko, został w twoim pokoju",
+        "after": "Nie wierzy ci. Ale zostaje, słucha i notuje. Mija godzina."
+      },
+      "right": {
+        "label": "Nie otwieraj",
+        "past": "Nie otworzyłeś Novakowi",
+        "after": "Puka przez chwilę. Potem jego kroki się oddalają."
+      }
+    },
+    "bath": {
+      "who": "Łazienka",
+      "text": "Potrzebujesz czegoś na uspokojenie. Wanna jest duża. Telefon ma 8%.",
+      "left": {
+        "label": "Gorąca kąpiel, telefon ładuje się na brzegu",
+        "past": "Brałeś kąpiel z telefonem ładującym się na brzegu wanny",
+        "after": "Gorąca woda zmywa cały dzień. Oczy prawie ci się zamykają."
+      },
+      "right": {
+        "label": "Szybki prysznic",
+        "past": "Wziąłeś szybki prysznic",
+        "after": "Pięć minut. Telefon zostaje w pokoju."
+      }
+    },
+    "sleep": {
+      "who": "Łóżko",
+      "text": "Oczy ci się zamykają. Łóżko nigdy nie wyglądało tak miękko.",
+      "left": {
+        "label": "Połóż się",
+        "past": "Położyłeś się i zasnąłeś",
+        "after": "Zasypiasz. Po chwili coś czujesz."
+      },
+      "right": {
+        "label": "Nie kładź się",
+        "past": "Nie spałeś",
+        "after": "Patrzysz przez okno na samoloty. Nogi ci ciążą."
+      }
+    },
+    "alarm": {
+      "who": "Alarm pożarowy",
+      "text": "Wyje alarm. Spod drzwi wpełza dym. Z dołu słychać huk.",
+      "left": {
+        "label": "Biegnij na korytarz",
+        "past": "W czasie pożaru wybiegłeś na korytarz",
+        "after": "Korytarz jest pełen dymu. Pochylasz się i idziesz dalej."
+      },
+      "right": {
+        "label": "Zostań, mokre ręczniki pod drzwi",
+        "past": "W czasie pożaru zostałeś w pokoju",
+        "after": "Upychasz ręczniki pod drzwiami. Po kilku minutach w oknie pojawia się drabina strażacka."
+      },
+      "variants": [
+        "Wyje alarm. Novak zrywa się: „Byłem tu na ćwiczeniach pożarowych. Chodź za mną i rób, co mówię.”"
+      ]
+    },
+    "stairs-fire": {
+      "who": "Schody pożarowe",
+      "text": "Na schodach, w dymie, ktoś leży: recepcjonistka. Skręciła kostkę i wyciąga do ciebie rękę.",
+      "left": {
+        "label": "Podnieś ją, schodźcie razem",
+        "past": "Zniosłeś recepcjonistkę po zadymionych schodach",
+        "after": "Zarzucasz sobie jej rękę na ramię. Każdy stopień trwa minutę."
+      },
+      "right": {
+        "label": "Przejdź nad nią, schodź",
+        "past": "Zostawiłeś recepcjonistkę na schodach",
+        "after": "Za tobą woła cię ktoś, kogo imienia nie znasz. Nie odwracasz się."
+      }
+    },
+    "exit-door": {
+      "who": "Hol",
+      "text": "Hol jest pełen dymu. Główne drzwi spuchły od gorąca i się zacięły. Po prawej otwarte drzwi do kuchni; za nią powinno być drugie wyjście.",
+      "left": {
+        "label": "Pchnij drzwi barkiem",
+        "past": "Wyważyłeś barkiem zacięte drzwi",
+        "after": "Raz, dwa… za trzecim razem drzwi puszczają i wypadasz na deszcz."
+      },
+      "right": {
+        "label": "Przejdź przez kuchnię",
+        "past": "Przeszedłeś przez kuchnię obok kotłowni",
+        "after": "Przechodzisz przez kuchnię i tylnymi drzwiami wychodzisz do ogrodu."
+      },
+      "variants": [
+        "Hol jest pełen dymu. Główne drzwi spuchły od gorąca i się zacięły. Recepcjonistka łapie cię za ramię: „Nie przez kuchnię! Tam jest kocioł!”"
+      ]
+    },
+    "count": {
+      "who": "Przed hotelem",
+      "text": "Wszystkich liczą na deszczu, pod kocami. Brakuje sprzątaczki z czwartego piętra. Strażacy szukają innej drogi do środka.",
+      "left": {
+        "label": "Wejdź ze strażakami",
+        "past": "Wszedłeś ze strażakami do płonącego hotelu",
+        "after": "Pokazujesz im drugie schody. W dymie najpierw znajdujecie głos, potem rękę. Kiedy wychodzicie, strażacy klepią cię po plecach."
+      },
+      "right": {
+        "label": "Powiedz strażakom i czekaj",
+        "past": "Czekałeś na zewnątrz",
+        "after": "Patrzysz na drzwi. Minuty się nie ruszają."
+      },
+      "variants": [
+        "Wszystkich liczą na deszczu, pod kocami. Nie ma Daniela. Jego pokój był obok twojego. Strażacy szukają innej drogi do środka.",
+        "Wszystkich liczą na deszczu, pod kocami. Nie ma recepcjonistki, którą zostawiłeś na schodach. Strażacy szukają innej drogi do środka."
+      ]
+    },
+    "boarding": {
+      "who": "Pracownik linii",
+      "text": "Pracownik linii rozdaje koce i karty pokładowe. „Jutro, lot o 6:00. To samo miejsce: 14C.”",
+      "left": {
+        "label": "Weź kartę pokładową",
+        "past": "Wziąłeś kartę na lot o 6:00",
+        "after": "Karta moknie ci w dłoni. 14C."
+      },
+      "right": {
+        "label": "„Już nigdy nie polecę”",
+        "past": "Podarłeś kartę pokładową",
+        "after": "Drzesz kartę na pół. Pracownik wzrusza ramionami i idzie dalej."
+      }
+    }
+  },
+  "endings": {
+    "escalator": {
+      "title": "Ruchome schody",
+      "text": "Patrzyłeś na film w telefonie. Rozwiązana sznurówka wkręciła się w zęby stopnia i pociągnęła cię w dół.",
+      "hint": "Zawiązanie buta zajmuje dziesięć sekund.",
+      "omen": "Coś ciągnie cię za nogę."
+    },
+    "windscreen": {
+      "title": "Przednia szyba",
+      "text": "„Ha! To ty z tego filmu!” Kierowca się odwrócił. Wóz strażacki był tuż przed wami na wąskiej drodze, a z tyłu nie było pasa.",
+      "hint": "Sława też ma swoją cenę.",
+      "omen": "Ktoś zna twoją twarz."
+    },
+    "rooftop": {
+      "title": "Dach",
+      "text": "Ściągnąłeś Daniela i upadł na posadzkę. Ty, po tych kieliszkach, straciłeś równowagę i przeleciałeś przez balustradę.",
+      "hint": "Bohaterowie powinni być trzeźwi.",
+      "omen": "Świat trochę wiruje."
+    },
+    "roofAlone": {
+      "title": "Szklana balustrada",
+      "text": "Kieliszki z baru zakręciły ci w głowie. Luźny szklany panel nie utrzymał twojego ciężaru.",
+      "hint": "Stukające szkło próbowało ci coś powiedzieć.",
+      "omen": "Szkło stuka."
+    },
+    "bath": {
+      "title": "Wanna",
+      "text": "Ładowarka za pięć euro dotknęła wody. Byłeś w wannie.",
+      "hint": "Za tanie rzeczy płaci się później.",
+      "omen": "Słyszysz bzyczenie."
+    },
+    "ringing": {
+      "title": "Dzwoniący telefon",
+      "text": "Siostra dzwoniła bez przerwy, bo nie usłyszała twojego głosu. Sięgnąłeś mokrą ręką po ładujący się telefon.",
+      "hint": "Wystarczył jeden telefon.",
+      "omen": "Telefon nie przestaje dzwonić."
+    },
+    "drown": {
+      "title": "Sen w wannie",
+      "text": "Alkohol z baru i gorąca woda cię uśpiły. Woda powoli się podniosła.",
+      "hint": "Prysznic trwa pięć minut.",
+      "omen": "Zamykają ci się oczy."
+    },
+    "chargerfire": {
+      "title": "Ładowarka",
+      "text": "Ładowarka za pięć euro grzała się całą noc. Kiedy spałeś, pierwsza iskra spadła na dywan.",
+      "hint": "Zapach plastiku był ostrzeżeniem.",
+      "omen": "Czuć gorący plastik."
+    },
+    "smoke": {
+      "title": "Dym",
+      "text": "Drzwi na schody pożarowe się nie domykały i dym wypełnił je aż do dziewiątego piętra. Nie znałeś innej drogi.",
+      "hint": "Recepcja mówiła o tych drzwiach.",
+      "omen": "Schodami wznosi się dym."
+    },
+    "draft": {
+      "title": "Otwarte okno",
+      "text": "Okno było otwarte na oścież. Przeciąg wciągnął dym do pokoju spod mokrych ręczników.",
+      "hint": "Trzeba było zrozumieć, kiedy trzasnęły drzwi.",
+      "omen": "Jest przeciąg."
+    },
+    "boiler": {
+      "title": "Kotłownia",
+      "text": "Ogień był po drugiej stronie twojej ściany. Nikt nie sprawdził kotła i nikt nie zapukał do twoich drzwi.",
+      "hint": "Zgłoszenie zapachu zajęłoby minutę.",
+      "omen": "Ściana jest gorąca."
+    },
+    "stairsFall": {
+      "title": "Schody pożarowe",
+      "text": "Kieliszki osłabiły ci nogi. Razem z recepcjonistką spadliście ze schodów.",
+      "hint": "Dobre uczynki potrzebują trzeźwych nóg.",
+      "omen": "Stopnie wirują."
+    },
+    "kitchenFire": {
+      "title": "Kuchnia",
+      "text": "Kocioł był tuż za kuchnią. Nikt nie zgłosił gazu i nikt nie powiedział ci: „Nie tędy”.",
+      "hint": "Recepcjonistka, którą zostawiłeś, znała drogę.",
+      "omen": "Z kuchni dochodzi syk."
+    },
+    "backIn": {
+      "title": "Powrót",
+      "text": "W dymie zgubiłeś strażaków. Nie znałeś wnętrza hotelu.",
+      "hint": "Po południu mogłeś obejść hotel.",
+      "omen": "Każdy korytarz wygląda tak samo."
+    },
+    "panic-work": {
+      "title": "Terminal",
+      "text": "Zabrakło ci tchu i zacząłeś biec. Wózek bagażowy powalił cię na ziemię.",
+      "hint": "Uciekłeś z samolotu. Nie od siebie.",
+      "omen": "Serce bije bardzo szybko."
+    },
+    "panic-street": {
+      "title": "W deszczu",
+      "text": "Zabrakło ci tchu i wybiegłeś na jezdnię. Światła zobaczyłeś za późno.",
+      "hint": "Czasem największe niebezpieczeństwo jest w twojej głowie.",
+      "omen": "Serce bije bardzo szybko."
+    },
+    "panic-home": {
+      "title": "Z dziewiątego piętra",
+      "text": "Zabrakło ci tchu i pobiegłeś na hotelowe schody. Nie trafiłeś w stopień.",
+      "hint": "To nie dzień cię przegrał. To ty przegrałeś dzień.",
+      "omen": "Serce bije bardzo szybko."
+    },
+    "collapse-work": {
+      "title": "Taśma bagażowa",
+      "text": "Zakręciło ci się w głowie i upadłeś na krawędź taśmy bagażowej.",
+      "hint": "Ciało też w końcu się poddaje.",
+      "omen": "Nogi ci drżą."
+    },
+    "collapse-street": {
+      "title": "Chodnik",
+      "text": "Zakręciło ci się w głowie i upadłeś na krawężnik mokrego chodnika.",
+      "hint": "Ciało też w końcu się poddaje.",
+      "omen": "Nogi ci drżą."
+    },
+    "collapse-home": {
+      "title": "Podłoga w łazience",
+      "text": "Zakręciło ci się w głowie i upadłeś na kafelki w łazience.",
+      "hint": "Ciało też w końcu się poddaje.",
+      "omen": "Nogi ci drżą."
+    },
+    "two": {
+      "title": "Nas dwóch",
+      "text": "00:00. Daniel siedzi obok, drży pod kocem. Uratowałeś go dwa razy.",
+      "hint": "Dziś śmierć dwa razy wróciła z niczym."
+    },
+    "one-more": {
+      "title": "Jeszcze jedna osoba",
+      "text": "00:00. Osoba, którą wyciągnąłeś z dymu, leży w karetce i oddycha. Ty też.",
+      "hint": "Dziś z listy zniknęło jedno nazwisko."
+    },
+    "seat": {
+      "title": "Miejsce 14C",
+      "text": "00:00. Żyjesz. W kieszeni masz mokrą kartę pokładową: 6:00, miejsce 14C.",
+      "hint": "To samo miejsce. Ta sama śmierć?"
+    },
+    "ground": {
+      "title": "Na ziemi",
+      "text": "00:00. Żyjesz. Samoloty wciąż przelatują nad tobą, ale ty zostajesz na ziemi.",
+      "hint": "Tym razem."
+    }
+  }
+}

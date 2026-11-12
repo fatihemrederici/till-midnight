@@ -1,0 +1,625 @@
+{
+  "title": "The Last Flight",
+  "vision": [
+    "The plane rolls onto the runway.",
+    "A fuel line cracks.",
+    "A light on the wing.",
+    "Fire. Smoke. Screaming.",
+    "Seat 14C is not empty."
+  ],
+  "wake": "You open your eyes. You’re on the plane, seat 14C. Tomorrow is the job interview of your life, and the plane is just getting ready for take-off.",
+  "meters": {
+    "mind": "Mind",
+    "body": "Body"
+  },
+  "cards": {
+    "cabin": {
+      "who": "Seat 14C",
+      "text": "The engines are starting. You just saw this plane burn at the end of the runway. Next to you, Daniel is biting his nails.",
+      "left": {
+        "label": "Stand up, warn everyone",
+        "past": "You warned everyone on the plane",
+        "after": "People shout at you. The crew takes you off the plane. Daniel follows you: “I’m not flying either.”"
+      },
+      "right": {
+        "label": "Say you feel sick, get off quietly",
+        "past": "You got off the plane without telling anyone",
+        "after": "A flight attendant walks you to the door. Behind you, nobody moves."
+      }
+    },
+    "jetbridge": {
+      "who": "The jet bridge",
+      "text": "You run up the jet bridge. Your shoelace comes undone and drags on the floor.",
+      "left": {
+        "label": "Stop and tie it",
+        "past": "You tied your shoelace",
+        "after": "You’re the last one off. Behind you, the plane door closes."
+      },
+      "right": {
+        "label": "Keep running",
+        "past": "You kept running with your shoelace undone",
+        "after": "You reach the terminal. The lace is still dragging on the floor."
+      }
+    },
+    "window": {
+      "who": "The terminal window",
+      "text": "The plane takes off. At the end of the runway, a flash, then fire. Everyone runs to the window.",
+      "left": {
+        "label": "Film it on your phone",
+        "past": "You filmed the burning plane and the video spread",
+        "after": "You film all of it. An hour later the video is everywhere, and so is your face."
+      },
+      "right": {
+        "label": "Turn away",
+        "past": "You didn’t look at the burning plane",
+        "after": "You only hear the explosion. That is bad enough."
+      }
+    },
+    "escalator": {
+      "who": "The way out",
+      "text": "Everyone is going down to arrivals. The escalator is packed, and people are coming up the stairs next to it.",
+      "left": {
+        "label": "Take the escalator",
+        "past": "You took the crowded escalator",
+        "after": "The steps carry you down slowly. Downstairs, the queues are starting."
+      },
+      "right": {
+        "label": "Take the stairs",
+        "past": "You took the stairs against the crowd and fell behind",
+        "after": "You go down slowly against the crowd. Downstairs, the queues are already long."
+      }
+    },
+    "police": {
+      "who": "Inspector Novak",
+      "text": "Two officers take you into a room. “How did you know the plane would burn?”",
+      "left": {
+        "label": "Tell him about the vision",
+        "past": "You told the police about the vision",
+        "after": "He doesn’t believe you, but it feels good to say it. They keep you three hours in a room with no windows and give you a sandwich."
+      },
+      "right": {
+        "label": "“I had a panic attack”",
+        "past": "You lied to the police",
+        "after": "Novak looks you in the eye for a long time. He writes your name in his notebook and lets you go."
+      },
+      "variants": [
+        "Two officers take you into a room. Your video is playing on a phone on the table. “How did you know the plane would burn?”",
+        "Two officers take you into a room. “You told everyone on the plane it would burn. How did you know?”"
+      ]
+    },
+    "cafe": {
+      "who": "The airport café",
+      "text": "Your hands are shaking. The same pictures are on the TV again. The waiter: “What can I get you?”",
+      "left": {
+        "label": "A proper breakfast",
+        "past": "You had breakfast at the airport",
+        "after": "Eggs, bread, hot tea. Your legs feel stronger."
+      },
+      "right": {
+        "label": "A double espresso",
+        "past": "You drank a double espresso",
+        "after": "Your head clears. For a while, your hands stop shaking."
+      }
+    },
+    "recruiter": {
+      "who": "Ms Lang",
+      "text": "The company you were flying to calls. “Was that your plane? Oh my God. Can we do the interview online tonight at 21:00?”",
+      "left": {
+        "label": "“Yes, tonight”",
+        "past": "You agreed to an online interview tonight",
+        "after": "After the call you remember: you have your laptop, but the charger was in your suitcase. And the suitcase was on the plane."
+      },
+      "right": {
+        "label": "“I can’t do it today”",
+        "past": "You cancelled the job interview",
+        "after": "“I understand,” she says. Something changes in her voice. The job is gone."
+      },
+      "variants": [
+        "Your phone rings in the police room and the officer lets you answer. It’s the company you were flying to: “Was that your plane? Can we do the interview online tonight at 21:00?”"
+      ]
+    },
+    "airline": {
+      "who": "The airline desk",
+      "text": "“Your bag was on the plane, we’re so sorry. You get a room at the airport hotel and a seat on tomorrow’s 06:00 flight.” The hotel shuttle leaves in an hour. By the door, a man whispers: “Need a taxi?”",
+      "left": {
+        "label": "Wait for the shuttle",
+        "past": "You waited for the hotel shuttle",
+        "after": "You wait an hour in the crowd. The shuttle drops you at the hotel door."
+      },
+      "right": {
+        "label": "Take his taxi",
+        "past": "You got into an unlicensed taxi with a broken seatbelt",
+        "after": "There’s no taxi sign on the car. In the back seat, the seatbelt buckle is broken."
+      },
+      "variants": [
+        "“Your bag was on the plane, we’re so sorry. You get a room at the airport hotel and a seat on tomorrow’s 06:00 flight.” The shuttle just left, the next one is in an hour. By the door, a man whispers: “Need a taxi?”"
+      ]
+    },
+    "ride": {
+      "who": "The driver",
+      "text": "The driver goes very fast and keeps looking at you in the mirror. “I know you from somewhere.” A fire truck is coming the other way on the narrow road.",
+      "left": {
+        "label": "“Watch the road!”",
+        "past": "You shouted at the driver",
+        "after": "He brakes hard and you hit the seat in front. Angry, he drops you in the rain a kilometre before the hotel."
+      },
+      "right": {
+        "label": "Chat with him",
+        "past": "You chatted with the unlicensed driver",
+        "after": "You talk about football. He can’t place your face. The fire truck rushes past you."
+      }
+    },
+    "reception": {
+      "who": "Reception",
+      "text": "“We have two rooms left. One on the ninth floor with a balcony, but the fire-stairs door doesn’t close properly. Or one on the ground floor, next to the boiler room. It gets a bit warm.”",
+      "left": {
+        "label": "The ninth floor",
+        "past": "You took the room on the ninth floor",
+        "after": "From the balcony you can see the runway. Planes take off, again and again."
+      },
+      "right": {
+        "label": "The ground floor",
+        "past": "You took the room next to the boiler room",
+        "after": "The room is warm. A deep hum comes from behind the wall."
+      },
+      "variants": [
+        "Daniel arrives too, with the same voucher. Reception: “We have two rooms left. One on the ninth floor with a balcony, but the fire-stairs door doesn’t close properly. Or one on the ground floor, next to the boiler room. It gets a bit warm.” Daniel will take the other one."
+      ]
+    },
+    "charger": {
+      "who": "Reception",
+      "text": "“A charger? This is all we have, five euros.” No brand, a thin cable. The nearest electronics shop is a twenty-five-minute walk in the rain.",
+      "left": {
+        "label": "Buy the five-euro one",
+        "past": "You bought a cheap no-name charger at reception",
+        "after": "It buzzes a little when you plug it in. The laptop is charging, and that’s what matters."
+      },
+      "right": {
+        "label": "Walk to the shop in the rain",
+        "past": "You walked in the rain for a proper charger",
+        "after": "Fifty minutes later you’re back, soaked, with a proper charger in a box."
+      }
+    },
+    "sister": {
+      "who": "Your sister",
+      "text": "Fourteen missed calls. Then a message: “Your name is on the passenger list! Please pick up!”",
+      "left": {
+        "label": "Call her, say you’re alive",
+        "past": "You called your sister and told her you’re alive",
+        "after": "You both cry. When you hang up, your shoulders feel lighter."
+      },
+      "right": {
+        "label": "Just text: “I’m fine”",
+        "past": "You only texted your sister and didn’t call",
+        "after": "“I need to hear your voice,” she writes. You don’t answer."
+      }
+    },
+    "rest": {
+      "who": "Your room",
+      "text": "All your strength is gone. But when you close your eyes, you see the fire again.",
+      "left": {
+        "label": "Sleep a little",
+        "past": "You slept in the afternoon",
+        "after": "Two hours of nightmares. You wake up with a rested body, but not a rested mind."
+      },
+      "right": {
+        "label": "Walk around the hotel",
+        "past": "You walked around and found the second staircase",
+        "after": "At the far end of the corridor you find a second staircase. The door says “Staff only”, but it isn’t locked."
+      }
+    },
+    "window-high": {
+      "who": "The window",
+      "text": "The room is hot and stuffy. The window opens all the way. A plane takes off every four minutes and the glass shakes.",
+      "left": {
+        "label": "Open it wide",
+        "past": "You left the ninth-floor window wide open",
+        "after": "Cool air hits your face. The draught slams the room door shut."
+      },
+      "right": {
+        "label": "Keep it shut",
+        "past": "You kept the window shut",
+        "after": "It’s hot but quiet. You only see the planes now."
+      }
+    },
+    "spa": {
+      "who": "The hotel garden",
+      "text": "Reception added a spa pass to your voucher. The rain has stopped and the garden is empty.",
+      "left": {
+        "label": "The hot pool at the spa",
+        "past": "You went into the hot pool at the spa",
+        "after": "Your muscles relax. Your head feels a little heavy."
+      },
+      "right": {
+        "label": "Walk in the garden",
+        "past": "You saw smoke coming from the boiler room",
+        "after": "The fresh air helps. Smoke comes out of a basement window by the boiler room, and it smells like gas."
+      }
+    },
+    "news": {
+      "who": "The news",
+      "text": "“Six passengers left the plane before take-off. One of them acted as if they knew everything in advance.”",
+      "left": {
+        "label": "Watch until the end",
+        "past": "You watched the news until the end",
+        "after": "A crack in a fuel line. The photos of the dead appear one by one."
+      },
+      "right": {
+        "label": "Turn it off",
+        "past": "You turned off the news",
+        "after": "The room goes quiet. Not knowing is better, for now."
+      },
+      "variants": [
+        "“Only one passenger left the plane before take-off.” Your face is on the screen. Next to it, the photos of the dead: 14B, Daniel."
+      ]
+    },
+    "dinner": {
+      "who": "Dinner",
+      "text": "You haven’t had a real meal all day.",
+      "left": {
+        "label": "Room service",
+        "past": "You ate in your room",
+        "after": "The waiter puts down the tray and mutters: “The boiler’s broken again, the water’s only warm.” The food is good, but you’re alone, and the TV is on the news again."
+      },
+      "right": {
+        "label": "The hotel restaurant",
+        "past": "You ate in the restaurant",
+        "after": "You warm up. A faint smell of gas comes from behind the kitchen, but the waiters don’t seem to care."
+      }
+    },
+    "smell": {
+      "who": "The corridor",
+      "text": "There is a heavy smell of gas in the corridor. A deep hum is coming from somewhere.",
+      "left": {
+        "label": "Tell reception",
+        "past": "You reported the smell of gas",
+        "after": "“It’s an old boiler, it’s normal,” they say. But someone calls the basement on the radio, and they go to check the ground-floor rooms."
+      },
+      "right": {
+        "label": "It’s an old hotel, forget it",
+        "past": "You told no one about the gas",
+        "after": "You go back to your room. The smell stays with you for a while."
+      },
+      "variants": [
+        "There is a heavy smell of gas in the corridor. You think of the smoking basement window in the garden."
+      ]
+    },
+    "bar": {
+      "who": "The hotel bar",
+      "text": "The barman is wiping glasses. “Long day?”",
+      "left": {
+        "label": "One drink, for your nerves",
+        "past": "You drank at the bar in the evening",
+        "after": "Warmth spreads through your chest. Another glass arrives."
+      },
+      "right": {
+        "label": "Drink water",
+        "past": "You only drank water at the bar",
+        "after": "Cold water. Your head stays clear."
+      },
+      "variants": [
+        "Daniel is at the bar with his third glass. “Sit down. If we don’t drink today, when will we?”"
+      ]
+    },
+    "rooftop": {
+      "who": "Daniel",
+      "text": "Daniel is by the rooftop pool, drunk, sitting on the glass railing. His feet are swinging over the drop.",
+      "left": {
+        "label": "Run and pull him back",
+        "past": "You ran to pull Daniel off the railing",
+        "after": "You grab his arm and pull. You both fall on the wet floor. Daniel laughs, then cries."
+      },
+      "right": {
+        "label": "Call reception",
+        "past": "You called reception instead of pulling Daniel back",
+        "after": "When the staff get there, the railing is empty."
+      }
+    },
+    "roof-alone": {
+      "who": "The roof",
+      "text": "There’s nobody on the roof. One panel of the glass railing is loose and rattles in the wind. The runway is all lights.",
+      "left": {
+        "label": "Watch the runway from the glass",
+        "past": "You leaned on the loose glass railing to watch the runway",
+        "after": "A plane takes off. Your eyes burn, but you keep watching."
+      },
+      "right": {
+        "label": "Sit on a sun lounger",
+        "past": "You sat on a lounger on the roof",
+        "after": "Planes pass over your head. You start counting them."
+      }
+    },
+    "interview": {
+      "who": "Ms Lang",
+      "text": "Three faces on the screen. “Can you tell us about a time you made a quick decision under pressure?”",
+      "left": {
+        "label": "Tell them you got off the plane",
+        "past": "You told the interviewers about getting off the plane",
+        "after": "A silence. Then Ms Lang smiles: “I don’t think there’s a better example.”"
+      },
+      "right": {
+        "label": "Give a textbook answer",
+        "past": "You gave a textbook answer in the interview",
+        "after": "They politely take notes. Nobody smiles."
+      }
+    },
+    "hotplug": {
+      "who": "The charger",
+      "text": "The interview is over. The charger is very hot and smells of plastic. The laptop battery is still at 5%.",
+      "left": {
+        "label": "Leave it charging overnight",
+        "past": "You left the hot charger plugged in for the night",
+        "after": "You leave the plug alone. Its buzz mixes with the silence of the room."
+      },
+      "right": {
+        "label": "Unplug it",
+        "past": "You unplugged the charger",
+        "after": "The plastic burns your fingers. The laptop goes dark."
+      }
+    },
+    "novak": {
+      "who": "Inspector Novak",
+      "text": "Inspector Novak is at the door. “A panic attack, was it? There’s no panic attack in your records. Let’s talk.”",
+      "left": {
+        "label": "Let him in, tell him everything",
+        "past": "You told Novak everything and he stayed in your room",
+        "after": "He doesn’t believe you. But he stays, listens and takes notes. An hour goes by."
+      },
+      "right": {
+        "label": "Don’t open",
+        "past": "You didn’t open the door to Novak",
+        "after": "He knocks for a while. Then his steps go away."
+      }
+    },
+    "bath": {
+      "who": "The bathroom",
+      "text": "You need something to calm down. The bath is big. Your phone is at 8%.",
+      "left": {
+        "label": "A hot bath, phone charging on the edge",
+        "past": "You took a bath with your phone charging on the edge",
+        "after": "The hot water washes the whole day away. Your eyes are almost closing."
+      },
+      "right": {
+        "label": "A quick shower",
+        "past": "You took a quick shower",
+        "after": "Five minutes. The phone stays in the room."
+      }
+    },
+    "sleep": {
+      "who": "The bed",
+      "text": "Your eyes are closing. The bed has never looked so soft.",
+      "left": {
+        "label": "Lie down",
+        "past": "You lay down and fell asleep",
+        "after": "You fall asleep. After a while, you smell something."
+      },
+      "right": {
+        "label": "Stay up",
+        "past": "You stayed up instead of sleeping",
+        "after": "You watch the planes from the window. Your legs feel heavy."
+      }
+    },
+    "alarm": {
+      "who": "Fire alarm",
+      "text": "The alarm goes off. Smoke is coming under the door. A bang from downstairs.",
+      "left": {
+        "label": "Run into the corridor",
+        "past": "You ran into the corridor during the fire",
+        "after": "The corridor is full of smoke. You keep low and move on."
+      },
+      "right": {
+        "label": "Stay, wet towels under the door",
+        "past": "You stayed in your room during the fire",
+        "after": "You push the towels under the door. Minutes later, a fire ladder appears at the window."
+      },
+      "variants": [
+        "The alarm goes off. Novak jumps up: “I’ve done a fire drill in this hotel. Follow me and do what I say.”"
+      ]
+    },
+    "stairs-fire": {
+      "who": "The fire stairs",
+      "text": "Someone is lying on the stairs in the smoke: the receptionist. She has twisted her ankle and reaches out when she sees you.",
+      "left": {
+        "label": "Lift her up, go down together",
+        "past": "You carried the fallen receptionist down the smoky stairs",
+        "after": "You put her arm over your shoulder. Every step takes a minute."
+      },
+      "right": {
+        "label": "Step over her and go",
+        "past": "You left the receptionist on the stairs",
+        "after": "Behind you, someone whose name you don’t know calls out to you. You don’t turn back."
+      }
+    },
+    "exit-door": {
+      "who": "The lobby",
+      "text": "The lobby is full of smoke. The main door is swollen from the heat and stuck. To the right, the kitchen door is open; there should be another exit behind it.",
+      "left": {
+        "label": "Push the door with your shoulder",
+        "past": "You forced the stuck door with your shoulder",
+        "after": "One, two… on the third try the door opens and you fall into the rain."
+      },
+      "right": {
+        "label": "Go round through the kitchen",
+        "past": "You went through the kitchen next to the boiler room",
+        "after": "You go through the kitchen and out of the back door into the garden."
+      },
+      "variants": [
+        "The lobby is full of smoke. The main door is swollen from the heat and stuck. The receptionist grabs your arm: “Not through the kitchen! The boiler is there!”"
+      ]
+    },
+    "count": {
+      "who": "Outside the hotel",
+      "text": "Everyone is counted in the rain, under blankets. A cleaner from the fourth floor is missing. The firefighters are looking for another way in.",
+      "left": {
+        "label": "Go back in with the firefighters",
+        "past": "You went back into the burning hotel with the firefighters",
+        "after": "You show them the second staircase. In the smoke you find a voice first, then a hand. When you come out, the firefighters pat you on the back."
+      },
+      "right": {
+        "label": "Tell the firefighters and wait",
+        "past": "You waited outside",
+        "after": "You watch the door. The minutes don’t move."
+      },
+      "variants": [
+        "Everyone is counted in the rain, under blankets. Daniel isn’t there. His room was next to yours. The firefighters are looking for another way in.",
+        "Everyone is counted in the rain, under blankets. The receptionist you left on the stairs isn’t there. The firefighters are looking for another way in."
+      ]
+    },
+    "boarding": {
+      "who": "The airline agent",
+      "text": "An airline agent hands out blankets and boarding passes. “Tomorrow, the 06:00 flight. Same seat: 14C.”",
+      "left": {
+        "label": "Take the boarding pass",
+        "past": "You took the boarding pass for the 06:00 flight",
+        "after": "The pass gets wet in your hand. 14C."
+      },
+      "right": {
+        "label": "“I’ll never fly again”",
+        "past": "You tore up the boarding pass",
+        "after": "You tear the pass in two. The agent shrugs and moves on."
+      }
+    }
+  },
+  "endings": {
+    "escalator": {
+      "title": "The Escalator",
+      "text": "Your eyes were on the video on your phone. Your loose lace got caught in the teeth of the step and pulled you down.",
+      "hint": "Tying a shoe takes ten seconds.",
+      "omen": "Something is pulling your foot."
+    },
+    "windscreen": {
+      "title": "The Windscreen",
+      "text": "“Ha! You’re the guy from the video!” The driver turned round. The fire truck was right there on the narrow road, and there was no belt in the back.",
+      "hint": "Being famous has its price.",
+      "omen": "Someone knows your face."
+    },
+    "rooftop": {
+      "title": "The Roof",
+      "text": "You pulled Daniel back and he fell to the floor. With the drinks in you, you lost your balance and went over the railing.",
+      "hint": "Heroes should stay sober.",
+      "omen": "The world is spinning a little."
+    },
+    "roofAlone": {
+      "title": "The Glass Railing",
+      "text": "The drinks from the bar made you dizzy. The loose glass panel couldn’t hold your weight.",
+      "hint": "The rattling glass was trying to tell you something.",
+      "omen": "Glass is rattling."
+    },
+    "bath": {
+      "title": "The Bath",
+      "text": "The five-euro charger touched the water. You were in the bath.",
+      "hint": "You pay for cheap things later.",
+      "omen": "You hear a buzzing."
+    },
+    "ringing": {
+      "title": "The Ringing Phone",
+      "text": "Your sister kept calling because she never heard your voice. You reached for the charging phone with a wet hand.",
+      "hint": "One phone call would have been enough.",
+      "omen": "The phone won’t stop ringing."
+    },
+    "drown": {
+      "title": "Asleep in the Bath",
+      "text": "The drinks and the hot water put you to sleep. The water slowly rose.",
+      "hint": "A shower takes five minutes.",
+      "omen": "Your eyes are closing."
+    },
+    "chargerfire": {
+      "title": "The Charger",
+      "text": "The five-euro charger got hotter all night. While you slept, the first spark fell on the carpet.",
+      "hint": "The smell of plastic was a warning.",
+      "omen": "Something smells of hot plastic."
+    },
+    "smoke": {
+      "title": "Smoke",
+      "text": "The fire-stairs door didn’t close, and smoke filled the stairs up to the ninth floor. You didn’t know another way down.",
+      "hint": "Reception told you about that door.",
+      "omen": "Smoke is rising up the stairs."
+    },
+    "draft": {
+      "title": "The Open Window",
+      "text": "The window was wide open. The draught pulled the smoke into the room under the wet towels.",
+      "hint": "You should have known when the door slammed.",
+      "omen": "There’s a draught."
+    },
+    "boiler": {
+      "title": "The Boiler Room",
+      "text": "The fire was on the other side of your wall. Nobody had checked the boiler, and nobody knocked on your door.",
+      "hint": "Reporting the smell would have taken a minute.",
+      "omen": "The wall is hot."
+    },
+    "stairsFall": {
+      "title": "The Fire Stairs",
+      "text": "The drinks had made your legs weak. You and the receptionist fell down the stairs together.",
+      "hint": "Good deeds need sober legs.",
+      "omen": "The steps are spinning."
+    },
+    "kitchenFire": {
+      "title": "The Kitchen",
+      "text": "The boiler was right behind the kitchen. Nobody had reported the gas, and there was no one with you to say “Not that way.”",
+      "hint": "The receptionist you left on the stairs knew the way.",
+      "omen": "A hiss is coming from the kitchen."
+    },
+    "backIn": {
+      "title": "Going Back",
+      "text": "In the smoke you lost the firefighters. You didn’t know the inside of the hotel.",
+      "hint": "You could have walked around the hotel that afternoon.",
+      "omen": "Every corridor looks the same."
+    },
+    "panic-work": {
+      "title": "The Terminal",
+      "text": "You couldn’t breathe and started to run. A luggage trolley knocked you down.",
+      "hint": "You ran from the plane, but not from yourself.",
+      "omen": "Your heart is beating very fast."
+    },
+    "panic-street": {
+      "title": "In the Rain",
+      "text": "You couldn’t breathe and ran into the road. You saw the lights too late.",
+      "hint": "Sometimes the biggest danger is in your own head.",
+      "omen": "Your heart is beating very fast."
+    },
+    "panic-home": {
+      "title": "From the Ninth Floor",
+      "text": "You couldn’t breathe and ran for the hotel stairs. You missed a step.",
+      "hint": "The day didn’t lose you. You lost the day.",
+      "omen": "Your heart is beating very fast."
+    },
+    "collapse-work": {
+      "title": "The Baggage Belt",
+      "text": "You felt dizzy and fell against the edge of the baggage belt.",
+      "hint": "Your body gives up at some point too.",
+      "omen": "Your legs are shaking."
+    },
+    "collapse-street": {
+      "title": "The Pavement",
+      "text": "You felt dizzy and fell on the edge of the wet pavement.",
+      "hint": "Your body gives up at some point too.",
+      "omen": "Your legs are shaking."
+    },
+    "collapse-home": {
+      "title": "The Bathroom Floor",
+      "text": "You felt dizzy and fell on the bathroom tiles.",
+      "hint": "Your body gives up at some point too.",
+      "omen": "Your legs are shaking."
+    },
+    "two": {
+      "title": "Two of Us",
+      "text": "00:00. Daniel is next to you, shaking under a blanket. You saved him twice.",
+      "hint": "Today, death went home empty-handed twice."
+    },
+    "one-more": {
+      "title": "One More",
+      "text": "00:00. The person you brought out of the smoke is in the ambulance, breathing. So are you.",
+      "hint": "Today, one name came off the list."
+    },
+    "seat": {
+      "title": "Seat 14C",
+      "text": "00:00. You’re alive. In your pocket there’s a wet boarding pass: 06:00, seat 14C.",
+      "hint": "Same seat. Same death?"
+    },
+    "ground": {
+      "title": "On the Ground",
+      "text": "00:00. You’re alive. The planes keep passing over you, but you stay on the ground.",
+      "hint": "This time."
+    }
+  }
+}

@@ -29,7 +29,7 @@ describe("engine", () => {
   // Yeni bölüm eklenince test otomatik onu da kapsar.
   it("finds every chapter", () => {
     // Üç bölüm var.
-    expect(chapters.map((story) => story.id).sort()).toEqual(["first-day"]);
+    expect(chapters.map((story) => story.id).sort()).toEqual(["first-day", "last-flight"]);
   });
 
   // Java motoruyla birebir aynı sonuçlar çıkmalı.

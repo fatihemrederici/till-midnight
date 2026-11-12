@@ -1,0 +1,625 @@
+{
+  "title": "Son Uçuş",
+  "vision": [
+    "Uçak piste çıkıyor.",
+    "Bir yakıt hattı çatlıyor.",
+    "Kanatta bir ışık.",
+    "Ateş. Duman. Çığlık.",
+    "Koltuk 14C boş kalmıyor."
+  ],
+  "wake": "Gözlerini açıyorsun. Uçaktasın, koltuk 14C. Yarın hayatının iş görüşmesi var ve uçak daha yeni kalkışa hazırlanıyor.",
+  "meters": {
+    "mind": "Akıl",
+    "body": "Sağlık"
+  },
+  "cards": {
+    "cabin": {
+      "who": "Koltuk 14C",
+      "text": "Motorlar çalışıyor. Bu uçağın pistin sonunda yandığını az önce gördün. Yan koltukta Daniel tırnaklarını yiyor.",
+      "left": {
+        "label": "Kalk, herkesi uyar",
+        "past": "Uçakta herkesi uyardın",
+        "after": "İnsanlar sana bağırıyor. Ekip seni uçaktan indiriyor. Daniel peşinden geliyor: “Ben de binmiyorum.”"
+      },
+      "right": {
+        "label": "Hasta numarası yap, sessizce in",
+        "past": "Kimseye bir şey söylemeden uçaktan indin",
+        "after": "Bir hostes seni kapıya kadar götürüyor. Arkanda kimse kıpırdamıyor."
+      }
+    },
+    "jetbridge": {
+      "who": "Körük",
+      "text": "Körükte koşuyorsun. Ayakkabının bağcığı çözülüyor, ucu yerde sürünüyor.",
+      "left": {
+        "label": "Dur, bağla",
+        "past": "Bağcığını bağladın",
+        "after": "Son yolcu sensin. Arkanda uçağın kapısı kapanıyor."
+      },
+      "right": {
+        "label": "Koşmaya devam et",
+        "past": "Bağcığın çözük koşmaya devam ettin",
+        "after": "Terminale çıkıyorsun. Bağcık hâlâ yerde sürünüyor."
+      }
+    },
+    "window": {
+      "who": "Terminal camı",
+      "text": "Uçak kalkıyor. Pistin sonunda bir ışık, sonra alevler. Herkes cama koşuyor.",
+      "left": {
+        "label": "Telefonla çek",
+        "past": "Yanan uçağı telefonla çektin, video yayıldı",
+        "after": "Her şeyi çekiyorsun. Bir saat sonra video her yerde, yüzün de."
+      },
+      "right": {
+        "label": "Arkanı dön",
+        "past": "Yanan uçağa bakmadın",
+        "after": "Patlamayı sadece duyuyorsun. Bu da yeterince kötü."
+      }
+    },
+    "escalator": {
+      "who": "Çıkış",
+      "text": "Herkes gelen yolcu salonuna iniyor. Yürüyen merdiven tıklım tıklım, yanındaki merdivenden yukarı insanlar çıkıyor.",
+      "left": {
+        "label": "Yürüyen merdiven",
+        "past": "Kalabalık yürüyen merdivene bindin",
+        "after": "Basamaklar seni yavaşça aşağı taşıyor. Aşağıda masalarda kuyruklar başlamış."
+      },
+      "right": {
+        "label": "Yanındaki merdiven",
+        "past": "Kalabalığa karşı merdivenden indin, geç kaldın",
+        "after": "Kalabalığın tersine yavaş yavaş iniyorsun. Aşağıda masalarda uzun kuyruklar var."
+      }
+    },
+    "police": {
+      "who": "Müfettiş Novak",
+      "text": "İki polis seni bir odaya alıyor. “Uçağın yanacağını nereden bildin?”",
+      "left": {
+        "label": "Vizyonu anlat",
+        "past": "Polise vizyonu anlattın",
+        "after": "Sana inanmıyor ama içini dökmek iyi geliyor. Seni üç saat penceresiz odada tutuyorlar, bir sandviç veriyorlar."
+      },
+      "right": {
+        "label": "“Panik atak geçirdim”",
+        "past": "Polise yalan söyledin",
+        "after": "Novak bir süre gözlerinin içine bakıyor. Adını defterine yazıp seni bırakıyor."
+      },
+      "variants": [
+        "İki polis seni bir odaya alıyor. Masada telefon, ekranda senin videon. “Uçağın yanacağını nereden bildin?”",
+        "İki polis seni bir odaya alıyor. “Uçakta herkese yanacağını söylemişsin. Nereden bildin?”"
+      ]
+    },
+    "cafe": {
+      "who": "Havalimanı kafesi",
+      "text": "Ellerin titriyor. Televizyonda yine aynı görüntüler. Garson: “Ne alırsınız?”",
+      "left": {
+        "label": "Doğru dürüst kahvaltı",
+        "past": "Havalimanında kahvaltı ettin",
+        "after": "Yumurta, ekmek, sıcak çay. Bacaklarına güç geliyor."
+      },
+      "right": {
+        "label": "Duble espresso",
+        "past": "Duble espresso içtin",
+        "after": "Kafan açılıyor. Ellerin bir süre titremeyi bırakıyor."
+      }
+    },
+    "recruiter": {
+      "who": "Bayan Lang",
+      "text": "Görüşmeye gideceğin şirketten arıyorlar. “Uçağınız mı düştü? Tanrım. Görüşmeyi bu akşam 21:00’de online yapabilir miyiz?”",
+      "left": {
+        "label": "“Evet, bu akşam”",
+        "past": "Görüşmeyi bu akşama online kabul ettin",
+        "after": "Kapatınca hatırlıyorsun: laptopun yanında ama şarj aleti bavulda. Bavul da uçaktaydı."
+      },
+      "right": {
+        "label": "“Bugün yapamam”",
+        "past": "İş görüşmesini iptal ettin",
+        "after": "“Anlıyorum,” diyor. Sesinde bir şey değişiyor. Bu işi kaçırdın."
+      },
+      "variants": [
+        "Polis odasında telefonun çalıyor, memur açmana izin veriyor. Görüşmeye gideceğin şirket: “Uçağınız mı düştü? Görüşmeyi bu akşam 21:00’de online yapabilir miyiz?”"
+      ]
+    },
+    "airline": {
+      "who": "Havayolu masası",
+      "text": "“Bavulunuz uçaktaydı, çok üzgünüz. Havalimanı otelinde bir oda ve yarın 06:00 uçağında bir koltuk sizin.” Otelin servis aracı bir saat sonra kalkıyor. Kapının önünde bir adam fısıldıyor: “Taksi lazım mı?”",
+      "left": {
+        "label": "Servisi bekle",
+        "past": "Otelin servisini bekledin",
+        "after": "Bir saat kalabalığın içinde bekliyorsun. Servis seni otelin kapısına bırakıyor."
+      },
+      "right": {
+        "label": "Taksiye bin",
+        "past": "Kemeri kopuk kaçak bir taksiye bindin",
+        "after": "Arabanın üstünde taksi lambası yok. Arka koltukta emniyet kemerinin tokası kopmuş."
+      },
+      "variants": [
+        "“Bavulunuz uçaktaydı, çok üzgünüz. Havalimanı otelinde bir oda ve yarın 06:00 uçağında bir koltuk sizin.” Servis aracı az önce kalktı, sonraki bir saat sonra. Kapının önünde bir adam fısıldıyor: “Taksi lazım mı?”"
+      ]
+    },
+    "ride": {
+      "who": "Taksi şoförü",
+      "text": "Şoför çok hızlı gidiyor ve aynadan sürekli sana bakıyor. “Seni bir yerden tanıyorum.” Karşıdan dar yolda bir itfaiye geliyor.",
+      "left": {
+        "label": "“Yola bak!”",
+        "past": "Şoföre bağırdın",
+        "after": "Sert fren. Öndeki koltuğa çarpıyorsun. Sinirlenip seni yağmurda otele bir kilometre kala indiriyor."
+      },
+      "right": {
+        "label": "Sohbet et",
+        "past": "Kaçak taksinin şoförüyle sohbet ettin",
+        "after": "Futboldan konuşuyorsunuz. Seni bir yere benzetemiyor. İtfaiye yanınızdan vınlayarak geçiyor."
+      }
+    },
+    "reception": {
+      "who": "Resepsiyon",
+      "text": "“İki oda kaldı. Dokuzuncu katta balkonlu bir oda, ama yangın merdiveninin kapısı tam kapanmıyor. Ya da zemin katta, kazan dairesinin yanında. Orası biraz sıcak olur.”",
+      "left": {
+        "label": "Dokuzuncu kat",
+        "past": "Dokuzuncu kattaki odayı aldın",
+        "after": "Balkondan pist görünüyor. Uçaklar kalkıyor, kalkıyor."
+      },
+      "right": {
+        "label": "Zemin kat",
+        "past": "Kazan dairesinin yanındaki odayı aldın",
+        "after": "Oda sıcak. Duvarın arkasından derin bir uğultu geliyor."
+      },
+      "variants": [
+        "Daniel de geliyor, aynı kuponla. Resepsiyon: “İki oda kaldı. Dokuzuncu katta balkonlu bir oda, ama yangın merdiveninin kapısı tam kapanmıyor. Ya da zemin katta, kazan dairesinin yanında. Orası biraz sıcak olur.” Daniel öbürünü alacak."
+      ]
+    },
+    "charger": {
+      "who": "Resepsiyon",
+      "text": "“Şarj aleti mi? Sadece bu var, beş euro.” Markasız, kablosu ince. En yakın elektronik mağazası yağmurda yirmi beş dakika yürüme mesafesinde.",
+      "left": {
+        "label": "Beş euroluğu al",
+        "past": "Resepsiyondan markasız ucuz bir şarj aleti aldın",
+        "after": "Prize takınca hafifçe vızıldıyor. Laptop şarj oluyor, önemli olan bu."
+      },
+      "right": {
+        "label": "Yağmurda mağazaya yürü",
+        "past": "Yağmurda yürüyüp markalı bir şarj aleti aldın",
+        "after": "Elli dakika sonra sırılsıklam dönüyorsun, elinde kutusu sağlam bir şarj aleti."
+      }
+    },
+    "sister": {
+      "who": "Kız kardeşin",
+      "text": "On dört cevapsız arama. Sonra bir mesaj: “Adın yolcu listesinde! Lütfen aç!”",
+      "left": {
+        "label": "Ara, yaşadığını söyle",
+        "past": "Kız kardeşini arayıp yaşadığını söyledin",
+        "after": "İkiniz de ağlıyorsunuz. Kapatınca omuzların hafifliyor."
+      },
+      "right": {
+        "label": "Sadece mesaj at: “İyiyim”",
+        "past": "Kız kardeşini aramadın, sadece mesaj attın",
+        "after": "“Sesini duymam lazım,” diye yazıyor. Cevap vermiyorsun."
+      }
+    },
+    "rest": {
+      "who": "Oda",
+      "text": "Bütün gücün çekildi. Ama gözlerini kapatınca yine o alevleri görüyorsun.",
+      "left": {
+        "label": "Biraz uyu",
+        "past": "Öğleden sonra uyudun",
+        "after": "Kâbuslarla iki saat. Uyandığında bedenin dinlenmiş, kafan değil."
+      },
+      "right": {
+        "label": "Oteli dolaş",
+        "past": "Oteli dolaşıp ikinci merdiveni buldun",
+        "after": "Koridorların sonunda ikinci bir merdiven buluyorsun. Kapısında “Personel” yazıyor ama kilitli değil."
+      }
+    },
+    "window-high": {
+      "who": "Oda penceresi",
+      "text": "Oda havasız ve sıcak. Pencere sonuna kadar açılıyor. Her dört dakikada bir uçak kalkıyor, cam titriyor.",
+      "left": {
+        "label": "Sonuna kadar aç",
+        "past": "Dokuzuncu kattaki pencereyi sonuna kadar açık bıraktın",
+        "after": "Serin hava yüzüne vuruyor. Esinti odanın kapısını çarpıyor."
+      },
+      "right": {
+        "label": "Kapalı tut",
+        "past": "Pencereyi kapalı tuttun",
+        "after": "Sıcak ama sessiz. Uçakları sadece görüyorsun."
+      }
+    },
+    "spa": {
+      "who": "Otelin bahçesi",
+      "text": "Resepsiyon kupona bir spa girişi eklemiş. Yağmur dinmiş, bahçe boş.",
+      "left": {
+        "label": "Spa’da sıcak havuz",
+        "past": "Spa’da sıcak havuza girdin",
+        "after": "Kasların gevşiyor. Başın biraz ağırlaşıyor."
+      },
+      "right": {
+        "label": "Bahçede yürü",
+        "past": "Bahçede kazan dairesinin tüttüğünü gördün",
+        "after": "Temiz hava iyi geliyor. Bodrum penceresinden kazan dairesi tütüyor, gaz gibi bir koku."
+      }
+    },
+    "news": {
+      "who": "Haberler",
+      "text": "“Kalkıştan önce altı yolcu uçaktan indi. İçlerinden biri her şeyi önceden biliyormuş gibi davranıyordu.”",
+      "left": {
+        "label": "Sonuna kadar izle",
+        "past": "Haberleri sonuna kadar izledin",
+        "after": "Yakıt hattında bir çatlak. Ölenlerin fotoğrafları birer birer geçiyor."
+      },
+      "right": {
+        "label": "Kapat",
+        "past": "Haberleri kapattın",
+        "after": "Oda sessizleşiyor. Bilmemek şimdilik daha iyi."
+      },
+      "variants": [
+        "“Kalkıştan önce sadece bir yolcu uçaktan indi.” Ekranda senin yüzün. Yanında ölenlerin fotoğrafları: 14B, Daniel."
+      ]
+    },
+    "dinner": {
+      "who": "Akşam yemeği",
+      "text": "Bütün gün doğru dürüst bir şey yemedin.",
+      "left": {
+        "label": "Oda servisi",
+        "past": "Odada yemek yedin",
+        "after": "Garson tepsiyi bırakırken söyleniyor: “Kazan yine bozuk, su ılık.” Yemek güzel, ama odada yalnızsın ve televizyon yine haberlerde."
+      },
+      "right": {
+        "label": "Otelin restoranı",
+        "past": "Restoranda yemek yedin",
+        "after": "Isınıyorsun. Mutfağın arkasından hafif bir gaz kokusu geliyor, garsonlar aldırmıyor."
+      }
+    },
+    "smell": {
+      "who": "Koridor",
+      "text": "Koridorda ağır bir gaz kokusu var. Bir yerden derin bir uğultu geliyor.",
+      "left": {
+        "label": "Resepsiyona haber ver",
+        "past": "Gaz kokusunu resepsiyona bildirdin",
+        "after": "“Eski kazan, normal,” diyorlar. Ama biri telsizle bodrumu arıyor ve zemin kattaki odaları kontrol etmeye gidiyorlar."
+      },
+      "right": {
+        "label": "Eski otel, boş ver",
+        "past": "Gaz kokusunu kimseye söylemedin",
+        "after": "Odana dönüyorsun. Koku bir süre burnundan gitmiyor."
+      },
+      "variants": [
+        "Koridorda ağır bir gaz kokusu var. Bahçede tüten o bodrum penceresi aklına geliyor."
+      ]
+    },
+    "bar": {
+      "who": "Otel barı",
+      "text": "Barmen bardakları siliyor. “Uzun bir gün müydü?”",
+      "left": {
+        "label": "Bir kadeh, sinirlerin için",
+        "past": "Akşam barda içtin",
+        "after": "Sıcaklık göğsüne yayılıyor. Bir kadeh daha geliyor."
+      },
+      "right": {
+        "label": "Su iç",
+        "past": "Barda sadece su içtin",
+        "after": "Soğuk su. Kafan berrak kalıyor."
+      },
+      "variants": [
+        "Daniel barda, önünde üçüncü kadeh. “Otur. Bugün içmeyeceksek ne zaman içeceğiz?”"
+      ]
+    },
+    "rooftop": {
+      "who": "Daniel",
+      "text": "Daniel çatı havuzunun yanında, sarhoş, cam korkuluğun üstüne oturmuş. Ayakları boşlukta sallanıyor.",
+      "left": {
+        "label": "Koş, onu geri çek",
+        "past": "Daniel’i korkuluktan çekmek için koştun",
+        "after": "Kolundan yakalayıp çekiyorsun. İkiniz de ıslak zemine düşüyorsunuz. Daniel gülüyor, sonra ağlıyor."
+      },
+      "right": {
+        "label": "Resepsiyonu ara",
+        "past": "Daniel’i kendin çekmedin, resepsiyonu aradın",
+        "after": "Görevliler çıktığında korkuluk boş."
+      }
+    },
+    "roof-alone": {
+      "who": "Çatı",
+      "text": "Çatıda kimse yok. Cam korkuluğun bir paneli gevşek, rüzgârda tıkırdıyor. Pist ışıl ışıl.",
+      "left": {
+        "label": "Camın kenarından pisti izle",
+        "past": "Gevşek cam korkuluğa yaslanıp pisti izledin",
+        "after": "Bir uçak kalkıyor. Gözlerin yanıyor ama bakmaya devam ediyorsun."
+      },
+      "right": {
+        "label": "Şezlongda otur",
+        "past": "Çatıda şezlongda oturdun",
+        "after": "Uçaklar başının üstünden geçiyor. Saymaya başlıyorsun."
+      }
+    },
+    "interview": {
+      "who": "Bayan Lang",
+      "text": "Ekranda üç kişi. “Baskı altında hızlı bir karar verdiğiniz bir anı anlatır mısınız?”",
+      "left": {
+        "label": "Uçaktan indiğini anlat",
+        "past": "Görüşmede uçaktan indiğini anlattın",
+        "after": "Bir sessizlik. Sonra Bayan Lang gülümsüyor: “Sanırım bundan iyi bir örnek olamaz.”"
+      },
+      "right": {
+        "label": "Ezber bir cevap ver",
+        "past": "Görüşmede ezber bir cevap verdin",
+        "after": "Kibarca not alıyorlar. Kimse gülümsemiyor."
+      }
+    },
+    "hotplug": {
+      "who": "Şarj aleti",
+      "text": "Görüşme bitti. Şarj aleti çok ısınmış, plastik kokuyor. Laptopun pili hâlâ %5.",
+      "left": {
+        "label": "Gece boyu şarjda kalsın",
+        "past": "Isınan şarj aletini gece boyu prizde bıraktın",
+        "after": "Fişe dokunmuyorsun. Vızıltı odanın sessizliğine karışıyor."
+      },
+      "right": {
+        "label": "Fişten çek",
+        "past": "Şarj aletini fişten çektin",
+        "after": "Plastik parmaklarını yakıyor. Laptop kararıyor."
+      }
+    },
+    "novak": {
+      "who": "Müfettiş Novak",
+      "text": "Kapıda Müfettiş Novak. “Panik atak, öyle mi? Kayıtlarda hiç panik atak yok. Konuşalım.”",
+      "left": {
+        "label": "İçeri al, her şeyi anlat",
+        "past": "Novak’a her şeyi anlattın, odanda kaldı",
+        "after": "Sana inanmıyor. Ama kalıyor, dinliyor, not alıyor. Bir saat geçiyor."
+      },
+      "right": {
+        "label": "Açma",
+        "past": "Novak’a kapıyı açmadın",
+        "after": "Bir süre kapıyı çalıyor. Sonra ayak sesleri uzaklaşıyor."
+      }
+    },
+    "bath": {
+      "who": "Banyo",
+      "text": "Kendine gelmek için bir şey lazım. Küvet büyük. Telefonun %8’de.",
+      "left": {
+        "label": "Sıcak banyo, telefon kenarda şarjda",
+        "past": "Küvetin kenarında telefonu şarj ederken banyo yaptın",
+        "after": "Sıcak su bütün günü üstünden alıyor. Gözlerin kapanmak üzere."
+      },
+      "right": {
+        "label": "Hızlı bir duş",
+        "past": "Hızlı bir duş aldın",
+        "after": "Beş dakika. Telefon odada kalıyor."
+      }
+    },
+    "sleep": {
+      "who": "Yatak",
+      "text": "Gözlerin kapanıyor. Yatak hiç bu kadar yumuşak görünmemişti.",
+      "left": {
+        "label": "Uzan",
+        "past": "Yatıp uyudun",
+        "after": "Uyuyakalıyorsun. Bir süre sonra burnuna bir koku geliyor."
+      },
+      "right": {
+        "label": "Ayakta kal",
+        "past": "Uyumadın, ayakta kaldın",
+        "after": "Pencerenin önünde uçakları izliyorsun. Bacakların ağırlaşıyor."
+      }
+    },
+    "alarm": {
+      "who": "Yangın alarmı",
+      "text": "Alarm çalıyor. Kapının altından duman sızıyor. Aşağıdan bir patlama sesi.",
+      "left": {
+        "label": "Koridora koş",
+        "past": "Yangında koridora koştun",
+        "after": "Koridor duman dolu. Eğilip ilerliyorsun."
+      },
+      "right": {
+        "label": "Odada kal, kapıya ıslak havlu",
+        "past": "Yangında odanda kaldın",
+        "after": "Havluları kapının altına dayıyorsun. Dakikalar sonra pencerede itfaiye merdiveni beliriyor."
+      },
+      "variants": [
+        "Alarm çalıyor. Novak ayağa fırlıyor: “Bu otelde yangın tatbikatına katıldım. Peşimden gel, ne dersem onu yap.”"
+      ]
+    },
+    "stairs-fire": {
+      "who": "Yangın merdiveni",
+      "text": "Merdivenlerde, dumanın içinde biri yerde: resepsiyon görevlisi. Bileğini burkmuş, seni görünce elini uzatıyor.",
+      "left": {
+        "label": "Onu kaldır, birlikte inin",
+        "past": "Dumanlı merdivende düşmüş görevliyi taşıdın",
+        "after": "Kolunu omzuna atıyorsun. Her basamak bir dakika sürüyor."
+      },
+      "right": {
+        "label": "Üstünden atla, in",
+        "past": "Düşmüş görevliyi merdivende bıraktın",
+        "after": "Arkandan adını bilmediğin biri sana sesleniyor. Dönmüyorsun."
+      }
+    },
+    "exit-door": {
+      "who": "Lobi",
+      "text": "Lobi duman dolu. Ana kapı ısıdan şişmiş, sıkışmış. Sağda mutfağın kapısı açık; arkasında bir çıkış daha olmalı.",
+      "left": {
+        "label": "Kapıyı omzunla it",
+        "past": "Sıkışan kapıyı omzunla açtın",
+        "after": "Bir, iki… üçüncüde kapı açılıyor ve yağmura düşüyorsun."
+      },
+      "right": {
+        "label": "Mutfaktan dolan",
+        "past": "Kazan dairesinin yanındaki mutfaktan geçtin",
+        "after": "Mutfaktan geçip arka kapıdan bahçeye çıkıyorsun."
+      },
+      "variants": [
+        "Lobi duman dolu. Ana kapı ısıdan şişmiş, sıkışmış. Görevli koluna asılıyor: “Mutfaktan değil! Kazan orada!”"
+      ]
+    },
+    "count": {
+      "who": "Otelin önü",
+      "text": "Herkes yağmurda, battaniyelerin altında sayılıyor. Dördüncü kattan bir temizlikçi kayıp. İtfaiyeciler ikinci bir yol arıyor.",
+      "left": {
+        "label": "İtfaiyecilerle geri gir",
+        "past": "Kayıp biri için itfaiyecilerle yanan otele girdin",
+        "after": "İkinci merdiveni gösteriyorsun. Dumandan önce sesini, sonra elini buluyorsunuz. Dışarı çıktığınızda itfaiyeciler sırtına vuruyor."
+      },
+      "right": {
+        "label": "İtfaiyeye söyle, bekle",
+        "past": "Dışarıda bekledin",
+        "after": "Kapıya bakıyorsun. Dakikalar geçmek bilmiyor."
+      },
+      "variants": [
+        "Herkes yağmurda, battaniyelerin altında sayılıyor. Daniel yok. Onun odası seninkinin yanındaydı. İtfaiyeciler ikinci bir yol arıyor.",
+        "Herkes yağmurda, battaniyelerin altında sayılıyor. Merdivende bıraktığın görevli yok. İtfaiyeciler ikinci bir yol arıyor."
+      ]
+    },
+    "boarding": {
+      "who": "Havayolu görevlisi",
+      "text": "Bir havayolu görevlisi battaniyeler ve biniş kartları dağıtıyor. “Sabah 06:00 uçağı. Aynı koltuk: 14C.”",
+      "left": {
+        "label": "Kartı al",
+        "past": "Sabah 06:00 uçağının kartını aldın",
+        "after": "Kart elinde ıslanıyor. 14C."
+      },
+      "right": {
+        "label": "“Bir daha asla uçmam”",
+        "past": "Biniş kartını yırttın",
+        "after": "Kartı ikiye yırtıyorsun. Görevli omuz silkip yanındakine geçiyor."
+      }
+    }
+  },
+  "endings": {
+    "escalator": {
+      "title": "Yürüyen Merdiven",
+      "text": "Gözün telefondaki videodaydı. Çözük bağcığın basamağın dişlerine takıldı ve seni aşağı çekti.",
+      "hint": "Ayakkabı bağlamak on saniye sürer.",
+      "omen": "Bir şey ayağını çekiyor."
+    },
+    "windscreen": {
+      "title": "Ön Cam",
+      "text": "“Hah! Videodaki sensin!” Şoför arkasına döndü. İtfaiye dar yolda karşıdaydı ve arka koltukta kemer yoktu.",
+      "hint": "Ünlü olmanın da bir bedeli var.",
+      "omen": "Biri seni tanıyor."
+    },
+    "rooftop": {
+      "title": "Çatı",
+      "text": "Daniel’i çektin, o yere düştü. Sen içtiğin kadehlerle dengeni kaybettin ve korkuluğun öbür tarafına geçtin.",
+      "hint": "Kahramanlar ayık olmalı.",
+      "omen": "Dünya biraz dönüyor."
+    },
+    "roofAlone": {
+      "title": "Cam Korkuluk",
+      "text": "Barda içtiklerin başını döndürdü. Gevşek cam panel ağırlığını taşıyamadı.",
+      "hint": "Tıkırdayan cam bir şey söylüyordu.",
+      "omen": "Bir cam tıkırdıyor."
+    },
+    "bath": {
+      "title": "Küvet",
+      "text": "Beş euroluk şarj aleti suya değdi. Küvetteydin.",
+      "hint": "Ucuz olanın bedeli sonradan ödenir.",
+      "omen": "Bir vızıltı duyuyorsun."
+    },
+    "ringing": {
+      "title": "Çalan Telefon",
+      "text": "Kız kardeşin sesini duyamadığı için durmadan aradı. Islak elinle şarjdaki telefona uzandın.",
+      "hint": "Tek bir telefon yeterdi.",
+      "omen": "Telefon susmuyor."
+    },
+    "drown": {
+      "title": "Küvette Uyku",
+      "text": "Barda içtiklerin ve sıcak su seni uyuttu. Su yavaş yavaş yükseldi.",
+      "hint": "Duş beş dakika sürerdi.",
+      "omen": "Gözlerin kapanıyor."
+    },
+    "chargerfire": {
+      "title": "Şarj Aleti",
+      "text": "Beş euroluk alet gece boyu prizde ısındı. Uyurken ilk kıvılcım halıya düştü.",
+      "hint": "Plastik kokusu bir uyarıydı.",
+      "omen": "Bir yerden plastik kokusu geliyor."
+    },
+    "smoke": {
+      "title": "Duman",
+      "text": "Yangın merdiveninin kapısı kapanmıyordu ve duman dokuzuncu kata kadar doldu. Başka bir merdiven bilmiyordun.",
+      "hint": "Resepsiyon kapıdan bahsetmişti.",
+      "omen": "Merdivenden duman yükseliyor."
+    },
+    "draft": {
+      "title": "Açık Pencere",
+      "text": "Pencere sonuna kadar açıktı. Esinti, dumanı ıslak havluların altından odaya çekti.",
+      "hint": "Kapı çarptığında anlamalıydın.",
+      "omen": "Bir esinti var."
+    },
+    "boiler": {
+      "title": "Kazan Dairesi",
+      "text": "Yangın duvarın öbür tarafındaydı. Kimse kazana bakmamıştı, kimse senin kapını çalmadı.",
+      "hint": "Gaz kokusunu söylemek bir dakika sürerdi.",
+      "omen": "Duvar sıcak."
+    },
+    "stairsFall": {
+      "title": "Yangın Merdiveni",
+      "text": "İçtiğin kadehler bacaklarını yumuşatmıştı. Görevliyle birlikte merdivenlerden yuvarlandınız.",
+      "hint": "İyi niyet ayık bacak ister.",
+      "omen": "Basamaklar dönüyor."
+    },
+    "kitchenFire": {
+      "title": "Mutfak",
+      "text": "Kazan mutfağın hemen arkasındaydı. Kimse gaz kokusunu söylememişti ve sana “Oradan değil” diyecek kimse yanında yoktu.",
+      "hint": "Merdivende bıraktığın görevli yolu biliyordu.",
+      "omen": "Mutfaktan bir tıslama geliyor."
+    },
+    "backIn": {
+      "title": "Geri Dönüş",
+      "text": "Dumanın içinde itfaiyecileri kaybettin. Otelin içini bilmiyordun.",
+      "hint": "Öğleden sonra oteli dolaşabilirdin.",
+      "omen": "Her koridor birbirine benziyor."
+    },
+    "panic-work": {
+      "title": "Terminal",
+      "text": "Nefesin daraldı ve koşmaya başladın. Bir bavul arabası seni yere serdi.",
+      "hint": "Uçaktan kaçtın. Kendinden değil.",
+      "omen": "Kalbin çok hızlı atıyor."
+    },
+    "panic-street": {
+      "title": "Yağmurda",
+      "text": "Nefesin daraldı ve yola koştun. Farları son anda gördün.",
+      "hint": "Bazen en büyük tehlike kendi kafandır.",
+      "omen": "Kalbin çok hızlı atıyor."
+    },
+    "panic-home": {
+      "title": "Dokuzuncu Kattan",
+      "text": "Nefesin daraldı ve otelin merdivenlerine koştun. Basamağı göremedin.",
+      "hint": "Gün seni değil, sen günü kaybettin.",
+      "omen": "Kalbin çok hızlı atıyor."
+    },
+    "collapse-work": {
+      "title": "Bagaj Bandı",
+      "text": "Başın döndü ve bagaj bandının kenarına düştün.",
+      "hint": "Beden de bir yerde pes eder.",
+      "omen": "Bacakların titriyor."
+    },
+    "collapse-street": {
+      "title": "Kaldırım",
+      "text": "Başın döndü ve ıslak kaldırımın kenarına düştün.",
+      "hint": "Beden de bir yerde pes eder.",
+      "omen": "Bacakların titriyor."
+    },
+    "collapse-home": {
+      "title": "Banyo Zemini",
+      "text": "Başın döndü ve banyonun fayansına düştün.",
+      "hint": "Beden de bir yerde pes eder.",
+      "omen": "Bacakların titriyor."
+    },
+    "two": {
+      "title": "İki Kişi",
+      "text": "00:00. Daniel yanında, battaniyenin altında titriyor. Onu iki kez kurtardın.",
+      "hint": "Ölüm bugün iki kez boş döndü."
+    },
+    "one-more": {
+      "title": "Bir Kişi Daha",
+      "text": "00:00. Dumandan çıkardığın kişi ambulansta, nefes alıyor. Sen de.",
+      "hint": "Bugün listeden bir isim silindi."
+    },
+    "seat": {
+      "title": "Koltuk 14C",
+      "text": "00:00. Hayattasın. Cebinde ıslak bir biniş kartı var: 06:00, koltuk 14C.",
+      "hint": "Aynı koltuk. Aynı ölüm mü?"
+    },
+    "ground": {
+      "title": "Yerde",
+      "text": "00:00. Hayattasın. Uçaklar üstünden geçmeye devam ediyor, ama sen yerdesin.",
+      "hint": "Bu sefer."
+    }
+  }
+}

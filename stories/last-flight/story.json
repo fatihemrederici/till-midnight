@@ -1,0 +1,1014 @@
+{
+  "formatVersion": 2,
+  "id": "last-flight",
+  "start": {
+    "mind": 3,
+    "body": 3
+  },
+  "maxMeter": 5,
+  "meters": [
+    {
+      "id": "mind",
+      "emoji": "🧠",
+      "endings": {
+        "street": "panic-street",
+        "home": "panic-home",
+        "work": "panic-work"
+      }
+    },
+    {
+      "id": "body",
+      "emoji": "❤️",
+      "endings": {
+        "street": "collapse-street",
+        "home": "collapse-home",
+        "work": "collapse-work"
+      }
+    }
+  ],
+  "traps": [
+    "lace",
+    "video",
+    "noBelt",
+    "cheap",
+    "texted",
+    "drink",
+    "high",
+    "low",
+    "openWindow",
+    "ignored",
+    "charging",
+    "knowExit",
+    "helped",
+    "reported",
+    "novakIn"
+  ],
+  "cards": [
+    {
+      "id": "cabin",
+      "time": "07:31",
+      "place": "work",
+      "emoji": "✈️",
+      "image": "cabin.jpg",
+      "left": {
+        "effects": {
+          "mind": -1
+        },
+        "set": {
+          "warned": true
+        }
+      },
+      "right": {
+        "set": {
+          "quiet": true
+        }
+      }
+    },
+    {
+      "id": "jetbridge",
+      "time": "07:38",
+      "place": "work",
+      "emoji": "👟",
+      "image": "jetbridge.jpg",
+      "left": {
+        "set": {
+          "tied": true
+        }
+      },
+      "right": {
+        "set": {
+          "lace": true
+        }
+      }
+    },
+    {
+      "id": "window",
+      "time": "07:52",
+      "place": "work",
+      "emoji": "🔥",
+      "image": "window.jpg",
+      "left": {
+        "effects": {
+          "mind": -1
+        },
+        "set": {
+          "video": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "looked": true
+        }
+      }
+    },
+    {
+      "id": "escalator",
+      "time": "08:10",
+      "place": "work",
+      "emoji": "🛗",
+      "image": "escalator.jpg",
+      "left": {
+        "deaths": [
+          {
+            "ending": "escalator",
+            "when": {
+              "lace": true,
+              "video": true
+            }
+          }
+        ]
+      },
+      "right": {
+        "effects": {
+          "body": -1
+        },
+        "set": {
+          "late": true
+        }
+      }
+    },
+    {
+      "id": "police",
+      "time": "08:40",
+      "place": "work",
+      "emoji": "🕵️",
+      "image": "police.jpg",
+      "variants": [
+        {
+          "when": {
+            "video": true
+          }
+        },
+        {
+          "when": {
+            "warned": true
+          }
+        }
+      ],
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "held": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        },
+        "set": {
+          "lied": true
+        }
+      }
+    },
+    {
+      "id": "cafe",
+      "time": "09:40",
+      "place": "work",
+      "emoji": "☕",
+      "image": "cafe.jpg",
+      "when": {
+        "held": false
+      },
+      "left": {
+        "effects": {
+          "body": 1
+        },
+        "set": {
+          "ate": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "coffee": true
+        }
+      }
+    },
+    {
+      "id": "recruiter",
+      "time": "10:20",
+      "place": "work",
+      "emoji": "📞",
+      "image": "recruiter.jpg",
+      "variants": [
+        {
+          "when": {
+            "held": true
+          }
+        }
+      ],
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "online": true
+        }
+      },
+      "right": {
+        "set": {
+          "declined": true
+        }
+      }
+    },
+    {
+      "id": "airline",
+      "time": "11:00",
+      "place": "work",
+      "emoji": "🎫",
+      "image": "airline.jpg",
+      "variants": [
+        {
+          "when": {
+            "late": true
+          }
+        }
+      ],
+      "left": {
+        "set": {
+          "shuttle": true
+        }
+      },
+      "right": {
+        "set": {
+          "noBelt": true
+        }
+      }
+    },
+    {
+      "id": "ride",
+      "time": "11:40",
+      "place": "street",
+      "emoji": "🚖",
+      "image": "ride.jpg",
+      "when": {
+        "noBelt": true
+      },
+      "left": {
+        "effects": {
+          "body": -1
+        },
+        "set": {
+          "walked": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": 1
+        },
+        "deaths": [
+          {
+            "ending": "windscreen",
+            "when": {
+              "video": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "reception",
+      "time": "12:30",
+      "place": "home",
+      "emoji": "🛎️",
+      "image": "reception.jpg",
+      "variants": [
+        {
+          "when": {
+            "warned": true
+          }
+        }
+      ],
+      "left": {
+        "set": {
+          "high": true
+        }
+      },
+      "right": {
+        "set": {
+          "low": true
+        }
+      }
+    },
+    {
+      "id": "charger",
+      "time": "12:45",
+      "place": "home",
+      "emoji": "🔌",
+      "image": "charger.jpg",
+      "when": {
+        "online": true
+      },
+      "left": {
+        "set": {
+          "cheap": true
+        }
+      },
+      "right": {
+        "effects": {
+          "body": -1
+        },
+        "set": {
+          "brand": true
+        }
+      }
+    },
+    {
+      "id": "sister",
+      "time": "13:15",
+      "place": "home",
+      "emoji": "📱",
+      "image": "sister.jpg",
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "called": true
+        }
+      },
+      "right": {
+        "set": {
+          "texted": true
+        }
+      }
+    },
+    {
+      "id": "rest",
+      "time": "14:30",
+      "place": "home",
+      "emoji": "🛏️",
+      "image": "rest.jpg",
+      "left": {
+        "effects": {
+          "mind": -1,
+          "body": 2
+        },
+        "set": {
+          "slept": true
+        }
+      },
+      "right": {
+        "set": {
+          "knowExit": true
+        }
+      }
+    },
+    {
+      "id": "window-high",
+      "time": "16:00",
+      "place": "home",
+      "emoji": "🪟",
+      "image": "window-high.jpg",
+      "when": {
+        "high": true
+      },
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "openWindow": true
+        }
+      },
+      "right": {
+        "set": {
+          "shut": true
+        }
+      }
+    },
+    {
+      "id": "spa",
+      "time": "16:30",
+      "place": "home",
+      "emoji": "🌿",
+      "image": "spa.jpg",
+      "left": {
+        "effects": {
+          "body": 1
+        },
+        "set": {
+          "spa": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "garden": true
+        }
+      }
+    },
+    {
+      "id": "news",
+      "time": "17:00",
+      "place": "home",
+      "emoji": "📺",
+      "image": "news.jpg",
+      "variants": [
+        {
+          "when": {
+            "quiet": true
+          }
+        }
+      ],
+      "left": {
+        "effects": {
+          "mind": -1
+        },
+        "set": {
+          "watched": true
+        }
+      },
+      "right": {
+        "set": {
+          "skipped": true
+        }
+      }
+    },
+    {
+      "id": "dinner",
+      "time": "18:30",
+      "place": "home",
+      "emoji": "🍽️",
+      "image": "dinner.jpg",
+      "left": {
+        "effects": {
+          "body": 1,
+          "mind": -1
+        },
+        "set": {
+          "roomService": true
+        }
+      },
+      "right": {
+        "effects": {
+          "body": 1,
+          "mind": 1
+        },
+        "set": {
+          "restaurant": true
+        }
+      }
+    },
+    {
+      "id": "smell",
+      "time": "19:30",
+      "place": "home",
+      "emoji": "👃",
+      "image": "smell.jpg",
+      "variants": [
+        {
+          "when": {
+            "garden": true
+          }
+        }
+      ],
+      "left": {
+        "set": {
+          "reported": true
+        }
+      },
+      "right": {
+        "set": {
+          "ignored": true
+        }
+      }
+    },
+    {
+      "id": "bar",
+      "time": "19:45",
+      "place": "home",
+      "emoji": "🥃",
+      "image": "bar.jpg",
+      "variants": [
+        {
+          "when": {
+            "warned": true
+          }
+        }
+      ],
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "drink": true
+        }
+      },
+      "right": {
+        "set": {
+          "sober": true
+        }
+      }
+    },
+    {
+      "id": "rooftop",
+      "time": "20:30",
+      "place": "home",
+      "emoji": "🌃",
+      "image": "rooftop.jpg",
+      "when": {
+        "warned": true
+      },
+      "left": {
+        "effects": {
+          "body": -1
+        },
+        "set": {
+          "saved": true
+        },
+        "deaths": [
+          {
+            "ending": "rooftop",
+            "when": {
+              "drink": true
+            }
+          }
+        ]
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        },
+        "set": {
+          "lost": true
+        }
+      }
+    },
+    {
+      "id": "roof-alone",
+      "time": "20:30",
+      "place": "home",
+      "emoji": "🌃",
+      "image": "roof-alone.jpg",
+      "when": {
+        "quiet": true
+      },
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "edge": true
+        },
+        "deaths": [
+          {
+            "ending": "roofAlone",
+            "when": {
+              "drink": true
+            }
+          }
+        ]
+      },
+      "right": {
+        "set": {
+          "lounger": true
+        }
+      }
+    },
+    {
+      "id": "interview",
+      "time": "21:00",
+      "place": "home",
+      "emoji": "💻",
+      "image": "interview.jpg",
+      "when": {
+        "online": true
+      },
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "honest": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        },
+        "set": {
+          "textbook": true
+        }
+      }
+    },
+    {
+      "id": "hotplug",
+      "time": "21:40",
+      "place": "home",
+      "emoji": "🔋",
+      "image": "hotplug.jpg",
+      "when": {
+        "online": true
+      },
+      "left": {
+        "set": {
+          "charging": true
+        }
+      },
+      "right": {
+        "set": {
+          "unplugged": true
+        }
+      }
+    },
+    {
+      "id": "novak",
+      "time": "22:10",
+      "place": "home",
+      "emoji": "🚪",
+      "image": "novak.jpg",
+      "when": {
+        "lied": true
+      },
+      "left": {
+        "effects": {
+          "mind": 1
+        },
+        "set": {
+          "novakIn": true
+        }
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        },
+        "set": {
+          "hid": true
+        }
+      }
+    },
+    {
+      "id": "bath",
+      "time": "22:30",
+      "place": "home",
+      "emoji": "🛁",
+      "image": "bath.jpg",
+      "left": {
+        "effects": {
+          "mind": 1,
+          "body": 1
+        },
+        "set": {
+          "bathPhone": true
+        },
+        "deaths": [
+          {
+            "ending": "bath",
+            "when": {
+              "cheap": true
+            }
+          },
+          {
+            "ending": "ringing",
+            "when": {
+              "texted": true
+            }
+          },
+          {
+            "ending": "drown",
+            "when": {
+              "drink": true
+            }
+          }
+        ]
+      },
+      "right": {
+        "set": {
+          "shower": true
+        }
+      }
+    },
+    {
+      "id": "sleep",
+      "time": "23:00",
+      "place": "home",
+      "emoji": "🌙",
+      "image": "sleep.jpg",
+      "left": {
+        "effects": {
+          "body": 1
+        },
+        "deaths": [
+          {
+            "ending": "chargerfire",
+            "when": {
+              "cheap": true,
+              "charging": true
+            }
+          }
+        ]
+      },
+      "right": {
+        "effects": {
+          "body": -1
+        },
+        "set": {
+          "awake": true
+        }
+      }
+    },
+    {
+      "id": "alarm",
+      "time": "23:20",
+      "place": "home",
+      "emoji": "🚨",
+      "image": "alarm.jpg",
+      "variants": [
+        {
+          "when": {
+            "novakIn": true
+          }
+        }
+      ],
+      "left": {
+        "set": {
+          "ran": true,
+          "fire": true
+        },
+        "deaths": [
+          {
+            "ending": "smoke",
+            "when": {
+              "high": true,
+              "knowExit": false,
+              "novakIn": false
+            }
+          }
+        ]
+      },
+      "right": {
+        "set": {
+          "stayed": true,
+          "fire": true
+        },
+        "deaths": [
+          {
+            "ending": "boiler",
+            "when": {
+              "low": true,
+              "reported": false,
+              "novakIn": false
+            }
+          },
+          {
+            "ending": "draft",
+            "when": {
+              "openWindow": true,
+              "novakIn": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "stairs-fire",
+      "time": "23:28",
+      "place": "home",
+      "emoji": "🧯",
+      "image": "stairs-fire.jpg",
+      "when": {
+        "ran": true,
+        "high": true
+      },
+      "left": {
+        "effects": {
+          "body": -1
+        },
+        "set": {
+          "helped": true
+        },
+        "deaths": [
+          {
+            "ending": "stairsFall",
+            "when": {
+              "drink": true
+            }
+          }
+        ]
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        },
+        "set": {
+          "leftHer": true
+        }
+      }
+    },
+    {
+      "id": "exit-door",
+      "time": "23:35",
+      "place": "home",
+      "emoji": "🚪",
+      "image": "exit-door.jpg",
+      "when": {
+        "ran": true
+      },
+      "variants": [
+        {
+          "when": {
+            "helped": true
+          }
+        }
+      ],
+      "left": {
+        "effects": {
+          "body": -1
+        },
+        "set": {
+          "pushed": true
+        }
+      },
+      "right": {
+        "set": {
+          "kitchen": true
+        },
+        "deaths": [
+          {
+            "ending": "kitchenFire",
+            "when": {
+              "ignored": true,
+              "helped": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "count",
+      "time": "23:45",
+      "place": "street",
+      "emoji": "🧑‍🚒",
+      "image": "count.jpg",
+      "variants": [
+        {
+          "when": {
+            "saved": true
+          }
+        },
+        {
+          "when": {
+            "leftHer": true
+          }
+        }
+      ],
+      "left": {
+        "set": {
+          "rescued": true
+        },
+        "deaths": [
+          {
+            "ending": "backIn",
+            "when": {
+              "fire": true,
+              "knowExit": false
+            }
+          }
+        ]
+      },
+      "right": {
+        "effects": {
+          "mind": -1
+        },
+        "set": {
+          "waitedOut": true
+        }
+      }
+    },
+    {
+      "id": "boarding",
+      "time": "23:58",
+      "place": "street",
+      "emoji": "🎟️",
+      "image": "boarding.jpg",
+      "left": {
+        "set": {
+          "rebooked": true
+        }
+      },
+      "right": {
+        "set": {
+          "grounded": true
+        }
+      }
+    }
+  ],
+  "endings": [
+    {
+      "id": "escalator",
+      "won": false
+    },
+    {
+      "id": "windscreen",
+      "won": false
+    },
+    {
+      "id": "rooftop",
+      "won": false
+    },
+    {
+      "id": "roofAlone",
+      "won": false
+    },
+    {
+      "id": "bath",
+      "won": false
+    },
+    {
+      "id": "ringing",
+      "won": false
+    },
+    {
+      "id": "drown",
+      "won": false
+    },
+    {
+      "id": "chargerfire",
+      "won": false
+    },
+    {
+      "id": "smoke",
+      "won": false
+    },
+    {
+      "id": "draft",
+      "won": false
+    },
+    {
+      "id": "boiler",
+      "won": false
+    },
+    {
+      "id": "stairsFall",
+      "won": false
+    },
+    {
+      "id": "kitchenFire",
+      "won": false
+    },
+    {
+      "id": "backIn",
+      "won": false
+    },
+    {
+      "id": "panic-work",
+      "won": false
+    },
+    {
+      "id": "panic-street",
+      "won": false
+    },
+    {
+      "id": "panic-home",
+      "won": false
+    },
+    {
+      "id": "collapse-work",
+      "won": false
+    },
+    {
+      "id": "collapse-street",
+      "won": false
+    },
+    {
+      "id": "collapse-home",
+      "won": false
+    },
+    {
+      "id": "two",
+      "won": true,
+      "when": {
+        "saved": true,
+        "rescued": true
+      }
+    },
+    {
+      "id": "one-more",
+      "won": true,
+      "when": {
+        "rescued": true
+      }
+    },
+    {
+      "id": "seat",
+      "won": true,
+      "when": {
+        "rebooked": true
+      }
+    },
+    {
+      "id": "ground",
+      "won": true
+    }
+  ]
+}
