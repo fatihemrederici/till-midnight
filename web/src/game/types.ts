@@ -76,6 +76,8 @@ export type StorySummary = { id: string; title: Text; deaths: string[] };
 // Hikâyenin tamamı.
 export type Story = {
   formatVersion: number;
+  // Bölümün görünüşü, örneğin "flight". Yoksa varsayılan görünüş.
+  theme?: string;
   id: string;
   // Kuralların parmak izi. Sunucu, koşunun hangi kurallarla oynandığını bundan anlar.
   version: string;

@@ -58,6 +58,10 @@ public class StoryValidator {
         if (story.formatVersion() != 2) {
             errors.add("formatVersion must be 2");
         }
+        // Görünüş adı: küçük harf ve tire. Web, bu adla bölümün stilini seçer.
+        if (story.theme() != null && !story.theme().matches("[a-z-]+")) {
+            errors.add("theme must look like flight");
+        }
         // Kart sayısı.
         if (story.cards().isEmpty() || story.cards().size() > MAX_CARDS) {
             errors.add("A story must have between 1 and " + MAX_CARDS + " cards");

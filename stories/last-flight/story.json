@@ -1,6 +1,7 @@
 {
   "formatVersion": 2,
   "id": "last-flight",
+  "theme": "flight",
   "start": {
     "mind": 3,
     "body": 3

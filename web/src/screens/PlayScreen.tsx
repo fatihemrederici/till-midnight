@@ -86,6 +86,7 @@ export function PlayScreen({
       data-body={effects.body}
       data-late={late}
       data-phase={dayPhase(time)}
+      data-look={story.theme ?? "classic"}
     >
       <Eyelids level={effects.body} />
       <Blink count={effects.blink.count} deep={effects.blink.deep} />

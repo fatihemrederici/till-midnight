@@ -17,6 +17,8 @@ public record Story(
         String version,
         // Başlık, üç dilde.
         Map<String, String> title,
+        // Bölümün görünüşü, örneğin "flight". Yoksa oyunun varsayılan görünüşü.
+        String theme,
         // Başlangıçtaki kehanet cümleleri.
         List<Map<String, String>> vision,
         // Kehanetten uyanış cümlesi.
@@ -39,7 +41,7 @@ public record Story(
     // Aynı hikâyeyi bulunabilen ölümlerle döndürür.
     public Story withDeaths(List<String> found) {
         // Record değişmez, bu yüzden yeni bir kopya.
-        return new Story(formatVersion, id, version, title, vision, wake, start, maxMeter, meters, traps, cards, endings, found);
+        return new Story(formatVersion, id, version, title, theme, vision, wake, start, maxMeter, meters, traps, cards, endings, found);
     }
 
     // Kartların geçebileceği yerler. Gösterge ölümü bu yere göre seçilir.

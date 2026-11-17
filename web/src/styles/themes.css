@@ -1,0 +1,251 @@
+/* Bölümlere özel görünüşler. Bölüm dosyasındaki "theme" alanı .app'e data-look olarak yazılır. */
+/* Varsayılan görünüş (classic) world.css'te; buradaki kurallar sadece kendi temasında çalışır. */
+
+/* ========== Son Uçuş: Havayolu evrakı ========== */
+.app[data-look="flight"] {
+  /* Havayolunun lacivert rengi ve kalkış panosunun kehribarı. */
+  --airline: #1d3557;
+  --board: #ffb547;
+  --board-glow: rgb(255 170 60 / 0.55);
+  --board-off: #1c1a16;
+}
+
+/* ---------- Gökyüzü: Pist grisi, otel koridorunun sarı ışığı, yangın. ---------- */
+.app[data-look="flight"][data-phase="morning"] {
+  --sky-top: #4b5761;
+  --sky-bottom: #111518;
+}
+.app[data-look="flight"][data-phase="noon"] {
+  --sky-top: #55595c;
+  --sky-bottom: #141516;
+}
+.app[data-look="flight"][data-phase="afternoon"] {
+  --sky-top: #5d4a33;
+  --sky-bottom: #17110b;
+}
+.app[data-look="flight"][data-phase="night"] {
+  --sky-top: #4a3818;
+  --sky-bottom: #100b04;
+}
+.app[data-look="flight"][data-phase="late"] {
+  --sky-top: #6b1f0c;
+  --sky-bottom: #140603;
+}
+
+/* ---------- Saat: Kalkış panosu gibi noktalı, kehribar rakamlar. ---------- */
+.app[data-look="flight"] .digit {
+  background: #0d0c0a;
+  color: var(--board);
+  text-shadow: 0 0 8px var(--board-glow);
+}
+/* Rakamın üstüne ince bir ızgara: Işıklı noktalardan oluşmuş gibi. */
+.app[data-look="flight"] .digit::after {
+  inset: 0;
+  height: auto;
+  background:
+    repeating-linear-gradient(0deg, rgb(0 0 0 / 0.6) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgb(0 0 0 / 0.6) 0 1px, transparent 1px 4px);
+}
+.app[data-look="flight"] .colon {
+  color: var(--board);
+  text-shadow: 0 0 8px var(--board-glow);
+}
+.app[data-look="flight"] .time[data-lie="true"] .digit {
+  color: #ff6a4d;
+}
+
+/* ---------- Göstergeler: Panodaki küçük ışıklar. ---------- */
+.app[data-look="flight"] .pip {
+  background: var(--board-off);
+}
+.app[data-look="flight"] .pip[data-on="true"] {
+  background: var(--board);
+  box-shadow: 0 0 6px var(--board-glow);
+}
+.app[data-look="flight"] .meter[data-low="true"] .pip[data-on="true"] {
+  background: var(--blood);
+  box-shadow: 0 0 6px rgb(194 42 29 / 0.6);
+}
+
+/* ---------- Bütün kartlar: Köşesi kıvrık kâğıt yerine düz evrak. ---------- */
+.app[data-look="flight"] .card.live {
+  clip-path: none;
+}
+/* Arkadaki kart da düz evrak. */
+.app[data-look="flight"] .card.back {
+  border-radius: 14px;
+  clip-path: none;
+}
+/* Fotoğraf evrakın üstüne basılmış: Bant yok, eğiklik yok. */
+.app[data-look="flight"] .card.live .photo {
+  padding: 6px;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.12);
+  transform: none;
+}
+.app[data-look="flight"] .card.live .photo::before {
+  display: none;
+}
+
+/* ---------- Havalimanı: Biniş kartı. ---------- */
+/* Lacivert başlık bandı, sağda delikli çizgiyle ayrılmış barkodlu kupon, kenarlarda kesik. */
+.app[data-look="flight"] .card.live[data-place="work"] {
+  --stub: 62px;
+  padding-right: calc(18px + var(--stub));
+  border-radius: 14px;
+  background: #f6f4ee;
+  -webkit-mask:
+    radial-gradient(circle at calc(100% - var(--stub)) 0, transparent 11px, #000 11.5px) top / 100%
+      51% no-repeat,
+    radial-gradient(circle at calc(100% - var(--stub)) 100%, transparent 11px, #000 11.5px) bottom /
+      100% 51% no-repeat;
+  mask:
+    radial-gradient(circle at calc(100% - var(--stub)) 0, transparent 11px, #000 11.5px) top / 100%
+      51% no-repeat,
+    radial-gradient(circle at calc(100% - var(--stub)) 100%, transparent 11px, #000 11.5px) bottom /
+      100% 51% no-repeat;
+}
+/* Başlık bandı: Gölgeyle kartın kenarlarına kadar uzar, kart maskesi taşanı keser. */
+.app[data-look="flight"] .card.live[data-place="work"] .who {
+  position: relative;
+  z-index: 1;
+  padding: 4px 0 8px;
+  border: 0;
+  background: var(--airline);
+  box-shadow: 0 0 0 100vmax var(--airline);
+  clip-path: inset(-100vmax -100vmax 0 -100vmax);
+  color: #f6f4ee;
+  font-family: var(--display);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+/* Bandın altındaki küçük alanlar. */
+.app[data-look="flight"] .card.live[data-place="work"] .who::after {
+  content: "BOARDING PASS · GATE B7 · 14C";
+  display: block;
+  margin-top: 6px;
+  font-family: var(--type);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+}
+/* Kupon: Delikli çizgi ve dikey barkod. */
+.app[data-look="flight"] .card.live[data-place="work"]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--stub);
+  border-left: 2px dashed rgb(29 53 87 / 0.35);
+  background:
+    repeating-linear-gradient(
+        0deg,
+        #2a2622 0 2px,
+        transparent 2px 4px,
+        #2a2622 4px 5px,
+        transparent 5px 8px,
+        #2a2622 8px 11px,
+        transparent 11px 13px
+      )
+      center 40% / 26px 55% no-repeat,
+    #efece4;
+  pointer-events: none;
+}
+
+/* ---------- Dışarısı: Islak bir taksi makbuzu. ---------- */
+/* Termal kâğıt, solmuş mürekkep, yırtılmış zikzak kenarlar. */
+.app[data-look="flight"] .card.live[data-place="street"] {
+  padding-bottom: 28px;
+  background: #eeece6;
+  color: #3e3a34;
+  -webkit-mask:
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 18px 51%
+      repeat-x,
+    conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / 18px 51% repeat-x;
+  mask:
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 18px 51%
+      repeat-x,
+    conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / 18px 51% repeat-x;
+}
+.app[data-look="flight"] .card.live[data-place="street"] .who {
+  padding: 8px 0 10px;
+  border-bottom: 2px dashed rgb(62 58 52 / 0.35);
+  font-family: var(--type);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.app[data-look="flight"] .card.live[data-place="street"] .who::before,
+.app[data-look="flight"] .card.live[data-place="street"] .who::after {
+  content: " * ";
+}
+.app[data-look="flight"] .card.live[data-place="street"] .text {
+  font-family: var(--type);
+}
+/* Makbuz fotoğrafı: Termal baskı gibi soluk. */
+.app[data-look="flight"] .card.live[data-place="street"] .photo img {
+  filter: contrast(0.85) brightness(1.08);
+}
+
+/* ---------- Otel: Antetli kâğıt. ---------- */
+/* Krem kalın kâğıt, üstte otelin adı, altın renkli çift çizgi. Defter çizgileri ve bant yok. */
+.app[data-look="flight"] .card.live[data-place="home"] {
+  padding-top: 44px;
+  padding-left: 18px;
+  background-color: #f7f1e3;
+  background-image: none;
+  box-shadow: inset 0 0 0 1px rgb(138 109 59 / 0.25);
+}
+.app[data-look="flight"] .card.live[data-place="home"]::before {
+  content: "✦  RUNWAY HOTEL  ✦";
+  top: 16px;
+  width: auto;
+  height: auto;
+  background: none;
+  box-shadow: none;
+  color: #8a6d3b;
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.32em;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+.app[data-look="flight"] .card.live[data-place="home"] .who {
+  padding-bottom: 10px;
+  border-bottom: 3px double rgb(138 109 59 / 0.55);
+  font-family: var(--body);
+  font-style: italic;
+  font-weight: 600;
+}
+.app[data-look="flight"] .card.live[data-place="home"] .photo {
+  box-shadow: 0 0 0 1px rgb(138 109 59 / 0.5);
+}
+
+/* ---------- Geniş ekran: Kart iç boşlukları desktop.css'teki gibi. ---------- */
+@media (min-width: 900px) and (min-aspect-ratio: 1/1) {
+  .app[data-look="flight"] .card.live[data-place="work"] {
+    --stub: 92px;
+    padding-right: calc(40px + var(--stub));
+  }
+  .app[data-look="flight"] .card.live[data-place="work"] .who::after {
+    font-size: 14px;
+  }
+  .app[data-look="flight"] .card.live[data-place="work"]::after {
+    background-size:
+      40px 55%,
+      auto;
+  }
+  .app[data-look="flight"] .card.live[data-place="home"] {
+    padding-top: 58px;
+    padding-left: 40px;
+  }
+  .app[data-look="flight"] .card.live[data-place="home"]::before {
+    top: 22px;
+    font-size: 15px;
+  }
+}

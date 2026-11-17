@@ -38,6 +38,7 @@ The server checks every chapter when it starts and refuses to run with a broken 
 | Field | Meaning |
 | --- | --- |
 | `formatVersion` | `2` |
+| `theme` | Optional look of the chapter, like `flight`. Without it the chapter uses the default look. The web client styles each theme in `web/src/styles/themes.css`. |
 | `id` | Chapter name, the same as its folder |
 | `start` | Starting value of `mind` and `body` |
 | `maxMeter` | Highest value a meter can reach |
