@@ -410,7 +410,10 @@
       "right": {
         "label": "Zostań, mokre ręczniki pod drzwi",
         "past": "W czasie pożaru zostałeś w pokoju",
-        "after": "Upychasz ręczniki pod drzwiami. Po kilku minutach w oknie pojawia się drabina strażacka."
+        "after": "Upychasz ręczniki pod drzwiami. Po kilku minutach w oknie pojawia się drabina strażacka.",
+        "variants": [
+          "Upychasz ręczniki pod drzwiami. Po kilku minutach strażak wybija okno i wyciąga cię na zewnątrz."
+        ]
       },
       "variants": [
         "Wyje alarm. Novak zrywa się: „Byłem tu na ćwiczeniach pożarowych. Chodź za mną i rób, co mówię.”"
@@ -461,7 +464,7 @@
         "after": "Patrzysz na drzwi. Minuty się nie ruszają."
       },
       "variants": [
-        "Wszystkich liczą na deszczu, pod kocami. Nie ma Daniela. Jego pokój był obok twojego. Strażacy szukają innej drogi do środka.",
+        "Wszystkich liczą na deszczu, pod kocami. Nie ma Daniela. Strażacy szukają innej drogi do środka.",
         "Wszystkich liczą na deszczu, pod kocami. Nie ma recepcjonistki, którą zostawiłeś na schodach. Strażacy szukają innej drogi do środka."
       ]
     },
@@ -578,7 +581,7 @@
       "omen": "Serce bije bardzo szybko."
     },
     "panic-home": {
-      "title": "Z dziewiątego piętra",
+      "title": "Schody hotelowe",
       "text": "Zabrakło ci tchu i pobiegłeś na hotelowe schody. Nie trafiłeś w stopień.",
       "hint": "To nie dzień cię przegrał. To ty przegrałeś dzień.",
       "omen": "Serce bije bardzo szybko."

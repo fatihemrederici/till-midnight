@@ -410,7 +410,10 @@
       "right": {
         "label": "Stay, wet towels under the door",
         "past": "You stayed in your room during the fire",
-        "after": "You push the towels under the door. Minutes later, a fire ladder appears at the window."
+        "after": "You push the towels under the door. Minutes later, a fire ladder appears at the window.",
+        "variants": [
+          "You push the towels under the door. Minutes later, a firefighter breaks your window and pulls you out."
+        ]
       },
       "variants": [
         "The alarm goes off. Novak jumps up: “I’ve done a fire drill in this hotel. Follow me and do what I say.”"
@@ -461,7 +464,7 @@
         "after": "You watch the door. The minutes don’t move."
       },
       "variants": [
-        "Everyone is counted in the rain, under blankets. Daniel isn’t there. His room was next to yours. The firefighters are looking for another way in.",
+        "Everyone is counted in the rain, under blankets. Daniel isn’t there. The firefighters are looking for another way in.",
         "Everyone is counted in the rain, under blankets. The receptionist you left on the stairs isn’t there. The firefighters are looking for another way in."
       ]
     },
@@ -578,7 +581,7 @@
       "omen": "Your heart is beating very fast."
     },
     "panic-home": {
-      "title": "From the Ninth Floor",
+      "title": "The Hotel Stairs",
       "text": "You couldn’t breathe and ran for the hotel stairs. You missed a step.",
       "hint": "The day didn’t lose you. You lost the day.",
       "omen": "Your heart is beating very fast."

@@ -608,7 +608,7 @@
       "emoji": "🔋",
       "image": "hotplug.jpg",
       "when": {
-        "online": true
+        "cheap": true
       },
       "left": {
         "set": {
@@ -765,6 +765,13 @@
             "when": {
               "openWindow": true,
               "novakIn": false
+            }
+          }
+        ],
+        "variants": [
+          {
+            "when": {
+              "low": true
             }
           }
         ]

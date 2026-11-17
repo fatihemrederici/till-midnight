@@ -410,7 +410,10 @@
       "right": {
         "label": "Odada kal, kapıya ıslak havlu",
         "past": "Yangında odanda kaldın",
-        "after": "Havluları kapının altına dayıyorsun. Dakikalar sonra pencerede itfaiye merdiveni beliriyor."
+        "after": "Havluları kapının altına dayıyorsun. Dakikalar sonra pencerede itfaiye merdiveni beliriyor.",
+        "variants": [
+          "Havluları kapının altına dayıyorsun. Dakikalar sonra bir itfaiyeci pencereni kırıp seni dışarı çekiyor."
+        ]
       },
       "variants": [
         "Alarm çalıyor. Novak ayağa fırlıyor: “Bu otelde yangın tatbikatına katıldım. Peşimden gel, ne dersem onu yap.”"
@@ -461,7 +464,7 @@
         "after": "Kapıya bakıyorsun. Dakikalar geçmek bilmiyor."
       },
       "variants": [
-        "Herkes yağmurda, battaniyelerin altında sayılıyor. Daniel yok. Onun odası seninkinin yanındaydı. İtfaiyeciler ikinci bir yol arıyor.",
+        "Herkes yağmurda, battaniyelerin altında sayılıyor. Daniel yok. İtfaiyeciler içeri girmek için ikinci bir yol arıyor.",
         "Herkes yağmurda, battaniyelerin altında sayılıyor. Merdivende bıraktığın görevli yok. İtfaiyeciler ikinci bir yol arıyor."
       ]
     },
@@ -578,7 +581,7 @@
       "omen": "Kalbin çok hızlı atıyor."
     },
     "panic-home": {
-      "title": "Dokuzuncu Kattan",
+      "title": "Otel Merdiveni",
       "text": "Nefesin daraldı ve otelin merdivenlerine koştun. Basamağı göremedin.",
       "hint": "Gün seni değil, sen günü kaybettin.",
       "omen": "Kalbin çok hızlı atıyor."
